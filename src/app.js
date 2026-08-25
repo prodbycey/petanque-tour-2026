@@ -903,7 +903,7 @@ function launchLockedMatch(mode=selectedControlMode){
   }else{
     delete frame.dataset.resumeState;
   }
-  frame.src='./match-core-career-v2-4/index.html?v=224';
+  frame.src='./match-core-career-v2-4/index.html?v=225';
   showView('matchCore');
   frame.onload=()=>{
     // V2.21: le Match Core carrière démarre lui-même, sans clic simulé.

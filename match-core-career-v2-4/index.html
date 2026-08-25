@@ -176,9 +176,9 @@
   renderer.toneMapping=THREE.ACESFilmicToneMapping;
   renderer.toneMappingExposure=PT_MOBILE?1.04:1.08;
   const scene=new THREE.Scene();scene.background=new THREE.Color(0x132024);
-  const camera=new THREE.PerspectiveCamera(PT_MOBILE?49.5:60,2/3,.025,30);
-  camera.position.set(0,PT_MOBILE?.62:.430,PT_MOBILE?-1.72:-2);
-  camera.lookAt(0,0,PT_MOBILE?.78:-1.042);
+  const camera=new THREE.PerspectiveCamera(PT_MOBILE?50:60,2/3,.025,30);
+  camera.position.set(0,PT_MOBILE?.92:.430,PT_MOBILE?-1.62:-2);
+  camera.lookAt(0,0,PT_MOBILE?1.30:-1.042);
 
   // CAREER VENUE VISUALS — visual only. Match rules, controls and ball physics stay unchanged.
   const VENUE_TERRAIN_ID=String(
@@ -455,8 +455,8 @@
   groundMap.repeat.set(2.1,7.4);bumpMap.repeat.copy(groundMap.repeat);roughMap.repeat.copy(groundMap.repeat);
   const groundMaterial=PT_MOBILE
     ? new THREE.MeshStandardMaterial({
-        map:groundMap,bumpMap:groundMap,bumpScale:.0026,
-        color:GROUND_TINT,roughness:.88,metalness:0
+        map:groundMap,bumpMap:groundMap,bumpScale:.0036,
+        color:GROUND_TINT,roughness:.93,metalness:0
       })
     : new THREE.MeshPhysicalMaterial({
         map:groundMap,bumpMap:bumpMap,bumpScale:GROUND_STYLE.bumpScale,
@@ -587,9 +587,10 @@
     return t;
   }
   const woodMap=makeWoodTexture(),woodBump=makeWoodTexture(991);
+  woodMap.encoding=THREE.sRGBEncoding;
   const woodMat=new THREE.MeshStandardMaterial({
-    map:woodMap,bumpMap:woodBump,bumpScale:PT_MOBILE?.010:.007,
-    roughness:PT_MOBILE?.58:.66,metalness:0,color:PT_MOBILE?0xf0c797:0xffffff
+    map:woodMap,bumpMap:woodBump,bumpScale:PT_MOBILE?.013:.007,
+    roughness:PT_MOBILE?.62:.66,metalness:0,color:PT_MOBILE?0xd8b080:0xffffff
   });
   // Two long side rails.
   for(const s of [-1,1]){
@@ -600,7 +601,7 @@
   const backRail=new THREE.Mesh(new THREE.BoxGeometry(2.99,.13,.11),woodMat);
   backRail.position.set(0,.065,6.04);backRail.castShadow=backRail.receiveShadow=true;scene.add(backRail);
   if(PT_MOBILE){
-    const woodTopMat=new THREE.MeshStandardMaterial({color:0x8a552d,roughness:.60,metalness:0});
+    const woodTopMat=new THREE.MeshStandardMaterial({map:woodMap,color:0xb98251,roughness:.58,metalness:0});
     for(const side of [-1,1]){
       const cap=new THREE.Mesh(new THREE.BoxGeometry(.088,.012,8.58),woodTopMat);
       cap.position.set(side*1.455,.111,1.75);scene.add(cap);
@@ -724,13 +725,14 @@
     t.wrapS=t.wrapT=THREE.RepeatWrapping;t.anisotropy=renderer.capabilities.getMaxAnisotropy()
   });
 
+  const MatClass=PT_MOBILE?THREE.MeshStandardMaterial:THREE.MeshPhysicalMaterial;
   const wallMats={
-    stone:new THREE.MeshPhysicalMaterial({map:WALL_STONE,bumpMap:WALL_STONE,bumpScale:.004,roughness:.91,metalness:0}),
-    stucco:new THREE.MeshPhysicalMaterial({map:WALL_STUCCO,bumpMap:WALL_STUCCO,bumpScale:.002,roughness:.94,metalness:0}),
-    warm:new THREE.MeshPhysicalMaterial({map:WALL_WARM,bumpMap:WALL_WARM,bumpScale:.0025,roughness:.92,metalness:0})
+    stone:new MatClass({map:WALL_STONE,bumpMap:WALL_STONE,bumpScale:.004,roughness:.91,metalness:0}),
+    stucco:new MatClass({map:WALL_STUCCO,bumpMap:WALL_STUCCO,bumpScale:.002,roughness:.94,metalness:0}),
+    warm:new MatClass({map:WALL_WARM,bumpMap:WALL_WARM,bumpScale:.0025,roughness:.92,metalness:0})
   };
-  const roofMat=new THREE.MeshPhysicalMaterial({map:ROOF_MAP,bumpMap:ROOF_MAP,bumpScale:.006,roughness:.87,metalness:0});
-  const barkMat=new THREE.MeshPhysicalMaterial({map:BARK_MAP,bumpMap:BARK_MAP,bumpScale:.007,roughness:.98,metalness:0});
+  const roofMat=new MatClass({map:ROOF_MAP,bumpMap:ROOF_MAP,bumpScale:.006,roughness:.87,metalness:0});
+  const barkMat=new MatClass({map:BARK_MAP,bumpMap:BARK_MAP,bumpScale:.007,roughness:.98,metalness:0});
 
   function skyTexture(profile,seed){
     return makeTex(512,1024,seed,(x,r,w,h)=>{
@@ -762,6 +764,69 @@
   function backdropTexture(profile,seed){
     return makeTex(2048,1024,seed,(x,r,w,h)=>{
       x.clearRect(0,0,w,h);
+
+      if(PT_MOBILE){
+        // Distant Mediterranean garden: architecture + hills only.
+        // Foreground vegetation is true 3D below, avoiding flat "tree icons".
+        const hill1=x.createLinearGradient(0,h*.43,0,h);
+        hill1.addColorStop(0,'rgba(101,119,99,.18)');
+        hill1.addColorStop(1,'rgba(82,96,77,.46)');
+        x.fillStyle=hill1;x.beginPath();x.moveTo(0,h);
+        for(let px=0;px<=w;px+=55){
+          const yy=h*(.64 + Math.sin(px*.006)*.025 + Math.sin(px*.017)*.012);
+          x.lineTo(px,yy)
+        }
+        x.lineTo(w,h);x.closePath();x.fill();
+
+        // Cream villa / garden wall inspired by the visual references.
+        const wallY=h*.55,wallH=h*.31;
+        x.fillStyle='#cfbea3';x.fillRect(w*.44,wallY,w*.42,wallH);
+        const shade=x.createLinearGradient(w*.44,0,w*.86,0);
+        shade.addColorStop(0,'rgba(255,245,221,.20)');
+        shade.addColorStop(1,'rgba(92,66,47,.18)');
+        x.fillStyle=shade;x.fillRect(w*.44,wallY,w*.42,wallH);
+
+        // Terracotta roof.
+        x.fillStyle='#8d4d31';
+        x.beginPath();
+        x.moveTo(w*.41,wallY);
+        x.lineTo(w*.64,wallY-h*.11);
+        x.lineTo(w*.89,wallY);
+        x.closePath();x.fill();
+
+        // Dark openings / windows.
+        x.fillStyle='rgba(44,54,48,.72)';
+        for(const xx of [.50,.61,.72,.80]){
+          x.fillRect(w*xx,wallY+h*.075,w*.045,h*.105);
+        }
+
+        // Stone retaining wall at the garden base.
+        const stoneTop=h*.83;
+        x.fillStyle='#897b66';x.fillRect(0,stoneTop,w,h*.17);
+        x.strokeStyle='rgba(58,50,40,.24)';x.lineWidth=1.4;
+        for(let yy=stoneTop;yy<h;yy+=h*.035){
+          x.beginPath();x.moveTo(0,yy);x.lineTo(w,yy);x.stroke();
+          const off=((yy/h*100)|0)%2?w*.025:0;
+          for(let xx=-off;xx<w;xx+=w*.075){
+            x.beginPath();x.moveTo(xx,yy);x.lineTo(xx,yy+h*.035);x.stroke();
+          }
+        }
+
+        // Natural dark hedge band, irregular rather than repeated tree silhouettes.
+        for(let i=0;i<95;i++){
+          const px=r()*w,py=h*(.76+r()*.10);
+          const rw=w*(.010+r()*.022),rh=h*(.018+r()*.044);
+          const green=50+r()*42;
+          x.fillStyle=`rgba(${28+r()*20|0},${green|0},${29+r()*22|0},${.22+r()*.24})`;
+          x.beginPath();x.ellipse(px,py,rw,rh,r()*Math.PI,0,Math.PI*2);x.fill();
+        }
+
+        const haze=x.createLinearGradient(0,h*.58,0,h);
+        haze.addColorStop(0,'rgba(235,223,202,0)');
+        haze.addColorStop(1,'rgba(225,213,193,.20)');
+        x.fillStyle=haze;x.fillRect(0,h*.58,w,h*.42);
+        return;
+      }
 
       const mountains=(warm=false)=>{
         const layers=[
@@ -846,42 +911,7 @@
 
   const decorGroup=new THREE.Group();scene.add(decorGroup);
 
-  if(PT_MOBILE){
-    const wallMat=new THREE.MeshStandardMaterial({color:0x796955,roughness:.96,metalness:0});
-    const trunkMat=new THREE.MeshStandardMaterial({color:0x56351f,roughness:.94,metalness:0});
-    const leafMats=[
-      new THREE.MeshStandardMaterial({color:0x315c3b,roughness:.97,metalness:0}),
-      new THREE.MeshStandardMaterial({color:0x3f6b43,roughness:.97,metalness:0}),
-      new THREE.MeshStandardMaterial({color:0x284c33,roughness:.98,metalness:0})
-    ];
-    const wall=new THREE.Mesh(new THREE.BoxGeometry(3.65,.30,.15),wallMat);
-    wall.position.set(0,.15,6.05);decorGroup.add(wall);
 
-    function addMobileTree(x,z,h=.9,seed=1){
-      const rr2=rng(VENUE_SEED+seed*97);
-      const trunk=new THREE.Mesh(new THREE.CylinderGeometry(.028*h,.048*h,h*.50,7),trunkMat);
-      trunk.position.set(x,h*.25,z);trunk.rotation.z=(rr2()-.5)*.035;decorGroup.add(trunk);
-      const geo=new THREE.IcosahedronGeometry(.20*h,1);
-      const blobs=[
-        [0,.64,0,1.20,.92,1.02],
-        [-.12,.58,.012,.88,.78,.92],
-        [.13,.60,-.018,.94,.82,.91],
-        [-.04,.78,.008,.78,.70,.80],
-        [.02,.52,.025,.78,.67,.82]
-      ];
-      blobs.forEach((b,i)=>{
-        const crown=new THREE.Mesh(geo,leafMats[(seed+i)%leafMats.length]);
-        crown.position.set(x+b[0]*h,b[1]*h,z+b[2]*h);
-        crown.scale.set(b[3],b[4],b[5]);
-        crown.rotation.set(rr2()*.16,rr2()*Math.PI,rr2()*.10);
-        decorGroup.add(crown);
-      });
-    }
-    [
-      [-1.72,3.05,.88,1],[1.75,3.48,.82,2],
-      [-1.78,4.92,.94,3],[1.79,5.18,.88,4]
-    ].forEach(t=>addMobileTree(...t));
-  }
 
 
   // Real landscape/photo backplates. They are deliberately distant and subtly
@@ -985,6 +1015,128 @@
     rock.scale.set(1.35,.68,1.0);rock.position.set(x,s*.48,z);rock.castShadow=rock.receiveShadow=true;decorGroup.add(rock)
   }
 
+  if(PT_MOBILE){
+    const terracottaMat=new THREE.MeshStandardMaterial({color:0xa95d37,roughness:.86,metalness:0});
+    const terracottaLipMat=new THREE.MeshStandardMaterial({color:0xc8794e,roughness:.82,metalness:0});
+    const branchMat=new THREE.MeshStandardMaterial({map:BARK_MAP,bumpMap:BARK_MAP,bumpScale:.006,color:0x76543a,roughness:.95});
+    const leafMat=foliageMat(LEAF_ROUND);
+    leafMat.color.setHex(0x9eb69b);
+    leafMat.roughness=.96;
+    const shrubMat=new THREE.MeshStandardMaterial({color:0x496c42,roughness:.98,metalness:0});
+    const paleShrubMat=new THREE.MeshStandardMaterial({color:0x6d8460,roughness:.98,metalness:0});
+    const benchWood=new THREE.MeshStandardMaterial({map:woodMap,color:0xc59b68,roughness:.66,metalness:0});
+    const darkMetal=new THREE.MeshStandardMaterial({color:0x35383a,roughness:.38,metalness:.72});
+
+    function cylinderBetween(a,b,r1,r2,mat,segments=7){
+      const mid=a.clone().add(b).multiplyScalar(.5);
+      const len=a.distanceTo(b);
+      const mesh=new THREE.Mesh(new THREE.CylinderGeometry(r1,r2,len,segments),mat);
+      mesh.position.copy(mid);
+      const q=new THREE.Quaternion();
+      q.setFromUnitVectors(new THREE.Vector3(0,1,0),b.clone().sub(a).normalize());
+      mesh.quaternion.copy(q);decorGroup.add(mesh);return mesh
+    }
+
+    function groundShadow(x,z,rx=.28,rz=.16,alpha=.13){
+      const sh=new THREE.Mesh(
+        new THREE.CircleGeometry(1,28),
+        new THREE.MeshBasicMaterial({color:0x15110d,transparent:true,opacity:alpha,depthWrite:false})
+      );
+      sh.rotation.x=-Math.PI/2;sh.scale.set(rx,rz,1);sh.position.set(x,.011,z);decorGroup.add(sh)
+    }
+
+    function addOliveTree(x,z,s=1,seed=1){
+      const rrO=rng(VENUE_SEED+seed*137);
+      groundShadow(x,z,.27*s,.14*s,.13);
+
+      const root=new THREE.Vector3(x,0,z);
+      const fork=new THREE.Vector3(x+(rrO()-.5)*.035*s,.34*s,z+(rrO()-.5)*.025*s);
+      cylinderBetween(root.clone().setY(.02),fork,.038*s,.055*s,branchMat,8);
+
+      const branchEnds=[
+        new THREE.Vector3(x-.17*s,.57*s,z+.015*s),
+        new THREE.Vector3(x+.18*s,.60*s,z-.025*s),
+        new THREE.Vector3(x-.045*s,.72*s,z+.035*s)
+      ];
+      branchEnds.forEach((end,i)=>{
+        const start=fork.clone().add(new THREE.Vector3((rrO()-.5)*.025*s,i*.018*s,(rrO()-.5)*.018*s));
+        cylinderBetween(start,end,.018*s,.029*s,branchMat,7);
+      });
+
+      const clusters=[
+        [-.17,.64,.01,.34,.29],
+        [.17,.66,-.02,.36,.30],
+        [-.02,.80,.02,.34,.28],
+        [-.28,.74,-.015,.24,.22],
+        [.28,.76,.018,.25,.23]
+      ];
+      clusters.forEach((c,ci)=>{
+        for(let k=0;k<2;k++){
+          const p=new THREE.Mesh(new THREE.PlaneGeometry(c[3]*s,c[4]*s),leafMat);
+          p.position.set(x+c[0]*s,c[1]*s,z+c[2]*s);
+          p.rotation.y=k*Math.PI/2 + (ci%2)*.30;
+          p.rotation.z=(rrO()-.5)*.10;
+          decorGroup.add(p);
+        }
+      })
+    }
+
+    function addPot(x,z,s=1,withShrub=true){
+      groundShadow(x,z,.12*s,.07*s,.10);
+      const pot=new THREE.Mesh(new THREE.CylinderGeometry(.095*s,.072*s,.16*s,16),terracottaMat);
+      pot.position.set(x,.08*s,z);decorGroup.add(pot);
+      const lip=new THREE.Mesh(new THREE.TorusGeometry(.095*s,.012*s,8,20),terracottaLipMat);
+      lip.rotation.x=Math.PI/2;lip.position.set(x,.158*s,z);decorGroup.add(lip);
+      if(withShrub){
+        const geo=new THREE.IcosahedronGeometry(.105*s,1);
+        for(const [dx,dy,dz,sc] of [[0,.245,0,1],[-.07,.22,.01,.72],[.07,.23,-.01,.75]]){
+          const b=new THREE.Mesh(geo,sc>.8?shrubMat:paleShrubMat);
+          b.position.set(x+dx*s,dy*s,z+dz*s);b.scale.setScalar(sc);decorGroup.add(b)
+        }
+      }
+    }
+
+    function addHedge(x,z,w=.7,h=.28,seed=1){
+      const rrH=rng(VENUE_SEED+seed*53);
+      const geo=new THREE.IcosahedronGeometry(.12,1);
+      const count=Math.max(3,Math.round(w/.16));
+      for(let i=0;i<count;i++){
+        const b=new THREE.Mesh(geo,i%3===0?paleShrubMat:shrubMat);
+        const xx=x-w/2+(i+.5)*(w/count);
+        b.position.set(xx,h*.55+(rrH()-.5)*.025,z+(rrH()-.5)*.045);
+        b.scale.set(.80+rrH()*.35,.75+rrH()*.30,.80+rrH()*.35);
+        decorGroup.add(b)
+      }
+    }
+
+    function addGardenBench(x,z,s=1){
+      const seat=new THREE.Mesh(new THREE.BoxGeometry(.62*s,.035*s,.18*s),benchWood);
+      seat.position.set(x,.18*s,z);decorGroup.add(seat);
+      const back=new THREE.Mesh(new THREE.BoxGeometry(.62*s,.20*s,.026*s),benchWood);
+      back.position.set(x,.31*s,z+.075*s);back.rotation.x=-.07;decorGroup.add(back);
+      for(const sx of [-.23,.23]){
+        const leg=new THREE.Mesh(new THREE.BoxGeometry(.035*s,.18*s,.035*s),darkMetal);
+        leg.position.set(x+sx*s,.09*s,z);decorGroup.add(leg)
+      }
+    }
+
+    // Mediterranean garden composition inspired by the user's references.
+    addStoneWall(0,6.12,3.75,.34);
+    addRealBuilding(1.72,6.62,1.42,.88,'stucco');
+    addOliveTree(-1.83,3.00,.95,1);
+    addOliveTree( 1.86,4.10,.88,2);
+    addOliveTree(-1.90,5.20,.82,3);
+    addPot(-1.66,1.95,.86,true);
+    addPot( 1.67,2.52,.78,true);
+    addPot( 1.75,5.20,.72,true);
+    addHedge(-1.82,4.15,.58,.28,11);
+    addHedge( 1.83,3.05,.52,.26,12);
+    addHedge(-.95,6.20,.70,.24,13);
+    addGardenBench(-1.82,5.55,.72);
+    addRealRock(-1.61,3.82,.10);
+    addRealRock( 1.63,4.78,.08);
+  }
+
   const rr=rng(VENUE_SEED+701);
 
   // Local scenery is intentionally sparse. The photo plate carries the place;
@@ -1076,7 +1228,10 @@
 
   const metalTex=ct('metal',768,55);metalTex.repeat.set(1,1);
   function ballMaterial(dark){
-    if(PT_MOBILE)return new THREE.MeshStandardMaterial({color:dark?0x20262d:0xe2e5e8,metalness:.92,roughness:dark?.34:.22,envMapIntensity:1.2});
+    if(PT_MOBILE)return new THREE.MeshStandardMaterial({
+      color:dark?0x252a2f:0xe4e6e5,map:metalTex,bumpMap:metalTex,bumpScale:.0008,
+      metalness:.96,roughness:dark?.32:.20,envMapIntensity:1.35
+    });
     return new THREE.MeshPhysicalMaterial({color:dark?0x1f242a:0xd8dde4,map:metalTex,bumpMap:metalTex,bumpScale:.0015,metalness:1,roughness:dark?.34:.20,clearcoat:dark?.10:.26,clearcoatRoughness:.32,envMapIntensity:1.45})
   }
   // simple bright environment for metal reflections
@@ -1378,6 +1533,13 @@
     aiSuccessRate:currentAIProfile().good};
   let aimOffset=0;
   let selectedShootTarget=null;
+
+  // Opponent calibration belongs to the actual engine scope.
+  // It learns completed point-roll error on the current terrain.
+  let aiPointCorrection=new THREE.Vector3(0,0,0);
+  let lastAIPointBody=null;
+  let lastAIWasPoint=false;
+
   const gravity=-6.0;
 
   const scoreBlueEl=document.querySelector('.team.blue .score');
@@ -1484,7 +1646,7 @@
     if(!PT_MOBILE)return isJack?1.32:1;
     const meters=Math.max(0,(z-THROW_START.z)/WORLD_PER_METER);
     const t=Math.max(0,Math.min(1,(meters-5.7)/4.3));
-    return (isJack?1.32:1)*(1+t*(isJack?.34:.28));
+    return (isJack?1.32:1)*(1+t*(isJack?.40:.32));
   }
 
   function updateMobileBallVisibility(){
@@ -1847,7 +2009,7 @@
     updateHUD();return true;
   }
 
-  function makeAIThrowPlan(team,outcome,profileOverride=null){
+  function makeBaseAIThrowPlan(team,outcome,profileOverride=null){
     const opponentTeam=team==='red'?'blue':'red';
     const opponentBest=closestPlayed(opponentTeam);
     const owner=pointOwner();
@@ -1963,6 +2125,152 @@
     return{mode,type,power,target,shouldShoot,outcome,profile};
   }
 
+  function makeAIThrowPlan(team,outcome,profileOverride=null){
+    // Friendly AI keeps the original behaviour.
+    if(team!=='red')return makeBaseAIThrowPlan(team,outcome,profileOverride);
+
+    const opponentBest=closestPlayed('blue');
+    const owner=pointOwner();
+    const level=String(CURRENT_AI_LEVEL||'LOCAL').toUpperCase();
+    const skill=Math.max(0,Math.min(1,CURRENT_AI_POINT_SKILL/100));
+    const regularity=Math.max(0,Math.min(1,CURRENT_AI_REGULARITE/100));
+    const experience=Math.max(0,Math.min(1,CURRENT_AI_EXPERIENCE/100));
+
+    // --------------------------------------------------------
+    // TACTICAL DECISION: shoot only when pétanque logic says so.
+    // --------------------------------------------------------
+    let shouldShoot=false;
+    let targetM=Infinity;
+    if(owner==='blue'&&opponentBest){
+      targetM=horizontalDist(opponentBest.mesh.position,jackBody.mesh.position)/WORLD_PER_METER;
+      const blueThreat=(()=>{
+        const own=bodies.filter(b=>b.team==='blue'&&b.played&&!b.dead&&b.countsForPoint!==false)
+          .map(b=>horizontalDist(b.mesh.position,jackBody.mesh.position)/WORLD_PER_METER)
+          .sort((a,b)=>a-b);
+        const red=bodies.filter(b=>b.team==='red'&&b.played&&!b.dead&&b.countsForPoint!==false)
+          .map(b=>horizontalDist(b.mesh.position,jackBody.mesh.position)/WORLD_PER_METER)
+          .sort((a,b)=>a-b);
+        const limit=red.length?red[0]:Infinity;
+        return own.filter(d=>d<limit).length;
+      })();
+
+      const levelShoot=level==='INTERNATIONAL'?.94:level==='NATIONAL'?.88:
+        (level==='REGIONAL'||level==='RÉGIONAL')?.80:.72;
+
+      let tactical=targetM<.12?1:
+        targetM<.20?.92:
+        targetM<.30?.78:
+        targetM<.42?.50:.18;
+
+      if(blueThreat>=2)tactical+=.10;
+      if((gameState.blueScore||0)+Math.max(1,blueThreat)>=13)tactical+=.12;
+      if(gameState.redRemaining<=1)tactical-=.12;
+
+      shouldShoot=Math.random()<Math.max(.05,Math.min(.98,levelShoot*tactical));
+    }
+
+    if(shouldShoot&&opponentBest){
+      const errRange=
+        level==='INTERNATIONAL'?[.006,.025]:
+        level==='NATIONAL'?[.010,.040]:
+        (level==='REGIONAL'||level==='RÉGIONAL')?[.018,.060]:
+        [.025,.085];
+
+      const errM=errRange[0]+Math.random()*(errRange[1]-errRange[0]);
+      const angle=Math.random()*Math.PI*2;
+      const aim=opponentBest.mesh.position.clone();
+      aim.x+=Math.cos(angle)*errM*WORLD_PER_METER;
+      aim.z+=Math.sin(angle)*errM*WORLD_PER_METER;
+
+      const rr=Math.random();
+      const type=rr<(level==='LOCAL'?.72:.84)?'FER':rr<.94?'DEVANT':'ROULÉ';
+      return{
+        mode:'TIRER',type,
+        power:Math.max(84,Math.min(97,(type==='ROULÉ'?84:93)+(Math.random()*2-1)*(1.4+(1-regularity)*1.8))),
+        target:aim,shouldShoot:true,
+        outcome:errM<.025?'EXCELLENT':errM<.055?'GOOD':'CORRECT',
+        profile:currentAIProfile()
+      }
+    }
+
+    // --------------------------------------------------------
+    // COMPETITIVE POINTING.
+    // Desired final ball is genuinely close to the jack.
+    // --------------------------------------------------------
+    const ranges=
+      level==='INTERNATIONAL'?[.008,.050]:
+      level==='NATIONAL'?[.012,.075]:
+      (level==='REGIONAL'||level==='RÉGIONAL')?[.020,.105]:
+      [.030,.145];
+
+    // Better real player stats tighten the tournament-level envelope.
+    const statScale=1.10-skill*.30;
+    const desiredRadiusM=(ranges[0]+Math.random()*(ranges[1]-ranges[0]))*statScale;
+
+    // Select a free sector around the cochonnet instead of stacking four balls
+    // in the same corridor.
+    let a=Math.random()*Math.PI*2;
+    const near=bodies.filter(b=>b.played&&!b.dead&&b.countsForPoint!==false&&b.team)
+      .filter(b=>horizontalDist(b.mesh.position,jackBody.mesh.position)/WORLD_PER_METER<.34);
+
+    for(let attempt=0;attempt<7&&near.length;attempt++){
+      const cx=jackBody.mesh.position.x+Math.cos(a)*desiredRadiusM*WORLD_PER_METER;
+      const cz=jackBody.mesh.position.z+Math.sin(a)*desiredRadiusM*WORLD_PER_METER;
+      const crowded=near.some(b=>Math.hypot(b.mesh.position.x-cx,b.mesh.position.z-cz)<.085*WORLD_PER_METER);
+      if(!crowded)break;
+      a+=.58+Math.random()*.72;
+    }
+
+    const desired=jackBody.mesh.position.clone();
+    desired.x+=Math.cos(a)*desiredRadiusM*WORLD_PER_METER;
+    desired.z+=Math.sin(a)*desiredRadiusM*WORLD_PER_METER;
+
+    // Actual learnt error from earlier completed red points on THIS match.
+    desired.add(aiPointCorrection);
+
+    const start=new THREE.Vector3(THROW_START.x,0,THROW_START.z);
+    const dir=desired.clone().sub(start);dir.y=0;dir.normalize();
+    const travelM=Math.max(1,horizontalDist(start,desired)/WORLD_PER_METER);
+
+    // Mostly portée / demi-portée, as a strong real pointeur would choose.
+    let type;
+    const rr=Math.random();
+    if(VISUAL_SURFACE==='rocky'||VISUAL_SURFACE==='wet-earth'){
+      type=rr<.76?'PORTÉE':rr<.98?'DEMI-PORTÉE':'ROULÉE';
+    }else if(VISUAL_SURFACE==='compact-earth'||VISUAL_SURFACE==='hard-sand'){
+      type=rr<.50?'PORTÉE':rr<.92?'DEMI-PORTÉE':'ROULÉE';
+    }else{
+      type=rr<.64?'PORTÉE':rr<.96?'DEMI-PORTÉE':'ROULÉE';
+    }
+
+    // Previous versions compensated too much, which systematically left AI
+    // balls short. These values are matched to the validated V3.10 drag.
+    const surfaceRoll=
+      VISUAL_SURFACE==='hard-sand'?1.08:
+      VISUAL_SURFACE==='compact-earth'?1.02:
+      VISUAL_SURFACE==='rocky'?.84:
+      VISUAL_SURFACE==='wet-earth'?.80:.94;
+
+    let rollCompM=
+      type==='PORTÉE' ? (.11+travelM*.015) :
+      type==='DEMI-PORTÉE' ? (.29+travelM*.030) :
+      (.70+travelM*.050);
+    rollCompM*=surfaceRoll;
+
+    const landing=desired.clone().addScaledVector(dir,-rollCompM*WORLD_PER_METER);
+
+    const basePower=type==='PORTÉE'?68:type==='DEMI-PORTÉE'?66:63;
+    const powerNoise=.35+(1-regularity)*1.25;
+
+    return{
+      mode:'POINTER',type,
+      power:basePower+(Math.random()*2-1)*powerNoise,
+      target:landing,shouldShoot:false,
+      outcome:desiredRadiusM<.045?'EXCELLENT':desiredRadiusM<.095?'GOOD':'CORRECT',
+      profile:currentAIProfile()
+    }
+  }
+
   function aiTakeTurn(){
     if(gameState.turn!=='red'||gameState.resolving||gameState.deadJackResolving||gameState.redRemaining<=0||gameState.ended)return;
 
@@ -1974,8 +2282,8 @@
     updateHUD();
 
     body.ptAIPlanMode=plan.mode;
-    lastAIPointBody=body;
     lastAIWasPoint=plan.mode==='POINTER';
+    lastAIPointBody=lastAIWasPoint?body:null;
     launchBody(body,plan.power,plan.mode,plan.type,plan.target,0);
     setMatchState(PetanqueStates.BALL_MOVING);
 
@@ -2092,8 +2400,14 @@
     if(gameState.lastThrowTeam==='red'&&lastAIWasPoint&&lastAIPointBody&&!lastAIPointBody.dead&&jackBody&&!jackBody.dead){
       const missX=jackBody.mesh.position.x-lastAIPointBody.mesh.position.x;
       const missZ=jackBody.mesh.position.z-lastAIPointBody.mesh.position.z;
-      aiPointCorrection.x=THREE.MathUtils.clamp(aiPointCorrection.x*.35+missX*.58,-.30,.30);
-      aiPointCorrection.z=THREE.MathUtils.clamp(aiPointCorrection.z*.35+missZ*.58,-.42,.42);
+      const missM=Math.hypot(missX,missZ)/WORLD_PER_METER;
+      if(missM>.025&&missM<1.60){
+        const learn=CURRENT_AI_LEVEL==='INTERNATIONAL'?.78:
+          CURRENT_AI_LEVEL==='NATIONAL'?.72:
+          (CURRENT_AI_LEVEL==='REGIONAL'||CURRENT_AI_LEVEL==='RÉGIONAL')?.66:.60;
+        aiPointCorrection.x=THREE.MathUtils.clamp(aiPointCorrection.x*.22+missX*learn,-.36,.36);
+        aiPointCorrection.z=THREE.MathUtils.clamp(aiPointCorrection.z*.22+missZ*learn,-.48,.48);
+      }
     }
 
     gameState.resolving=false;if(needsMeasure()){setMatchState(PetanqueStates.MEASURE);showToast('MESURE…',650)}updatePointState();
@@ -2142,10 +2456,10 @@
     'international-arena':{sky:0xc5cdd3,ground:0x2c3237,hemi:.84,sun:0xffffff,sunI:1.95,fill:0xb8d2e8,fillI:.60,pos:[-2.8,5.7,-3.0],exposure:1.02}
   };
   const LP=LIGHT_PRESETS[VENUE_PROFILE]||LIGHT_PRESETS['urban-park'];
-  renderer.toneMappingExposure=PT_MOBILE?Math.min(.90,LP.exposure*.86):LP.exposure;
+  renderer.toneMappingExposure=PT_MOBILE?Math.min(.96,LP.exposure*.91):LP.exposure;
 
-  const hemi=new THREE.HemisphereLight(LP.sky,LP.ground,PT_MOBILE?LP.hemi*.78:LP.hemi);scene.add(hemi);
-  const sun=new THREE.DirectionalLight(LP.sun,PT_MOBILE?LP.sunI*.90:LP.sunI);
+  const hemi=new THREE.HemisphereLight(PT_MOBILE?0xd8e5dc:LP.sky,PT_MOBILE?0x69513a:LP.ground,PT_MOBILE?LP.hemi*.70:LP.hemi);scene.add(hemi);
+  const sun=new THREE.DirectionalLight(PT_MOBILE?0xffc27d:LP.sun,PT_MOBILE?LP.sunI*.98:LP.sunI);
   sun.position.set(...LP.pos);sun.target.position.set(0,0,.35);sun.castShadow=true;
   sun.shadow.mapSize.set(PT_MOBILE?512:2048,PT_MOBILE?512:2048);sun.shadow.camera.left=-3;sun.shadow.camera.right=3;
   sun.shadow.camera.top=5.5;sun.shadow.camera.bottom=-1.5;sun.shadow.camera.near=.2;sun.shadow.camera.far=14;sun.shadow.bias=-.00018;
@@ -2337,149 +2651,7 @@ gameCanvas.addEventListener('pointerdown',e=>{
 
   setMeneDistance(8.0);resetStaticBodies();removeTeamBalls();gameState.activeRole='pointer';setThrowTypeUI('POINTER');syncDirectionUI();updateHUD();updatePlayerCard();ring.visible=false;aimLine.visible=false;
   if(PT_CAREER){newMatch();if(RESUME_MATCH_STATE){gameState.blueScore=Math.max(0,Number(RESUME_MATCH_STATE.blueScore||0));gameState.redScore=Math.max(0,Number(RESUME_MATCH_STATE.redScore||0));gameState.mene=Math.max(1,Number(RESUME_MATCH_STATE.mene||1));const starter=RESUME_MATCH_STATE.meneStarter==='red'?'red':'blue';coinWinner=RESUME_MATCH_STATE.coinWinner==='red'?'red':'blue';gameState.meneStarter=starter;updateHUD();showOnlyScreen(null);setMatchState(PetanqueStates.END_SETUP);setTimeout(()=>startJackThrow(starter),220)}else{showOnlyScreen(coinScreenEl);coinResultEl.textContent='';setMatchState(PetanqueStates.COIN_TOSS)}}else{showOnlyScreen(mainMenuEl);setMatchState(PetanqueStates.MATCH_INTRO)};
-})();
-</script>
-
-<script id="pt-v221-direct">
-(function(){
-  'use strict';
-
-  // Audio V2.21 intégré directement dans le moteur.
-
-  // Tactical decisions use only the current visible pétanque situation.
-  try{
-    const planBase=makeAIThrowPlan;
-    let aiPointCorrection=new THREE.Vector3(0,0,0);
-    let lastAIPointBody=null;
-    let lastAIWasPoint=false;
-
-    function distM(body){
-      if(!body||!jackBody||jackBody.dead)return Infinity;
-      return horizontalDist(body.mesh.position,jackBody.mesh.position)/WORLD_PER_METER;
-    }
-    function live(team){
-      return bodies.filter(b=>b.team===team&&b.played&&!b.dead&&b.countsForPoint!==false)
-    }
-    function potentialPoints(team){
-      const own=live(team).map(distM).sort((a,b)=>a-b);
-      const opp=live(team==='red'?'blue':'red').map(distM).sort((a,b)=>a-b);
-      if(!own.length)return 0;
-      const limit=opp.length?opp[0]:Infinity;
-      return own.filter(d=>d<limit).length;
-    }
-    function maturity(){
-      const l=String(CURRENT_AI_LEVEL||'LOCAL').toUpperCase();
-      return l==='INTERNATIONAL'?.995:l==='NATIONAL'?.985:(l==='REGIONAL'||l==='RÉGIONAL')?.96:.93;
-    }
-    function pointPlan(base){
-      const l=String(CURRENT_AI_LEVEL||'LOCAL').toUpperCase();
-      const range=l==='INTERNATIONAL'?[.008,.045]:
-        l==='NATIONAL'?[.014,.070]:
-        (l==='REGIONAL'||l==='RÉGIONAL')?[.022,.100]:
-        [.035,.140];
-
-      const radius=range[0]+Math.random()*(range[1]-range[0]);
-      let a=Math.random()*Math.PI*2;
-
-      // Pick a free sector instead of repeating four balls on the same line.
-      const near=[...live('red'),...live('blue')].filter(b=>distM(b)<.32);
-      for(let attempt=0;attempt<5&&near.length;attempt++){
-        const candidate=jackBody.mesh.position.clone();
-        candidate.x+=Math.cos(a)*radius*WORLD_PER_METER;
-        candidate.z+=Math.sin(a)*radius*WORLD_PER_METER;
-        const crowded=near.some(b=>horizontalDist(candidate,b.mesh.position)<.055*WORLD_PER_METER);
-        if(!crowded)break;
-        a+=.70+Math.random()*.90;
-      }
-
-      const desired=jackBody.mesh.position.clone();
-      desired.x+=Math.cos(a)*radius*WORLD_PER_METER;
-      desired.z+=Math.sin(a)*radius*WORLD_PER_METER;
-      desired.add(aiPointCorrection);
-
-      const start=new THREE.Vector3(THROW_START.x,0,THROW_START.z);
-      const dir=new THREE.Vector3(desired.x-start.x,0,desired.z-start.z).normalize();
-      const travel=Math.max(1,horizontalDist(start,desired)/WORLD_PER_METER);
-
-      const r=Math.random();
-      const type=r<.54?'PORTÉE':r<.94?'DEMI-PORTÉE':'ROULÉE';
-
-      // Calibrated for the validated V3.10 rolling behaviour.
-      const roll=type==='PORTÉE'
-        ? (.24+travel*.030)
-        : type==='DEMI-PORTÉE'
-          ? (.56+travel*.045)
-          : (.92+travel*.060);
-
-      const powerNoise=l==='INTERNATIONAL'?.35:l==='NATIONAL'?.50:
-        (l==='REGIONAL'||l==='RÉGIONAL')?.70:.95;
-
-      return {...base,mode:'POINTER',type,
-        power:64+(Math.random()*2-1)*powerNoise,
-        target:desired.clone().addScaledVector(dir,-roll*WORLD_PER_METER),
-        shouldShoot:false}
-    }
-
-    makeAIThrowPlan=function(team,outcome,profileOverride=null){
-      const base=planBase(team,outcome,profileOverride);
-      if(team!=='red'||!jackBody||jackBody.dead)return base;
-
-      // If opponent already owns the point, there is no rational target to shoot.
-      if(pointOwner()!=='blue')return pointPlan(base);
-
-      const target=closestPlayed('blue');
-      if(!target)return pointPlan(base);
-
-      const targetM=distM(target);
-      const own=closestPlayed('red');
-      const ownM=distM(own);
-      const redLeft=Math.max(1,gameState.redRemaining);
-      const danger=Math.max(1,potentialPoints('blue'));
-      const lead=(gameState.redScore||0)-(gameState.blueScore||0);
-      const matchDanger=(gameState.blueScore||0)+danger>=13;
-
-      const shooting=Math.max(0,Math.min(1,
-        (CURRENT_AI_POWER*.42+CURRENT_AI_PRECISION*.26+
-         CURRENT_AI_REGULARITE*.18+CURRENT_AI_EXPERIENCE*.14)/100));
-
-      let shoot=0,point=0;
-      if(targetM<=.12)shoot+=4.6;
-      else if(targetM<=.22)shoot+=3.4;
-      else if(targetM<=.38)shoot+=2.2;
-      else if(targetM<=.55)shoot+=1.0;
-      else point+=1.5;
-      shoot+=Math.min(3,danger-1)*.85;
-
-      if(redLeft<=1){point+=1.7;if(targetM<.16)shoot+=1.1;if(matchDanger)shoot+=2.1}
-      if(redLeft>=3)shoot+=.65;
-      if(redLeft>=4)shoot+=.35;
-      if(isFinite(ownM)&&ownM-targetM<.16)point+=1.2;
-      if(lead>=5)point+=.45;
-      if(lead<=-4)shoot+=.45;
-      if(matchDanger)shoot+=2.8;
-      shoot+=(shooting-.5)*2.5;
-
-      let logicalShoot=shoot>=point;
-      if(Math.random()>maturity())logicalShoot=!logicalShoot;
-      if(!logicalShoot)return pointPlan(base);
-
-      const l=String(CURRENT_AI_LEVEL||'LOCAL').toUpperCase();
-      const bonus=l==='INTERNATIONAL'?.06:l==='NATIONAL'?.035:(l==='REGIONAL'||l==='RÉGIONAL')?.015:0;
-      const confidence=Math.min(.985,Math.max(.55,shooting)+bonus);
-      const err=Math.max(.007,.038-(confidence-.55)*.05);
-      const aim=target.mesh.position.clone();
-      aim.x+=(Math.random()*2-1)*err*.68;
-      aim.z+=(Math.random()*2-1)*err;
-      const fer=.58+confidence*.30;
-      const r=Math.random();
-      const type=r<fer?'FER':r<fer+.14?'DEVANT':'ROULÉ';
-      return {...base,mode:'TIRER',type,
-        power:Math.max(79,Math.min(97,(type==='ROULÉ'?81:92)+(confidence-.70)*5+(Math.random()*2-1)*2)),
-        target:aim,shouldShoot:true};
-    };
-  }catch(e){console.warn('tactical AI',e)}
-
-  document.documentElement.dataset.ptGameplay='v221-stable-render';
+  document.documentElement.dataset.ptGameplay='v225-mediterranean-pro';
 })();
 </script>
 
