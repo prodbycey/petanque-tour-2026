@@ -1,0 +1,24 @@
+{
+  "status": "MATCH_CORE_V1_VALIDATED",
+  "locked": true,
+  "do_not_modify": [
+    "gameplay",
+    "physics",
+    "match core"
+  ],
+  "allowed_changes": "Only explicit bug fixes requested by the user.",
+  "next_mission": "CARRIERE V1",
+  "development_status": "WAITING_FOR_NEXT_SPEC",
+  "files": {
+    "MATCH_CORE_V1_REPORT.md": "14f5cc1d940c6c99194e37efb571ffc4e572b22eff612f21038841dec0a64cc1",
+    "START.command": "b113e8867e114e640a0b3a59fee613d34444ad19e093c40e41d5d7514e441c11",
+    "data/players.json": "3a98a7620960de90e21cfbeb1580a559d908eaa7bddde8349f843d41f9c2efb0",
+    "index.html": "c885e589262d495dd910433e4f75ab523dbb39a59fc694b2a5c226befa8909f2",
+    "serve.py": "e360126f50a7e351cbb8bae7fad12e78bc2726a8077666bc456acd51ee56a1ec",
+    "src/match-engine.js": "9d1f6a8f2f596d91fdb0df51068cd93b0cc9f34a6c4d79b743ac152954d5a4b9",
+    "src/rules-engine.js": "ecd00e4dceba49174c864818e8cdc6b4ece945126389259826f3b3919a20d75b",
+    "src/state-machine.js": "5354964afc7558a4d9249740e7507aa111bf807a09f0e797f815714f35b4fb47",
+    "src/turn-manager.js": "bd23019afa766c80e1176943363f9c28bc15beb190a3ed6bf91c2728303ac9f9",
+    "tests/rules.test.js": "1a7a5d8a28b8a243133af84e71923b899c41e63cfa1611ca284b65fe1382dd7d"
+  }
+}

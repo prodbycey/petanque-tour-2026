@@ -1,0 +1,944 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Pétanque Tour 2026 — MATCH CORE V1</title>
+<style>
+  :root{
+    --blue:#0d59c9;--blue2:#063b93;--red:#d41422;--red2:#8e0b15;--gold:#ffc928;
+    --panel:rgba(14,16,20,.86);--line:rgba(255,255,255,.24);--shadow:0 10px 26px rgba(0,0,0,.55);
+  }
+  *{box-sizing:border-box} html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#050506;font-family:Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;color:#fff}
+  body{display:grid;place-items:center}
+  #shell{position:relative;height:min(100vh,1536px);aspect-ratio:2/3;background:#111;border-radius:42px;overflow:hidden;box-shadow:0 0 0 3px #0a0a0b,0 0 0 5px #34353a,0 24px 80px #000}
+  canvas{position:absolute;inset:0;width:100%;height:100%;display:block;touch-action:none;cursor:grab}
+  #vignette{position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at 50% 47%,transparent 50%,rgba(0,0,0,.16) 76%,rgba(0,0,0,.42) 100%);z-index:2}
+  .glass{background:linear-gradient(180deg,rgba(29,31,37,.94),rgba(11,12,15,.92));border:1px solid rgba(255,255,255,.22);box-shadow:var(--shadow);backdrop-filter:blur(8px)}
+  #menu{position:absolute;z-index:10;left:3.4%;top:1.8%;width:8.8%;aspect-ratio:1;border-radius:16px;display:grid;place-items:center}
+  #menu i,#menu i:before,#menu i:after{content:"";display:block;width:42%;height:3px;background:white;border-radius:9px;position:absolute}#menu i:before{transform:translateY(-10px)}#menu i:after{transform:translateY(10px)}
+  #scorebar{position:absolute;z-index:9;left:16%;right:16%;top:1.8%;height:5.2%;display:flex;align-items:stretch;border-radius:28px;overflow:visible;box-shadow:var(--shadow)}
+  .team{flex:1;display:flex;align-items:center;gap:7px;padding:0 14px;font-weight:850;font-size:clamp(12px,2.2vh,22px);letter-spacing:.3px;text-shadow:0 2px 2px rgba(0,0,0,.4)}
+  .team.blue{justify-content:flex-start;background:linear-gradient(90deg,var(--blue2),var(--blue));border-radius:28px 0 0 28px}.team.red{justify-content:flex-end;background:linear-gradient(90deg,#bd101a,var(--red2));border-radius:0 28px 28px 0}
+  .flag{width:28px;height:28px;border-radius:50%;border:2px solid rgba(255,255,255,.65);box-shadow:0 2px 6px #0006;overflow:hidden;flex:0 0 auto}.fr{background:linear-gradient(90deg,#1647a8 0 33%,white 33% 66%,#e62c3a 66%)}.it{background:linear-gradient(90deg,#11834f 0 33%,white 33% 66%,#d82b32 66%)}
+  .score{font-size:1.7em;margin-left:auto}.red .score{order:-1;margin:0 auto 0 0}
+  #vs{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:13%;aspect-ratio:1;border-radius:50%;display:grid;place-items:center;background:linear-gradient(#25272e,#08090b);border:3px solid #e7e7e7;font-weight:900;font-style:italic;font-size:clamp(14px,2.4vh,24px);z-index:4;box-shadow:0 4px 12px #000}
+  #distance{position:absolute;z-index:10;right:3.2%;top:1.8%;width:11.2%;height:8.8%;border-radius:17px;text-align:center;padding-top:9px}.small{font-size:clamp(9px,1.2vh,12px);font-weight:800;letter-spacing:.5px}.big{font-weight:950;font-size:clamp(20px,3.3vh,34px);line-height:1.05;margin-top:3px}.crosshair{margin:8px auto 0;width:23px;height:23px;border:2px solid white;border-radius:50%;position:relative}.crosshair:before,.crosshair:after{content:"";position:absolute;background:white}.crosshair:before{left:9px;top:-5px;width:2px;height:29px}.crosshair:after{top:9px;left:-5px;width:29px;height:2px}
+  #round{position:absolute;z-index:8;top:6.6%;left:23%;right:23%;text-align:center;font-size:clamp(11px,1.7vh,17px);font-weight:900;text-shadow:0 2px 7px #000}.balls{margin-top:5px;display:flex;justify-content:space-between}.row{display:flex;gap:4px}.dot{width:11px;height:11px;border-radius:50%;border:1px solid #fff8;box-shadow:inset 0 2px 3px #fff6}.dot.b{background:#1291ff}.dot.r{background:#df1624}.dot.empty{background:#090a0c}
+  #playercard{position:absolute;z-index:8;left:3.6%;top:48.2%;width:32%;height:8.3%;display:flex;align-items:center;border-radius:44px 14px 14px 44px;background:linear-gradient(90deg,rgba(16,17,21,.97),rgba(15,16,20,.82));border:1px solid rgba(255,255,255,.16);box-shadow:var(--shadow)}
+  .avatar{height:100%;aspect-ratio:1;border-radius:50%;display:grid;place-items:center;background:radial-gradient(circle at 50% 32%,#b98466 0 18%,#72412b 19% 28%,#171313 29% 54%,#0e1116 55%);border:3px solid #f4c42a;box-shadow:0 2px 8px #000;font-size:0;position:relative}.avatar:after{content:attr(data-initials);font-size:18px;font-weight:900;color:#fff;position:absolute;bottom:8px;text-shadow:0 2px 4px #000}
+  .pcopy{padding-left:10px;min-width:0}.pname{font-weight:900;font-size:clamp(12px,1.8vh,19px);white-space:nowrap}.role{display:inline-block;margin-top:2px;background:#0876d2;border-radius:6px;padding:3px 7px;font-size:clamp(8px,1.05vh,11px);font-weight:900;color:#8fd4ff}.stars{font-size:clamp(10px,1.4vh,15px);letter-spacing:2px;color:#ffd21c;margin-top:3px}.miniflag{position:absolute;left:1px;bottom:1px;width:23px;height:23px}
+  #actions{position:absolute;z-index:8;left:18.5%;right:18.5%;top:59.5%;height:9%;display:grid;grid-template-columns:1fr 1fr;gap:4%}.action{border:none;color:#fff;font-weight:950;font-style:italic;font-size:clamp(17px,3.1vh,31px);border-radius:20px;clip-path:polygon(10% 0,92% 0,100% 50%,92% 100%,10% 100%,0 50%);box-shadow:inset 0 0 0 2px #fff2,0 12px 20px #0008;cursor:pointer;transition:.16s transform,.16s filter}.action:active{transform:scale(.97)}.action.point{background:linear-gradient(180deg,#1667d8,#0b3f9e)}.action.shoot{background:linear-gradient(180deg,#e11929,#9e0914)}.action:not(.selected){filter:saturate(.72) brightness(.82)}.action.selected{outline:2px solid #ffffff88;filter:saturate(1.1) brightness(1.08)}.ballIcon{display:inline-block;width:34px;height:34px;margin-right:10px;vertical-align:middle;border-radius:50%;background:radial-gradient(circle at 35% 25%,#fff,#aeb6c6 35%,#5c6370 70%,#20242b);box-shadow:inset -4px -5px 8px #0007}
+  #control{position:absolute;z-index:8;left:5.8%;right:5.8%;bottom:2.4%;height:26%;border-radius:30px;padding:3.2% 3.8%;background:linear-gradient(180deg,rgba(25,27,32,.90),rgba(11,12,15,.94));border:1px solid rgba(255,255,255,.35);box-shadow:0 -8px 28px #0005,0 14px 34px #0008;backdrop-filter:blur(12px)}
+  #types{display:grid;grid-template-columns:1fr 1.15fr 1fr;gap:2.3%;height:17%}.type{border:0;border-radius:999px;background:#13161b;color:#fff;font-weight:850;font-size:clamp(10px,1.7vh,17px);box-shadow:inset 0 0 0 1px #ffffff18;cursor:pointer}.type.active{background:linear-gradient(#6f5712,#3e3008);box-shadow:inset 0 0 0 2px #ffd52b;color:#fff}.type.long{font-size:clamp(8px,1.38vh,14px);line-height:1.05;padding:0 3px}
+  #directionBox{margin-top:2.6%;padding:7px 10px 8px;border-radius:12px;background:rgba(9,11,14,.60);border:1px solid rgba(255,255,255,.12);box-shadow:inset 0 0 0 1px rgba(0,0,0,.18)}
+  .dirHead{display:flex;align-items:center;justify-content:space-between;font-weight:900;font-size:clamp(8px,1.05vh,11px);letter-spacing:.7px;color:#dfe6ee;margin-bottom:4px}
+  #dirValue{color:#ffd739;min-width:42px;text-align:right}
+  .dirRow{display:grid;grid-template-columns:24px 1fr 24px;gap:7px;align-items:center}
+  .dirArrow{font-size:22px;font-weight:900;text-align:center;color:#e8edf3;user-select:none}
+  #direction{width:100%;height:20px;background:transparent;accent-color:#ffd12a;cursor:pointer}
+  #direction::-webkit-slider-runnable-track{height:4px;border-radius:3px;background:linear-gradient(90deg,#7e8996,#f1f3f5 49%,#f1f3f5 51%,#7e8996)}
+  #direction::-webkit-slider-thumb{-webkit-appearance:none;width:16px;height:16px;margin-top:-6px;border-radius:50%;background:#ffd12a;border:2px solid #201b0a;box-shadow:0 1px 6px #000}
+  .dirCenter{position:relative;height:0}.dirCenter:after{content:'|';position:absolute;left:50%;top:-18px;transform:translateX(-50%);color:#fff8;font-size:15px;pointer-events:none}
+
+  #aim{margin-top:3.8%;height:29%;position:relative;border-radius:16px;background:linear-gradient(rgba(74,55,39,.68),rgba(40,32,27,.72)),repeating-linear-gradient(15deg,#6f5b49 0 2px,#5f4c3e 2px 4px);overflow:hidden;box-shadow:inset 0 0 0 1px #ffffff18}.ellipse{position:absolute;left:30%;right:30%;top:28%;bottom:22%;border:3px solid #218fff;border-radius:50%;box-shadow:0 0 16px #138df055,inset 0 0 14px #138df033}.aimball{position:absolute;width:30px;height:30px;border-radius:50%;left:50%;top:50%;transform:translate(-50%,-50%);background:radial-gradient(circle at 32% 28%,#fff,#b4c9f5 30%,#1f5bc5 58%,#0d2e75);box-shadow:0 4px 8px #000}.arrow{position:absolute;top:50%;transform:translateY(-50%);font-size:34px;font-weight:300;cursor:pointer;user-select:none;text-shadow:0 3px 6px #000}.arrow.l{left:3%}.arrow.r{right:3%}
+  #powerLabel{text-align:center;font-weight:850;margin-top:4%;font-size:clamp(10px,1.4vh,14px)}#bottomrow{display:grid;grid-template-columns:12% 1fr;gap:3%;align-items:end;margin-top:2%}.undo{height:54px;border-radius:14px;display:grid;place-items:center;background:#101218;border:1px solid #ffffff1a;font-size:24px}
+  .rangeWrap{align-self:center;position:relative;height:18px;border-radius:999px;background:linear-gradient(90deg,#159248 0%,#7fba1c 25%,#ffe32c 52%,#ff8a18 76%,#d90016 100%);border:3px solid #d7d7d7;box-shadow:inset 0 0 0 2px #111}.rangeWrap input{appearance:none;-webkit-appearance:none;position:absolute;inset:-14px 0;width:100%;background:transparent;pointer-events:none;cursor:default}.rangeWrap input::-webkit-slider-thumb{-webkit-appearance:none;width:24px;height:38px;border-radius:8px;background:linear-gradient(#fff,#d8d9de);border:1px solid #aeb0b6;box-shadow:0 2px 5px #0008}.rangeWrap input::-moz-range-thumb{width:24px;height:38px;border-radius:8px;background:#e8e8ec;border:1px solid #aaa}.powerPct{position:absolute;right:0;top:-24px;font-size:11px;font-weight:900;text-shadow:0 2px 4px #000}
+  #toast{position:absolute;z-index:20;left:50%;top:45%;transform:translate(-50%,-50%) scale(.9);opacity:0;pointer-events:none;background:#0d1118dd;border:1px solid #ffffff3a;border-radius:14px;padding:12px 18px;font-weight:900;box-shadow:var(--shadow);transition:.22s}.show{opacity:1!important;transform:translate(-50%,-50%) scale(1)!important}
+
+  #pointState{position:absolute;z-index:9;top:9.4%;left:50%;transform:translateX(-50%);padding:6px 13px;border-radius:999px;background:rgba(8,10,14,.72);border:1px solid rgba(255,255,255,.18);font-size:clamp(9px,1.2vh,12px);font-weight:900;letter-spacing:.4px;text-shadow:0 2px 5px #000;pointer-events:none;transition:.2s}
+  #pointState.bluePoint{box-shadow:inset 0 0 0 1px rgba(18,145,255,.45);color:#bfe3ff}
+  #pointState.redPoint{box-shadow:inset 0 0 0 1px rgba(223,22,36,.45);color:#ffd0d4}
+  #previousMene{position:absolute;z-index:18;top:13.1%;left:50%;transform:translate(-50%,-8px);opacity:0;pointer-events:none;
+    padding:7px 13px;border-radius:999px;background:rgba(8,10,14,.82);border:1px solid rgba(255,255,255,.18);
+    font-size:clamp(9px,1.15vh,12px);font-weight:950;letter-spacing:.35px;white-space:nowrap;text-shadow:0 2px 5px #000;
+    box-shadow:0 8px 24px rgba(0,0,0,.28);transition:opacity .2s ease,transform .2s ease}
+  #previousMene.visible{opacity:1;transform:translate(-50%,0)}
+
+  #matchEnd{position:absolute;z-index:40;inset:0;display:none;place-items:center;background:rgba(3,5,8,.62);backdrop-filter:blur(8px)}
+  #matchEnd.showEnd{display:grid}
+  .endCard{width:72%;padding:28px 24px 24px;border-radius:26px;text-align:center;background:linear-gradient(180deg,rgba(29,33,41,.98),rgba(8,10,14,.98));border:1px solid rgba(255,255,255,.25);box-shadow:0 24px 70px #000}
+  .endKicker{font-size:12px;font-weight:900;letter-spacing:1.8px;opacity:.72}
+  .endTitle{font-size:clamp(30px,5vh,52px);font-style:italic;font-weight:950;margin-top:7px}
+  .endScore{font-size:clamp(22px,3.2vh,34px);font-weight:950;margin:8px 0 22px}
+  #replay{border:0;border-radius:16px;padding:14px 24px;background:linear-gradient(180deg,#ffd936,#e5a900);color:#16120a;font-weight:950;font-size:16px;cursor:pointer;box-shadow:0 8px 20px #0007}
+  @media(max-width:680px){#shell{height:100vh;width:66.6667vh;border-radius:0}.team{padding:0 8px}.flag{width:22px;height:22px}.action{font-size:18px}.ballIcon{width:27px;height:27px}}
+
+  .shellScreen{position:absolute;inset:0;z-index:80;background:radial-gradient(circle at 50% 18%,rgba(31,91,151,.32),transparent 34%),linear-gradient(180deg,#111820,#050608 68%);display:none;flex-direction:column;align-items:center;justify-content:center;padding:7%;text-align:center}
+  .shellScreen.show{display:flex}.brandTitle{font-size:clamp(34px,6.4vh,66px);font-weight:1000;letter-spacing:-2px;line-height:.88;font-style:italic;text-shadow:0 8px 30px #000}.brandTitle span{display:block;color:#ffd22d;font-size:.42em;letter-spacing:6px;margin-top:12px}
+  .menuStack{width:min(88%,470px);display:grid;gap:11px;margin-top:8%}.menuBtn{border:1px solid #ffffff26;background:linear-gradient(#252b32,#101318);color:#fff;border-radius:16px;padding:16px 18px;font-weight:950;font-size:clamp(14px,2vh,20px);box-shadow:0 10px 26px #0008;cursor:pointer}.menuBtn.primary{background:linear-gradient(#126de1,#0749a4);border-color:#3d9aff}.menuBtn.locked{opacity:.38}.menuBtn small{display:block;font-size:.64em;color:#c7ced6;margin-top:4px}.screenTitle{font-size:clamp(22px,4vh,40px);font-weight:1000;margin-bottom:20px}.quickCard{width:min(92%,500px);background:#11161ddd;border:1px solid #ffffff22;border-radius:20px;padding:17px;margin:7px 0;text-align:left}.quickCard strong{display:block;font-size:18px}.quickCard span{color:#aeb7c2;font-size:13px}.coinChoices{display:flex;gap:12px;margin-top:22px}.coinChoice{min-width:118px}#coinResult{min-height:28px;margin-top:18px;font-weight:950;color:#ffd52b}#stateBadge{position:absolute;z-index:30;top:10.5%;left:50%;transform:translateX(-50%);padding:5px 10px;border-radius:999px;background:#080a0dbd;border:1px solid #ffffff25;font-size:10px;font-weight:900;letter-spacing:.5px;pointer-events:none}#jackHint{position:absolute;z-index:29;left:50%;bottom:27.7%;transform:translateX(-50%);display:none;padding:9px 13px;border-radius:12px;background:#091018df;border:1px solid #39a6ff55;font-weight:900;font-size:12px;white-space:nowrap}#jackHint.show{display:block}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js"></script>
+</head>
+<body>
+<div id="shell">
+  <div id="mainMenu" class="shellScreen show"><div class="brandTitle">PÉTANQUE TOUR<span>2026</span></div><div class="menuStack">
+    <button class="menuBtn locked">CARRIÈRE<small>BIENTÔT</small></button><button id="quickPlayMenu" class="menuBtn primary">PARTIE RAPIDE</button><button class="menuBtn locked">ENTRAÎNEMENT<small>POINT · TIR · LIBRE</small></button><button class="menuBtn locked">JOUEUR / ÉQUIPE<small>BIENTÔT</small></button><button class="menuBtn locked">CLASSEMENT<small>TOP30_DATA_PENDING</small></button>
+  </div></div>
+  <div id="quickMenu" class="shellScreen"><div class="screenTitle">PARTIE RAPIDE</div>
+    <div class="quickCard"><strong>TÊTE-À-TÊTE</strong><span>1 contre 1 · 3 boules chacun · 13 points</span></div>
+    <div class="quickCard" style="opacity:.35"><strong>DOUBLETTE 🔒</strong><span>Bientôt</span></div><div class="quickCard" style="opacity:.35"><strong>TRIPLETTE 🔒</strong><span>Bientôt</span></div>
+    <div class="quickCard"><strong>TERRAIN</strong><span>Parc · gravier · extérieur</span></div><div class="quickCard"><strong>ADVERSAIRE</strong><span>Rizano · IA 40–65 %</span></div>
+    <div class="menuStack" style="margin-top:12px"><button id="startQuickMatch" class="menuBtn primary">JOUER</button><button id="backMain" class="menuBtn">RETOUR</button></div>
+  </div>
+  <div id="coinScreen" class="shellScreen"><div class="screenTitle">PILE OU FACE</div><div style="max-width:420px;color:#bdc6d0">Le gagnant lance le cochonnet et joue la première boule.</div><div class="coinChoices"><button class="menuBtn coinChoice" data-coin="PILE">PILE</button><button class="menuBtn coinChoice" data-coin="FACE">FACE</button></div><div id="coinResult"></div></div>
+  <div id="stateBadge">MENU</div><div id="jackHint">LANCE LE COCHONNET · 6 À 10 M</div>
+
+  <canvas id="game"></canvas><div id="vignette"></div>
+  <button id="menu" class="glass" aria-label="Menu"><i></i></button>
+  <div id="scorebar"><div class="team blue"><span class="flag fr"></span><span>TEAM TOI</span><span class="score">0</span></div><div id="vs">VS</div><div class="team red"><span class="score">0</span><span>TEAM RIZANO</span><span class="flag it"></span></div></div>
+  <div id="distance" class="glass"><div class="small">DISTANCE</div><div class="big">8,0 m</div><div class="crosshair"></div></div>
+  <div id="round">1ÈRE MÈNE<div class="balls"><div class="row" aria-label="6 boules équipe bleue"><span class="dot b"></span><span class="dot b"></span><span class="dot b"></span><span class="dot b"></span><span class="dot b"></span><span class="dot b"></span></div><div class="row" aria-label="6 boules équipe rouge"><span class="dot r"></span><span class="dot r"></span><span class="dot r"></span><span class="dot r"></span><span class="dot r"></span><span class="dot r"></span></div></div></div>
+  <div id="pointState">DÉBUT DE MÈNE</div>
+  <div id="previousMene"></div>
+  <div id="playercard"><div class="avatar" data-initials="LM"><span class="flag fr miniflag"></span></div><div class="pcopy"><div class="pname">Ludovic Monterro</div><span class="role">POINTEUR</span><div class="stars">★★★★★</div></div></div>
+  <div id="actions"><button class="action point selected"><span class="ballIcon"></span>POINTER</button><button class="action shoot"><span style="font-size:.8em">➤</span> <span class="ballIcon" style="width:27px;height:27px"></span>TIRER</button></div>
+  <section id="control">
+    <div id="types"><button class="type">ROULÉE</button><button class="type active">DEMI-PORTÉE</button><button class="type">PORTÉE</button></div>
+    <div id="directionBox">
+      <div class="dirHead"><span>DIRECTION</span><span id="dirValue">CENTRE</span></div>
+      <div class="dirRow"><span class="dirArrow">←</span><div class="dirCenter"><input id="direction" type="range" min="-100" max="100" value="0" step="1"></div><span class="dirArrow">→</span></div>
+    </div>
+    <div id="aim"><span class="arrow l">‹</span><div class="ellipse"></div><div class="aimball"></div><span class="arrow r">›</span></div>
+    <div id="powerLabel">PUISSANCE</div>
+    <div id="bottomrow"><div class="undo">↶</div><div class="rangeWrap"><span class="powerPct">0%</span><input id="power" type="range" min="0" max="100" value="0" tabindex="-1" aria-hidden="true"></div></div>
+  </section>
+  <div id="toast">PRÊT</div>
+  <div id="matchEnd"><div class="endCard"><div class="endKicker">PARTIE TERMINÉE</div><div class="endTitle">VICTOIRE</div><div class="endScore">13 — 0</div><button id="replay">REJOUER</button><button id="returnMenu" style="margin-top:8px">RETOUR MENU</button></div></div>
+</div>
+<script src="./src/rules-engine.js"></script>
+<script src="./src/match-engine.js"></script>
+<script src="./src/turn-manager.js"></script>
+<script src="./src/state-machine.js"></script>
+<script>
+(function(){
+  // MATCH CORE V1: full mène/score flow to 13 while preserving the validated swipe/visual feel.
+  if(!window.THREE){document.body.innerHTML='<div style="color:white;padding:30px;font-family:sans-serif">Connexion Internet requise au premier lancement pour charger Three.js.</div>';return;}
+  const shell=document.getElementById('shell'),canvas=document.getElementById('game');
+  const renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:false,powerPreference:'high-performance'});
+  renderer.setPixelRatio(Math.min(devicePixelRatio,2));renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;renderer.outputEncoding=THREE.sRGBEncoding;renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.15;
+  const scene=new THREE.Scene();scene.background=new THREE.Color(0x132024);
+  const camera=new THREE.PerspectiveCamera(60,2/3,.025,30);camera.position.set(0,.430,-2);camera.lookAt(0,0,-1.042);
+
+  function rng(seed){return()=>{seed=(seed*1664525+1013904223)>>>0;return seed/4294967296}}
+  function textureCanvas(size,seed,kind){const r=rng(seed),c=document.createElement('canvas');c.width=c.height=size;const x=c.getContext('2d');
+    if(kind==='ground'){
+      const g=x.createLinearGradient(0,0,size,size);g.addColorStop(0,'#846f5c');g.addColorStop(.45,'#b59a7c');g.addColorStop(1,'#705d4e');x.fillStyle=g;x.fillRect(0,0,size,size);
+      for(let i=0;i<27000;i++){let px=r()*size,py=r()*size,rad=.25+r()*2.1;let L=72+(r()-.5)*38;x.fillStyle=`hsla(${28+r()*10},${12+r()*18}%,${L}%,${.18+r()*.42})`;x.beginPath();x.ellipse(px,py,rad,rad*(.4+r()*.9),r()*Math.PI,0,Math.PI*2);x.fill()}
+      for(let i=0;i<1300;i++){let px=r()*size,py=r()*size,rad=.7+r()*3.6;x.fillStyle=`rgba(${80+r()*100|0},${68+r()*70|0},${58+r()*50|0},${.28+r()*.42})`;x.beginPath();x.ellipse(px,py,rad,rad*(.45+r()*.7),r()*Math.PI,0,Math.PI*2);x.fill()}
+      x.globalAlpha=.14;for(let i=0;i<150;i++){x.strokeStyle='#2c241e';x.lineWidth=.5+r()*2;x.beginPath();let px=r()*size,py=r()*size;x.moveTo(px,py);x.lineTo(px+(r()-.5)*30,py+(r()-.5)*10);x.stroke()}x.globalAlpha=1;
+    }
+    if(kind==='bump'){x.fillStyle='#777';x.fillRect(0,0,size,size);for(let i=0;i<33000;i++){let v=90+r()*80|0;x.fillStyle=`rgb(${v},${v},${v})`;let s=.4+r()*2;x.fillRect(r()*size,r()*size,s,s)} }
+    if(kind==='metal'){x.fillStyle='#bfc3c8';x.fillRect(0,0,size,size);for(let i=0;i<950;i++){let a=.05+r()*.18;x.strokeStyle=`rgba(30,30,30,${a})`;x.lineWidth=.3+r()*.8;x.beginPath();let px=r()*size,py=r()*size;x.moveTo(px,py);x.lineTo(px+(r()-.5)*55,py+(r()-.5)*7);x.stroke()}x.strokeStyle='#35373a';x.lineWidth=3;for(let y of [size*.27,size*.31,size*.67,size*.71]){x.beginPath();x.moveTo(0,y);x.lineTo(size,y+size*.15);x.stroke()}}
+    return c}
+  function ct(kind,size,seed){const t=new THREE.CanvasTexture(textureCanvas(size,seed,kind));t.wrapS=t.wrapT=THREE.RepeatWrapping;t.anisotropy=renderer.capabilities.getMaxAnisotropy();return t}
+  const groundMap=ct('ground',1024,42),bumpMap=ct('bump',1024,99);groundMap.repeat.set(2.1,7.4);bumpMap.repeat.copy(groundMap.repeat);
+  const ground=new THREE.Mesh(new THREE.PlaneGeometry(3,8.6,120,300),new THREE.MeshStandardMaterial({map:groundMap,bumpMap:bumpMap,bumpScale:.018,roughness:.93,metalness:0,color:0xffffff}));ground.rotation.x=-Math.PI/2;ground.position.z=1.75;ground.receiveShadow=true;scene.add(ground);
+  // micro-gravel only in foreground and midground
+  const pebGeom=new THREE.IcosahedronGeometry(.006,0),pebMat=new THREE.MeshStandardMaterial({color:0x6f6257,roughness:.88});const pebbles=new THREE.InstancedMesh(pebGeom,pebMat,1550);const M=new THREE.Matrix4(),r=rng(771);for(let i=0;i<1550;i++){let z=-1.15+r()*6.55,x=(r()-.5)*2.9,s=.45+r()*1.15;M.compose(new THREE.Vector3(x,.004+r()*.004,z),new THREE.Quaternion().setFromEuler(new THREE.Euler(r()*3,r()*3,r()*3)),new THREE.Vector3(s,s*.65,s));pebbles.setMatrixAt(i,M)}pebbles.receiveShadow=true;scene.add(pebbles);
+  // Realistic-looking wooden court borders (procedural, no external image).
+  function makeWoodTexture(seed=731){
+    const c=document.createElement('canvas');c.width=1024;c.height=192;
+    const x=c.getContext('2d'),r=rng(seed);
+    const g=x.createLinearGradient(0,0,0,c.height);
+    g.addColorStop(0,'#9b6b3e');g.addColorStop(.42,'#76502f');g.addColorStop(1,'#4e3320');
+    x.fillStyle=g;x.fillRect(0,0,c.width,c.height);
+    for(let i=0;i<165;i++){
+      const y=r()*c.height,w=.5+r()*2.4,alpha=.035+r()*.12;
+      x.strokeStyle=`rgba(${r()>.5?30:235},${r()>.5?18:205},${r()>.5?10:160},${alpha})`;
+      x.lineWidth=w;x.beginPath();
+      const yy=y+Math.sin(i*.63)*3;
+      x.moveTo(0,yy);
+      for(let px=0;px<=1024;px+=64)x.lineTo(px,yy+Math.sin(px*.018+i)*(.7+r()*2.3));
+      x.stroke();
+    }
+    // darker knots
+    for(let i=0;i<18;i++){
+      const px=r()*1024,py=r()*192,rx=6+r()*20,ry=2+r()*7;
+      x.strokeStyle='rgba(42,25,13,.25)';x.lineWidth=1+r()*2;
+      x.beginPath();x.ellipse(px,py,rx,ry,0,0,Math.PI*2);x.stroke();
+    }
+    const t=new THREE.CanvasTexture(c);t.wrapS=t.wrapT=THREE.RepeatWrapping;
+    t.repeat.set(3.3,1);t.anisotropy=renderer.capabilities.getMaxAnisotropy();return t;
+  }
+  const woodMap=makeWoodTexture(),woodBump=makeWoodTexture(991);
+  const woodMat=new THREE.MeshStandardMaterial({
+    map:woodMap,bumpMap:woodBump,bumpScale:.006,roughness:.72,metalness:0,color:0xffffff
+  });
+  // Two long side rails.
+  for(const s of [-1,1]){
+    const e=new THREE.Mesh(new THREE.BoxGeometry(.085,.105,8.65),woodMat);
+    e.position.set(s*1.455,.052,1.75);e.castShadow=e.receiveShadow=true;scene.add(e)
+  }
+  // Back rail makes the end of the court obvious without advertising panels.
+  const backRail=new THREE.Mesh(new THREE.BoxGeometry(2.99,.13,.11),woodMat);
+  backRail.position.set(0,.065,6.04);backRail.castShadow=backRail.receiveShadow=true;scene.add(backRail);
+
+  // procedural vegetation billboard
+  function vegetationTexture(){const c=document.createElement('canvas');c.width=2048;c.height=700;const x=c.getContext('2d'),r=rng(8);x.clearRect(0,0,c.width,c.height);for(let i=0;i<135;i++){let px=r()*2048,py=220+r()*380,rad=30+r()*95;let gg=65+r()*75|0;x.fillStyle=`rgba(${28+r()*32|0},${gg},${35+r()*40|0},${.30+r()*.55})`;x.beginPath();x.arc(px,py,rad,0,Math.PI*2);x.fill()}for(let i=0;i<60;i++){x.fillStyle=`rgba(${40+r()*25|0},${75+r()*70|0},${35+r()*32|0},.75)`;let px=r()*2048,base=690,h=140+r()*430,w=18+r()*34;x.fillRect(px-w/2,base-h*.15,w,h*.2);for(let k=0;k<6;k++){x.beginPath();x.ellipse(px+(r()-.5)*w*5,base-h*(.22+k*.10),w*(2+r()*2),h*(.08+r()*.06),0,0,Math.PI*2);x.fill()}}return new THREE.CanvasTexture(c)}
+  const vegTex=vegetationTexture();vegTex.minFilter=THREE.LinearFilter;const veg=new THREE.Mesh(new THREE.PlaneGeometry(4.9,1.70),new THREE.MeshBasicMaterial({map:vegTex,transparent:true,depthWrite:false,toneMapped:false}));veg.position.set(0,.84,6.63);scene.add(veg);
+
+  // crowd billboard made from independent procedural assets
+  function crowdTexture(){const c=document.createElement('canvas');c.width=2048;c.height=620;const x=c.getContext('2d'),r=rng(2026);x.clearRect(0,0,c.width,c.height);const shirts=['#243f61','#31526e','#d2c9b8','#637b92','#5e474b','#2b3238','#b0a599','#3d5b49','#7b6653'];for(let row=0;row<3;row++)for(let i=0;i<47;i++){let px=(i+(.2+r()*.6))*2048/47 + (row%2)*11,base=610-row*100+r()*18,sc=.76+row*.18+r()*.22;x.fillStyle='rgba(59,43,35,.88)';x.beginPath();x.arc(px,base-120*sc,18*sc,0,Math.PI*2);x.fill();x.fillStyle=shirts[(r()*shirts.length)|0];x.beginPath();x.roundRect(px-27*sc,base-100*sc,54*sc,88*sc,18*sc);x.fill();if(r()>.62){x.strokeStyle='#b88c70';x.lineWidth=7*sc;x.beginPath();x.moveTo(px-20*sc,base-74*sc);x.lineTo(px-45*sc,base-28*sc);x.stroke();x.beginPath();x.moveTo(px+20*sc,base-74*sc);x.lineTo(px+45*sc,base-28*sc);x.stroke()}}return new THREE.CanvasTexture(c)}
+  const crowdTex=crowdTexture();crowdTex.minFilter=THREE.LinearFilter;const crowd=new THREE.Mesh(new THREE.PlaneGeometry(3.9,.95),new THREE.MeshBasicMaterial({map:crowdTex,transparent:true,alphaTest:.03,depthWrite:false,toneMapped:true}));crowd.position.set(0,.58,6.43);scene.add(crowd);
+
+  // Sponsor boards removed in V3.5: the wooden back rail now defines the court end.
+
+  const metalTex=ct('metal',768,55);metalTex.repeat.set(1,1);function ballMaterial(dark){return new THREE.MeshPhysicalMaterial({color:dark?0x303238:0xc0c3c8,map:metalTex,bumpMap:metalTex,bumpScale:.0015,metalness:1,roughness:dark?.29:.23,clearcoat:.18,clearcoatRoughness:.32,envMapIntensity:1.55})}
+  // simple bright environment for metal reflections
+  const faces=[];for(let i=0;i<6;i++){const c=document.createElement('canvas');c.width=c.height=256;const x=c.getContext('2d'),g=x.createLinearGradient(0,0,0,256);g.addColorStop(0,i===2?'#f9e6b8':'#cfd9df');g.addColorStop(.5,'#8f9b92');g.addColorStop(1,'#3a322c');x.fillStyle=g;x.fillRect(0,0,256,256);faces.push(c)}const cube=new THREE.CubeTexture(faces);cube.needsUpdate=true;cube.encoding=THREE.sRGBEncoding;scene.environment=cube;
+  const positions=[
+    {p:[.044,.037,-.978],dark:false,r:[.2,-.38,.44]},
+    {p:[.107,.037,2.990],dark:false,r:[-.1,.52,-.34]},
+    {p:[-.199,.037,2.730],dark:true,r:[.36,-.25,.72]},
+    {p:[-.483,.037,3.730],dark:false,r:[-.22,-.36,.18]}
+  ];
+  const ballGeom=new THREE.SphereGeometry(.037,96,64);
+  const ballMeshes=[];
+  positions.forEach(o=>{const b=new THREE.Mesh(ballGeom,ballMaterial(o.dark));b.position.set(...o.p);b.rotation.set(...o.r);b.castShadow=b.receiveShadow=true;scene.add(b);ballMeshes.push(b)});
+  const playerBall=ballMeshes[0];
+  // V3.4: distant setup pushed deeper into the court; camera/FOV unchanged.
+  const jack=new THREE.Mesh(new THREE.SphereGeometry(.015,48,32),new THREE.MeshStandardMaterial({color:0xcb2c1d,roughness:.65,metalness:0,bumpMap:bumpMap,bumpScale:.001}));jack.position.set(-.063,.015,2.700);jack.castShadow=true;scene.add(jack);
+  const ring=new THREE.Mesh(new THREE.TorusGeometry(.070,.0032,24,128),new THREE.MeshBasicMaterial({color:0x1595ff,transparent:true,opacity:.92}));ring.rotation.x=Math.PI/2;ring.position.set(.044,.004,-.978);scene.add(ring);
+  const shootTargetRing=new THREE.Mesh(
+    new THREE.TorusGeometry(.052,.0025,18,96),
+    new THREE.MeshBasicMaterial({color:0xffb11f,transparent:true,opacity:.88})
+  );
+  shootTargetRing.rotation.x=Math.PI/2;shootTargetRing.visible=false;scene.add(shootTargetRing);
+
+  // soft dashed aim line
+  const dashMat=new THREE.LineDashedMaterial({color:0xffffff,dashSize:.045,gapSize:.028,transparent:true,opacity:.82});const pts=[new THREE.Vector3(.044,.008,-.91),new THREE.Vector3(-.063,.008,.11)];const aimLine=new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts),dashMat);aimLine.computeLineDistances();scene.add(aimLine);
+
+  // Playable turn/match layer — still lightweight, but now keeps real pétanque turn flow.
+  // Full Rapier replacement remains a later phase; this version focuses on feel, audio and turn logic.
+  const bodies=[];
+  let nextBodyId=1;
+  const addBody=(mesh,radius,mass,meta={})=>{
+    const body={id:nextBodyId++,mesh,radius,mass,vel:new THREE.Vector3(),moving:false,onGround:true,sleep:0,
+      home:mesh.position.clone(),homeRot:mesh.rotation.clone(),team:meta.team||null,role:meta.role||null,
+      played:!!meta.played,countsForPoint:meta.countsForPoint!==false,ready:!!meta.ready,lastImpact:0,
+      spinFactor:1,rollDrag:1.72,dead:false};
+    bodies.push(body);return body;
+  };
+
+  // ---------- AUDIO V3.7 — VENUE-AWARE AMBIENCE + PRELOADED IMPACTS ----------
+  // The CURRENT visual court is outdoors, in a park.
+  // When a future arena is indoors, set type:'indoor': only game sounds remain.
+  // Venue audio is data-driven: indoor venues intentionally have no ambience loop.
+  const VENUE_AUDIO={
+    type:'outdoor',          // 'outdoor' | 'indoor'
+    environment:'park',      // park | mediterranean | urban | indoor_hall...
+    surface:'gravel'
+  };
+
+  const AMBIENCE_PROFILES={
+    park:{
+      primary:'https://commons.wikimedia.org/wiki/Special:Redirect/file/Gentle%20breeze%20and%20birds%20singing.ogg',
+      secondary:'https://commons.wikimedia.org/wiki/Special:Redirect/file/Nature%20sounds%20ambience%20in%20a%20Dordogne%20pond.ogg',
+      primaryVolume:.030,
+      secondaryVolume:.008,
+      secondaryStart:11
+    }
+  };
+
+  const AUDIO_FILES={
+    steel:'https://commons.wikimedia.org/wiki/Special:Redirect/file/Newton%27s%20-%20Balls.webm',
+    ground:'https://commons.wikimedia.org/wiki/Special:Redirect/file/Dull%20thud.ogg'
+  };
+
+  const audio={
+    started:false,ambienceA:null,ambienceB:null,
+    impactPool:[],groundPool:[],impactIndex:0,groundIndex:0,
+
+    makeLoop(url,volume){
+      const a=new Audio(url);a.loop=true;a.preload='auto';a.volume=volume;return a;
+    },
+    buildPool(url,count,volume){
+      return Array.from({length:count},()=>{
+        const a=new Audio(url);a.preload='auto';a.volume=volume;a.load();return a;
+      });
+    },
+    stopAmbience(){
+      for(const a of [this.ambienceA,this.ambienceB]){
+        if(!a)continue;
+        try{a.pause();a.currentTime=0}catch(e){}
+      }
+      this.ambienceA=this.ambienceB=null;
+    },
+    startVenueAmbience(){
+      this.stopAmbience();
+
+      // Indoor court: intentionally no park/birds/crickets.
+      if(VENUE_AUDIO.type==='indoor')return;
+
+      const p=AMBIENCE_PROFILES[VENUE_AUDIO.environment];
+      if(!p)return;
+
+      this.ambienceA=this.makeLoop(p.primary,p.primaryVolume);
+      this.ambienceA.play().catch(()=>{});
+
+      if(p.secondary){
+        this.ambienceB=this.makeLoop(p.secondary,p.secondaryVolume);
+        const startB=()=>{
+          try{this.ambienceB.currentTime=p.secondaryStart||0}catch(e){}
+          this.ambienceB.play().catch(()=>{})
+        };
+        if(this.ambienceB.readyState>=1)startB();
+        else this.ambienceB.addEventListener('loadedmetadata',startB,{once:true});
+      }
+    },
+    ensure(){
+      if(this.started){
+        if(VENUE_AUDIO.type==='outdoor'){
+          this.ambienceA?.play().catch(()=>{});
+          this.ambienceB?.play().catch(()=>{});
+        }
+        return;
+      }
+      this.started=true;
+
+      // Pools are created before collisions so the sound can start on the impact frame.
+      this.impactPool=this.buildPool(AUDIO_FILES.steel,7,.11);
+      this.groundPool=this.buildPool(AUDIO_FILES.ground,4,.025);
+
+      this.startVenueAmbience();
+    },
+    swipe(){this.ensure();},
+    groundImpact(strength){
+      this.ensure();
+      if(!this.groundPool.length)return;
+      const a=this.groundPool[this.groundIndex++%this.groundPool.length];
+      const k=Math.min(1,Math.max(.05,strength/3));
+      try{a.pause();a.currentTime=0}catch(e){}
+      a.volume=.010+.020*k;
+      a.playbackRate=.98+Math.random()*.025;
+      a.play().catch(()=>{});
+    },
+    clack(impactSpeed){
+      this.ensure();
+      if(!this.impactPool.length)return;
+      const a=this.impactPool[this.impactIndex++%this.impactPool.length];
+      const k=Math.min(1,Math.max(.02,impactSpeed/4.8));
+
+      // Preloaded recording: restart on the exact collision frame.
+      try{a.pause();a.currentTime=.52}catch(e){}
+      a.volume=.025+.115*k;
+      a.playbackRate=1.12-.25*k;
+      a.play().catch(()=>{});
+
+      // Very short resonance only.
+      const stopAfter=145+Math.round(260*k);
+      setTimeout(()=>{try{a.pause()}catch(e){}},stopAfter);
+    },
+    updateRoll(){ }
+  };
+
+  // Existing distant balls remain as visual/physical obstacles only; new throws drive turn scoring.
+  let activeBody=addBody(playerBall,.037,.700,{team:'blue',role:'pointer',ready:true,countsForPoint:true});
+  const silverNearBody=addBody(ballMeshes[1],.037,.700,{countsForPoint:false});
+  const blackBody=addBody(ballMeshes[2],.037,.700,{countsForPoint:false});
+  const silverFarBody=addBody(ballMeshes[3],.037,.700,{countsForPoint:false});
+  const jackBody=addBody(jack,.015,.030,{countsForPoint:false});
+
+  const THROW_START=new THREE.Vector3(.044,.037,-.978);
+  const rulesEngine=new PetanqueRulesEngine();
+  const matchEngine=new PetanqueMatchEngine({targetScore:13,format:'HEAD_TO_HEAD'});
+  const turnManager=new PetanqueTurnManager(rulesEngine);
+  const matchFSM=new PetanqueStateMachine(PetanqueStates.MATCH_INTRO);
+  let coinWinner='blue',jackThrowOwner='blue',firstBallOwner='blue',jackThrowInProgress=false;
+  const matchStats={blueThrows:0,blueShots:0,blueShotSuccess:0,carreaux:0,bestPointM:Infinity};
+
+  const gameState={turn:'blue',lastThrowTeam:null,resolving:false,settleScheduled:false,ended:false,
+    blueRemaining:3,redRemaining:3,blueRoles:{pointer:3,shooter:3},activeRole:'pointer',
+    blueScore:0,redScore:0,mene:1,meneStarter:'blue',lastMeneWinner:null,lastMenePoints:0,lastMeneLabel:'',jackDistanceM:8.0,deadJackResolving:false,
+    // Opponent is deliberately imperfect: each new match gets a 40–65% success profile.
+    aiSuccessRate:.40+Math.random()*.25};
+  let aimOffset=0;
+  let selectedShootTarget=null;
+  const gravity=-6.0;
+
+  const scoreBlueEl=document.querySelector('.team.blue .score');
+  const scoreRedEl=document.querySelector('.team.red .score');
+  const roundEl=document.getElementById('round');
+  const blueDots=[...document.querySelectorAll('.balls .row:first-child .dot')];
+  const redDots=[...document.querySelectorAll('.balls .row:last-child .dot')];
+  const pnameEl=document.querySelector('.pname'),roleEl=document.querySelector('.role'),avatarEl=document.querySelector('.avatar');
+  const starsEl=document.querySelector('.stars');
+  const pointStateEl=document.getElementById('pointState');
+  const matchEndEl=document.getElementById('matchEnd');
+  const endTitleEl=matchEndEl.querySelector('.endTitle'),endScoreEl=matchEndEl.querySelector('.endScore');
+  const distanceValueEl=document.querySelector('#distance .big');
+  const mainMenuEl=document.getElementById('mainMenu'),quickMenuEl=document.getElementById('quickMenu'),coinScreenEl=document.getElementById('coinScreen'),coinResultEl=document.getElementById('coinResult'),stateBadgeEl=document.getElementById('stateBadge'),jackHintEl=document.getElementById('jackHint');
+
+  const previousMeneEl=document.getElementById('previousMene');
+
+  function showPreviousMene(label,ms=2200){
+    if(!previousMeneEl||!label)return;
+    previousMeneEl.textContent=label;
+    previousMeneEl.classList.add('visible');
+    clearTimeout(showPreviousMene.t);
+    showPreviousMene.t=setTimeout(()=>previousMeneEl.classList.remove('visible'),ms);
+  }
+
+  function setMatchState(state){matchFSM.set(state);if(stateBadgeEl)stateBadgeEl.textContent=state.replaceAll('_',' ');if(jackHintEl)jackHintEl.classList.toggle('show',state===PetanqueStates.JACK_THROW&&jackThrowOwner==='blue');if(state!==PetanqueStates.PLAYER_AIMING&&state!==PetanqueStates.JACK_THROW){ring.visible=false;aimLine.visible=false}}
+  function showOnlyScreen(el){for(const s of [mainMenuEl,quickMenuEl,coinScreenEl])s?.classList.remove('show');el?.classList.add('show')}
+  function showToast(msg,ms=850){const el=document.getElementById('toast');el.textContent=msg;el.classList.add('show');clearTimeout(showToast.t);showToast.t=setTimeout(()=>el.classList.remove('show'),ms)}
+  function updateHUD(){
+    scoreBlueEl.textContent=gameState.blueScore;scoreRedEl.textContent=gameState.redScore;
+    blueDots.forEach((d,i)=>d.classList.toggle('empty',i>=gameState.blueRemaining));
+    redDots.forEach((d,i)=>d.classList.toggle('empty',i>=gameState.redRemaining));
+    const ord=gameState.mene===1?'1ÈRE':gameState.mene===2?'2ÈME':`${gameState.mene}ÈME`;
+    roundEl.childNodes[0].nodeValue=`${ord} MÈNE`;
+    updatePointState();
+  }
+  function updatePointState(){
+    if(!pointStateEl)return;
+    pointStateEl.classList.remove('bluePoint','redPoint');
+    if(jackBody.dead){pointStateEl.textContent='COCHONNET MORT';return}
+    const owner=pointOwner();
+    if(!owner){pointStateEl.textContent=gameState.turn==='red'?'RIZANO OUVRE LA MÈNE':'À TOI D’OUVRIR LA MÈNE';return}
+    if(owner==='blue'){pointStateEl.textContent='NOUS AVONS LE POINT';pointStateEl.classList.add('bluePoint')}
+    else if(owner==='red'){pointStateEl.textContent='RIZANO A LE POINT';pointStateEl.classList.add('redPoint')}
+    else{pointStateEl.textContent='POINT À ÉGALITÉ'}
+  }
+  function selectedMode(){return document.querySelector('.action.selected')?.classList.contains('shoot')?'TIRER':'POINTER'}
+  function selectedType(){
+    const fallback=selectedMode()==='TIRER'?'FER':'DEMI-PORTÉE';
+    return document.querySelector('.type.active')?.textContent.trim().toUpperCase()||fallback
+  }
+  const typeButtons=[...document.querySelectorAll('.type')];
+  function setThrowTypeUI(mode){
+    const labels=mode==='TIRER'?['FER','DEVANT','ROULÉ']:['ROULÉE','DEMI-PORTÉE','PORTÉE'];
+    typeButtons.forEach((btn,i)=>{
+      btn.textContent=labels[i];
+      btn.classList.toggle('long',labels[i]==='DEVANT');
+      btn.classList.toggle('active',i===(mode==='TIRER'?0:1));
+    });
+  }
+  function roleForMode(mode){return mode==='TIRER'?'shooter':'pointer'}
+  function otherRole(role){return role==='pointer'?'shooter':'pointer'}
+  function availableRoleForMode(mode){
+    const preferred=roleForMode(mode),other=otherRole(preferred);
+    if(gameState.blueRoles[preferred]>0)return preferred;
+    if(gameState.blueRoles[other]>0)return other;
+    return null;
+  }
+  function updatePlayerCard(){
+    if(gameState.turn==='red'){
+      pnameEl.textContent='TEAM RIZANO';roleEl.textContent='ADVERSAIRE';avatarEl.dataset.initials='RZ';starsEl.textContent='★★★★☆';return;
+    }
+    const role=gameState.activeRole||availableRoleForMode(selectedMode())||'pointer';
+    gameState.activeRole=role;
+    const shooting=selectedMode()==='TIRER';
+    if(role==='pointer'){
+      pnameEl.textContent='Ludovic Monterro';
+      roleEl.textContent=shooting?'POINTEUR · TIRE':'POINTEUR';
+      avatarEl.dataset.initials='LM';starsEl.textContent='★★★★★';
+    }else{
+      pnameEl.textContent='Coéquipier';
+      roleEl.textContent=shooting?'TIREUR':'TIREUR · POINTE';
+      avatarEl.dataset.initials='TR';starsEl.textContent='★★★★★';
+    }
+  }
+  function wake(body){body.moving=true;body.sleep=0}
+  function makeBall(team,role=null){
+    const m=new THREE.Mesh(ballGeom,ballMaterial(team==='red'));m.position.copy(THROW_START);m.rotation.set(.2,-.38,.44);m.castShadow=m.receiveShadow=true;scene.add(m);
+    const b=addBody(m,.037,.700,{team,role,ready:true,countsForPoint:true});b.dead=false;return b;
+  }
+  function removeTeamBalls(){for(let i=bodies.length-1;i>=0;i--){const b=bodies[i];if(b.team){scene.remove(b.mesh);bodies.splice(i,1)}}activeBody=null}
+  const WORLD_PER_METER=.46;
+  // Playable limits. Side/back values correspond to the inside face of the wooden rails.
+  const COURT_LIMITS={x:1.405,zMin:-1.28,zMax:5.975};
+
+  const LOSS_LINES={xMin:-COURT_LIMITS.x,xMax:COURT_LIMITS.x,zMin:COURT_LIMITS.zMin,zMax:COURT_LIMITS.zMax};
+  function bodyTouchesBoundary(body){return rulesEngine.isBallDead(body.mesh.position,body.radius,LOSS_LINES)}
+
+  function killBoule(body){
+    if(!body||body.dead)return;
+    body.dead=true;body.countsForPoint=false;body.moving=false;body.vel.set(0,0,0);
+    body.mesh.visible=false;
+    if(body===selectedShootTarget)selectedShootTarget=null;
+    if(body.team)showToast('BOULE MORTE · HORS JEU',650);
+  }
+
+  function stopAllBodies(){
+    for(const b of bodies){b.vel.set(0,0,0);b.moving=false;b.sleep=0}
+  }
+
+  function resolveDeadJack(){
+    if(!gameState.deadJackResolving)return;
+    const r=rulesEngine.handleDeadJack({remaining:{blue:gameState.blueRemaining,red:gameState.redRemaining}});
+    if(r.team==='blue')gameState.blueScore+=r.points;if(r.team==='red')gameState.redScore+=r.points;if(r.team)gameState.lastMeneWinner=r.team;
+    gameState.lastMeneLabel=r.team?`MÈNE ${gameState.mene} · ${r.team==='blue'?'NOUS':'RIZANO'} +${r.points} · SCORE ${gameState.blueScore} — ${gameState.redScore}`:`MÈNE ${gameState.mene} · COCHONNET MORT · 0 POINT · SCORE ${gameState.blueScore} — ${gameState.redScore}`;
+    updateHUD();const winner=rulesEngine.checkMatchVictory({blue:gameState.blueScore,red:gameState.redScore},13);if(winner){gameState.deadJackResolving=false;endMatch(winner);return}
+    showToast(r.team?`COCHONNET MORT · ${r.team==='blue'?'TEAM TOI':'RIZANO'} +${r.points}`:'COCHONNET MORT · MÈNE NULLE',1600);gameState.deadJackResolving=false;setTimeout(startNewMene,2700)
+  }
+  function killJack(){if(jackBody.dead||gameState.deadJackResolving)return;if(jackThrowInProgress){jackBody.dead=true;jackBody.moving=false;jackBody.vel.set(0,0,0);jackBody.mesh.visible=false;gameState.resolving=false;setTimeout(()=>{jackThrowInProgress=false;showToast('BUT NON VALIDE · HORS TERRAIN',1000);setMatchState(PetanqueStates.JACK_PLACEMENT);setTimeout(()=>placeJackLegallyBy(jackThrowOwner==='blue'?'red':'blue'),1000)},160);return}jackBody.dead=true;jackBody.countsForPoint=false;jackBody.moving=false;jackBody.vel.set(0,0,0);jackBody.mesh.visible=false;gameState.resolving=false;gameState.settleScheduled=false;gameState.deadJackResolving=true;stopAllBodies();setTimeout(resolveDeadJack,260)}
+  function jackDistanceM(){return horizontalDist(jackBody.mesh.position,THROW_START)/WORLD_PER_METER}
+  function jackObstacleDistanceM(){const p=jackBody.mesh.position;return Math.min(COURT_LIMITS.x-Math.abs(p.x),COURT_LIMITS.zMax-p.z)/WORLD_PER_METER}
+  function isCurrentJackThrowValid(){return rulesEngine.isJackThrowValid({distanceM:jackDistanceM(),insidePlay:!rulesEngine.isBallDead(jackBody.mesh.position,jackBody.radius,LOSS_LINES),visible:true,obstacleDistanceM:jackObstacleDistanceM()})}
+  function placeJackLegallyBy(team){const d=7.5,z=THROW_START.z+d*WORLD_PER_METER;jackBody.dead=false;jackBody.mesh.visible=true;jackBody.mesh.position.set(0,.015,z);jackBody.vel.set(0,0,0);jackBody.moving=false;jackBody.onGround=true;gameState.jackDistanceM=d;if(distanceValueEl)distanceValueEl.textContent='7,5 m';showToast(`${team==='blue'?'TOI':'RIZANO'} PLACE LE COCHONNET · 7,5 M`,1100);beginFirstBall()}
+  function validateJackAfterSettle(){if(!jackThrowInProgress)return;jackThrowInProgress=false;const d=jackDistanceM();if(distanceValueEl)distanceValueEl.textContent=d.toFixed(1).replace('.',',')+' m';if(isCurrentJackThrowValid()){showToast(`BUT VALIDE · ${d.toFixed(1).replace('.',',')} M`,950);beginFirstBall()}else{showToast(`BUT NON VALIDE · ${d<6?'TROP COURT':d>10?'TROP LONG':'NON RÉGLEMENTAIRE'}`,1050);setMatchState(PetanqueStates.JACK_PLACEMENT);setTimeout(()=>placeJackLegallyBy(jackThrowOwner==='blue'?'red':'blue'),1100)}}
+  function launchJackTo(target,powerPct=70){const p=Math.max(.05,Math.min(1,powerPct/100)),start=jackBody.mesh.position.clone(),range=Math.max(.05,Math.hypot(target.x-start.x,target.z-start.z)),angle=THREE.MathUtils.degToRad(24+8*(1-p)),speed=Math.sqrt(range*Math.abs(gravity)/Math.max(.12,Math.sin(2*angle))),dir=new THREE.Vector3(target.x-start.x,0,target.z-start.z).normalize();jackBody.dead=false;jackBody.mesh.visible=true;jackBody.played=true;jackBody.vel.set(dir.x*speed*Math.cos(angle),speed*Math.sin(angle),dir.z*speed*Math.cos(angle));jackBody.rollDrag=2.4;jackBody.spinFactor=.9;wake(jackBody);jackThrowInProgress=true;gameState.resolving=true;setMatchState(PetanqueStates.BALL_MOVING)}
+  function startJackThrow(team){jackThrowOwner=team;firstBallOwner=team;removeTeamBalls();resetStaticBodies();jackBody.mesh.position.set(THROW_START.x,.015,THROW_START.z+.10);gameState.turn=team;setMatchState(team==='blue'?PetanqueStates.JACK_THROW:PetanqueStates.AI_THINKING);if(team==='blue'){showToast('À TOI · LANCE LE COCHONNET',950)}else{showToast('RIZANO LANCE LE COCHONNET',950);setTimeout(()=>{setMatchState(PetanqueStates.AI_THROWING);const success=Math.random()<.82,d=success?(6.3+Math.random()*3.2):(Math.random()<.5?5.4+Math.random()*.5:10.2+Math.random()*.7);launchJackTo(new THREE.Vector3((Math.random()-.5)*.25,0,THROW_START.z+d*WORLD_PER_METER),65+Math.random()*18)},1050)}}
+  function beginFirstBall(){gameState.resolving=false;gameState.settleScheduled=false;gameState.turn=firstBallOwner;gameState.blueRemaining=3;gameState.redRemaining=3;gameState.blueRoles.pointer=3;gameState.blueRoles.shooter=0;updateHUD();setTimeout(()=>setTurn(firstBallOwner),700)}
+  function randomJackDistance(){
+    return Math.round((6+Math.random()*4)*10)/10;
+  }
+  function setMeneDistance(distanceM){
+    gameState.jackDistanceM=Math.max(6,Math.min(10,distanceM));
+    const jackZ=THROW_START.z+gameState.jackDistanceM*WORLD_PER_METER;
+    const layout=[
+      [silverNearBody,.107,.037,jackZ+.29],
+      [blackBody,-.199,.037,jackZ+.03],
+      [silverFarBody,-.483,.037,jackZ+1.03],
+      [jackBody,-.063,.015,jackZ]
+    ];
+    for(const [b,x,y,z] of layout){
+      b.home.set(x,y,z);b.mesh.position.copy(b.home);
+      b.vel.set(0,0,0);b.moving=false;b.onGround=true;b.sleep=0;
+    }
+    if(distanceValueEl)distanceValueEl.textContent=gameState.jackDistanceM.toFixed(1).replace('.',',')+' m';
+  }
+  function resetStaticBodies(){for(const b of [silverNearBody,blackBody,silverFarBody,jackBody]){b.dead=false;b.mesh.visible=true;b.countsForPoint=false;b.mesh.position.copy(b.home);b.mesh.rotation.copy(b.homeRot);b.vel.set(0,0,0);b.moving=false;b.onGround=true;b.sleep=0}}
+  function defaultShootTarget(){return closestPlayed('red')||blackBody}
+  function currentShootTarget(){
+    if(selectedShootTarget&&bodies.includes(selectedShootTarget)&&!selectedShootTarget.dead&&selectedShootTarget.mesh.visible)return selectedShootTarget;
+    selectedShootTarget=defaultShootTarget();return selectedShootTarget;
+  }
+  function syncDirectionUI(){
+    const slider=document.getElementById('direction'),label=document.getElementById('dirValue');
+    if(!slider||!label)return;
+    const normalized=Math.round((-aimOffset/.22)*100);
+    slider.value=Math.max(-100,Math.min(100,normalized));
+    if(Math.abs(normalized)<=3)label.textContent='CENTRE';
+    else label.textContent=(normalized<0?'GAUCHE ':'DROITE ')+Math.abs(Math.round(normalized*.10))+'°';
+  }
+  function setAimOffset(v){
+    aimOffset=Math.max(-.22,Math.min(.22,v));
+    syncDirectionUI();updateAimGuide();
+  }
+  function updateAimGuide(){
+    if(gameState.turn!=='blue'||!activeBody){ring.visible=false;aimLine.visible=false;shootTargetRing.visible=false;return}
+    ring.visible=true;ring.position.set(THROW_START.x,.004,THROW_START.z);
+    const shooting=selectedMode()==='TIRER';
+    const targetBody=shooting?currentShootTarget():jackBody;
+    const tgt=targetBody.mesh.position;
+    aimLine.geometry.dispose();aimLine.geometry=new THREE.BufferGeometry().setFromPoints([
+      new THREE.Vector3(THROW_START.x,.008,THROW_START.z+.068),
+      new THREE.Vector3(tgt.x+aimOffset,.008,tgt.z-.025)
+    ]);
+    aimLine.computeLineDistances();aimLine.visible=true;
+    shootTargetRing.visible=shooting;
+    if(shooting)shootTargetRing.position.set(tgt.x,.0045,tgt.z);
+  }
+  function horizontalDist(a,b){return Math.hypot(a.x-b.x,a.z-b.z)}
+  function closestPlayed(team){let best=null,dist=Infinity;for(const b of bodies){if(b.team===team&&b.played&&!b.dead&&b.countsForPoint){const d=horizontalDist(b.mesh.position,jackBody.mesh.position);if(d<dist){dist=d;best=b}}}return best}
+  function rulesBallsSnapshot(){return bodies.filter(b=>b.team).map(b=>({team:b.team,played:b.played,dead:b.dead,valid:b.countsForPoint!==false,position:{x:b.mesh.position.x,z:b.mesh.position.z}}))}
+  function pointOwner(){if(jackBody.dead)return null;return rulesEngine.getTeamHoldingPoint({balls:rulesBallsSnapshot(),jack:{x:jackBody.mesh.position.x,z:jackBody.mesh.position.z}})}
+
+  function resolvePair(a,b){
+    if(a.dead||b.dead)return;
+    const d=new THREE.Vector3().subVectors(b.mesh.position,a.mesh.position),min=a.radius+b.radius,d2=d.lengthSq();if(d2<=1e-10||d2>=min*min)return;
+    const dist=Math.sqrt(d2),n=d.multiplyScalar(1/dist),overlap=min-dist,invA=1/a.mass,invB=1/b.mass,invSum=invA+invB;
+    a.mesh.position.addScaledVector(n,-overlap*(invA/invSum));b.mesh.position.addScaledVector(n,overlap*(invB/invSum));
+    const rv=new THREE.Vector3().subVectors(b.vel,a.vel),vn=rv.dot(n);if(vn>0)return;
+    const impact=Math.abs(vn),e=(a.radius<.02||b.radius<.02)?.34:.54,j=-(1+e)*vn/invSum;
+    a.vel.addScaledVector(n,-j*invA);b.vel.addScaledVector(n,j*invB);wake(a);wake(b);
+    const now=performance.now();if(impact>.16&&now-Math.max(a.lastImpact,b.lastImpact)>38){audio.clack(impact);a.lastImpact=b.lastImpact=now}
+  }
+  function physicsStep(dt){
+    let rollSpeed=0;
+    for(const body of bodies){
+      if(body.dead||!body.moving)continue;
+
+      if(!body.onGround||body.vel.y>.001)body.vel.y+=gravity*dt;
+      const before=body.mesh.position.clone();
+      body.mesh.position.addScaledVector(body.vel,dt);
+
+      // Wood contact / leaving the terrain:
+      // jack = end of mène, boule = dead and removed from scoring.
+      if(bodyTouchesBoundary(body)){
+        if(body===jackBody){killJack();return}
+        killBoule(body);continue;
+      }
+
+      if(body.mesh.position.y<=body.radius){
+        const impact=Math.abs(body.vel.y);body.mesh.position.y=body.radius;body.onGround=true;
+        if(body.vel.y<-.23){audio.groundImpact(impact);body.vel.y=-body.vel.y*.15}else body.vel.y=0;
+        const drag=Math.exp(-(body.rollDrag||1.72)*dt);body.vel.x*=drag;body.vel.z*=drag;
+      }else body.onGround=false;
+
+      const delta=new THREE.Vector3().subVectors(body.mesh.position,before);
+      const horizontal=Math.hypot(delta.x,delta.z);
+      if(horizontal>0){
+        const axis=new THREE.Vector3(delta.z,0,-delta.x).normalize();
+        body.mesh.rotateOnWorldAxis(axis,(horizontal/body.radius)*(body.spinFactor||1))
+      }
+
+      const horizontalSpeed=Math.hypot(body.vel.x,body.vel.z);
+      rollSpeed+=body.onGround?horizontalSpeed:0;
+
+      if(body.onGround&&horizontalSpeed<.018&&Math.abs(body.vel.y)<.02){
+        body.sleep+=dt;
+        if(body.sleep>.26){body.vel.set(0,0,0);body.moving=false}
+      }else body.sleep=0;
+    }
+
+    for(let i=0;i<bodies.length;i++){
+      for(let j=i+1;j<bodies.length;j++)resolvePair(bodies[i],bodies[j]);
+    }
+
+    audio.updateRoll(rollSpeed);
+
+    if(gameState.deadJackResolving)return;
+
+    if(gameState.resolving&&!bodies.some(b=>b.moving&&!b.dead)&&!gameState.settleScheduled){
+      gameState.settleScheduled=true;
+      setTimeout(()=>{
+        gameState.settleScheduled=false;
+        if(jackThrowInProgress)validateJackAfterSettle();else if(!gameState.deadJackResolving)resolveTurnAfterThrow()
+      },760)
+    }
+  }
+
+  function launchBody(body,powerPct,mode,type,target,offset=0){
+    const p=Math.max(.05,Math.min(1,powerPct/100));
+    const start=body.mesh.position.clone();
+    const targetPoint=target.clone();
+    targetPoint.x+=offset;
+
+    let angleDeg=29;
+    let speed=0;
+    let launchPoint=targetPoint.clone();
+
+    const flatRangeTo=(point)=>Math.max(.05,Math.hypot(point.x-start.x,point.z-start.z));
+    const ballisticSpeed=(point,angle)=>{
+      const range=flatRangeTo(point);
+      const sin2=Math.max(.12,Math.sin(2*angle));
+      return Math.sqrt(range*Math.abs(gravity)/sin2);
+    };
+
+    if(mode==='TIRER'){
+      if(type==='FER'){
+        // Full iron: the ball lands exactly at the swipe endpoint.
+        // A stronger gesture makes the shot flatter/faster, not artificially shorter.
+        angleDeg=29-10*p;
+        const angle=THREE.MathUtils.degToRad(angleDeg);
+        speed=ballisticSpeed(launchPoint,angle);
+
+      }else if(type==='DEVANT'){
+        // Land ~20 cm before the requested impact point, then continue into the target.
+        const toTarget=new THREE.Vector3(targetPoint.x-start.x,0,targetPoint.z-start.z);
+        const total=Math.max(.001,toTarget.length());
+        const dirFlat=toTarget.clone().normalize();
+        const beforeWorld=.20*WORLD_PER_METER;
+        launchPoint=targetPoint.clone().addScaledVector(dirFlat,-Math.min(beforeWorld,total*.22));
+
+        angleDeg=21-6*p;
+        const angle=THREE.MathUtils.degToRad(angleDeg);
+        speed=ballisticSpeed(launchPoint,angle);
+
+      }else{
+        // Rolled shot: distance directly controls the launch velocity.
+        // Mid-court and back-court therefore keep a coherent speed ratio.
+        angleDeg=5.0;
+        const range=flatRangeTo(targetPoint);
+        speed=1.12+range*1.48;
+        speed*=.94+.18*p;
+      }
+
+    }else{
+      // POINTING:
+      // the endpoint of the swipe is the chosen landing point.
+      // Long targets automatically need more speed than middle-distance targets.
+      if(type==='ROULÉE'){
+        angleDeg=17-3*p;
+      }else if(type==='PORTÉE'){
+        angleDeg=50-5*p;
+      }else{
+        angleDeg=37-4*p; // demi-portée, slightly softer than V3.7
+      }
+
+      const angle=THREE.MathUtils.degToRad(angleDeg);
+      speed=ballisticSpeed(launchPoint,angle);
+    }
+
+    const dir=new THREE.Vector3(launchPoint.x-start.x,0,launchPoint.z-start.z).normalize();
+    const angle=THREE.MathUtils.degToRad(angleDeg);
+
+    // Throw families still have distinct behaviour after the first ground contact.
+    if(mode==='TIRER'&&type==='FER'){
+      body.spinFactor=.34;body.rollDrag=1.62;
+    }else if(mode==='TIRER'&&type==='DEVANT'){
+      body.spinFactor=.70;body.rollDrag=1.34;
+    }else if(mode==='TIRER'&&type==='ROULÉ'){
+      body.spinFactor=1.55;body.rollDrag=.84;
+    }else if(type==='ROULÉE'){
+      body.spinFactor=1.42;body.rollDrag=1.16;
+    }else if(type==='PORTÉE'){
+      body.spinFactor=.58;body.rollDrag=2.12;
+    }else{
+      body.spinFactor=.96;body.rollDrag=1.72;
+    }
+
+    body.vel.set(
+      dir.x*speed*Math.cos(angle),
+      speed*Math.sin(angle),
+      dir.z*speed*Math.cos(angle)
+    );
+
+    body.ready=false;body.played=true;wake(body);
+    gameState.resolving=true;gameState.lastThrowTeam=body.team;
+    ring.visible=false;aimLine.visible=false;
+    audio.swipe(powerPct);
+  }
+
+  function ensureBlueRoleAvailable(mode){
+    const preferred=roleForMode(mode),role=availableRoleForMode(mode);
+    if(!role)return false;
+    gameState.activeRole=role;
+    if(role!==preferred){
+      updatePlayerCard();
+      showToast(mode==='TIRER'?'LE POINTEUR PREND LE TIR':'LE TIREUR PREND LE POINT',650);
+    }
+    return true;
+  }
+  function launchBlue(powerPct,swipeTarget=null){
+    if(gameState.turn!=='blue'||gameState.resolving||gameState.deadJackResolving||!activeBody||gameState.ended)return false;
+    const mode=selectedMode();if(!ensureBlueRoleAvailable(mode))return false;
+    const actualMode=selectedMode(),role=gameState.activeRole;
+    if(!role||gameState.blueRoles[role]<=0)return false;
+
+    gameState.blueRoles[role]--;gameState.blueRemaining--;activeBody.role=role;
+
+    // The end of the swipe is now the real aiming point on the court.
+    // The direction slider remains a small left/right fine adjustment.
+    let target;
+    if(swipeTarget)target=swipeTarget.clone();
+    else target=(actualMode==='TIRER'?currentShootTarget().mesh.position:jackBody.mesh.position).clone();
+
+    const thrown=activeBody;activeBody=null;
+    launchBody(thrown,powerPct,actualMode,selectedType(),target,aimOffset);
+    updateHUD();return true;
+  }
+
+  function aiTakeTurn(){
+    if(gameState.turn!=='red'||gameState.resolving||gameState.deadJackResolving||gameState.redRemaining<=0||gameState.ended)return;
+
+    const body=makeBall('red','ai');gameState.redRemaining--;updateHUD();
+    const blueBest=closestPlayed('blue'),owner=pointOwner();
+    const shouldShoot=owner==='blue'&&blueBest&&horizontalDist(blueBest.mesh.position,jackBody.mesh.position)<.39;
+
+    // Success is not scripted. Every throw is rolled against the current opponent profile.
+    const success=Math.random()<gameState.aiSuccessRate;
+    const target=(shouldShoot?blueBest.mesh.position:jackBody.mesh.position).clone();
+
+    // Successful shots still have tiny human variation.
+    // Misses get a clearly larger lateral/depth error and power error.
+    const randSigned=()=>Math.random()*2-1;
+    const err=success ? (.012+Math.random()*.045) : (.14+Math.random()*.34);
+    target.x+=randSigned()*err;
+    target.z+=randSigned()*err*.72;
+
+    let mode,type,power;
+    if(shouldShoot){
+      mode='TIRER';
+      // AI uses all three shooting families, with FER the most common.
+      const rr=Math.random();type=rr<.58?'FER':rr<.82?'DEVANT':'ROULÉ';
+      power=(type==='ROULÉ'?74:86)+(success?randSigned()*3:randSigned()*14);
+    }else{
+      mode='POINTER';
+      const rr=Math.random();type=rr<.22?'ROULÉE':rr<.78?'DEMI-PORTÉE':'PORTÉE';
+      power=70+(success?randSigned()*4:randSigned()*16);
+    }
+    power=Math.max(35,Math.min(100,power));
+
+    launchBody(body,power,mode,type,target,0);setMatchState(PetanqueStates.BALL_MOVING);
+    showToast(`RIZANO · ${shouldShoot?'TIR':'POINT'} · ${success?'BON GESTE':'IMPRÉCIS'}`,650);
+  }
+  function setTurn(team){if(gameState.ended)return;gameState.turn=team;turnManager.set(team);updatePlayerCard();updatePointState();if(team==='blue'){if(gameState.blueRemaining<=0){setTurn('red');return}const mode=selectedMode();if(!ensureBlueRoleAvailable(mode)){setTurn('red');return}if(!activeBody)activeBody=makeBall('blue',gameState.activeRole);if(selectedMode()==='TIRER'){selectedShootTarget=defaultShootTarget();aimOffset=0;syncDirectionUI()}updatePlayerCard();updateAimGuide();setMatchState(PetanqueStates.PLAYER_AIMING);showToast(`À TOI · ${gameState.blueRemaining} BOULE${gameState.blueRemaining>1?'S':''}`,850)}else{ring.visible=false;aimLine.visible=false;setMatchState(PetanqueStates.AI_THINKING);showToast(`TOUR RIZANO · ${gameState.redRemaining} BOULE${gameState.redRemaining>1?'S':''}`,800);setTimeout(()=>{setMatchState(PetanqueStates.AI_THROWING);aiTakeTurn()},1250)}}
+  function scoreMene(){const r=rulesEngine.calculateEndScore({balls:rulesBallsSnapshot(),jack:{x:jackBody.mesh.position.x,z:jackBody.mesh.position.z}});return{owner:r.team,points:r.points}}
+  function endMatch(winner){setMatchState(PetanqueStates.MATCH_RESULT);gameState.ended=true;const blueWon=winner==='blue';endTitleEl.textContent=blueWon?'VICTOIRE':'DÉFAITE';endTitleEl.style.color=blueWon?'#ffd52b':'#ff6470';const best=isFinite(matchStats.bestPointM)?Math.round(matchStats.bestPointM*100)+' cm':'—';endScoreEl.innerHTML=`${gameState.blueScore} — ${gameState.redScore}<br><small style="font-size:12px;line-height:1.8;color:#c8d0d8">MÈNES ${gameState.mene} · TIRS ${matchStats.blueShots} · RÉUSSIS ${matchStats.blueShotSuccess} · CARREAUX ${matchStats.carreaux} · MEILLEUR POINT ${best}</small>`;setTimeout(()=>matchEndEl.classList.add('showEnd'),700)}
+  function finishMene(){
+    gameState.resolving=false;
+    const r=scoreMene();
+
+    if(r.owner==='blue')gameState.blueScore+=r.points;
+    if(r.owner==='red')gameState.redScore+=r.points;
+    if(r.owner)gameState.lastMeneWinner=r.owner;
+
+    gameState.lastMenePoints=r.points||0;
+    gameState.lastMeneLabel=r.owner
+      ? `MÈNE ${gameState.mene} · ${r.owner==='blue'?'NOUS':'RIZANO'} +${r.points} · SCORE ${gameState.blueScore} — ${gameState.redScore}`
+      : `MÈNE ${gameState.mene} · 0 POINT · SCORE ${gameState.blueScore} — ${gameState.redScore}`;
+
+    updateHUD();
+
+    const matchWinner=rulesEngine.checkMatchVictory({blue:gameState.blueScore,red:gameState.redScore},13);if(matchWinner){endMatch(matchWinner);return;}
+
+    if(!r.owner)showToast('FIN DE MÈNE · MÈNE NULLE',1850);
+    else{
+      const name=r.owner==='blue'?'TEAM TOI':'RIZANO';
+      showToast(`FIN DE MÈNE · ${name} +${r.points}`,1850);
+    }
+
+    setTimeout(startNewMene,2700)
+  }
+  function teamThatMustPlay(){return rulesEngine.getNextTeamToPlay({holdingTeam:pointOwner(),lastTeam:gameState.lastThrowTeam,remaining:{blue:gameState.blueRemaining,red:gameState.redRemaining}})}
+
+  function needsMeasure(){const b=closestPlayed('blue'),r=closestPlayed('red');if(!b||!r)return false;return Math.abs(horizontalDist(b.mesh.position,jackBody.mesh.position)-horizontalDist(r.mesh.position,jackBody.mesh.position))<=.025}
+  function resolveTurnAfterThrow(){
+    if(gameState.deadJackResolving)return;
+    gameState.resolving=false;if(needsMeasure()){setMatchState(PetanqueStates.MEASURE);showToast('MESURE…',650)}updatePointState();
+
+    if(gameState.blueRemaining===0&&gameState.redRemaining===0){
+      finishMene();return
+    }
+
+    let next=teamThatMustPlay();
+
+    // If the team that should play has no boule left,
+    // the other team finishes all its remaining boules.
+    if(next==='blue'&&gameState.blueRemaining<=0)next='red';
+    if(next==='red'&&gameState.redRemaining<=0)next='blue';
+
+    if((next==='blue'&&gameState.blueRemaining<=0)||
+       (next==='red'&&gameState.redRemaining<=0)){
+      finishMene();return;
+    }
+
+    setTimeout(()=>setTurn(next),620);
+  }
+  function startNewMene(){const previousLabel=gameState.lastMeneLabel;removeTeamBalls();gameState.mene++;gameState.blueRemaining=3;gameState.redRemaining=3;gameState.blueRoles.pointer=3;gameState.blueRoles.shooter=0;gameState.lastThrowTeam=null;gameState.resolving=false;gameState.deadJackResolving=false;gameState.ended=false;const starter=gameState.lastMeneWinner||coinWinner||'blue';gameState.meneStarter=starter;updateHUD();if(previousLabel)showPreviousMene(previousLabel,2400);showToast(`MÈNE ${gameState.mene} · ${starter==='blue'?'À NOUS D’ENGAGER':'RIZANO ENGAGE'}`,1400);setMatchState(PetanqueStates.END_SETUP);setTimeout(()=>startJackThrow(starter),1600)}
+  function resetMene(){
+    removeTeamBalls();resetStaticBodies();
+    gameState.blueRemaining=3;gameState.redRemaining=3;gameState.blueRoles.pointer=3;gameState.blueRoles.shooter=0;
+    gameState.lastThrowTeam=null;gameState.resolving=false;gameState.settleScheduled=false;gameState.deadJackResolving=false;gameState.ended=false;
+    gameState.turn=gameState.meneStarter||'blue';gameState.activeRole=availableRoleForMode(selectedMode())||'pointer';activeBody=null;
+    updateHUD();updatePlayerCard();
+    if(gameState.turn==='blue'){activeBody=makeBall('blue',gameState.activeRole);updateAimGuide()}
+    else{ring.visible=false;aimLine.visible=false;setTimeout(aiTakeTurn,1250)}
+  }
+  function newMatch(){matchEndEl.classList.remove('showEnd');gameState.blueScore=0;gameState.redScore=0;gameState.mene=1;gameState.lastMeneWinner=null;gameState.lastMenePoints=0;gameState.lastMeneLabel='';gameState.aiSuccessRate=.40+Math.random()*.25;gameState.blueRemaining=3;gameState.redRemaining=3;gameState.blueRoles.pointer=3;gameState.blueRoles.shooter=0;gameState.lastThrowTeam=null;gameState.resolving=false;gameState.settleScheduled=false;gameState.deadJackResolving=false;gameState.ended=false;matchStats.blueThrows=0;matchStats.blueShots=0;matchStats.blueShotSuccess=0;matchStats.carreaux=0;matchStats.bestPointM=Infinity;removeTeamBalls();resetStaticBodies();updateHUD();setSwipePower(0)}
+  const hemi=new THREE.HemisphereLight(0xc8e1ff,0x6a442b,1.15);scene.add(hemi);const sun=new THREE.DirectionalLight(0xffd4a0,3.0);sun.position.set(-2.7,5,-3.8);sun.target.position.set(0,0,.25);sun.castShadow=true;sun.shadow.mapSize.set(2048,2048);sun.shadow.camera.left=-2.2;sun.shadow.camera.right=2.2;sun.shadow.camera.top=3;sun.shadow.camera.bottom=-1;sun.shadow.camera.near=.2;sun.shadow.camera.far=10;sun.shadow.bias=-.00025;scene.add(sun,sun.target);const fill=new THREE.DirectionalLight(0x8cb8ff,.7);fill.position.set(2,1.8,-1);scene.add(fill);
+
+  function resize(){const w=shell.clientWidth,h=shell.clientHeight;renderer.setSize(w,h,false);camera.aspect=w/h;camera.updateProjectionMatrix()}window.addEventListener('resize',resize);resize();
+  let t=0,lastFrame=performance.now();function render(now){const dt=Math.min(.025,Math.max(0,(now-lastFrame)/1000));lastFrame=now;t=now*.001;if(ring.visible)ring.material.opacity=.82+Math.sin(t*2)*.1;physicsStep(dt);renderer.render(scene,camera);requestAnimationFrame(render)}requestAnimationFrame(render);
+
+  document.getElementById('quickPlayMenu').addEventListener('click',()=>showOnlyScreen(quickMenuEl));
+  document.getElementById('backMain').addEventListener('click',()=>showOnlyScreen(mainMenuEl));
+  document.getElementById('startQuickMatch').addEventListener('click',()=>{newMatch();showOnlyScreen(coinScreenEl);coinResultEl.textContent='';setMatchState(PetanqueStates.COIN_TOSS)});
+  document.querySelectorAll('.coinChoice').forEach(btn=>btn.addEventListener('click',()=>{if(!matchFSM.is(PetanqueStates.COIN_TOSS))return;const choice=btn.dataset.coin;document.querySelectorAll('.coinChoice').forEach(b=>b.disabled=true);coinResultEl.textContent='LA PIÈCE TOURNE…';const coin=new THREE.Mesh(new THREE.CylinderGeometry(.055,.055,.008,48),new THREE.MeshStandardMaterial({color:0xd8b548,metalness:.75,roughness:.25}));coin.position.set(0,.05,-.58);coin.rotation.z=Math.PI/2;scene.add(coin);const started=performance.now(),duration=1050,result=Math.random()<.5?'PILE':'FACE';function animateCoin(now){const u=Math.min(1,(now-started)/duration);coin.position.y=.05+Math.sin(u*Math.PI)*.72;coin.rotation.x=u*Math.PI*10+(result==='FACE'?Math.PI:0);coin.rotation.z=Math.PI/2+u*Math.PI*6;if(u<1)requestAnimationFrame(animateCoin);else{coin.position.y=.012;audio.clack(.55);setTimeout(()=>{scene.remove(coin);coinWinner=(choice===result)?'blue':'red';gameState.meneStarter=coinWinner;coinResultEl.textContent=`${result} · ${coinWinner==='blue'?'TU GAGNES':'RIZANO GAGNE'}`;setMatchState(PetanqueStates.END_SETUP);setTimeout(()=>{showOnlyScreen(null);document.querySelectorAll('.coinChoice').forEach(b=>b.disabled=false);startJackThrow(coinWinner)},1050)},240)}}requestAnimationFrame(animateCoin)}));
+  document.getElementById('menu')?.addEventListener('click',()=>{showOnlyScreen(mainMenuEl);setMatchState(PetanqueStates.MATCH_INTRO)});
+  // UI + swipe launch directly on the terrain.
+  const power=document.getElementById('power'),pct=document.querySelector('.powerPct'),gameCanvas=document.getElementById('game');
+  let swipe=null;const clamp=(v,min,max)=>Math.max(min,Math.min(max,v));
+  const setSwipePower=v=>{const n=clamp(Math.round(v),0,100);power.value=n;pct.textContent=n+'%'};
+
+  document.querySelectorAll('.action').forEach(btn=>btn.addEventListener('click',()=>{
+    audio.ensure();if(gameState.turn!=='blue'||gameState.resolving)return;
+    const mode=btn.classList.contains('shoot')?'TIRER':'POINTER';
+    document.querySelectorAll('.action').forEach(x=>x.classList.remove('selected'));btn.classList.add('selected');
+    setThrowTypeUI(mode);
+
+    const preferred=roleForMode(mode),role=availableRoleForMode(mode);
+    if(role)gameState.activeRole=role;
+
+    if(mode==='TIRER'){selectedShootTarget=defaultShootTarget();aimOffset=0}
+    else{aimOffset=0;selectedShootTarget=null}
+    syncDirectionUI();updatePlayerCard();updateAimGuide();
+
+    if(role&&role!==preferred)showToast(mode==='TIRER'?'POINTEUR · TIR AUTORISÉ':'TIREUR · POINT AUTORISÉ',800);
+    else showToast(mode==='TIRER'?'TIREUR · FER / DEVANT / ROULÉ':'POINTEUR · CHOISIS TON POINT',800);
+  }));
+  document.querySelectorAll('.type').forEach(btn=>btn.addEventListener('click',()=>{audio.ensure();document.querySelectorAll('.type').forEach(x=>x.classList.remove('active'));btn.classList.add('active');updateAimGuide()}));
+
+  const raycaster=new THREE.Raycaster(),pointerNdc=new THREE.Vector2();
+  const swipeGroundPlane=new THREE.Plane(new THREE.Vector3(0,1,0),0);
+  const swipeWorldPoint=new THREE.Vector3();
+
+  function screenPointToCourt(clientX,clientY,rect){
+    pointerNdc.x=((clientX-rect.left)/rect.width)*2-1;
+    pointerNdc.y=-((clientY-rect.top)/rect.height)*2+1;
+    raycaster.setFromCamera(pointerNdc,camera);
+    if(!raycaster.ray.intersectPlane(swipeGroundPlane,swipeWorldPoint))return null;
+    // Keep the endpoint inside the playable court.
+    return new THREE.Vector3(
+      clamp(swipeWorldPoint.x,-1.28,1.28),
+      0,
+      clamp(swipeWorldPoint.z,-.55,4.15)
+    );
+  }
+
+  function pickShootBall(e){
+    if(selectedMode()!=='TIRER')return null;
+    const rect=gameCanvas.getBoundingClientRect();
+    pointerNdc.x=((e.clientX-rect.left)/rect.width)*2-1;
+    pointerNdc.y=-((e.clientY-rect.top)/rect.height)*2+1;
+    raycaster.setFromCamera(pointerNdc,camera);
+    const candidates=[blackBody,silverNearBody,silverFarBody,...bodies.filter(b=>b.team==='red'&&b.played)]
+      .filter((b,i,a)=>b&&b!==activeBody&&a.indexOf(b)===i);
+    const map=new Map(candidates.map(b=>[b.mesh,b]));
+    const hits=raycaster.intersectObjects(candidates.map(b=>b.mesh),false);
+    return hits.length?map.get(hits[0].object):null;
+  }
+  gameCanvas.addEventListener('pointerdown',e=>{
+    audio.ensure();if(gameState.ended||gameState.resolving||gameState.deadJackResolving)return;
+    if(matchFSM.is(PetanqueStates.JACK_THROW)&&jackThrowOwner==='blue'){const rect=gameCanvas.getBoundingClientRect();swipe={id:e.pointerId,x:e.clientX,y:e.clientY,t:performance.now(),rect,jack:true};gameCanvas.setPointerCapture?.(e.pointerId);gameCanvas.style.cursor='grabbing';setSwipePower(0);return}
+    if(!matchFSM.is(PetanqueStates.PLAYER_AIMING)||gameState.turn!=='blue'||!activeBody)return;
+    const picked=pickShootBall(e);
+    if(picked){
+      selectedShootTarget=picked;aimOffset=0;syncDirectionUI();updateAimGuide();
+      showToast('BOULE SÉLECTIONNÉE · DIRECTION CENTRÉE',650);
+      return;
+    }
+    const rect=gameCanvas.getBoundingClientRect();swipe={id:e.pointerId,x:e.clientX,y:e.clientY,t:performance.now(),rect};gameCanvas.setPointerCapture?.(e.pointerId);gameCanvas.style.cursor='grabbing';setSwipePower(0)
+  });
+  gameCanvas.addEventListener('pointermove',e=>{
+    if(!swipe||e.pointerId!==swipe.id)return;
+    const dy=swipe.y-e.clientY,dt=Math.max(16,performance.now()-swipe.t),
+      travel=clamp(dy/(swipe.rect.height*.40),0,1),speed=clamp((dy/dt)/1.6,0,1);
+    setSwipePower((travel*.72+speed*.28)*100);
+
+    const liveTarget=screenPointToCourt(e.clientX,e.clientY,swipe.rect);
+    if(liveTarget&&aimLine.visible){
+      aimLine.geometry.dispose();
+      aimLine.geometry=new THREE.BufferGeometry().setFromPoints([
+        new THREE.Vector3(THROW_START.x,.008,THROW_START.z+.068),
+        new THREE.Vector3(liveTarget.x+aimOffset,.008,liveTarget.z)
+      ]);
+      aimLine.computeLineDistances();
+    }
+  });
+  const finishSwipe=e=>{
+    if(!swipe||e.pointerId!==swipe.id)return;
+    const dy=swipe.y-e.clientY,dx=e.clientX-swipe.x,finalPower=Number(power.value);
+    const endTarget=screenPointToCourt(e.clientX,e.clientY,swipe.rect);
+    gameCanvas.style.cursor='grab';
+
+    if(dy>28&&Math.abs(dx)<swipe.rect.width*.45&&finalPower>=4&&endTarget){
+      if(swipe.jack){launchJackTo(endTarget,finalPower);showToast('COCHONNET · '+finalPower+'%',650)}
+      else{const mode=selectedMode(),type=selectedType();if(launchBlue(finalPower,endTarget)){matchStats.blueThrows++;if(mode==='TIRER')matchStats.blueShots++;setMatchState(PetanqueStates.BALL_MOVING);showToast(mode+' · '+type+' · '+finalPower+'%',700)}}
+    }else{
+      setSwipePower(0);updateAimGuide()
+    }
+    swipe=null
+  };
+  gameCanvas.addEventListener('pointerup',finishSwipe);gameCanvas.addEventListener('pointercancel',finishSwipe);
+  document.querySelector('.undo').addEventListener('click',()=>{audio.ensure();resetMene();setSwipePower(0);showToast('MÈNE RÉINITIALISÉE',650)});
+  const directionEl=document.getElementById('direction');
+  directionEl.addEventListener('input',()=>{
+    audio.ensure();
+    // Slider left = aim left; slider right = aim right.
+    setAimOffset(-(Number(directionEl.value)/100)*.22);
+  });
+  document.querySelector('.arrow.l').addEventListener('click',()=>{audio.ensure();setAimOffset(aimOffset+.028)});
+  document.querySelector('.arrow.r').addEventListener('click',()=>{audio.ensure();setAimOffset(aimOffset-.028)});
+  document.getElementById('replay').addEventListener('click',()=>{audio.ensure();newMatch()});
+
+  setMeneDistance(8.0);resetStaticBodies();gameState.activeRole='pointer';setThrowTypeUI('POINTER');syncDirectionUI();updateHUD();updatePlayerCard();ring.visible=false;aimLine.visible=false;showOnlyScreen(mainMenuEl);setMatchState(PetanqueStates.MATCH_INTRO);
+})();
+</script>
+</body>
+</html>

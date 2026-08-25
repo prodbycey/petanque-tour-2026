@@ -1,0 +1,854 @@
+{
+  "meta": {
+    "version": 1,
+    "note": "Clubs fictifs du circuit Pétanque Tour 2026, inspirés de régions fortement représentées en pétanque."
+  },
+  "countries": [
+    {
+      "code": "FR",
+      "name": "France",
+      "flag": "🇫🇷"
+    },
+    {
+      "code": "TH",
+      "name": "Thaïlande",
+      "flag": "🇹🇭"
+    },
+    {
+      "code": "MG",
+      "name": "Madagascar",
+      "flag": "🇲🇬"
+    },
+    {
+      "code": "ES",
+      "name": "Espagne",
+      "flag": "🇪🇸"
+    },
+    {
+      "code": "IT",
+      "name": "Italie",
+      "flag": "🇮🇹"
+    },
+    {
+      "code": "BE",
+      "name": "Belgique",
+      "flag": "🇧🇪"
+    },
+    {
+      "code": "TN",
+      "name": "Tunisie",
+      "flag": "🇹🇳"
+    },
+    {
+      "code": "MA",
+      "name": "Maroc",
+      "flag": "🇲🇦"
+    },
+    {
+      "code": "BJ",
+      "name": "Bénin",
+      "flag": "🇧🇯"
+    },
+    {
+      "code": "KH",
+      "name": "Cambodge",
+      "flag": "🇰🇭"
+    },
+    {
+      "code": "CH",
+      "name": "Suisse",
+      "flag": "🇨🇭"
+    },
+    {
+      "code": "NL",
+      "name": "Pays-Bas",
+      "flag": "🇳🇱"
+    }
+  ],
+  "clubs": [
+    {
+      "id": "club-fr-001",
+      "country": "FR",
+      "region": "Provence-Alpes-Côte d’Azur",
+      "city": "Marseille",
+      "name": "Pétanque Club du Vieux-Port",
+      "prestige": 4
+    },
+    {
+      "id": "club-fr-002",
+      "country": "FR",
+      "region": "Provence-Alpes-Côte d’Azur",
+      "city": "Aix-en-Provence",
+      "name": "Boule Aixoise des Platanes",
+      "prestige": 3
+    },
+    {
+      "id": "club-fr-003",
+      "country": "FR",
+      "region": "Provence-Alpes-Côte d’Azur",
+      "city": "Nice",
+      "name": "Cercle Niçois de Pétanque",
+      "prestige": 4
+    },
+    {
+      "id": "club-fr-004",
+      "country": "FR",
+      "region": "Provence-Alpes-Côte d’Azur",
+      "city": "Toulon",
+      "name": "Boule Toulonnaise du Mourillon",
+      "prestige": 3
+    },
+    {
+      "id": "club-fr-005",
+      "country": "FR",
+      "region": "Provence-Alpes-Côte d’Azur",
+      "city": "Draguignan",
+      "name": "Club Bouliste des Oliviers",
+      "prestige": 2
+    },
+    {
+      "id": "club-fr-006",
+      "country": "FR",
+      "region": "Provence-Alpes-Côte d’Azur",
+      "city": "Avignon",
+      "name": "Pétanque des Remparts",
+      "prestige": 3
+    },
+    {
+      "id": "club-fr-007",
+      "country": "FR",
+      "region": "Auvergne-Rhône-Alpes",
+      "city": "Lyon",
+      "name": "Pétanque Lyon Rhône",
+      "prestige": 4
+    },
+    {
+      "id": "club-fr-008",
+      "country": "FR",
+      "region": "Auvergne-Rhône-Alpes",
+      "city": "Grenoble",
+      "name": "Boule Grenobloise des Alpes",
+      "prestige": 3
+    },
+    {
+      "id": "club-fr-009",
+      "country": "FR",
+      "region": "Auvergne-Rhône-Alpes",
+      "city": "Annecy",
+      "name": "Pétanque du Lac d’Annecy",
+      "prestige": 2
+    },
+    {
+      "id": "club-fr-010",
+      "country": "FR",
+      "region": "Auvergne-Rhône-Alpes",
+      "city": "Clermont-Ferrand",
+      "name": "Boule Auvergnate des Volcans",
+      "prestige": 3
+    },
+    {
+      "id": "club-fr-011",
+      "country": "FR",
+      "region": "Auvergne-Rhône-Alpes",
+      "city": "Valence",
+      "name": "Cercle Bouliste Valentinois",
+      "prestige": 2
+    },
+    {
+      "id": "club-fr-012",
+      "country": "FR",
+      "region": "Auvergne-Rhône-Alpes",
+      "city": "Saint-Étienne",
+      "name": "Pétanque Stéphanoise",
+      "prestige": 3
+    },
+    {
+      "id": "club-fr-013",
+      "country": "FR",
+      "region": "Occitanie",
+      "city": "Toulouse",
+      "name": "Pétanque Toulousaine du Capitole",
+      "prestige": 4
+    },
+    {
+      "id": "club-fr-014",
+      "country": "FR",
+      "region": "Occitanie",
+      "city": "Montpellier",
+      "name": "Boule Montpelliéraine",
+      "prestige": 4
+    },
+    {
+      "id": "club-fr-015",
+      "country": "FR",
+      "region": "Occitanie",
+      "city": "Nîmes",
+      "name": "Pétanque des Arènes",
+      "prestige": 3
+    },
+    {
+      "id": "club-fr-016",
+      "country": "FR",
+      "region": "Occitanie",
+      "city": "Perpignan",
+      "name": "Cercle Catalan de Pétanque",
+      "prestige": 3
+    },
+    {
+      "id": "club-fr-017",
+      "country": "FR",
+      "region": "Occitanie",
+      "city": "Albi",
+      "name": "Boule Albigeoise",
+      "prestige": 2
+    },
+    {
+      "id": "club-fr-018",
+      "country": "FR",
+      "region": "Occitanie",
+      "city": "Béziers",
+      "name": "Pétanque Biterroise",
+      "prestige": 3
+    },
+    {
+      "id": "club-fr-019",
+      "country": "FR",
+      "region": "Nouvelle-Aquitaine",
+      "city": "Bordeaux",
+      "name": "Boule Bordelaise des Quais",
+      "prestige": 4
+    },
+    {
+      "id": "club-fr-020",
+      "country": "FR",
+      "region": "Nouvelle-Aquitaine",
+      "city": "La Rochelle",
+      "name": "Pétanque Rochelaise",
+      "prestige": 3
+    },
+    {
+      "id": "club-fr-021",
+      "country": "FR",
+      "region": "Nouvelle-Aquitaine",
+      "city": "Bayonne",
+      "name": "Cercle Bouliste Basque",
+      "prestige": 3
+    },
+    {
+      "id": "club-fr-022",
+      "country": "FR",
+      "region": "Nouvelle-Aquitaine",
+      "city": "Limoges",
+      "name": "Pétanque Limousine",
+      "prestige": 2
+    },
+    {
+      "id": "club-fr-023",
+      "country": "FR",
+      "region": "Nouvelle-Aquitaine",
+      "city": "Pau",
+      "name": "Boule Paloise des Pyrénées",
+      "prestige": 3
+    },
+    {
+      "id": "club-fr-024",
+      "country": "FR",
+      "region": "Île-de-France",
+      "city": "Paris",
+      "name": "Pétanque Paris Bastille",
+      "prestige": 4
+    },
+    {
+      "id": "club-fr-025",
+      "country": "FR",
+      "region": "Île-de-France",
+      "city": "Boulogne-Billancourt",
+      "name": "Cercle Bouliste de Boulogne",
+      "prestige": 3
+    },
+    {
+      "id": "club-fr-026",
+      "country": "FR",
+      "region": "Île-de-France",
+      "city": "Versailles",
+      "name": "Boule Versaillaise",
+      "prestige": 3
+    },
+    {
+      "id": "club-fr-027",
+      "country": "FR",
+      "region": "Île-de-France",
+      "city": "Saint-Denis",
+      "name": "Pétanque de la Plaine",
+      "prestige": 2
+    },
+    {
+      "id": "club-fr-028",
+      "country": "FR",
+      "region": "Hauts-de-France",
+      "city": "Lille",
+      "name": "Boule Lilloise des Flandres",
+      "prestige": 3
+    },
+    {
+      "id": "club-fr-029",
+      "country": "FR",
+      "region": "Hauts-de-France",
+      "city": "Arras",
+      "name": "Pétanque des Places d’Arras",
+      "prestige": 2
+    },
+    {
+      "id": "club-fr-030",
+      "country": "FR",
+      "region": "Hauts-de-France",
+      "city": "Amiens",
+      "name": "Cercle Picard de Pétanque",
+      "prestige": 2
+    },
+    {
+      "id": "club-fr-031",
+      "country": "FR",
+      "region": "Hauts-de-France",
+      "city": "Calais",
+      "name": "Pétanque Côte d’Opale",
+      "prestige": 2
+    },
+    {
+      "id": "club-fr-032",
+      "country": "FR",
+      "region": "Grand Est",
+      "city": "Strasbourg",
+      "name": "Pétanque Strasbourgeoise",
+      "prestige": 3
+    },
+    {
+      "id": "club-fr-033",
+      "country": "FR",
+      "region": "Grand Est",
+      "city": "Reims",
+      "name": "Boule Rémoise des Sacres",
+      "prestige": 2
+    },
+    {
+      "id": "club-fr-034",
+      "country": "FR",
+      "region": "Grand Est",
+      "city": "Metz",
+      "name": "Cercle Bouliste Messin",
+      "prestige": 2
+    },
+    {
+      "id": "club-fr-035",
+      "country": "FR",
+      "region": "Grand Est",
+      "city": "Nancy",
+      "name": "Pétanque Lorraine",
+      "prestige": 2
+    },
+    {
+      "id": "club-fr-036",
+      "country": "FR",
+      "region": "Bretagne",
+      "city": "Rennes",
+      "name": "Pétanque Rennaise",
+      "prestige": 2
+    },
+    {
+      "id": "club-fr-037",
+      "country": "FR",
+      "region": "Bretagne",
+      "city": "Brest",
+      "name": "Boule Brestoise du Ponant",
+      "prestige": 2
+    },
+    {
+      "id": "club-fr-038",
+      "country": "FR",
+      "region": "Bretagne",
+      "city": "Vannes",
+      "name": "Pétanque du Golfe",
+      "prestige": 2
+    },
+    {
+      "id": "club-fr-039",
+      "country": "FR",
+      "region": "Bretagne",
+      "city": "Saint-Malo",
+      "name": "Boule Malouine",
+      "prestige": 2
+    },
+    {
+      "id": "club-fr-040",
+      "country": "FR",
+      "region": "Pays de la Loire",
+      "city": "Nantes",
+      "name": "Pétanque Nantaise",
+      "prestige": 3
+    },
+    {
+      "id": "club-fr-041",
+      "country": "FR",
+      "region": "Pays de la Loire",
+      "city": "Angers",
+      "name": "Boule Angevine",
+      "prestige": 2
+    },
+    {
+      "id": "club-fr-042",
+      "country": "FR",
+      "region": "Pays de la Loire",
+      "city": "Le Mans",
+      "name": "Cercle Bouliste Manceau",
+      "prestige": 2
+    },
+    {
+      "id": "club-fr-043",
+      "country": "FR",
+      "region": "Pays de la Loire",
+      "city": "La Roche-sur-Yon",
+      "name": "Pétanque Vendéenne",
+      "prestige": 2
+    },
+    {
+      "id": "club-fr-044",
+      "country": "FR",
+      "region": "Bourgogne-Franche-Comté",
+      "city": "Dijon",
+      "name": "Boule Dijonnaise",
+      "prestige": 2
+    },
+    {
+      "id": "club-fr-045",
+      "country": "FR",
+      "region": "Bourgogne-Franche-Comté",
+      "city": "Besançon",
+      "name": "Pétanque Bisontine",
+      "prestige": 2
+    },
+    {
+      "id": "club-fr-046",
+      "country": "FR",
+      "region": "Bourgogne-Franche-Comté",
+      "city": "Mâcon",
+      "name": "Cercle Bouliste Mâconnais",
+      "prestige": 2
+    },
+    {
+      "id": "club-fr-047",
+      "country": "FR",
+      "region": "Normandie",
+      "city": "Rouen",
+      "name": "Pétanque Rouennaise",
+      "prestige": 2
+    },
+    {
+      "id": "club-fr-048",
+      "country": "FR",
+      "region": "Normandie",
+      "city": "Caen",
+      "name": "Boule Caennaise",
+      "prestige": 2
+    },
+    {
+      "id": "club-fr-049",
+      "country": "FR",
+      "region": "Normandie",
+      "city": "Deauville",
+      "name": "Pétanque de la Côte Fleurie",
+      "prestige": 2
+    },
+    {
+      "id": "club-fr-050",
+      "country": "FR",
+      "region": "Centre-Val de Loire",
+      "city": "Tours",
+      "name": "Pétanque Tourangelle",
+      "prestige": 2
+    },
+    {
+      "id": "club-fr-051",
+      "country": "FR",
+      "region": "Centre-Val de Loire",
+      "city": "Orléans",
+      "name": "Boule Orléanaise",
+      "prestige": 2
+    },
+    {
+      "id": "club-fr-052",
+      "country": "FR",
+      "region": "Centre-Val de Loire",
+      "city": "Bourges",
+      "name": "Cercle Bouliste du Berry",
+      "prestige": 2
+    },
+    {
+      "id": "club-fr-053",
+      "country": "FR",
+      "region": "Corse",
+      "city": "Ajaccio",
+      "name": "Pétanque Ajaccienne",
+      "prestige": 3
+    },
+    {
+      "id": "club-fr-054",
+      "country": "FR",
+      "region": "Corse",
+      "city": "Bastia",
+      "name": "Boule Bastiaise",
+      "prestige": 3
+    },
+    {
+      "id": "club-fr-055",
+      "country": "FR",
+      "region": "Corse",
+      "city": "Porto-Vecchio",
+      "name": "Cercle Bouliste de l’Extrême-Sud",
+      "prestige": 2
+    },
+    {
+      "id": "club-th-056",
+      "country": "TH",
+      "region": "Bangkok",
+      "city": "Bangkok",
+      "name": "Bangkok Pétanque Elite",
+      "prestige": 5
+    },
+    {
+      "id": "club-th-057",
+      "country": "TH",
+      "region": "Chiang Mai",
+      "city": "Chiang Mai",
+      "name": "Chiang Mai Boules Club",
+      "prestige": 4
+    },
+    {
+      "id": "club-th-058",
+      "country": "TH",
+      "region": "Nakhon Ratchasima",
+      "city": "Nakhon Ratchasima",
+      "name": "Korat Pétanque Academy",
+      "prestige": 4
+    },
+    {
+      "id": "club-th-059",
+      "country": "TH",
+      "region": "Chonburi",
+      "city": "Pattaya",
+      "name": "Pattaya Pétanque Club",
+      "prestige": 4
+    },
+    {
+      "id": "club-th-060",
+      "country": "TH",
+      "region": "Isan",
+      "city": "Udon Thani",
+      "name": "Udon Boules Association",
+      "prestige": 3
+    },
+    {
+      "id": "club-mg-061",
+      "country": "MG",
+      "region": "Analamanga",
+      "city": "Antananarivo",
+      "name": "Tana Pétanque Union",
+      "prestige": 5
+    },
+    {
+      "id": "club-mg-062",
+      "country": "MG",
+      "region": "Boeny",
+      "city": "Mahajanga",
+      "name": "Boule Mahajanga",
+      "prestige": 4
+    },
+    {
+      "id": "club-mg-063",
+      "country": "MG",
+      "region": "Atsinanana",
+      "city": "Toamasina",
+      "name": "Pétanque Tamatave",
+      "prestige": 4
+    },
+    {
+      "id": "club-mg-064",
+      "country": "MG",
+      "region": "Haute Matsiatra",
+      "city": "Fianarantsoa",
+      "name": "Cercle Bouliste Fianar",
+      "prestige": 3
+    },
+    {
+      "id": "club-es-065",
+      "country": "ES",
+      "region": "Catalogne",
+      "city": "Barcelona",
+      "name": "Barcelona Boules Club",
+      "prestige": 4
+    },
+    {
+      "id": "club-es-066",
+      "country": "ES",
+      "region": "Communauté de Madrid",
+      "city": "Madrid",
+      "name": "Madrid Pétanque Central",
+      "prestige": 4
+    },
+    {
+      "id": "club-es-067",
+      "country": "ES",
+      "region": "Communauté valencienne",
+      "city": "Valencia",
+      "name": "Pétanque Valencia Mediterránea",
+      "prestige": 4
+    },
+    {
+      "id": "club-es-068",
+      "country": "ES",
+      "region": "Andalousie",
+      "city": "Málaga",
+      "name": "Club de Petanca Costa del Sol",
+      "prestige": 4
+    },
+    {
+      "id": "club-es-069",
+      "country": "ES",
+      "region": "Catalogne",
+      "city": "Girona",
+      "name": "Petanca Girona Nord",
+      "prestige": 3
+    },
+    {
+      "id": "club-it-070",
+      "country": "IT",
+      "region": "Latium",
+      "city": "Rome",
+      "name": "Roma Bocce Pétanque Club",
+      "prestige": 4
+    },
+    {
+      "id": "club-it-071",
+      "country": "IT",
+      "region": "Lombardie",
+      "city": "Milan",
+      "name": "Milano Pétanque Sport",
+      "prestige": 4
+    },
+    {
+      "id": "club-it-072",
+      "country": "IT",
+      "region": "Piémont",
+      "city": "Turin",
+      "name": "Torino Pétanque Piemonte",
+      "prestige": 4
+    },
+    {
+      "id": "club-it-073",
+      "country": "IT",
+      "region": "Ligurie",
+      "city": "Gênes",
+      "name": "Genova Pétanque Riviera",
+      "prestige": 4
+    },
+    {
+      "id": "club-it-074",
+      "country": "IT",
+      "region": "Ligurie",
+      "city": "Savone",
+      "name": "Savona Boules Club",
+      "prestige": 3
+    },
+    {
+      "id": "club-be-075",
+      "country": "BE",
+      "region": "Bruxelles-Capitale",
+      "city": "Bruxelles",
+      "name": "Bruxelles Pétanque Union",
+      "prestige": 4
+    },
+    {
+      "id": "club-be-076",
+      "country": "BE",
+      "region": "Wallonie",
+      "city": "Liège",
+      "name": "Pétanque Liégeoise",
+      "prestige": 4
+    },
+    {
+      "id": "club-be-077",
+      "country": "BE",
+      "region": "Wallonie",
+      "city": "Namur",
+      "name": "Boule Namuroise",
+      "prestige": 3
+    },
+    {
+      "id": "club-be-078",
+      "country": "BE",
+      "region": "Flandre",
+      "city": "Anvers",
+      "name": "Antwerpen Petanque Club",
+      "prestige": 3
+    },
+    {
+      "id": "club-tn-079",
+      "country": "TN",
+      "region": "Tunis",
+      "city": "Tunis",
+      "name": "Tunis Pétanque Club",
+      "prestige": 4
+    },
+    {
+      "id": "club-tn-080",
+      "country": "TN",
+      "region": "Sousse",
+      "city": "Sousse",
+      "name": "Boule Sousse Méditerranée",
+      "prestige": 4
+    },
+    {
+      "id": "club-tn-081",
+      "country": "TN",
+      "region": "Sfax",
+      "city": "Sfax",
+      "name": "Pétanque Sfaxienne",
+      "prestige": 3
+    },
+    {
+      "id": "club-tn-082",
+      "country": "TN",
+      "region": "Monastir",
+      "city": "Monastir",
+      "name": "Club Bouliste Monastir",
+      "prestige": 3
+    },
+    {
+      "id": "club-ma-083",
+      "country": "MA",
+      "region": "Casablanca-Settat",
+      "city": "Casablanca",
+      "name": "Casablanca Pétanque Club",
+      "prestige": 4
+    },
+    {
+      "id": "club-ma-084",
+      "country": "MA",
+      "region": "Marrakech-Safi",
+      "city": "Marrakech",
+      "name": "Boule Marrakech Atlas",
+      "prestige": 4
+    },
+    {
+      "id": "club-ma-085",
+      "country": "MA",
+      "region": "Rabat-Salé-Kénitra",
+      "city": "Rabat",
+      "name": "Rabat Pétanque Union",
+      "prestige": 4
+    },
+    {
+      "id": "club-ma-086",
+      "country": "MA",
+      "region": "Souss-Massa",
+      "city": "Agadir",
+      "name": "Pétanque Agadir Océan",
+      "prestige": 3
+    },
+    {
+      "id": "club-bj-087",
+      "country": "BJ",
+      "region": "Littoral",
+      "city": "Cotonou",
+      "name": "Cotonou Pétanque Elite",
+      "prestige": 4
+    },
+    {
+      "id": "club-bj-088",
+      "country": "BJ",
+      "region": "Ouémé",
+      "city": "Porto-Novo",
+      "name": "Boule Porto-Novo",
+      "prestige": 3
+    },
+    {
+      "id": "club-bj-089",
+      "country": "BJ",
+      "region": "Atlantique",
+      "city": "Abomey-Calavi",
+      "name": "Pétanque Calavi",
+      "prestige": 3
+    },
+    {
+      "id": "club-kh-090",
+      "country": "KH",
+      "region": "Phnom Penh",
+      "city": "Phnom Penh",
+      "name": "Phnom Penh Pétanque Club",
+      "prestige": 4
+    },
+    {
+      "id": "club-kh-091",
+      "country": "KH",
+      "region": "Siem Reap",
+      "city": "Siem Reap",
+      "name": "Siem Reap Boules Club",
+      "prestige": 3
+    },
+    {
+      "id": "club-kh-092",
+      "country": "KH",
+      "region": "Battambang",
+      "city": "Battambang",
+      "name": "Battambang Pétanque",
+      "prestige": 3
+    },
+    {
+      "id": "club-ch-093",
+      "country": "CH",
+      "region": "Genève",
+      "city": "Genève",
+      "name": "Pétanque Genève Rhône",
+      "prestige": 3
+    },
+    {
+      "id": "club-ch-094",
+      "country": "CH",
+      "region": "Vaud",
+      "city": "Lausanne",
+      "name": "Boule Lausannoise",
+      "prestige": 3
+    },
+    {
+      "id": "club-ch-095",
+      "country": "CH",
+      "region": "Neuchâtel",
+      "city": "Neuchâtel",
+      "name": "Pétanque Neuchâtel",
+      "prestige": 2
+    },
+    {
+      "id": "club-nl-096",
+      "country": "NL",
+      "region": "Hollande-Septentrionale",
+      "city": "Amsterdam",
+      "name": "Amsterdam Petanque Club",
+      "prestige": 3
+    },
+    {
+      "id": "club-nl-097",
+      "country": "NL",
+      "region": "Hollande-Méridionale",
+      "city": "Rotterdam",
+      "name": "Rotterdam Boules Union",
+      "prestige": 3
+    },
+    {
+      "id": "club-nl-098",
+      "country": "NL",
+      "region": "Utrecht",
+      "city": "Utrecht",
+      "name": "Utrecht Pétanque Club",
+      "prestige": 2
+    }
+  ]
+}

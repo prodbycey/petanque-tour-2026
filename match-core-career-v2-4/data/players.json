@@ -1,0 +1,20 @@
+{
+  "status": "PLACEHOLDER_DATA_ONLY",
+  "players": [
+    {
+      "id": "player_test",
+      "name": "Ludovic Monterro",
+      "country": "FR",
+      "role": "POINTEUR",
+      "rating": 72
+    },
+    {
+      "id": "ai_rizano",
+      "name": "Rizano",
+      "country": "IT",
+      "role": "MILIEU",
+      "rating": 58
+    }
+  ],
+  "top30": "TOP30_DATA_PENDING"
+}

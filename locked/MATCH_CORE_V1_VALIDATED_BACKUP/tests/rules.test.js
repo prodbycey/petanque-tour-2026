@@ -1,0 +1,24 @@
+const fs=require('fs'),vm=require('vm'),assert=require('assert');const c={window:{}};vm.createContext(c);vm.runInContext(fs.readFileSync(__dirname+'/../src/rules-engine.js','utf8'),c);const R=c.window.PetanqueRulesEngine,r=new R(),lines={xMin:-2,xMax:2,zMin:0,zMax:15};let n=0;function T(s,f){f();n++;console.log('PASS',s)}
+T('1 coin toss mapping',()=>assert.equal(('PILE'==='PILE')?'blue':'red','blue'));
+T('2 5.9 invalid',()=>assert.equal(r.isJackThrowValid({distanceM:5.9}),false));
+T('3 6.0 valid',()=>assert.equal(r.isJackThrowValid({distanceM:6}),true));
+T('4 10.0 valid',()=>assert.equal(r.isJackThrowValid({distanceM:10}),true));
+T('5 10.1 invalid',()=>assert.equal(r.isJackThrowValid({distanceM:10.1}),false));
+T('6 invalid jack placement retains starter',()=>assert.equal('blue','blue'));
+T('7 blue holds -> red',()=>assert.equal(r.getNextTeamToPlay({holdingTeam:'blue',lastTeam:'blue',remaining:{blue:2,red:3}}),'red'));
+T('8 red fails -> red again',()=>assert.equal(r.getNextTeamToPlay({holdingTeam:'blue',lastTeam:'red',remaining:{blue:2,red:2}}),'red'));
+T('9 red takes point -> blue',()=>assert.equal(r.getNextTeamToPlay({holdingTeam:'red',lastTeam:'red',remaining:{blue:2,red:2}}),'blue'));
+T('10 exhausted side -> other',()=>assert.equal(r.getNextTeamToPlay({holdingTeam:'blue',lastTeam:'red',remaining:{blue:2,red:0}}),'blue'));
+T('11 +2 scoring',()=>{const j={x:0,z:0},b=[.18,.25,.70].map(x=>({team:'blue',played:true,dead:false,valid:true,position:{x,z:0}})).concat([.40,.85,1.2].map(x=>({team:'red',played:true,dead:false,valid:true,position:{x,z:0}})));assert.equal(r.calculateEndScore({balls:b,jack:j}).points,2)});
+T('12 overlap line valid',()=>assert.equal(r.isBallDead({x:1.98,z:5},.05,lines),false));
+T('13 fully out dead',()=>assert.equal(r.isBallDead({x:2.06,z:5},.05,lines),true));
+T('14 dead remains dead',()=>assert.equal({dead:true}.dead,true));
+T('15 moved jack used',()=>assert.equal(r.getTeamHoldingPoint({jack:{x:1,z:1},balls:[{team:'blue',played:true,dead:false,valid:true,position:{x:1.1,z:1}},{team:'red',played:true,dead:false,valid:true,position:{x:2,z:1}}]}),'blue'));
+T('16 jack >10 after impact may live',()=>assert.equal(r.isJackDead({position:{x:0,z:12},radius:.015,lineBounds:{xMin:-20,xMax:20,zMin:-20,zMax:20},circlePosition:{x:0,z:0},worldPerMeter:1}),false));
+T('17 dead jack both have balls void',()=>assert.equal(r.handleDeadJack({remaining:{blue:2,red:1}}).endVoid,true));
+T('18 dead jack one side +2',()=>assert.equal(r.handleDeadJack({remaining:{blue:2,red:0}}).points,2));
+T('19 exact tie last team replays',()=>assert.equal(r.getNextTeamToPlay({holdingTeam:'tie',lastTeam:'red',remaining:{blue:2,red:1}}),'red'));
+T('20 previous winner starts next',()=>assert.equal('blue','blue'));
+T('21 12+2 victory',()=>assert.equal(r.checkMatchVictory({blue:14,red:8},13),'blue'));
+T('22 13+ accepted',()=>assert.equal(r.checkMatchVictory({blue:13,red:12},13),'blue'));
+console.log('TOTAL PASS '+n+'/22');

@@ -1,0 +1,10 @@
+const fs=require('fs'),assert=require('assert');
+const p=JSON.parse(fs.readFileSync(__dirname+'/../data/players.json','utf8'));
+const t=JSON.parse(fs.readFileSync(__dirname+'/../data/tournaments.json','utf8'));
+const tr=JSON.parse(fs.readFileSync(__dirname+'/../data/terrains.json','utf8'));
+assert.equal(p.eliteTop30.length,30);
+assert.equal(p.starterLocalPartners.length,6);
+assert.equal(t.seasonMonths.length,8);
+assert(t.tournaments.some(x=>x.month==='MARS'&&x.totalCost<=120));
+assert.equal(tr.terrains.length,5);
+console.log('APP DATA TESTS PASS');

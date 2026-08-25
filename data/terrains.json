@@ -1,0 +1,126 @@
+{
+  "version": 1,
+  "terrains": [
+    {
+      "id": "hard-rolling",
+      "name": "Dur / roulant",
+      "family": "DUR_ROULANT",
+      "pointing": {
+        "roll": 1.18,
+        "bounce": 1.08,
+        "deviation": 0.92
+      },
+      "shooting": {
+        "carreauHold": 0.88
+      },
+      "ambience": "OUTDOOR",
+      "visual": {
+        "visualMaterial": "stabilisé minéral compact",
+        "visualNotes": "grain fin, surface sèche, petites pierres rares",
+        "physicsUnchanged": true
+      }
+    },
+    {
+      "id": "gravel-neutral",
+      "name": "Gravier standard",
+      "family": "GRAVIER_NEUTRE",
+      "pointing": {
+        "roll": 1.0,
+        "bounce": 1.0,
+        "deviation": 1.0
+      },
+      "shooting": {
+        "carreauHold": 1.0
+      },
+      "ambience": "OUTDOOR",
+      "visual": {
+        "visualMaterial": "gravier calcaire traditionnel",
+        "visualNotes": "granulométrie moyenne, poussière beige, cailloux visibles",
+        "physicsUnchanged": true
+      }
+    },
+    {
+      "id": "broken-rock",
+      "name": "Cassant / rocheux",
+      "family": "CASSANT_ROCHEUX",
+      "pointing": {
+        "roll": 0.94,
+        "bounce": 1.12,
+        "deviation": 1.22
+      },
+      "shooting": {
+        "carreauHold": 0.94
+      },
+      "ambience": "OUTDOOR",
+      "visual": {
+        "visualMaterial": "grave concassée rocheuse",
+        "visualNotes": "pierres plus grosses, teintes grises/brunes, texture irrégulière",
+        "physicsUnchanged": true
+      }
+    },
+    {
+      "id": "soft-sandy",
+      "name": "Mou / sableux",
+      "family": "MOU_SABLEUX",
+      "pointing": {
+        "roll": 0.78,
+        "bounce": 0.76,
+        "deviation": 0.92
+      },
+      "shooting": {
+        "carreauHold": 1.15
+      },
+      "ambience": "OUTDOOR",
+      "visual": {
+        "visualMaterial": "sable compact",
+        "visualNotes": "surface claire, grains fins, très peu de gros cailloux",
+        "physicsUnchanged": true
+      }
+    },
+    {
+      "id": "wet-heavy",
+      "name": "Humide / lourd",
+      "family": "HUMIDE_LOURD",
+      "pointing": {
+        "roll": 0.72,
+        "bounce": 0.72,
+        "deviation": 1.05
+      },
+      "shooting": {
+        "carreauHold": 1.18
+      },
+      "ambience": "OUTDOOR",
+      "visual": {
+        "visualMaterial": "terre minérale humide",
+        "visualNotes": "surface sombre, lourde, reflets humides très légers",
+        "physicsUnchanged": true
+      }
+    }
+  ],
+  "visualSurfaceFamilies": [
+    {
+      "id": "compact-earth",
+      "name": "Terre compacte"
+    },
+    {
+      "id": "fine-gravel",
+      "name": "Gravier fin"
+    },
+    {
+      "id": "hard-sand",
+      "name": "Sable dur"
+    },
+    {
+      "id": "rocky",
+      "name": "Terrain rocheux"
+    },
+    {
+      "id": "red-earth",
+      "name": "Terre rouge"
+    },
+    {
+      "id": "wet-earth",
+      "name": "Terrain humide"
+    }
+  ]
+}

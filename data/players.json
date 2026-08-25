@@ -1,0 +1,7186 @@
+{
+  "version": 1,
+  "populationTarget": 2600,
+  "note": "Top 30 = validated user data. Other names are fictional test population for APP_CAREER_V1 and remain replaceable.",
+  "eliteTop30": [
+    {
+      "id": "diego-rizano",
+      "name": "Diego Rizano",
+      "country": "IT",
+      "flag": "🇮🇹",
+      "role": "TIREUR",
+      "ranking": 1,
+      "tier": "INTERNATIONAL",
+      "stats": {
+        "appoint": 80,
+        "precision": 100,
+        "tir": 100,
+        "regularite": 100,
+        "experience": 90
+      },
+      "overall": 94,
+      "personality": "EQUILIBRE",
+      "recruitment": {
+        "minRank": 50,
+        "available": false
+      },
+      "dataStatus": "VALIDATED_ELITE",
+      "teamId": "italia-elite",
+      "teamName": "ITALIA ELITE",
+      "teamAffinity": 95,
+      "rankingPoints": 3200,
+      "form": 85,
+      "portrait": "https://randomuser.me/api/portraits/men/11.jpg",
+      "portraitType": "PHOTO_PLACEHOLDER_FIXED"
+    },
+    {
+      "id": "dylan-roche",
+      "name": "Dylan Roché",
+      "country": "FR",
+      "flag": "🇫🇷",
+      "role": "TIREUR",
+      "ranking": 2,
+      "tier": "INTERNATIONAL",
+      "stats": {
+        "appoint": 80,
+        "precision": 100,
+        "tir": 100,
+        "regularite": 90,
+        "experience": 100
+      },
+      "overall": 94,
+      "personality": "EQUILIBRE",
+      "recruitment": {
+        "minRank": 50,
+        "available": false
+      },
+      "dataStatus": "VALIDATED_ELITE",
+      "teamId": "france-team-roche",
+      "teamName": "FRANCE — TEAM ROCHÉ",
+      "teamAffinity": 95,
+      "rankingPoints": 3118,
+      "form": 84,
+      "portrait": "https://randomuser.me/api/portraits/men/14.jpg",
+      "portraitType": "PHOTO_PLACEHOLDER_FIXED"
+    },
+    {
+      "id": "ratchan-khamdee",
+      "name": "Ratchan Khamdee",
+      "country": "TH",
+      "flag": "🇹🇭",
+      "role": "MILIEU",
+      "ranking": 3,
+      "tier": "INTERNATIONAL",
+      "stats": {
+        "appoint": 90,
+        "precision": 90,
+        "tir": 90,
+        "regularite": 100,
+        "experience": 90
+      },
+      "overall": 92,
+      "personality": "EQUILIBRE",
+      "recruitment": {
+        "minRank": 50,
+        "available": false
+      },
+      "dataStatus": "VALIDATED_ELITE",
+      "teamId": "thailand-elite",
+      "teamName": "THAILAND ELITE",
+      "teamAffinity": 82,
+      "rankingPoints": 3036,
+      "form": 83,
+      "portrait": "https://randomuser.me/api/portraits/men/18.jpg",
+      "portraitType": "PHOTO_PLACEHOLDER_FIXED"
+    },
+    {
+      "id": "henri-lacroze",
+      "name": "Henri Lacroze",
+      "country": "FR",
+      "flag": "🇫🇷",
+      "role": "MILIEU",
+      "ranking": 4,
+      "tier": "INTERNATIONAL",
+      "stats": {
+        "appoint": 100,
+        "precision": 100,
+        "tir": 90,
+        "regularite": 100,
+        "experience": 100
+      },
+      "overall": 98,
+      "personality": "EQUILIBRE",
+      "recruitment": {
+        "minRank": 50,
+        "available": false
+      },
+      "dataStatus": "VALIDATED_ELITE",
+      "teamId": "france-dream-team",
+      "teamName": "FRANCE DREAM TEAM",
+      "teamAffinity": 95,
+      "rankingPoints": 2954,
+      "form": 82,
+      "portrait": "https://randomuser.me/api/portraits/men/20.jpg",
+      "portraitType": "PHOTO_PLACEHOLDER_FIXED"
+    },
+    {
+      "id": "mickael-bonetti",
+      "name": "Mickaël Bonetti",
+      "country": "FR",
+      "flag": "🇫🇷",
+      "role": "TIREUR",
+      "ranking": 5,
+      "tier": "INTERNATIONAL",
+      "stats": {
+        "appoint": 70,
+        "precision": 90,
+        "tir": 100,
+        "regularite": 90,
+        "experience": 90
+      },
+      "overall": 88,
+      "personality": "EQUILIBRE",
+      "recruitment": {
+        "minRank": 50,
+        "available": false
+      },
+      "dataStatus": "VALIDATED_ELITE",
+      "teamId": "france-team-bonetti",
+      "teamName": "FRANCE — TEAM BONETTI",
+      "teamAffinity": 95,
+      "rankingPoints": 2872,
+      "form": 81,
+      "portrait": "https://randomuser.me/api/portraits/men/24.jpg",
+      "portraitType": "PHOTO_PLACEHOLDER_FIXED"
+    },
+    {
+      "id": "christophe-sarrin",
+      "name": "Christophe Sarrin",
+      "country": "FR",
+      "flag": "🇫🇷",
+      "role": "MILIEU",
+      "ranking": 6,
+      "tier": "INTERNATIONAL",
+      "stats": {
+        "appoint": 90,
+        "precision": 90,
+        "tir": 90,
+        "regularite": 100,
+        "experience": 90
+      },
+      "overall": 92,
+      "personality": "EQUILIBRE",
+      "recruitment": {
+        "minRank": 150,
+        "available": false
+      },
+      "dataStatus": "VALIDATED_ELITE",
+      "teamId": "france-team-bonetti",
+      "teamName": "FRANCE — TEAM BONETTI",
+      "teamAffinity": 95,
+      "rankingPoints": 2790,
+      "form": 80,
+      "portrait": "https://randomuser.me/api/portraits/men/28.jpg",
+      "portraitType": "PHOTO_PLACEHOLDER_FIXED"
+    },
+    {
+      "id": "stephane-robinot",
+      "name": "Stéphane Robinot",
+      "country": "FR",
+      "flag": "🇫🇷",
+      "role": "MILIEU",
+      "ranking": 7,
+      "tier": "INTERNATIONAL",
+      "stats": {
+        "appoint": 90,
+        "precision": 90,
+        "tir": 90,
+        "regularite": 90,
+        "experience": 100
+      },
+      "overall": 92,
+      "personality": "EQUILIBRE",
+      "recruitment": {
+        "minRank": 150,
+        "available": false
+      },
+      "dataStatus": "VALIDATED_ELITE",
+      "teamId": "international-wildcard",
+      "teamName": "INTERNATIONAL WILDCARD",
+      "teamAffinity": 64,
+      "rankingPoints": 2708,
+      "form": 79,
+      "portrait": "https://randomuser.me/api/portraits/men/32.jpg",
+      "portraitType": "PHOTO_PLACEHOLDER_FIXED"
+    },
+    {
+      "id": "ludovic-monterro",
+      "name": "Ludovic Monterro",
+      "country": "FR",
+      "flag": "🇫🇷",
+      "role": "POINTEUR",
+      "ranking": 8,
+      "tier": "INTERNATIONAL",
+      "stats": {
+        "appoint": 100,
+        "precision": 90,
+        "tir": 70,
+        "regularite": 90,
+        "experience": 100
+      },
+      "overall": 90,
+      "personality": "EQUILIBRE",
+      "recruitment": {
+        "minRank": 150,
+        "available": false
+      },
+      "dataStatus": "VALIDATED_ELITE",
+      "teamId": "france-team-bonetti",
+      "teamName": "FRANCE — TEAM BONETTI",
+      "teamAffinity": 95,
+      "rankingPoints": 2626,
+      "form": 78,
+      "portrait": "https://randomuser.me/api/portraits/men/36.jpg",
+      "portraitType": "PHOTO_PLACEHOLDER_FIXED"
+    },
+    {
+      "id": "andrea-chiapelli",
+      "name": "Andrea Chiapelli",
+      "country": "IT",
+      "flag": "🇮🇹",
+      "role": "POINTEUR",
+      "ranking": 9,
+      "tier": "INTERNATIONAL",
+      "stats": {
+        "appoint": 100,
+        "precision": 90,
+        "tir": 70,
+        "regularite": 90,
+        "experience": 90
+      },
+      "overall": 88,
+      "personality": "EQUILIBRE",
+      "recruitment": {
+        "minRank": 150,
+        "available": false
+      },
+      "dataStatus": "VALIDATED_ELITE",
+      "teamId": "italia-elite",
+      "teamName": "ITALIA ELITE",
+      "teamAffinity": 95,
+      "rankingPoints": 2544,
+      "form": 77,
+      "portrait": "https://randomuser.me/api/portraits/men/40.jpg",
+      "portraitType": "PHOTO_PLACEHOLDER_FIXED"
+    },
+    {
+      "id": "alessio-coccioli",
+      "name": "Alessio Coccioli",
+      "country": "IT",
+      "flag": "🇮🇹",
+      "role": "MILIEU",
+      "ranking": 10,
+      "tier": "INTERNATIONAL",
+      "stats": {
+        "appoint": 90,
+        "precision": 90,
+        "tir": 80,
+        "regularite": 90,
+        "experience": 90
+      },
+      "overall": 88,
+      "personality": "EQUILIBRE",
+      "recruitment": {
+        "minRank": 150,
+        "available": false
+      },
+      "dataStatus": "VALIDATED_ELITE",
+      "teamId": "italia-elite",
+      "teamName": "ITALIA ELITE",
+      "teamAffinity": 95,
+      "rankingPoints": 2462,
+      "form": 76,
+      "portrait": "https://randomuser.me/api/portraits/men/44.jpg",
+      "portraitType": "PHOTO_PLACEHOLDER_FIXED"
+    },
+    {
+      "id": "florian-cometti",
+      "name": "Florian Cometti",
+      "country": "IT",
+      "flag": "🇮🇹",
+      "role": "TIREUR",
+      "ranking": 11,
+      "tier": "INTERNATIONAL",
+      "stats": {
+        "appoint": 70,
+        "precision": 90,
+        "tir": 90,
+        "regularite": 90,
+        "experience": 80
+      },
+      "overall": 84,
+      "personality": "EQUILIBRE",
+      "recruitment": {
+        "minRank": 150,
+        "available": false
+      },
+      "dataStatus": "VALIDATED_ELITE",
+      "teamId": "international-wildcard",
+      "teamName": "INTERNATIONAL WILDCARD",
+      "teamAffinity": 64,
+      "rankingPoints": 2380,
+      "form": 75,
+      "portrait": "https://randomuser.me/api/portraits/men/48.jpg",
+      "portraitType": "PHOTO_PLACEHOLDER_FIXED"
+    },
+    {
+      "id": "philippe-quintau",
+      "name": "Philippe Quintau",
+      "country": "FR",
+      "flag": "🇫🇷",
+      "role": "MILIEU",
+      "ranking": 12,
+      "tier": "INTERNATIONAL",
+      "stats": {
+        "appoint": 100,
+        "precision": 100,
+        "tir": 90,
+        "regularite": 100,
+        "experience": 100
+      },
+      "overall": 98,
+      "personality": "EQUILIBRE",
+      "recruitment": {
+        "minRank": 150,
+        "available": false
+      },
+      "dataStatus": "VALIDATED_ELITE",
+      "teamId": "france-dream-team",
+      "teamName": "FRANCE DREAM TEAM",
+      "teamAffinity": 95,
+      "rankingPoints": 2298,
+      "form": 74,
+      "portrait": "https://randomuser.me/api/portraits/men/52.jpg",
+      "portraitType": "PHOTO_PLACEHOLDER_FIXED"
+    },
+    {
+      "id": "philippe-suchot",
+      "name": "Philippe Suchot",
+      "country": "FR",
+      "flag": "🇫🇷",
+      "role": "TIREUR",
+      "ranking": 13,
+      "tier": "INTERNATIONAL",
+      "stats": {
+        "appoint": 80,
+        "precision": 90,
+        "tir": 100,
+        "regularite": 100,
+        "experience": 100
+      },
+      "overall": 94,
+      "personality": "EQUILIBRE",
+      "recruitment": {
+        "minRank": 150,
+        "available": false
+      },
+      "dataStatus": "VALIDATED_ELITE",
+      "teamId": "france-dream-team",
+      "teamName": "FRANCE DREAM TEAM",
+      "teamAffinity": 95,
+      "rankingPoints": 2216,
+      "form": 73,
+      "portrait": "https://randomuser.me/api/portraits/men/56.jpg",
+      "portraitType": "PHOTO_PLACEHOLDER_FIXED"
+    },
+    {
+      "id": "jean-feltan",
+      "name": "Jean Feltan",
+      "country": "FR",
+      "flag": "🇫🇷",
+      "role": "MILIEU",
+      "ranking": 14,
+      "tier": "INTERNATIONAL",
+      "stats": {
+        "appoint": 90,
+        "precision": 90,
+        "tir": 90,
+        "regularite": 90,
+        "experience": 90
+      },
+      "overall": 90,
+      "personality": "EQUILIBRE",
+      "recruitment": {
+        "minRank": 150,
+        "available": false
+      },
+      "dataStatus": "VALIDATED_ELITE",
+      "teamId": "france-team-roche",
+      "teamName": "FRANCE — TEAM ROCHÉ",
+      "teamAffinity": 95,
+      "rankingPoints": 2134,
+      "form": 72,
+      "portrait": "https://randomuser.me/api/portraits/men/60.jpg",
+      "portraitType": "PHOTO_PLACEHOLDER_FIXED"
+    },
+    {
+      "id": "david-doer",
+      "name": "David Doer",
+      "country": "FR",
+      "flag": "🇫🇷",
+      "role": "TIREUR",
+      "ranking": 15,
+      "tier": "INTERNATIONAL",
+      "stats": {
+        "appoint": 70,
+        "precision": 90,
+        "tir": 100,
+        "regularite": 80,
+        "experience": 80
+      },
+      "overall": 84,
+      "personality": "EQUILIBRE",
+      "recruitment": {
+        "minRank": 150,
+        "available": false
+      },
+      "dataStatus": "VALIDATED_ELITE",
+      "teamId": "france-team-roche",
+      "teamName": "FRANCE — TEAM ROCHÉ",
+      "teamAffinity": 95,
+      "rankingPoints": 2052,
+      "form": 88,
+      "portrait": "https://randomuser.me/api/portraits/men/64.jpg",
+      "portraitType": "PHOTO_PLACEHOLDER_FIXED"
+    },
+    {
+      "id": "christian-andriano",
+      "name": "Christian Andriano",
+      "country": "MG",
+      "flag": "🇲🇬",
+      "role": "MILIEU",
+      "ranking": 16,
+      "tier": "INTERNATIONAL",
+      "stats": {
+        "appoint": 90,
+        "precision": 90,
+        "tir": 80,
+        "regularite": 90,
+        "experience": 100
+      },
+      "overall": 90,
+      "personality": "EQUILIBRE",
+      "recruitment": {
+        "minRank": 300,
+        "available": false
+      },
+      "dataStatus": "VALIDATED_ELITE",
+      "teamId": "madagascar-a",
+      "teamName": "MADAGASCAR A",
+      "teamAffinity": 82,
+      "rankingPoints": 1970,
+      "form": 87,
+      "portrait": "https://randomuser.me/api/portraits/men/68.jpg",
+      "portraitType": "PHOTO_PLACEHOLDER_FIXED"
+    },
+    {
+      "id": "baldwin-magnyo",
+      "name": "Baldwin Magnyo",
+      "country": "MG",
+      "flag": "🇲🇬",
+      "role": "TIREUR",
+      "ranking": 17,
+      "tier": "INTERNATIONAL",
+      "stats": {
+        "appoint": 70,
+        "precision": 90,
+        "tir": 90,
+        "regularite": 90,
+        "experience": 80
+      },
+      "overall": 84,
+      "personality": "EQUILIBRE",
+      "recruitment": {
+        "minRank": 300,
+        "available": false
+      },
+      "dataStatus": "VALIDATED_ELITE",
+      "teamId": "madagascar-a",
+      "teamName": "MADAGASCAR A",
+      "teamAffinity": 82,
+      "rankingPoints": 1888,
+      "form": 86,
+      "portrait": "https://randomuser.me/api/portraits/men/72.jpg",
+      "portraitType": "PHOTO_PLACEHOLDER_FIXED"
+    },
+    {
+      "id": "moise-helfrik",
+      "name": "Moïse Helfrik",
+      "country": "FR",
+      "flag": "🇫🇷",
+      "role": "POINTEUR",
+      "ranking": 18,
+      "tier": "INTERNATIONAL",
+      "stats": {
+        "appoint": 90,
+        "precision": 90,
+        "tir": 70,
+        "regularite": 90,
+        "experience": 80
+      },
+      "overall": 84,
+      "personality": "EQUILIBRE",
+      "recruitment": {
+        "minRank": 300,
+        "available": false
+      },
+      "dataStatus": "VALIDATED_ELITE",
+      "teamId": "rising-stars",
+      "teamName": "RISING STARS",
+      "teamAffinity": 45,
+      "rankingPoints": 1806,
+      "form": 85,
+      "portrait": "https://randomuser.me/api/portraits/men/76.jpg",
+      "portraitType": "PHOTO_PLACEHOLDER_FIXED"
+    },
+    {
+      "id": "sarawut-sriboon",
+      "name": "Sarawut Sriboon",
+      "country": "TH",
+      "flag": "🇹🇭",
+      "role": "MILIEU",
+      "ranking": 19,
+      "tier": "INTERNATIONAL",
+      "stats": {
+        "appoint": 90,
+        "precision": 100,
+        "tir": 80,
+        "regularite": 90,
+        "experience": 90
+      },
+      "overall": 90,
+      "personality": "EQUILIBRE",
+      "recruitment": {
+        "minRank": 300,
+        "available": false
+      },
+      "dataStatus": "VALIDATED_ELITE",
+      "teamId": "thailand-elite",
+      "teamName": "THAILAND ELITE",
+      "teamAffinity": 82,
+      "rankingPoints": 1724,
+      "form": 84,
+      "portrait": "https://randomuser.me/api/portraits/men/80.jpg",
+      "portraitType": "PHOTO_PLACEHOLDER_FIXED"
+    },
+    {
+      "id": "supan-thongpu",
+      "name": "Supan Thongpu",
+      "country": "TH",
+      "flag": "🇹🇭",
+      "role": "TIREUR",
+      "ranking": 20,
+      "tier": "INTERNATIONAL",
+      "stats": {
+        "appoint": 70,
+        "precision": 90,
+        "tir": 100,
+        "regularite": 90,
+        "experience": 80
+      },
+      "overall": 86,
+      "personality": "EQUILIBRE",
+      "recruitment": {
+        "minRank": 300,
+        "available": false
+      },
+      "dataStatus": "VALIDATED_ELITE",
+      "teamId": "thailand-elite",
+      "teamName": "THAILAND ELITE",
+      "teamAffinity": 82,
+      "rankingPoints": 1642,
+      "form": 83,
+      "portrait": "https://randomuser.me/api/portraits/men/84.jpg",
+      "portraitType": "PHOTO_PLACEHOLDER_FIXED"
+    },
+    {
+      "id": "thanawan-toosewa",
+      "name": "Thanawan Toosewa",
+      "country": "TH",
+      "flag": "🇹🇭",
+      "role": "POINTEUR",
+      "ranking": 21,
+      "tier": "INTERNATIONAL",
+      "stats": {
+        "appoint": 100,
+        "precision": 90,
+        "tir": 60,
+        "regularite": 90,
+        "experience": 80
+      },
+      "overall": 84,
+      "personality": "EQUILIBRE",
+      "recruitment": {
+        "minRank": 300,
+        "available": false
+      },
+      "dataStatus": "VALIDATED_ELITE",
+      "teamId": "rising-stars",
+      "teamName": "RISING STARS",
+      "teamAffinity": 45,
+      "rankingPoints": 1560,
+      "form": 82,
+      "portrait": "https://randomuser.me/api/portraits/men/88.jpg",
+      "portraitType": "PHOTO_PLACEHOLDER_FIXED"
+    },
+    {
+      "id": "jesus-escaro",
+      "name": "Jesús Escaro",
+      "country": "ES",
+      "flag": "🇪🇸",
+      "role": "MILIEU",
+      "ranking": 22,
+      "tier": "INTERNATIONAL",
+      "stats": {
+        "appoint": 90,
+        "precision": 90,
+        "tir": 80,
+        "regularite": 90,
+        "experience": 80
+      },
+      "overall": 86,
+      "personality": "EQUILIBRE",
+      "recruitment": {
+        "minRank": 300,
+        "available": false
+      },
+      "dataStatus": "VALIDATED_ELITE",
+      "teamId": "espana-elite",
+      "teamName": "ESPAÑA ELITE",
+      "teamAffinity": 82,
+      "rankingPoints": 1478,
+      "form": 81,
+      "portrait": "https://randomuser.me/api/portraits/men/92.jpg",
+      "portraitType": "PHOTO_PLACEHOLDER_FIXED"
+    },
+    {
+      "id": "jose-guasco",
+      "name": "José Guasco",
+      "country": "ES",
+      "flag": "🇪🇸",
+      "role": "POINTEUR",
+      "ranking": 23,
+      "tier": "INTERNATIONAL",
+      "stats": {
+        "appoint": 90,
+        "precision": 100,
+        "tir": 60,
+        "regularite": 80,
+        "experience": 90
+      },
+      "overall": 84,
+      "personality": "EQUILIBRE",
+      "recruitment": {
+        "minRank": 300,
+        "available": false
+      },
+      "dataStatus": "VALIDATED_ELITE",
+      "teamId": "espana-elite",
+      "teamName": "ESPAÑA ELITE",
+      "teamAffinity": 82,
+      "rankingPoints": 1396,
+      "form": 80,
+      "portrait": "https://randomuser.me/api/portraits/men/96.jpg",
+      "portraitType": "PHOTO_PLACEHOLDER_FIXED"
+    },
+    {
+      "id": "sergio-rodriguez-boixar",
+      "name": "Sergio Rodriguez Boixar",
+      "country": "ES",
+      "flag": "🇪🇸",
+      "role": "TIREUR",
+      "ranking": 24,
+      "tier": "INTERNATIONAL",
+      "stats": {
+        "appoint": 70,
+        "precision": 90,
+        "tir": 90,
+        "regularite": 80,
+        "experience": 80
+      },
+      "overall": 82,
+      "personality": "EQUILIBRE",
+      "recruitment": {
+        "minRank": 300,
+        "available": false
+      },
+      "dataStatus": "VALIDATED_ELITE",
+      "teamId": "espana-elite",
+      "teamName": "ESPAÑA ELITE",
+      "teamAffinity": 82,
+      "rankingPoints": 1314,
+      "form": 79,
+      "portrait": "https://randomuser.me/api/portraits/men/5.jpg",
+      "portraitType": "PHOTO_PLACEHOLDER_FIXED"
+    },
+    {
+      "id": "joseph-ramantra",
+      "name": "Joseph Ramantra",
+      "country": "MG",
+      "flag": "🇲🇬",
+      "role": "TIREUR",
+      "ranking": 25,
+      "tier": "INTERNATIONAL",
+      "stats": {
+        "appoint": 80,
+        "precision": 90,
+        "tir": 90,
+        "regularite": 90,
+        "experience": 90
+      },
+      "overall": 88,
+      "personality": "EQUILIBRE",
+      "recruitment": {
+        "minRank": 300,
+        "available": false
+      },
+      "dataStatus": "VALIDATED_ELITE",
+      "teamId": "madagascar-a",
+      "teamName": "MADAGASCAR A",
+      "teamAffinity": 82,
+      "rankingPoints": 1232,
+      "form": 78,
+      "portrait": "https://randomuser.me/api/portraits/men/9.jpg",
+      "portraitType": "PHOTO_PLACEHOLDER_FIXED"
+    },
+    {
+      "id": "lora-rakoto",
+      "name": "Lora Rakoto",
+      "country": "MG",
+      "flag": "🇲🇬",
+      "role": "POINTEUR",
+      "ranking": 26,
+      "tier": "INTERNATIONAL",
+      "stats": {
+        "appoint": 100,
+        "precision": 90,
+        "tir": 70,
+        "regularite": 90,
+        "experience": 80
+      },
+      "overall": 86,
+      "personality": "EQUILIBRE",
+      "recruitment": {
+        "minRank": 300,
+        "available": false
+      },
+      "dataStatus": "VALIDATED_ELITE",
+      "teamId": "madagascar-next",
+      "teamName": "MADAGASCAR NEXT",
+      "teamAffinity": 64,
+      "rankingPoints": 1150,
+      "form": 77,
+      "portrait": "https://randomuser.me/api/portraits/men/13.jpg",
+      "portraitType": "PHOTO_PLACEHOLDER_FIXED"
+    },
+    {
+      "id": "nomen-ravomana",
+      "name": "Nomen Ravomana",
+      "country": "MG",
+      "flag": "🇲🇬",
+      "role": "MILIEU",
+      "ranking": 27,
+      "tier": "INTERNATIONAL",
+      "stats": {
+        "appoint": 90,
+        "precision": 90,
+        "tir": 90,
+        "regularite": 100,
+        "experience": 90
+      },
+      "overall": 92,
+      "personality": "EQUILIBRE",
+      "recruitment": {
+        "minRank": 300,
+        "available": false
+      },
+      "dataStatus": "VALIDATED_ELITE",
+      "teamId": "madagascar-next",
+      "teamName": "MADAGASCAR NEXT",
+      "teamAffinity": 64,
+      "rankingPoints": 1068,
+      "form": 76,
+      "portrait": "https://randomuser.me/api/portraits/men/17.jpg",
+      "portraitType": "PHOTO_PLACEHOLDER_FIXED"
+    },
+    {
+      "id": "mohamed-bougriba",
+      "name": "Mohamed Bougriba",
+      "country": "TN",
+      "flag": "🇹🇳",
+      "role": "TIREUR",
+      "ranking": 28,
+      "tier": "INTERNATIONAL",
+      "stats": {
+        "appoint": 70,
+        "precision": 90,
+        "tir": 90,
+        "regularite": 80,
+        "experience": 80
+      },
+      "overall": 82,
+      "personality": "EQUILIBRE",
+      "recruitment": {
+        "minRank": 300,
+        "available": false
+      },
+      "dataStatus": "VALIDATED_ELITE",
+      "teamId": "rising-stars",
+      "teamName": "RISING STARS",
+      "teamAffinity": 45,
+      "rankingPoints": 986,
+      "form": 75,
+      "portrait": "https://randomuser.me/api/portraits/men/21.jpg",
+      "portraitType": "PHOTO_PLACEHOLDER_FIXED"
+    },
+    {
+      "id": "marcel-gbeta",
+      "name": "Marcel Gbeta",
+      "country": "BJ",
+      "flag": "🇧🇯",
+      "role": "MILIEU",
+      "ranking": 29,
+      "tier": "INTERNATIONAL",
+      "stats": {
+        "appoint": 90,
+        "precision": 80,
+        "tir": 80,
+        "regularite": 90,
+        "experience": 80
+      },
+      "overall": 84,
+      "personality": "EQUILIBRE",
+      "recruitment": {
+        "minRank": 300,
+        "available": false
+      },
+      "dataStatus": "VALIDATED_ELITE",
+      "teamId": "madagascar-next",
+      "teamName": "MADAGASCAR NEXT",
+      "teamAffinity": 64,
+      "rankingPoints": 904,
+      "form": 74,
+      "portrait": "https://randomuser.me/api/portraits/men/25.jpg",
+      "portraitType": "PHOTO_PLACEHOLDER_FIXED"
+    },
+    {
+      "id": "charles-weibelin",
+      "name": "Charles Weibelin",
+      "country": "BE",
+      "flag": "🇧🇪",
+      "role": "POINTEUR",
+      "ranking": 30,
+      "tier": "INTERNATIONAL",
+      "stats": {
+        "appoint": 90,
+        "precision": 90,
+        "tir": 70,
+        "regularite": 90,
+        "experience": 100
+      },
+      "overall": 88,
+      "personality": "EQUILIBRE",
+      "recruitment": {
+        "minRank": 300,
+        "available": false
+      },
+      "dataStatus": "VALIDATED_ELITE",
+      "teamId": "international-wildcard",
+      "teamName": "INTERNATIONAL WILDCARD",
+      "teamAffinity": 64,
+      "rankingPoints": 822,
+      "form": 73,
+      "portrait": "https://randomuser.me/api/portraits/men/29.jpg",
+      "portraitType": "PHOTO_PLACEHOLDER_FIXED"
+    }
+  ],
+  "starterLocalPartners": [
+    {
+      "id": "hugo-valette",
+      "name": "Hugo Valette",
+      "country": "FR",
+      "flag": "🇫🇷",
+      "role": "POINTEUR",
+      "ranking": 2420,
+      "tier": "LOCAL",
+      "stats": {
+        "appoint": 38,
+        "precision": 42,
+        "tir": 24,
+        "regularite": 36,
+        "experience": 24
+      },
+      "overall": 33,
+      "personality": "PRUDENT",
+      "recruitment": {
+        "minRank": 3000,
+        "available": true,
+        "club": "Pétanque Club des Oliviers"
+      },
+      "dataStatus": "STARTER_LOCAL",
+      "portrait": "https://randomuser.me/api/portraits/men/41.jpg",
+      "portraitType": "PHOTO_PLACEHOLDER_FIXED"
+    },
+    {
+      "id": "nicolas-ferran",
+      "name": "Nicolas Ferran",
+      "country": "FR",
+      "flag": "🇫🇷",
+      "role": "MILIEU",
+      "ranking": 2433,
+      "tier": "LOCAL",
+      "stats": {
+        "appoint": 34,
+        "precision": 38,
+        "tir": 35,
+        "regularite": 42,
+        "experience": 22
+      },
+      "overall": 34,
+      "personality": "EQUILIBRE",
+      "recruitment": {
+        "minRank": 3000,
+        "available": true,
+        "club": "Pétanque Club des Oliviers"
+      },
+      "dataStatus": "STARTER_LOCAL",
+      "portrait": "https://randomuser.me/api/portraits/men/42.jpg",
+      "portraitType": "PHOTO_PLACEHOLDER_FIXED"
+    },
+    {
+      "id": "karim-bellon",
+      "name": "Karim Bellon",
+      "country": "FR",
+      "flag": "🇫🇷",
+      "role": "TIREUR",
+      "ranking": 2446,
+      "tier": "LOCAL",
+      "stats": {
+        "appoint": 24,
+        "precision": 38,
+        "tir": 44,
+        "regularite": 34,
+        "experience": 20
+      },
+      "overall": 32,
+      "personality": "OFFENSIF",
+      "recruitment": {
+        "minRank": 3000,
+        "available": true,
+        "club": "Pétanque Club des Oliviers"
+      },
+      "dataStatus": "STARTER_LOCAL",
+      "portrait": "https://randomuser.me/api/portraits/men/43.jpg",
+      "portraitType": "PHOTO_PLACEHOLDER_FIXED"
+    },
+    {
+      "id": "enzo-mariani",
+      "name": "Enzo Mariani",
+      "country": "IT",
+      "flag": "🇮🇹",
+      "role": "POINTEUR",
+      "ranking": 2459,
+      "tier": "LOCAL",
+      "stats": {
+        "appoint": 41,
+        "precision": 37,
+        "tir": 22,
+        "regularite": 35,
+        "experience": 18
+      },
+      "overall": 31,
+      "personality": "PRUDENT",
+      "recruitment": {
+        "minRank": 3000,
+        "available": true,
+        "club": "Pétanque Club des Oliviers"
+      },
+      "dataStatus": "STARTER_LOCAL",
+      "portrait": "https://randomuser.me/api/portraits/men/44.jpg",
+      "portraitType": "PHOTO_PLACEHOLDER_FIXED"
+    },
+    {
+      "id": "tom-veyrier",
+      "name": "Tom Veyrier",
+      "country": "FR",
+      "flag": "🇫🇷",
+      "role": "MILIEU",
+      "ranking": 2472,
+      "tier": "LOCAL",
+      "stats": {
+        "appoint": 33,
+        "precision": 35,
+        "tir": 33,
+        "regularite": 40,
+        "experience": 25
+      },
+      "overall": 33,
+      "personality": "EQUILIBRE",
+      "recruitment": {
+        "minRank": 3000,
+        "available": true,
+        "club": "Pétanque Club des Oliviers"
+      },
+      "dataStatus": "STARTER_LOCAL",
+      "portrait": "https://randomuser.me/api/portraits/men/45.jpg",
+      "portraitType": "PHOTO_PLACEHOLDER_FIXED"
+    },
+    {
+      "id": "mateo-costa",
+      "name": "Mateo Costa",
+      "country": "ES",
+      "flag": "🇪🇸",
+      "role": "TIREUR",
+      "ranking": 2485,
+      "tier": "LOCAL",
+      "stats": {
+        "appoint": 22,
+        "precision": 36,
+        "tir": 42,
+        "regularite": 31,
+        "experience": 19
+      },
+      "overall": 30,
+      "personality": "OFFENSIF",
+      "recruitment": {
+        "minRank": 3000,
+        "available": true,
+        "club": "Pétanque Club des Oliviers"
+      },
+      "dataStatus": "STARTER_LOCAL",
+      "portrait": "https://randomuser.me/api/portraits/men/46.jpg",
+      "portraitType": "PHOTO_PLACEHOLDER_FIXED"
+    }
+  ],
+  "generatedTestPlayers": [
+    {
+      "id": "dario-keller-31",
+      "name": "Dario Keller",
+      "country": "TH",
+      "flag": "🇹🇭",
+      "role": "TIREUR",
+      "ranking": 31,
+      "tier": "NATIONAL",
+      "stats": {
+        "appoint": 72,
+        "precision": 77,
+        "tir": 92,
+        "regularite": 80,
+        "experience": 86
+      },
+      "overall": 81,
+      "personality": "EQUILIBRE",
+      "recruitment": {
+        "minRank": 50,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "damien-tessier-35",
+      "name": "Damien Tessier",
+      "country": "TH",
+      "flag": "🇹🇭",
+      "role": "TIREUR",
+      "ranking": 35,
+      "tier": "NATIONAL",
+      "stats": {
+        "appoint": 88,
+        "precision": 88,
+        "tir": 86,
+        "regularite": 75,
+        "experience": 75
+      },
+      "overall": 82,
+      "personality": "PRUDENT",
+      "recruitment": {
+        "minRank": 50,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "jules-collet-39",
+      "name": "Jules Collet",
+      "country": "FR",
+      "flag": "🇫🇷",
+      "role": "MILIEU",
+      "ranking": 39,
+      "tier": "NATIONAL",
+      "stats": {
+        "appoint": 64,
+        "precision": 60,
+        "tir": 54,
+        "regularite": 62,
+        "experience": 57
+      },
+      "overall": 59,
+      "personality": "EQUILIBRE",
+      "recruitment": {
+        "minRank": 50,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "hamza-lombardi-42",
+      "name": "Hamza Lombardi",
+      "country": "TN",
+      "flag": "🇹🇳",
+      "role": "TIREUR",
+      "ranking": 42,
+      "tier": "NATIONAL",
+      "stats": {
+        "appoint": 67,
+        "precision": 76,
+        "tir": 73,
+        "regularite": 75,
+        "experience": 82
+      },
+      "overall": 75,
+      "personality": "EQUILIBRE",
+      "recruitment": {
+        "minRank": 50,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "jules-olivier-46",
+      "name": "Jules Olivier",
+      "country": "FR",
+      "flag": "🇫🇷",
+      "role": "TIREUR",
+      "ranking": 46,
+      "tier": "NATIONAL",
+      "stats": {
+        "appoint": 89,
+        "precision": 81,
+        "tir": 77,
+        "regularite": 86,
+        "experience": 82
+      },
+      "overall": 83,
+      "personality": "EQUILIBRE",
+      "recruitment": {
+        "minRank": 50,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "oscar-navarro-50",
+      "name": "Oscar Navarro",
+      "country": "FR",
+      "flag": "🇫🇷",
+      "role": "MILIEU",
+      "ranking": 50,
+      "tier": "NATIONAL",
+      "stats": {
+        "appoint": 84,
+        "precision": 83,
+        "tir": 69,
+        "regularite": 80,
+        "experience": 83
+      },
+      "overall": 80,
+      "personality": "OFFENSIF",
+      "recruitment": {
+        "minRank": 50,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "gabin-perez-54",
+      "name": "Gabin Perez",
+      "country": "TN",
+      "flag": "🇹🇳",
+      "role": "TIREUR",
+      "ranking": 54,
+      "tier": "NATIONAL",
+      "stats": {
+        "appoint": 70,
+        "precision": 73,
+        "tir": 79,
+        "regularite": 67,
+        "experience": 57
+      },
+      "overall": 69,
+      "personality": "OFFENSIF",
+      "recruitment": {
+        "minRank": 50,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "hector-soler-58",
+      "name": "Hector Soler",
+      "country": "FR",
+      "flag": "🇫🇷",
+      "role": "POINTEUR",
+      "ranking": 58,
+      "tier": "NATIONAL",
+      "stats": {
+        "appoint": 92,
+        "precision": 75,
+        "tir": 89,
+        "regularite": 79,
+        "experience": 86
+      },
+      "overall": 84,
+      "personality": "PRUDENT",
+      "recruitment": {
+        "minRank": 50,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "pablo-faure-61",
+      "name": "Pablo Faure",
+      "country": "IT",
+      "flag": "🇮🇹",
+      "role": "POINTEUR",
+      "ranking": 61,
+      "tier": "NATIONAL",
+      "stats": {
+        "appoint": 90,
+        "precision": 85,
+        "tir": 85,
+        "regularite": 75,
+        "experience": 86
+      },
+      "overall": 84,
+      "personality": "EQUILIBRE",
+      "recruitment": {
+        "minRank": 51,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "yanis-jouve-65",
+      "name": "Yanis Jouve",
+      "country": "TH",
+      "flag": "🇹🇭",
+      "role": "TIREUR",
+      "ranking": 65,
+      "tier": "NATIONAL",
+      "stats": {
+        "appoint": 80,
+        "precision": 78,
+        "tir": 84,
+        "regularite": 70,
+        "experience": 74
+      },
+      "overall": 77,
+      "personality": "EQUILIBRE",
+      "recruitment": {
+        "minRank": 55,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "adrien-barra-69",
+      "name": "Adrien Barra",
+      "country": "FR",
+      "flag": "🇫🇷",
+      "role": "TIREUR",
+      "ranking": 69,
+      "tier": "NATIONAL",
+      "stats": {
+        "appoint": 82,
+        "precision": 85,
+        "tir": 89,
+        "regularite": 75,
+        "experience": 74
+      },
+      "overall": 81,
+      "personality": "EQUILIBRE",
+      "recruitment": {
+        "minRank": 58,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "antoine-perez-73",
+      "name": "Antoine Perez",
+      "country": "MG",
+      "flag": "🇲🇬",
+      "role": "TIREUR",
+      "ranking": 73,
+      "tier": "NATIONAL",
+      "stats": {
+        "appoint": 88,
+        "precision": 87,
+        "tir": 92,
+        "regularite": 85,
+        "experience": 74
+      },
+      "overall": 85,
+      "personality": "EQUILIBRE",
+      "recruitment": {
+        "minRank": 62,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "kevin-olivier-76",
+      "name": "Kévin Olivier",
+      "country": "FR",
+      "flag": "🇫🇷",
+      "role": "MILIEU",
+      "ranking": 76,
+      "tier": "NATIONAL",
+      "stats": {
+        "appoint": 87,
+        "precision": 80,
+        "tir": 84,
+        "regularite": 92,
+        "experience": 76
+      },
+      "overall": 84,
+      "personality": "EQUILIBRE",
+      "recruitment": {
+        "minRank": 64,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "emile-ravel-80",
+      "name": "Émile Ravel",
+      "country": "MG",
+      "flag": "🇲🇬",
+      "role": "POINTEUR",
+      "ranking": 80,
+      "tier": "NATIONAL",
+      "stats": {
+        "appoint": 84,
+        "precision": 85,
+        "tir": 79,
+        "regularite": 72,
+        "experience": 75
+      },
+      "overall": 79,
+      "personality": "OFFENSIF",
+      "recruitment": {
+        "minRank": 68,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "felix-navarro-84",
+      "name": "Félix Navarro",
+      "country": "FR",
+      "flag": "🇫🇷",
+      "role": "MILIEU",
+      "ranking": 84,
+      "tier": "NATIONAL",
+      "stats": {
+        "appoint": 51,
+        "precision": 50,
+        "tir": 62,
+        "regularite": 65,
+        "experience": 66
+      },
+      "overall": 59,
+      "personality": "PRUDENT",
+      "recruitment": {
+        "minRank": 71,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "theo-bertin-88",
+      "name": "Théo Bertin",
+      "country": "IT",
+      "flag": "🇮🇹",
+      "role": "POINTEUR",
+      "ranking": 88,
+      "tier": "NATIONAL",
+      "stats": {
+        "appoint": 60,
+        "precision": 61,
+        "tir": 71,
+        "regularite": 59,
+        "experience": 56
+      },
+      "overall": 61,
+      "personality": "PRUDENT",
+      "recruitment": {
+        "minRank": 74,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "kevin-ziani-92",
+      "name": "Kévin Ziani",
+      "country": "BJ",
+      "flag": "🇧🇯",
+      "role": "TIREUR",
+      "ranking": 92,
+      "tier": "NATIONAL",
+      "stats": {
+        "appoint": 88,
+        "precision": 78,
+        "tir": 92,
+        "regularite": 78,
+        "experience": 88
+      },
+      "overall": 85,
+      "personality": "OFFENSIF",
+      "recruitment": {
+        "minRank": 78,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "elias-vidal-95",
+      "name": "Élias Vidal",
+      "country": "TH",
+      "flag": "🇹🇭",
+      "role": "MILIEU",
+      "ranking": 95,
+      "tier": "NATIONAL",
+      "stats": {
+        "appoint": 64,
+        "precision": 57,
+        "tir": 54,
+        "regularite": 70,
+        "experience": 69
+      },
+      "overall": 63,
+      "personality": "EQUILIBRE",
+      "recruitment": {
+        "minRank": 80,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "quentin-navarro-99",
+      "name": "Quentin Navarro",
+      "country": "TN",
+      "flag": "🇹🇳",
+      "role": "POINTEUR",
+      "ranking": 99,
+      "tier": "NATIONAL",
+      "stats": {
+        "appoint": 78,
+        "precision": 78,
+        "tir": 64,
+        "regularite": 68,
+        "experience": 77
+      },
+      "overall": 73,
+      "personality": "PRUDENT",
+      "recruitment": {
+        "minRank": 84,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "bastien-collet-103",
+      "name": "Bastien Collet",
+      "country": "BE",
+      "flag": "🇧🇪",
+      "role": "TIREUR",
+      "ranking": 103,
+      "tier": "NATIONAL",
+      "stats": {
+        "appoint": 60,
+        "precision": 61,
+        "tir": 82,
+        "regularite": 69,
+        "experience": 70
+      },
+      "overall": 68,
+      "personality": "OFFENSIF",
+      "recruitment": {
+        "minRank": 87,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "kevin-giraud-107",
+      "name": "Kévin Giraud",
+      "country": "FR",
+      "flag": "🇫🇷",
+      "role": "MILIEU",
+      "ranking": 107,
+      "tier": "NATIONAL",
+      "stats": {
+        "appoint": 81,
+        "precision": 69,
+        "tir": 66,
+        "regularite": 79,
+        "experience": 79
+      },
+      "overall": 75,
+      "personality": "PRUDENT",
+      "recruitment": {
+        "minRank": 90,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "noam-vidal-111",
+      "name": "Noam Vidal",
+      "country": "BE",
+      "flag": "🇧🇪",
+      "role": "MILIEU",
+      "ranking": 111,
+      "tier": "NATIONAL",
+      "stats": {
+        "appoint": 75,
+        "precision": 71,
+        "tir": 84,
+        "regularite": 81,
+        "experience": 69
+      },
+      "overall": 76,
+      "personality": "PRUDENT",
+      "recruitment": {
+        "minRank": 94,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "victor-giraud-114",
+      "name": "Victor Giraud",
+      "country": "FR",
+      "flag": "🇫🇷",
+      "role": "POINTEUR",
+      "ranking": 114,
+      "tier": "NATIONAL",
+      "stats": {
+        "appoint": 92,
+        "precision": 71,
+        "tir": 82,
+        "regularite": 84,
+        "experience": 75
+      },
+      "overall": 81,
+      "personality": "EQUILIBRE",
+      "recruitment": {
+        "minRank": 96,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "antoine-ziani-118",
+      "name": "Antoine Ziani",
+      "country": "FR",
+      "flag": "🇫🇷",
+      "role": "POINTEUR",
+      "ranking": 118,
+      "tier": "NATIONAL",
+      "stats": {
+        "appoint": 92,
+        "precision": 76,
+        "tir": 84,
+        "regularite": 85,
+        "experience": 73
+      },
+      "overall": 82,
+      "personality": "PRUDENT",
+      "recruitment": {
+        "minRank": 100,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "yanis-delaunay-122",
+      "name": "Yanis Delaunay",
+      "country": "FR",
+      "flag": "🇫🇷",
+      "role": "MILIEU",
+      "ranking": 122,
+      "tier": "NATIONAL",
+      "stats": {
+        "appoint": 70,
+        "precision": 71,
+        "tir": 58,
+        "regularite": 70,
+        "experience": 66
+      },
+      "overall": 67,
+      "personality": "PRUDENT",
+      "recruitment": {
+        "minRank": 103,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "leo-fournier-126",
+      "name": "Léo Fournier",
+      "country": "ES",
+      "flag": "🇪🇸",
+      "role": "MILIEU",
+      "ranking": 126,
+      "tier": "NATIONAL",
+      "stats": {
+        "appoint": 77,
+        "precision": 74,
+        "tir": 77,
+        "regularite": 73,
+        "experience": 74
+      },
+      "overall": 75,
+      "personality": "OFFENSIF",
+      "recruitment": {
+        "minRank": 107,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "pablo-olivier-130",
+      "name": "Pablo Olivier",
+      "country": "FR",
+      "flag": "🇫🇷",
+      "role": "TIREUR",
+      "ranking": 130,
+      "tier": "NATIONAL",
+      "stats": {
+        "appoint": 73,
+        "precision": 69,
+        "tir": 77,
+        "regularite": 70,
+        "experience": 65
+      },
+      "overall": 71,
+      "personality": "PRUDENT",
+      "recruitment": {
+        "minRank": 110,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "gabin-olivier-133",
+      "name": "Gabin Olivier",
+      "country": "BE",
+      "flag": "🇧🇪",
+      "role": "MILIEU",
+      "ranking": 133,
+      "tier": "NATIONAL",
+      "stats": {
+        "appoint": 71,
+        "precision": 67,
+        "tir": 76,
+        "regularite": 86,
+        "experience": 71
+      },
+      "overall": 74,
+      "personality": "EQUILIBRE",
+      "recruitment": {
+        "minRank": 113,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "romain-ziani-137",
+      "name": "Romain Ziani",
+      "country": "BJ",
+      "flag": "🇧🇯",
+      "role": "TIREUR",
+      "ranking": 137,
+      "tier": "NATIONAL",
+      "stats": {
+        "appoint": 58,
+        "precision": 64,
+        "tir": 78,
+        "regularite": 69,
+        "experience": 73
+      },
+      "overall": 68,
+      "personality": "OFFENSIF",
+      "recruitment": {
+        "minRank": 116,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "gael-tessier-141",
+      "name": "Gaël Tessier",
+      "country": "ES",
+      "flag": "🇪🇸",
+      "role": "TIREUR",
+      "ranking": 141,
+      "tier": "NATIONAL",
+      "stats": {
+        "appoint": 74,
+        "precision": 62,
+        "tir": 66,
+        "regularite": 71,
+        "experience": 65
+      },
+      "overall": 68,
+      "personality": "PRUDENT",
+      "recruitment": {
+        "minRank": 119,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "noam-fournier-145",
+      "name": "Noam Fournier",
+      "country": "FR",
+      "flag": "🇫🇷",
+      "role": "TIREUR",
+      "ranking": 145,
+      "tier": "NATIONAL",
+      "stats": {
+        "appoint": 61,
+        "precision": 56,
+        "tir": 76,
+        "regularite": 62,
+        "experience": 53
+      },
+      "overall": 62,
+      "personality": "OFFENSIF",
+      "recruitment": {
+        "minRank": 123,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "kevin-iglesias-148",
+      "name": "Kévin Iglesias",
+      "country": "BJ",
+      "flag": "🇧🇯",
+      "role": "POINTEUR",
+      "ranking": 148,
+      "tier": "NATIONAL",
+      "stats": {
+        "appoint": 75,
+        "precision": 64,
+        "tir": 65,
+        "regularite": 64,
+        "experience": 60
+      },
+      "overall": 66,
+      "personality": "PRUDENT",
+      "recruitment": {
+        "minRank": 125,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "noam-delaunay-152",
+      "name": "Noam Delaunay",
+      "country": "ES",
+      "flag": "🇪🇸",
+      "role": "MILIEU",
+      "ranking": 152,
+      "tier": "NATIONAL",
+      "stats": {
+        "appoint": 50,
+        "precision": 53,
+        "tir": 55,
+        "regularite": 56,
+        "experience": 58
+      },
+      "overall": 54,
+      "personality": "PRUDENT",
+      "recruitment": {
+        "minRank": 129,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "dario-ziani-156",
+      "name": "Dario Ziani",
+      "country": "TH",
+      "flag": "🇹🇭",
+      "role": "TIREUR",
+      "ranking": 156,
+      "tier": "NATIONAL",
+      "stats": {
+        "appoint": 70,
+        "precision": 75,
+        "tir": 85,
+        "regularite": 72,
+        "experience": 61
+      },
+      "overall": 73,
+      "personality": "EQUILIBRE",
+      "recruitment": {
+        "minRank": 132,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "kevin-vidal-160",
+      "name": "Kévin Vidal",
+      "country": "IT",
+      "flag": "🇮🇹",
+      "role": "TIREUR",
+      "ranking": 160,
+      "tier": "NATIONAL",
+      "stats": {
+        "appoint": 76,
+        "precision": 67,
+        "tir": 80,
+        "regularite": 78,
+        "experience": 79
+      },
+      "overall": 76,
+      "personality": "OFFENSIF",
+      "recruitment": {
+        "minRank": 136,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "hamza-iglesias-164",
+      "name": "Hamza Iglesias",
+      "country": "TN",
+      "flag": "🇹🇳",
+      "role": "MILIEU",
+      "ranking": 164,
+      "tier": "NATIONAL",
+      "stats": {
+        "appoint": 61,
+        "precision": 74,
+        "tir": 59,
+        "regularite": 71,
+        "experience": 70
+      },
+      "overall": 67,
+      "personality": "EQUILIBRE",
+      "recruitment": {
+        "minRank": 139,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "bruno-soler-167",
+      "name": "Bruno Soler",
+      "country": "FR",
+      "flag": "🇫🇷",
+      "role": "MILIEU",
+      "ranking": 167,
+      "tier": "NATIONAL",
+      "stats": {
+        "appoint": 86,
+        "precision": 84,
+        "tir": 90,
+        "regularite": 92,
+        "experience": 73
+      },
+      "overall": 85,
+      "personality": "OFFENSIF",
+      "recruitment": {
+        "minRank": 141,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "kevin-garnier-171",
+      "name": "Kévin Garnier",
+      "country": "TH",
+      "flag": "🇹🇭",
+      "role": "POINTEUR",
+      "ranking": 171,
+      "tier": "NATIONAL",
+      "stats": {
+        "appoint": 82,
+        "precision": 78,
+        "tir": 90,
+        "regularite": 75,
+        "experience": 75
+      },
+      "overall": 80,
+      "personality": "PRUDENT",
+      "recruitment": {
+        "minRank": 145,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "elias-rossi-175",
+      "name": "Élias Rossi",
+      "country": "BE",
+      "flag": "🇧🇪",
+      "role": "TIREUR",
+      "ranking": 175,
+      "tier": "NATIONAL",
+      "stats": {
+        "appoint": 78,
+        "precision": 70,
+        "tir": 88,
+        "regularite": 80,
+        "experience": 73
+      },
+      "overall": 78,
+      "personality": "EQUILIBRE",
+      "recruitment": {
+        "minRank": 148,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "noam-martinelli-179",
+      "name": "Noam Martinelli",
+      "country": "TN",
+      "flag": "🇹🇳",
+      "role": "POINTEUR",
+      "ranking": 179,
+      "tier": "NATIONAL",
+      "stats": {
+        "appoint": 92,
+        "precision": 81,
+        "tir": 76,
+        "regularite": 77,
+        "experience": 90
+      },
+      "overall": 83,
+      "personality": "PRUDENT",
+      "recruitment": {
+        "minRank": 152,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "yanis-marquet-183",
+      "name": "Yanis Marquet",
+      "country": "TH",
+      "flag": "🇹🇭",
+      "role": "TIREUR",
+      "ranking": 183,
+      "tier": "NATIONAL",
+      "stats": {
+        "appoint": 78,
+        "precision": 75,
+        "tir": 76,
+        "regularite": 71,
+        "experience": 66
+      },
+      "overall": 73,
+      "personality": "PRUDENT",
+      "recruitment": {
+        "minRank": 155,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "ilan-silva-186",
+      "name": "Ilan Silva",
+      "country": "MG",
+      "flag": "🇲🇬",
+      "role": "MILIEU",
+      "ranking": 186,
+      "tier": "NATIONAL",
+      "stats": {
+        "appoint": 67,
+        "precision": 62,
+        "tir": 76,
+        "regularite": 73,
+        "experience": 59
+      },
+      "overall": 67,
+      "personality": "PRUDENT",
+      "recruitment": {
+        "minRank": 158,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "romain-barra-190",
+      "name": "Romain Barra",
+      "country": "TH",
+      "flag": "🇹🇭",
+      "role": "MILIEU",
+      "ranking": 190,
+      "tier": "NATIONAL",
+      "stats": {
+        "appoint": 75,
+        "precision": 70,
+        "tir": 59,
+        "regularite": 76,
+        "experience": 59
+      },
+      "overall": 68,
+      "personality": "OFFENSIF",
+      "recruitment": {
+        "minRank": 161,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "hector-perez-194",
+      "name": "Hector Perez",
+      "country": "FR",
+      "flag": "🇫🇷",
+      "role": "POINTEUR",
+      "ranking": 194,
+      "tier": "NATIONAL",
+      "stats": {
+        "appoint": 92,
+        "precision": 75,
+        "tir": 81,
+        "regularite": 83,
+        "experience": 81
+      },
+      "overall": 82,
+      "personality": "PRUDENT",
+      "recruitment": {
+        "minRank": 164,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "romain-collet-198",
+      "name": "Romain Collet",
+      "country": "ES",
+      "flag": "🇪🇸",
+      "role": "MILIEU",
+      "ranking": 198,
+      "tier": "NATIONAL",
+      "stats": {
+        "appoint": 66,
+        "precision": 67,
+        "tir": 68,
+        "regularite": 72,
+        "experience": 69
+      },
+      "overall": 68,
+      "personality": "OFFENSIF",
+      "recruitment": {
+        "minRank": 168,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "damien-perez-201",
+      "name": "Damien Perez",
+      "country": "BJ",
+      "flag": "🇧🇯",
+      "role": "MILIEU",
+      "ranking": 201,
+      "tier": "NATIONAL",
+      "stats": {
+        "appoint": 60,
+        "precision": 69,
+        "tir": 58,
+        "regularite": 69,
+        "experience": 55
+      },
+      "overall": 62,
+      "personality": "EQUILIBRE",
+      "recruitment": {
+        "minRank": 170,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "emile-collet-205",
+      "name": "Émile Collet",
+      "country": "TH",
+      "flag": "🇹🇭",
+      "role": "TIREUR",
+      "ranking": 205,
+      "tier": "NATIONAL",
+      "stats": {
+        "appoint": 63,
+        "precision": 68,
+        "tir": 70,
+        "regularite": 68,
+        "experience": 73
+      },
+      "overall": 68,
+      "personality": "OFFENSIF",
+      "recruitment": {
+        "minRank": 174,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "bruno-iglesias-209",
+      "name": "Bruno Iglesias",
+      "country": "FR",
+      "flag": "🇫🇷",
+      "role": "TIREUR",
+      "ranking": 209,
+      "tier": "NATIONAL",
+      "stats": {
+        "appoint": 75,
+        "precision": 73,
+        "tir": 92,
+        "regularite": 77,
+        "experience": 90
+      },
+      "overall": 81,
+      "personality": "EQUILIBRE",
+      "recruitment": {
+        "minRank": 177,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "samir-barra-213",
+      "name": "Samir Barra",
+      "country": "TN",
+      "flag": "🇹🇳",
+      "role": "MILIEU",
+      "ranking": 213,
+      "tier": "NATIONAL",
+      "stats": {
+        "appoint": 82,
+        "precision": 72,
+        "tir": 81,
+        "regularite": 74,
+        "experience": 68
+      },
+      "overall": 75,
+      "personality": "PRUDENT",
+      "recruitment": {
+        "minRank": 181,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "bruno-martinelli-217",
+      "name": "Bruno Martinelli",
+      "country": "BE",
+      "flag": "🇧🇪",
+      "role": "TIREUR",
+      "ranking": 217,
+      "tier": "NATIONAL",
+      "stats": {
+        "appoint": 66,
+        "precision": 59,
+        "tir": 81,
+        "regularite": 69,
+        "experience": 63
+      },
+      "overall": 68,
+      "personality": "PRUDENT",
+      "recruitment": {
+        "minRank": 184,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "gabin-jouve-220",
+      "name": "Gabin Jouve",
+      "country": "ES",
+      "flag": "🇪🇸",
+      "role": "TIREUR",
+      "ranking": 220,
+      "tier": "NATIONAL",
+      "stats": {
+        "appoint": 69,
+        "precision": 63,
+        "tir": 76,
+        "regularite": 63,
+        "experience": 58
+      },
+      "overall": 66,
+      "personality": "OFFENSIF",
+      "recruitment": {
+        "minRank": 187,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "victor-perez-224",
+      "name": "Victor Perez",
+      "country": "TN",
+      "flag": "🇹🇳",
+      "role": "MILIEU",
+      "ranking": 224,
+      "tier": "NATIONAL",
+      "stats": {
+        "appoint": 90,
+        "precision": 79,
+        "tir": 88,
+        "regularite": 80,
+        "experience": 78
+      },
+      "overall": 83,
+      "personality": "EQUILIBRE",
+      "recruitment": {
+        "minRank": 190,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "romain-esteve-228",
+      "name": "Romain Esteve",
+      "country": "FR",
+      "flag": "🇫🇷",
+      "role": "POINTEUR",
+      "ranking": 228,
+      "tier": "NATIONAL",
+      "stats": {
+        "appoint": 75,
+        "precision": 53,
+        "tir": 62,
+        "regularite": 55,
+        "experience": 63
+      },
+      "overall": 62,
+      "personality": "EQUILIBRE",
+      "recruitment": {
+        "minRank": 193,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "gael-silva-232",
+      "name": "Gaël Silva",
+      "country": "FR",
+      "flag": "🇫🇷",
+      "role": "TIREUR",
+      "ranking": 232,
+      "tier": "NATIONAL",
+      "stats": {
+        "appoint": 75,
+        "precision": 73,
+        "tir": 77,
+        "regularite": 75,
+        "experience": 83
+      },
+      "overall": 77,
+      "personality": "PRUDENT",
+      "recruitment": {
+        "minRank": 197,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "felix-collet-236",
+      "name": "Félix Collet",
+      "country": "FR",
+      "flag": "🇫🇷",
+      "role": "MILIEU",
+      "ranking": 236,
+      "tier": "NATIONAL",
+      "stats": {
+        "appoint": 66,
+        "precision": 61,
+        "tir": 67,
+        "regularite": 71,
+        "experience": 72
+      },
+      "overall": 67,
+      "personality": "PRUDENT",
+      "recruitment": {
+        "minRank": 200,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "romain-rossi-239",
+      "name": "Romain Rossi",
+      "country": "IT",
+      "flag": "🇮🇹",
+      "role": "MILIEU",
+      "ranking": 239,
+      "tier": "NATIONAL",
+      "stats": {
+        "appoint": 84,
+        "precision": 82,
+        "tir": 71,
+        "regularite": 78,
+        "experience": 72
+      },
+      "overall": 77,
+      "personality": "EQUILIBRE",
+      "recruitment": {
+        "minRank": 203,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "cedric-jouve-243",
+      "name": "Cédric Jouve",
+      "country": "ES",
+      "flag": "🇪🇸",
+      "role": "TIREUR",
+      "ranking": 243,
+      "tier": "NATIONAL",
+      "stats": {
+        "appoint": 61,
+        "precision": 67,
+        "tir": 75,
+        "regularite": 66,
+        "experience": 73
+      },
+      "overall": 68,
+      "personality": "EQUILIBRE",
+      "recruitment": {
+        "minRank": 206,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "gabin-ravel-247",
+      "name": "Gabin Ravel",
+      "country": "MG",
+      "flag": "🇲🇬",
+      "role": "MILIEU",
+      "ranking": 247,
+      "tier": "NATIONAL",
+      "stats": {
+        "appoint": 64,
+        "precision": 66,
+        "tir": 72,
+        "regularite": 69,
+        "experience": 70
+      },
+      "overall": 68,
+      "personality": "EQUILIBRE",
+      "recruitment": {
+        "minRank": 209,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "noam-collet-251",
+      "name": "Noam Collet",
+      "country": "BJ",
+      "flag": "🇧🇯",
+      "role": "MILIEU",
+      "ranking": 251,
+      "tier": "NATIONAL",
+      "stats": {
+        "appoint": 59,
+        "precision": 70,
+        "tir": 72,
+        "regularite": 72,
+        "experience": 59
+      },
+      "overall": 66,
+      "personality": "EQUILIBRE",
+      "recruitment": {
+        "minRank": 213,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "ilan-keller-255",
+      "name": "Ilan Keller",
+      "country": "FR",
+      "flag": "🇫🇷",
+      "role": "MILIEU",
+      "ranking": 255,
+      "tier": "NATIONAL",
+      "stats": {
+        "appoint": 71,
+        "precision": 66,
+        "tir": 60,
+        "regularite": 72,
+        "experience": 65
+      },
+      "overall": 67,
+      "personality": "PRUDENT",
+      "recruitment": {
+        "minRank": 216,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "kevin-esteve-258",
+      "name": "Kévin Esteve",
+      "country": "TH",
+      "flag": "🇹🇭",
+      "role": "POINTEUR",
+      "ranking": 258,
+      "tier": "NATIONAL",
+      "stats": {
+        "appoint": 73,
+        "precision": 72,
+        "tir": 76,
+        "regularite": 65,
+        "experience": 69
+      },
+      "overall": 71,
+      "personality": "PRUDENT",
+      "recruitment": {
+        "minRank": 219,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "romain-marquet-262",
+      "name": "Romain Marquet",
+      "country": "BE",
+      "flag": "🇧🇪",
+      "role": "TIREUR",
+      "ranking": 262,
+      "tier": "NATIONAL",
+      "stats": {
+        "appoint": 72,
+        "precision": 66,
+        "tir": 83,
+        "regularite": 78,
+        "experience": 79
+      },
+      "overall": 76,
+      "personality": "OFFENSIF",
+      "recruitment": {
+        "minRank": 222,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "gael-navarro-266",
+      "name": "Gaël Navarro",
+      "country": "BE",
+      "flag": "🇧🇪",
+      "role": "TIREUR",
+      "ranking": 266,
+      "tier": "NATIONAL",
+      "stats": {
+        "appoint": 60,
+        "precision": 72,
+        "tir": 70,
+        "regularite": 61,
+        "experience": 67
+      },
+      "overall": 66,
+      "personality": "OFFENSIF",
+      "recruitment": {
+        "minRank": 226,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "antoine-iglesias-270",
+      "name": "Antoine Iglesias",
+      "country": "FR",
+      "flag": "🇫🇷",
+      "role": "MILIEU",
+      "ranking": 270,
+      "tier": "NATIONAL",
+      "stats": {
+        "appoint": 80,
+        "precision": 83,
+        "tir": 81,
+        "regularite": 79,
+        "experience": 67
+      },
+      "overall": 78,
+      "personality": "PRUDENT",
+      "recruitment": {
+        "minRank": 229,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "cedric-haddad-273",
+      "name": "Cédric Haddad",
+      "country": "FR",
+      "flag": "🇫🇷",
+      "role": "TIREUR",
+      "ranking": 273,
+      "tier": "NATIONAL",
+      "stats": {
+        "appoint": 67,
+        "precision": 58,
+        "tir": 69,
+        "regularite": 71,
+        "experience": 71
+      },
+      "overall": 67,
+      "personality": "OFFENSIF",
+      "recruitment": {
+        "minRank": 232,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "ilan-vidal-277",
+      "name": "Ilan Vidal",
+      "country": "BE",
+      "flag": "🇧🇪",
+      "role": "POINTEUR",
+      "ranking": 277,
+      "tier": "NATIONAL",
+      "stats": {
+        "appoint": 79,
+        "precision": 67,
+        "tir": 68,
+        "regularite": 70,
+        "experience": 76
+      },
+      "overall": 72,
+      "personality": "PRUDENT",
+      "recruitment": {
+        "minRank": 235,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "oscar-garnier-281",
+      "name": "Oscar Garnier",
+      "country": "BJ",
+      "flag": "🇧🇯",
+      "role": "TIREUR",
+      "ranking": 281,
+      "tier": "NATIONAL",
+      "stats": {
+        "appoint": 63,
+        "precision": 57,
+        "tir": 78,
+        "regularite": 62,
+        "experience": 70
+      },
+      "overall": 66,
+      "personality": "OFFENSIF",
+      "recruitment": {
+        "minRank": 238,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "samir-silva-285",
+      "name": "Samir Silva",
+      "country": "FR",
+      "flag": "🇫🇷",
+      "role": "POINTEUR",
+      "ranking": 285,
+      "tier": "NATIONAL",
+      "stats": {
+        "appoint": 64,
+        "precision": 63,
+        "tir": 49,
+        "regularite": 53,
+        "experience": 66
+      },
+      "overall": 59,
+      "personality": "OFFENSIF",
+      "recruitment": {
+        "minRank": 242,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "quentin-haddad-289",
+      "name": "Quentin Haddad",
+      "country": "MG",
+      "flag": "🇲🇬",
+      "role": "TIREUR",
+      "ranking": 289,
+      "tier": "NATIONAL",
+      "stats": {
+        "appoint": 80,
+        "precision": 81,
+        "tir": 87,
+        "regularite": 77,
+        "experience": 85
+      },
+      "overall": 82,
+      "personality": "EQUILIBRE",
+      "recruitment": {
+        "minRank": 245,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "kevin-collet-292",
+      "name": "Kévin Collet",
+      "country": "ES",
+      "flag": "🇪🇸",
+      "role": "POINTEUR",
+      "ranking": 292,
+      "tier": "NATIONAL",
+      "stats": {
+        "appoint": 91,
+        "precision": 74,
+        "tir": 68,
+        "regularite": 78,
+        "experience": 80
+      },
+      "overall": 78,
+      "personality": "EQUILIBRE",
+      "recruitment": {
+        "minRank": 248,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "emile-soler-296",
+      "name": "Émile Soler",
+      "country": "MG",
+      "flag": "🇲🇬",
+      "role": "POINTEUR",
+      "ranking": 296,
+      "tier": "NATIONAL",
+      "stats": {
+        "appoint": 75,
+        "precision": 77,
+        "tir": 71,
+        "regularite": 66,
+        "experience": 66
+      },
+      "overall": 71,
+      "personality": "OFFENSIF",
+      "recruitment": {
+        "minRank": 251,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "clement-ravel-300",
+      "name": "Clément Ravel",
+      "country": "TH",
+      "flag": "🇹🇭",
+      "role": "TIREUR",
+      "ranking": 300,
+      "tier": "NATIONAL",
+      "stats": {
+        "appoint": 75,
+        "precision": 82,
+        "tir": 91,
+        "regularite": 69,
+        "experience": 82
+      },
+      "overall": 80,
+      "personality": "OFFENSIF",
+      "recruitment": {
+        "minRank": 255,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "theo-keller-301",
+      "name": "Théo Keller",
+      "country": "MG",
+      "flag": "🇲🇬",
+      "role": "MILIEU",
+      "ranking": 301,
+      "tier": "REGIONAL",
+      "stats": {
+        "appoint": 60,
+        "precision": 62,
+        "tir": 54,
+        "regularite": 58,
+        "experience": 67
+      },
+      "overall": 60,
+      "personality": "PRUDENT",
+      "recruitment": {
+        "minRank": 255,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "cedric-iglesias-309",
+      "name": "Cédric Iglesias",
+      "country": "TH",
+      "flag": "🇹🇭",
+      "role": "TIREUR",
+      "ranking": 309,
+      "tier": "REGIONAL",
+      "stats": {
+        "appoint": 68,
+        "precision": 60,
+        "tir": 81,
+        "regularite": 61,
+        "experience": 56
+      },
+      "overall": 65,
+      "personality": "EQUILIBRE",
+      "recruitment": {
+        "minRank": 262,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "hector-garnier-318",
+      "name": "Hector Garnier",
+      "country": "TN",
+      "flag": "🇹🇳",
+      "role": "TIREUR",
+      "ranking": 318,
+      "tier": "REGIONAL",
+      "stats": {
+        "appoint": 72,
+        "precision": 61,
+        "tir": 78,
+        "regularite": 61,
+        "experience": 64
+      },
+      "overall": 67,
+      "personality": "OFFENSIF",
+      "recruitment": {
+        "minRank": 270,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "pablo-esteve-326",
+      "name": "Pablo Esteve",
+      "country": "TH",
+      "flag": "🇹🇭",
+      "role": "TIREUR",
+      "ranking": 326,
+      "tier": "REGIONAL",
+      "stats": {
+        "appoint": 65,
+        "precision": 67,
+        "tir": 81,
+        "regularite": 63,
+        "experience": 72
+      },
+      "overall": 70,
+      "personality": "OFFENSIF",
+      "recruitment": {
+        "minRank": 277,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "bruno-silva-335",
+      "name": "Bruno Silva",
+      "country": "IT",
+      "flag": "🇮🇹",
+      "role": "POINTEUR",
+      "ranking": 335,
+      "tier": "REGIONAL",
+      "stats": {
+        "appoint": 72,
+        "precision": 53,
+        "tir": 51,
+        "regularite": 52,
+        "experience": 66
+      },
+      "overall": 59,
+      "personality": "PRUDENT",
+      "recruitment": {
+        "minRank": 284,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "damien-ziani-343",
+      "name": "Damien Ziani",
+      "country": "FR",
+      "flag": "🇫🇷",
+      "role": "MILIEU",
+      "ranking": 343,
+      "tier": "REGIONAL",
+      "stats": {
+        "appoint": 63,
+        "precision": 60,
+        "tir": 57,
+        "regularite": 65,
+        "experience": 71
+      },
+      "overall": 63,
+      "personality": "OFFENSIF",
+      "recruitment": {
+        "minRank": 291,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "leo-esteve-352",
+      "name": "Léo Esteve",
+      "country": "MG",
+      "flag": "🇲🇬",
+      "role": "POINTEUR",
+      "ranking": 352,
+      "tier": "REGIONAL",
+      "stats": {
+        "appoint": 42,
+        "precision": 40,
+        "tir": 37,
+        "regularite": 42,
+        "experience": 49
+      },
+      "overall": 42,
+      "personality": "OFFENSIF",
+      "recruitment": {
+        "minRank": 299,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "adrien-jouve-360",
+      "name": "Adrien Jouve",
+      "country": "IT",
+      "flag": "🇮🇹",
+      "role": "TIREUR",
+      "ranking": 360,
+      "tier": "REGIONAL",
+      "stats": {
+        "appoint": 57,
+        "precision": 43,
+        "tir": 60,
+        "regularite": 52,
+        "experience": 53
+      },
+      "overall": 53,
+      "personality": "PRUDENT",
+      "recruitment": {
+        "minRank": 306,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "gabin-keller-368",
+      "name": "Gabin Keller",
+      "country": "FR",
+      "flag": "🇫🇷",
+      "role": "TIREUR",
+      "ranking": 368,
+      "tier": "REGIONAL",
+      "stats": {
+        "appoint": 46,
+        "precision": 61,
+        "tir": 51,
+        "regularite": 47,
+        "experience": 48
+      },
+      "overall": 51,
+      "personality": "EQUILIBRE",
+      "recruitment": {
+        "minRank": 312,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "samir-delaunay-377",
+      "name": "Samir Delaunay",
+      "country": "ES",
+      "flag": "🇪🇸",
+      "role": "MILIEU",
+      "ranking": 377,
+      "tier": "REGIONAL",
+      "stats": {
+        "appoint": 53,
+        "precision": 59,
+        "tir": 68,
+        "regularite": 63,
+        "experience": 55
+      },
+      "overall": 60,
+      "personality": "EQUILIBRE",
+      "recruitment": {
+        "minRank": 320,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "yanis-navarro-385",
+      "name": "Yanis Navarro",
+      "country": "IT",
+      "flag": "🇮🇹",
+      "role": "POINTEUR",
+      "ranking": 385,
+      "tier": "REGIONAL",
+      "stats": {
+        "appoint": 50,
+        "precision": 52,
+        "tir": 41,
+        "regularite": 43,
+        "experience": 41
+      },
+      "overall": 45,
+      "personality": "OFFENSIF",
+      "recruitment": {
+        "minRank": 327,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "bruno-navarro-394",
+      "name": "Bruno Navarro",
+      "country": "MG",
+      "flag": "🇲🇬",
+      "role": "MILIEU",
+      "ranking": 394,
+      "tier": "REGIONAL",
+      "stats": {
+        "appoint": 57,
+        "precision": 61,
+        "tir": 70,
+        "regularite": 69,
+        "experience": 65
+      },
+      "overall": 64,
+      "personality": "OFFENSIF",
+      "recruitment": {
+        "minRank": 334,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "theo-perez-402",
+      "name": "Théo Perez",
+      "country": "FR",
+      "flag": "🇫🇷",
+      "role": "POINTEUR",
+      "ranking": 402,
+      "tier": "REGIONAL",
+      "stats": {
+        "appoint": 65,
+        "precision": 56,
+        "tir": 53,
+        "regularite": 59,
+        "experience": 57
+      },
+      "overall": 58,
+      "personality": "PRUDENT",
+      "recruitment": {
+        "minRank": 341,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "fabio-garnier-410",
+      "name": "Fabio Garnier",
+      "country": "TN",
+      "flag": "🇹🇳",
+      "role": "POINTEUR",
+      "ranking": 410,
+      "tier": "REGIONAL",
+      "stats": {
+        "appoint": 77,
+        "precision": 58,
+        "tir": 73,
+        "regularite": 61,
+        "experience": 65
+      },
+      "overall": 67,
+      "personality": "EQUILIBRE",
+      "recruitment": {
+        "minRank": 348,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "bruno-lombardi-419",
+      "name": "Bruno Lombardi",
+      "country": "TN",
+      "flag": "🇹🇳",
+      "role": "POINTEUR",
+      "ranking": 419,
+      "tier": "REGIONAL",
+      "stats": {
+        "appoint": 67,
+        "precision": 59,
+        "tir": 51,
+        "regularite": 59,
+        "experience": 55
+      },
+      "overall": 58,
+      "personality": "EQUILIBRE",
+      "recruitment": {
+        "minRank": 356,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "elias-dumont-427",
+      "name": "Élias Dumont",
+      "country": "FR",
+      "flag": "🇫🇷",
+      "role": "TIREUR",
+      "ranking": 427,
+      "tier": "REGIONAL",
+      "stats": {
+        "appoint": 47,
+        "precision": 51,
+        "tir": 54,
+        "regularite": 47,
+        "experience": 54
+      },
+      "overall": 51,
+      "personality": "PRUDENT",
+      "recruitment": {
+        "minRank": 362,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "hamza-marquet-436",
+      "name": "Hamza Marquet",
+      "country": "TH",
+      "flag": "🇹🇭",
+      "role": "MILIEU",
+      "ranking": 436,
+      "tier": "REGIONAL",
+      "stats": {
+        "appoint": 61,
+        "precision": 56,
+        "tir": 66,
+        "regularite": 67,
+        "experience": 64
+      },
+      "overall": 63,
+      "personality": "OFFENSIF",
+      "recruitment": {
+        "minRank": 370,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "emile-bertin-444",
+      "name": "Émile Bertin",
+      "country": "TH",
+      "flag": "🇹🇭",
+      "role": "TIREUR",
+      "ranking": 444,
+      "tier": "REGIONAL",
+      "stats": {
+        "appoint": 40,
+        "precision": 42,
+        "tir": 39,
+        "regularite": 35,
+        "experience": 50
+      },
+      "overall": 41,
+      "personality": "PRUDENT",
+      "recruitment": {
+        "minRank": 377,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "clement-rossi-453",
+      "name": "Clément Rossi",
+      "country": "MG",
+      "flag": "🇲🇬",
+      "role": "TIREUR",
+      "ranking": 453,
+      "tier": "REGIONAL",
+      "stats": {
+        "appoint": 44,
+        "precision": 47,
+        "tir": 57,
+        "regularite": 41,
+        "experience": 49
+      },
+      "overall": 48,
+      "personality": "PRUDENT",
+      "recruitment": {
+        "minRank": 385,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "elias-faure-461",
+      "name": "Élias Faure",
+      "country": "BE",
+      "flag": "🇧🇪",
+      "role": "POINTEUR",
+      "ranking": 461,
+      "tier": "REGIONAL",
+      "stats": {
+        "appoint": 39,
+        "precision": 42,
+        "tir": 30,
+        "regularite": 33,
+        "experience": 46
+      },
+      "overall": 38,
+      "personality": "EQUILIBRE",
+      "recruitment": {
+        "minRank": 391,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "bruno-carlier-469",
+      "name": "Bruno Carlier",
+      "country": "BJ",
+      "flag": "🇧🇯",
+      "role": "TIREUR",
+      "ranking": 469,
+      "tier": "REGIONAL",
+      "stats": {
+        "appoint": 42,
+        "precision": 37,
+        "tir": 47,
+        "regularite": 41,
+        "experience": 39
+      },
+      "overall": 41,
+      "personality": "EQUILIBRE",
+      "recruitment": {
+        "minRank": 398,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "antoine-faure-478",
+      "name": "Antoine Faure",
+      "country": "MG",
+      "flag": "🇲🇬",
+      "role": "TIREUR",
+      "ranking": 478,
+      "tier": "REGIONAL",
+      "stats": {
+        "appoint": 48,
+        "precision": 44,
+        "tir": 58,
+        "regularite": 51,
+        "experience": 46
+      },
+      "overall": 49,
+      "personality": "EQUILIBRE",
+      "recruitment": {
+        "minRank": 406,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "bastien-perez-486",
+      "name": "Bastien Perez",
+      "country": "IT",
+      "flag": "🇮🇹",
+      "role": "TIREUR",
+      "ranking": 486,
+      "tier": "REGIONAL",
+      "stats": {
+        "appoint": 48,
+        "precision": 41,
+        "tir": 43,
+        "regularite": 45,
+        "experience": 49
+      },
+      "overall": 45,
+      "personality": "OFFENSIF",
+      "recruitment": {
+        "minRank": 413,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "marius-perez-495",
+      "name": "Marius Perez",
+      "country": "TH",
+      "flag": "🇹🇭",
+      "role": "POINTEUR",
+      "ranking": 495,
+      "tier": "REGIONAL",
+      "stats": {
+        "appoint": 57,
+        "precision": 57,
+        "tir": 44,
+        "regularite": 54,
+        "experience": 58
+      },
+      "overall": 54,
+      "personality": "PRUDENT",
+      "recruitment": {
+        "minRank": 420,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "jules-haddad-503",
+      "name": "Jules Haddad",
+      "country": "TH",
+      "flag": "🇹🇭",
+      "role": "MILIEU",
+      "ranking": 503,
+      "tier": "REGIONAL",
+      "stats": {
+        "appoint": 50,
+        "precision": 38,
+        "tir": 47,
+        "regularite": 53,
+        "experience": 53
+      },
+      "overall": 48,
+      "personality": "PRUDENT",
+      "recruitment": {
+        "minRank": 427,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "quentin-dumont-512",
+      "name": "Quentin Dumont",
+      "country": "BJ",
+      "flag": "🇧🇯",
+      "role": "MILIEU",
+      "ranking": 512,
+      "tier": "REGIONAL",
+      "stats": {
+        "appoint": 60,
+        "precision": 57,
+        "tir": 70,
+        "regularite": 63,
+        "experience": 68
+      },
+      "overall": 64,
+      "personality": "EQUILIBRE",
+      "recruitment": {
+        "minRank": 435,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "damien-dumont-520",
+      "name": "Damien Dumont",
+      "country": "FR",
+      "flag": "🇫🇷",
+      "role": "MILIEU",
+      "ranking": 520,
+      "tier": "REGIONAL",
+      "stats": {
+        "appoint": 41,
+        "precision": 49,
+        "tir": 46,
+        "regularite": 48,
+        "experience": 49
+      },
+      "overall": 47,
+      "personality": "PRUDENT",
+      "recruitment": {
+        "minRank": 442,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "quentin-iglesias-528",
+      "name": "Quentin Iglesias",
+      "country": "BE",
+      "flag": "🇧🇪",
+      "role": "POINTEUR",
+      "ranking": 528,
+      "tier": "REGIONAL",
+      "stats": {
+        "appoint": 49,
+        "precision": 39,
+        "tir": 42,
+        "regularite": 50,
+        "experience": 54
+      },
+      "overall": 47,
+      "personality": "PRUDENT",
+      "recruitment": {
+        "minRank": 448,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "bastien-lombardi-537",
+      "name": "Bastien Lombardi",
+      "country": "MG",
+      "flag": "🇲🇬",
+      "role": "TIREUR",
+      "ranking": 537,
+      "tier": "REGIONAL",
+      "stats": {
+        "appoint": 50,
+        "precision": 56,
+        "tir": 75,
+        "regularite": 61,
+        "experience": 64
+      },
+      "overall": 61,
+      "personality": "PRUDENT",
+      "recruitment": {
+        "minRank": 456,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "jules-carlier-545",
+      "name": "Jules Carlier",
+      "country": "FR",
+      "flag": "🇫🇷",
+      "role": "TIREUR",
+      "ranking": 545,
+      "tier": "REGIONAL",
+      "stats": {
+        "appoint": 39,
+        "precision": 38,
+        "tir": 37,
+        "regularite": 37,
+        "experience": 32
+      },
+      "overall": 37,
+      "personality": "EQUILIBRE",
+      "recruitment": {
+        "minRank": 463,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "clement-faure-554",
+      "name": "Clément Faure",
+      "country": "TH",
+      "flag": "🇹🇭",
+      "role": "POINTEUR",
+      "ranking": 554,
+      "tier": "REGIONAL",
+      "stats": {
+        "appoint": 69,
+        "precision": 54,
+        "tir": 60,
+        "regularite": 61,
+        "experience": 47
+      },
+      "overall": 58,
+      "personality": "OFFENSIF",
+      "recruitment": {
+        "minRank": 470,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "leo-haddad-562",
+      "name": "Léo Haddad",
+      "country": "TH",
+      "flag": "🇹🇭",
+      "role": "MILIEU",
+      "ranking": 562,
+      "tier": "REGIONAL",
+      "stats": {
+        "appoint": 45,
+        "precision": 51,
+        "tir": 43,
+        "regularite": 50,
+        "experience": 56
+      },
+      "overall": 49,
+      "personality": "EQUILIBRE",
+      "recruitment": {
+        "minRank": 477,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "romain-carlier-570",
+      "name": "Romain Carlier",
+      "country": "MG",
+      "flag": "🇲🇬",
+      "role": "TIREUR",
+      "ranking": 570,
+      "tier": "REGIONAL",
+      "stats": {
+        "appoint": 53,
+        "precision": 54,
+        "tir": 61,
+        "regularite": 52,
+        "experience": 65
+      },
+      "overall": 57,
+      "personality": "PRUDENT",
+      "recruitment": {
+        "minRank": 484,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "quentin-soler-579",
+      "name": "Quentin Soler",
+      "country": "BE",
+      "flag": "🇧🇪",
+      "role": "MILIEU",
+      "ranking": 579,
+      "tier": "REGIONAL",
+      "stats": {
+        "appoint": 42,
+        "precision": 52,
+        "tir": 38,
+        "regularite": 44,
+        "experience": 48
+      },
+      "overall": 45,
+      "personality": "PRUDENT",
+      "recruitment": {
+        "minRank": 492,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "elias-tessier-587",
+      "name": "Élias Tessier",
+      "country": "TH",
+      "flag": "🇹🇭",
+      "role": "POINTEUR",
+      "ranking": 587,
+      "tier": "REGIONAL",
+      "stats": {
+        "appoint": 77,
+        "precision": 60,
+        "tir": 64,
+        "regularite": 59,
+        "experience": 70
+      },
+      "overall": 66,
+      "personality": "OFFENSIF",
+      "recruitment": {
+        "minRank": 498,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "dario-esteve-596",
+      "name": "Dario Esteve",
+      "country": "FR",
+      "flag": "🇫🇷",
+      "role": "MILIEU",
+      "ranking": 596,
+      "tier": "REGIONAL",
+      "stats": {
+        "appoint": 46,
+        "precision": 45,
+        "tir": 48,
+        "regularite": 43,
+        "experience": 47
+      },
+      "overall": 46,
+      "personality": "EQUILIBRE",
+      "recruitment": {
+        "minRank": 506,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "yanis-tessier-604",
+      "name": "Yanis Tessier",
+      "country": "FR",
+      "flag": "🇫🇷",
+      "role": "TIREUR",
+      "ranking": 604,
+      "tier": "REGIONAL",
+      "stats": {
+        "appoint": 44,
+        "precision": 41,
+        "tir": 55,
+        "regularite": 53,
+        "experience": 44
+      },
+      "overall": 47,
+      "personality": "EQUILIBRE",
+      "recruitment": {
+        "minRank": 513,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "theo-ziani-613",
+      "name": "Théo Ziani",
+      "country": "BJ",
+      "flag": "🇧🇯",
+      "role": "TIREUR",
+      "ranking": 613,
+      "tier": "REGIONAL",
+      "stats": {
+        "appoint": 52,
+        "precision": 57,
+        "tir": 70,
+        "regularite": 49,
+        "experience": 47
+      },
+      "overall": 55,
+      "personality": "EQUILIBRE",
+      "recruitment": {
+        "minRank": 521,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "hamza-ravel-621",
+      "name": "Hamza Ravel",
+      "country": "FR",
+      "flag": "🇫🇷",
+      "role": "TIREUR",
+      "ranking": 621,
+      "tier": "REGIONAL",
+      "stats": {
+        "appoint": 61,
+        "precision": 47,
+        "tir": 56,
+        "regularite": 55,
+        "experience": 58
+      },
+      "overall": 55,
+      "personality": "PRUDENT",
+      "recruitment": {
+        "minRank": 527,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "theo-rossi-629",
+      "name": "Théo Rossi",
+      "country": "MG",
+      "flag": "🇲🇬",
+      "role": "POINTEUR",
+      "ranking": 629,
+      "tier": "REGIONAL",
+      "stats": {
+        "appoint": 42,
+        "precision": 32,
+        "tir": 49,
+        "regularite": 41,
+        "experience": 40
+      },
+      "overall": 41,
+      "personality": "PRUDENT",
+      "recruitment": {
+        "minRank": 534,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "noam-iglesias-638",
+      "name": "Noam Iglesias",
+      "country": "FR",
+      "flag": "🇫🇷",
+      "role": "MILIEU",
+      "ranking": 638,
+      "tier": "REGIONAL",
+      "stats": {
+        "appoint": 57,
+        "precision": 53,
+        "tir": 59,
+        "regularite": 65,
+        "experience": 48
+      },
+      "overall": 56,
+      "personality": "EQUILIBRE",
+      "recruitment": {
+        "minRank": 542,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "samir-dumont-646",
+      "name": "Samir Dumont",
+      "country": "FR",
+      "flag": "🇫🇷",
+      "role": "POINTEUR",
+      "ranking": 646,
+      "tier": "REGIONAL",
+      "stats": {
+        "appoint": 72,
+        "precision": 70,
+        "tir": 56,
+        "regularite": 70,
+        "experience": 67
+      },
+      "overall": 67,
+      "personality": "EQUILIBRE",
+      "recruitment": {
+        "minRank": 549,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "oscar-soler-655",
+      "name": "Oscar Soler",
+      "country": "MG",
+      "flag": "🇲🇬",
+      "role": "TIREUR",
+      "ranking": 655,
+      "tier": "REGIONAL",
+      "stats": {
+        "appoint": 64,
+        "precision": 64,
+        "tir": 75,
+        "regularite": 68,
+        "experience": 68
+      },
+      "overall": 68,
+      "personality": "EQUILIBRE",
+      "recruitment": {
+        "minRank": 556,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "jules-delaunay-663",
+      "name": "Jules Delaunay",
+      "country": "BE",
+      "flag": "🇧🇪",
+      "role": "POINTEUR",
+      "ranking": 663,
+      "tier": "REGIONAL",
+      "stats": {
+        "appoint": 56,
+        "precision": 33,
+        "tir": 37,
+        "regularite": 37,
+        "experience": 41
+      },
+      "overall": 41,
+      "personality": "OFFENSIF",
+      "recruitment": {
+        "minRank": 563,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "cedric-martinelli-672",
+      "name": "Cédric Martinelli",
+      "country": "IT",
+      "flag": "🇮🇹",
+      "role": "TIREUR",
+      "ranking": 672,
+      "tier": "REGIONAL",
+      "stats": {
+        "appoint": 60,
+        "precision": 56,
+        "tir": 59,
+        "regularite": 55,
+        "experience": 62
+      },
+      "overall": 58,
+      "personality": "PRUDENT",
+      "recruitment": {
+        "minRank": 571,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "victor-silva-680",
+      "name": "Victor Silva",
+      "country": "TN",
+      "flag": "🇹🇳",
+      "role": "POINTEUR",
+      "ranking": 680,
+      "tier": "REGIONAL",
+      "stats": {
+        "appoint": 72,
+        "precision": 58,
+        "tir": 64,
+        "regularite": 58,
+        "experience": 60
+      },
+      "overall": 62,
+      "personality": "OFFENSIF",
+      "recruitment": {
+        "minRank": 578,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "ilan-lombardi-688",
+      "name": "Ilan Lombardi",
+      "country": "MG",
+      "flag": "🇲🇬",
+      "role": "POINTEUR",
+      "ranking": 688,
+      "tier": "REGIONAL",
+      "stats": {
+        "appoint": 57,
+        "precision": 44,
+        "tir": 34,
+        "regularite": 47,
+        "experience": 40
+      },
+      "overall": 44,
+      "personality": "EQUILIBRE",
+      "recruitment": {
+        "minRank": 584,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "fabio-delaunay-697",
+      "name": "Fabio Delaunay",
+      "country": "TN",
+      "flag": "🇹🇳",
+      "role": "TIREUR",
+      "ranking": 697,
+      "tier": "REGIONAL",
+      "stats": {
+        "appoint": 51,
+        "precision": 62,
+        "tir": 65,
+        "regularite": 59,
+        "experience": 62
+      },
+      "overall": 60,
+      "personality": "OFFENSIF",
+      "recruitment": {
+        "minRank": 592,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "bastien-vidal-705",
+      "name": "Bastien Vidal",
+      "country": "ES",
+      "flag": "🇪🇸",
+      "role": "TIREUR",
+      "ranking": 705,
+      "tier": "REGIONAL",
+      "stats": {
+        "appoint": 46,
+        "precision": 41,
+        "tir": 53,
+        "regularite": 36,
+        "experience": 43
+      },
+      "overall": 44,
+      "personality": "PRUDENT",
+      "recruitment": {
+        "minRank": 599,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "antoine-weber-714",
+      "name": "Antoine Weber",
+      "country": "TH",
+      "flag": "🇹🇭",
+      "role": "TIREUR",
+      "ranking": 714,
+      "tier": "REGIONAL",
+      "stats": {
+        "appoint": 54,
+        "precision": 50,
+        "tir": 55,
+        "regularite": 52,
+        "experience": 50
+      },
+      "overall": 52,
+      "personality": "OFFENSIF",
+      "recruitment": {
+        "minRank": 606,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "hector-aubert-722",
+      "name": "Hector Aubert",
+      "country": "TN",
+      "flag": "🇹🇳",
+      "role": "TIREUR",
+      "ranking": 722,
+      "tier": "REGIONAL",
+      "stats": {
+        "appoint": 54,
+        "precision": 54,
+        "tir": 55,
+        "regularite": 52,
+        "experience": 60
+      },
+      "overall": 55,
+      "personality": "EQUILIBRE",
+      "recruitment": {
+        "minRank": 613,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "leo-delaunay-731",
+      "name": "Léo Delaunay",
+      "country": "FR",
+      "flag": "🇫🇷",
+      "role": "POINTEUR",
+      "ranking": 731,
+      "tier": "REGIONAL",
+      "stats": {
+        "appoint": 49,
+        "precision": 42,
+        "tir": 50,
+        "regularite": 47,
+        "experience": 48
+      },
+      "overall": 47,
+      "personality": "EQUILIBRE",
+      "recruitment": {
+        "minRank": 621,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "emile-fournier-739",
+      "name": "Émile Fournier",
+      "country": "TN",
+      "flag": "🇹🇳",
+      "role": "TIREUR",
+      "ranking": 739,
+      "tier": "REGIONAL",
+      "stats": {
+        "appoint": 46,
+        "precision": 36,
+        "tir": 58,
+        "regularite": 38,
+        "experience": 38
+      },
+      "overall": 43,
+      "personality": "PRUDENT",
+      "recruitment": {
+        "minRank": 628,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "gael-martinelli-747",
+      "name": "Gaël Martinelli",
+      "country": "FR",
+      "flag": "🇫🇷",
+      "role": "MILIEU",
+      "ranking": 747,
+      "tier": "REGIONAL",
+      "stats": {
+        "appoint": 59,
+        "precision": 65,
+        "tir": 67,
+        "regularite": 56,
+        "experience": 61
+      },
+      "overall": 62,
+      "personality": "PRUDENT",
+      "recruitment": {
+        "minRank": 634,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "kevin-jouve-756",
+      "name": "Kévin Jouve",
+      "country": "FR",
+      "flag": "🇫🇷",
+      "role": "POINTEUR",
+      "ranking": 756,
+      "tier": "REGIONAL",
+      "stats": {
+        "appoint": 66,
+        "precision": 68,
+        "tir": 60,
+        "regularite": 66,
+        "experience": 70
+      },
+      "overall": 66,
+      "personality": "PRUDENT",
+      "recruitment": {
+        "minRank": 642,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "victor-dumont-764",
+      "name": "Victor Dumont",
+      "country": "IT",
+      "flag": "🇮🇹",
+      "role": "TIREUR",
+      "ranking": 764,
+      "tier": "REGIONAL",
+      "stats": {
+        "appoint": 71,
+        "precision": 67,
+        "tir": 81,
+        "regularite": 60,
+        "experience": 59
+      },
+      "overall": 68,
+      "personality": "PRUDENT",
+      "recruitment": {
+        "minRank": 649,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "elias-olivier-773",
+      "name": "Élias Olivier",
+      "country": "MG",
+      "flag": "🇲🇬",
+      "role": "POINTEUR",
+      "ranking": 773,
+      "tier": "REGIONAL",
+      "stats": {
+        "appoint": 66,
+        "precision": 51,
+        "tir": 47,
+        "regularite": 48,
+        "experience": 60
+      },
+      "overall": 54,
+      "personality": "EQUILIBRE",
+      "recruitment": {
+        "minRank": 657,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "gabin-carlier-781",
+      "name": "Gabin Carlier",
+      "country": "MG",
+      "flag": "🇲🇬",
+      "role": "MILIEU",
+      "ranking": 781,
+      "tier": "REGIONAL",
+      "stats": {
+        "appoint": 44,
+        "precision": 46,
+        "tir": 40,
+        "regularite": 48,
+        "experience": 33
+      },
+      "overall": 42,
+      "personality": "PRUDENT",
+      "recruitment": {
+        "minRank": 663,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "noam-weber-789",
+      "name": "Noam Weber",
+      "country": "FR",
+      "flag": "🇫🇷",
+      "role": "MILIEU",
+      "ranking": 789,
+      "tier": "REGIONAL",
+      "stats": {
+        "appoint": 68,
+        "precision": 68,
+        "tir": 57,
+        "regularite": 64,
+        "experience": 54
+      },
+      "overall": 62,
+      "personality": "EQUILIBRE",
+      "recruitment": {
+        "minRank": 670,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "fabio-aubert-798",
+      "name": "Fabio Aubert",
+      "country": "FR",
+      "flag": "🇫🇷",
+      "role": "TIREUR",
+      "ranking": 798,
+      "tier": "REGIONAL",
+      "stats": {
+        "appoint": 57,
+        "precision": 57,
+        "tir": 67,
+        "regularite": 62,
+        "experience": 51
+      },
+      "overall": 59,
+      "personality": "OFFENSIF",
+      "recruitment": {
+        "minRank": 678,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "hector-lombardi-806",
+      "name": "Hector Lombardi",
+      "country": "FR",
+      "flag": "🇫🇷",
+      "role": "MILIEU",
+      "ranking": 806,
+      "tier": "REGIONAL",
+      "stats": {
+        "appoint": 59,
+        "precision": 66,
+        "tir": 66,
+        "regularite": 70,
+        "experience": 75
+      },
+      "overall": 67,
+      "personality": "EQUILIBRE",
+      "recruitment": {
+        "minRank": 685,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "hector-ravel-815",
+      "name": "Hector Ravel",
+      "country": "BJ",
+      "flag": "🇧🇯",
+      "role": "TIREUR",
+      "ranking": 815,
+      "tier": "REGIONAL",
+      "stats": {
+        "appoint": 50,
+        "precision": 48,
+        "tir": 48,
+        "regularite": 36,
+        "experience": 51
+      },
+      "overall": 47,
+      "personality": "OFFENSIF",
+      "recruitment": {
+        "minRank": 692,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "ilan-rossi-823",
+      "name": "Ilan Rossi",
+      "country": "MG",
+      "flag": "🇲🇬",
+      "role": "MILIEU",
+      "ranking": 823,
+      "tier": "REGIONAL",
+      "stats": {
+        "appoint": 50,
+        "precision": 49,
+        "tir": 59,
+        "regularite": 56,
+        "experience": 47
+      },
+      "overall": 52,
+      "personality": "EQUILIBRE",
+      "recruitment": {
+        "minRank": 699,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "emile-rossi-832",
+      "name": "Émile Rossi",
+      "country": "ES",
+      "flag": "🇪🇸",
+      "role": "MILIEU",
+      "ranking": 832,
+      "tier": "REGIONAL",
+      "stats": {
+        "appoint": 41,
+        "precision": 46,
+        "tir": 37,
+        "regularite": 59,
+        "experience": 44
+      },
+      "overall": 45,
+      "personality": "OFFENSIF",
+      "recruitment": {
+        "minRank": 707,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "antoine-keller-840",
+      "name": "Antoine Keller",
+      "country": "FR",
+      "flag": "🇫🇷",
+      "role": "TIREUR",
+      "ranking": 840,
+      "tier": "REGIONAL",
+      "stats": {
+        "appoint": 51,
+        "precision": 53,
+        "tir": 64,
+        "regularite": 48,
+        "experience": 51
+      },
+      "overall": 53,
+      "personality": "OFFENSIF",
+      "recruitment": {
+        "minRank": 714,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "dario-lombardi-848",
+      "name": "Dario Lombardi",
+      "country": "TN",
+      "flag": "🇹🇳",
+      "role": "TIREUR",
+      "ranking": 848,
+      "tier": "REGIONAL",
+      "stats": {
+        "appoint": 61,
+        "precision": 54,
+        "tir": 67,
+        "regularite": 51,
+        "experience": 54
+      },
+      "overall": 57,
+      "personality": "PRUDENT",
+      "recruitment": {
+        "minRank": 720,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "cedric-lombardi-857",
+      "name": "Cédric Lombardi",
+      "country": "TN",
+      "flag": "🇹🇳",
+      "role": "TIREUR",
+      "ranking": 857,
+      "tier": "REGIONAL",
+      "stats": {
+        "appoint": 48,
+        "precision": 56,
+        "tir": 46,
+        "regularite": 47,
+        "experience": 53
+      },
+      "overall": 50,
+      "personality": "EQUILIBRE",
+      "recruitment": {
+        "minRank": 728,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "adrien-delaunay-865",
+      "name": "Adrien Delaunay",
+      "country": "ES",
+      "flag": "🇪🇸",
+      "role": "TIREUR",
+      "ranking": 865,
+      "tier": "REGIONAL",
+      "stats": {
+        "appoint": 47,
+        "precision": 50,
+        "tir": 62,
+        "regularite": 54,
+        "experience": 54
+      },
+      "overall": 53,
+      "personality": "EQUILIBRE",
+      "recruitment": {
+        "minRank": 735,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "jules-giraud-874",
+      "name": "Jules Giraud",
+      "country": "ES",
+      "flag": "🇪🇸",
+      "role": "POINTEUR",
+      "ranking": 874,
+      "tier": "REGIONAL",
+      "stats": {
+        "appoint": 48,
+        "precision": 37,
+        "tir": 36,
+        "regularite": 40,
+        "experience": 40
+      },
+      "overall": 40,
+      "personality": "PRUDENT",
+      "recruitment": {
+        "minRank": 742,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "antoine-lombardi-882",
+      "name": "Antoine Lombardi",
+      "country": "BJ",
+      "flag": "🇧🇯",
+      "role": "TIREUR",
+      "ranking": 882,
+      "tier": "REGIONAL",
+      "stats": {
+        "appoint": 46,
+        "precision": 60,
+        "tir": 69,
+        "regularite": 54,
+        "experience": 44
+      },
+      "overall": 55,
+      "personality": "EQUILIBRE",
+      "recruitment": {
+        "minRank": 749,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "hector-dumont-891",
+      "name": "Hector Dumont",
+      "country": "FR",
+      "flag": "🇫🇷",
+      "role": "POINTEUR",
+      "ranking": 891,
+      "tier": "REGIONAL",
+      "stats": {
+        "appoint": 63,
+        "precision": 67,
+        "tir": 54,
+        "regularite": 58,
+        "experience": 68
+      },
+      "overall": 62,
+      "personality": "OFFENSIF",
+      "recruitment": {
+        "minRank": 757,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "bruno-aubert-899",
+      "name": "Bruno Aubert",
+      "country": "ES",
+      "flag": "🇪🇸",
+      "role": "MILIEU",
+      "ranking": 899,
+      "tier": "REGIONAL",
+      "stats": {
+        "appoint": 57,
+        "precision": 55,
+        "tir": 45,
+        "regularite": 61,
+        "experience": 41
+      },
+      "overall": 52,
+      "personality": "EQUILIBRE",
+      "recruitment": {
+        "minRank": 764,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "jules-esteve-907",
+      "name": "Jules Esteve",
+      "country": "ES",
+      "flag": "🇪🇸",
+      "role": "TIREUR",
+      "ranking": 907,
+      "tier": "REGIONAL",
+      "stats": {
+        "appoint": 51,
+        "precision": 59,
+        "tir": 53,
+        "regularite": 49,
+        "experience": 60
+      },
+      "overall": 54,
+      "personality": "OFFENSIF",
+      "recruitment": {
+        "minRank": 770,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "victor-weber-916",
+      "name": "Victor Weber",
+      "country": "FR",
+      "flag": "🇫🇷",
+      "role": "POINTEUR",
+      "ranking": 916,
+      "tier": "REGIONAL",
+      "stats": {
+        "appoint": 48,
+        "precision": 43,
+        "tir": 50,
+        "regularite": 43,
+        "experience": 46
+      },
+      "overall": 46,
+      "personality": "OFFENSIF",
+      "recruitment": {
+        "minRank": 778,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "oscar-rossi-924",
+      "name": "Oscar Rossi",
+      "country": "BJ",
+      "flag": "🇧🇯",
+      "role": "POINTEUR",
+      "ranking": 924,
+      "tier": "REGIONAL",
+      "stats": {
+        "appoint": 52,
+        "precision": 41,
+        "tir": 43,
+        "regularite": 37,
+        "experience": 38
+      },
+      "overall": 42,
+      "personality": "PRUDENT",
+      "recruitment": {
+        "minRank": 785,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "oscar-martinelli-933",
+      "name": "Oscar Martinelli",
+      "country": "FR",
+      "flag": "🇫🇷",
+      "role": "MILIEU",
+      "ranking": 933,
+      "tier": "REGIONAL",
+      "stats": {
+        "appoint": 43,
+        "precision": 42,
+        "tir": 51,
+        "regularite": 57,
+        "experience": 43
+      },
+      "overall": 47,
+      "personality": "EQUILIBRE",
+      "recruitment": {
+        "minRank": 793,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "romain-haddad-941",
+      "name": "Romain Haddad",
+      "country": "IT",
+      "flag": "🇮🇹",
+      "role": "MILIEU",
+      "ranking": 941,
+      "tier": "REGIONAL",
+      "stats": {
+        "appoint": 39,
+        "precision": 47,
+        "tir": 53,
+        "regularite": 52,
+        "experience": 40
+      },
+      "overall": 46,
+      "personality": "OFFENSIF",
+      "recruitment": {
+        "minRank": 799,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "clement-marquet-949",
+      "name": "Clément Marquet",
+      "country": "IT",
+      "flag": "🇮🇹",
+      "role": "MILIEU",
+      "ranking": 949,
+      "tier": "REGIONAL",
+      "stats": {
+        "appoint": 57,
+        "precision": 51,
+        "tir": 50,
+        "regularite": 55,
+        "experience": 52
+      },
+      "overall": 53,
+      "personality": "OFFENSIF",
+      "recruitment": {
+        "minRank": 806,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "ilan-ziani-958",
+      "name": "Ilan Ziani",
+      "country": "FR",
+      "flag": "🇫🇷",
+      "role": "MILIEU",
+      "ranking": 958,
+      "tier": "REGIONAL",
+      "stats": {
+        "appoint": 55,
+        "precision": 53,
+        "tir": 47,
+        "regularite": 47,
+        "experience": 43
+      },
+      "overall": 49,
+      "personality": "PRUDENT",
+      "recruitment": {
+        "minRank": 814,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "leo-perez-966",
+      "name": "Léo Perez",
+      "country": "FR",
+      "flag": "🇫🇷",
+      "role": "TIREUR",
+      "ranking": 966,
+      "tier": "REGIONAL",
+      "stats": {
+        "appoint": 52,
+        "precision": 58,
+        "tir": 71,
+        "regularite": 50,
+        "experience": 65
+      },
+      "overall": 59,
+      "personality": "EQUILIBRE",
+      "recruitment": {
+        "minRank": 821,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "felix-giraud-975",
+      "name": "Félix Giraud",
+      "country": "IT",
+      "flag": "🇮🇹",
+      "role": "TIREUR",
+      "ranking": 975,
+      "tier": "REGIONAL",
+      "stats": {
+        "appoint": 52,
+        "precision": 39,
+        "tir": 52,
+        "regularite": 41,
+        "experience": 45
+      },
+      "overall": 46,
+      "personality": "EQUILIBRE",
+      "recruitment": {
+        "minRank": 828,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "marius-faure-983",
+      "name": "Marius Faure",
+      "country": "FR",
+      "flag": "🇫🇷",
+      "role": "POINTEUR",
+      "ranking": 983,
+      "tier": "REGIONAL",
+      "stats": {
+        "appoint": 48,
+        "precision": 47,
+        "tir": 50,
+        "regularite": 41,
+        "experience": 53
+      },
+      "overall": 48,
+      "personality": "EQUILIBRE",
+      "recruitment": {
+        "minRank": 835,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "jules-jouve-992",
+      "name": "Jules Jouve",
+      "country": "FR",
+      "flag": "🇫🇷",
+      "role": "TIREUR",
+      "ranking": 992,
+      "tier": "REGIONAL",
+      "stats": {
+        "appoint": 56,
+        "precision": 58,
+        "tir": 70,
+        "regularite": 69,
+        "experience": 68
+      },
+      "overall": 64,
+      "personality": "PRUDENT",
+      "recruitment": {
+        "minRank": 843,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "gabin-garnier-1000",
+      "name": "Gabin Garnier",
+      "country": "IT",
+      "flag": "🇮🇹",
+      "role": "TIREUR",
+      "ranking": 1000,
+      "tier": "REGIONAL",
+      "stats": {
+        "appoint": 29,
+        "precision": 40,
+        "tir": 41,
+        "regularite": 31,
+        "experience": 39
+      },
+      "overall": 36,
+      "personality": "PRUDENT",
+      "recruitment": {
+        "minRank": 850,
+        "available": false
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "ilan-perez-1001",
+      "name": "Ilan Perez",
+      "country": "TH",
+      "flag": "🇹🇭",
+      "role": "MILIEU",
+      "ranking": 1001,
+      "tier": "LOCAL",
+      "stats": {
+        "appoint": 47,
+        "precision": 38,
+        "tir": 30,
+        "regularite": 42,
+        "experience": 48
+      },
+      "overall": 41,
+      "personality": "OFFENSIF",
+      "recruitment": {
+        "minRank": 1501,
+        "available": true
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "pablo-giraud-1016",
+      "name": "Pablo Giraud",
+      "country": "MG",
+      "flag": "🇲🇬",
+      "role": "TIREUR",
+      "ranking": 1016,
+      "tier": "LOCAL",
+      "stats": {
+        "appoint": 37,
+        "precision": 47,
+        "tir": 53,
+        "regularite": 41,
+        "experience": 53
+      },
+      "overall": 46,
+      "personality": "EQUILIBRE",
+      "recruitment": {
+        "minRank": 1516,
+        "available": true
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "romain-weber-1030",
+      "name": "Romain Weber",
+      "country": "TH",
+      "flag": "🇹🇭",
+      "role": "MILIEU",
+      "ranking": 1030,
+      "tier": "LOCAL",
+      "stats": {
+        "appoint": 51,
+        "precision": 37,
+        "tir": 53,
+        "regularite": 51,
+        "experience": 34
+      },
+      "overall": 45,
+      "personality": "EQUILIBRE",
+      "recruitment": {
+        "minRank": 1530,
+        "available": true
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "oscar-giraud-1045",
+      "name": "Oscar Giraud",
+      "country": "FR",
+      "flag": "🇫🇷",
+      "role": "TIREUR",
+      "ranking": 1045,
+      "tier": "LOCAL",
+      "stats": {
+        "appoint": 26,
+        "precision": 16,
+        "tir": 32,
+        "regularite": 19,
+        "experience": 14
+      },
+      "overall": 21,
+      "personality": "OFFENSIF",
+      "recruitment": {
+        "minRank": 1545,
+        "available": true
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "hamza-weber-1060",
+      "name": "Hamza Weber",
+      "country": "BE",
+      "flag": "🇧🇪",
+      "role": "POINTEUR",
+      "ranking": 1060,
+      "tier": "LOCAL",
+      "stats": {
+        "appoint": 35,
+        "precision": 33,
+        "tir": 37,
+        "regularite": 30,
+        "experience": 31
+      },
+      "overall": 33,
+      "personality": "EQUILIBRE",
+      "recruitment": {
+        "minRank": 1560,
+        "available": true
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "gael-olivier-1074",
+      "name": "Gaël Olivier",
+      "country": "FR",
+      "flag": "🇫🇷",
+      "role": "POINTEUR",
+      "ranking": 1074,
+      "tier": "LOCAL",
+      "stats": {
+        "appoint": 34,
+        "precision": 27,
+        "tir": 21,
+        "regularite": 15,
+        "experience": 23
+      },
+      "overall": 24,
+      "personality": "OFFENSIF",
+      "recruitment": {
+        "minRank": 1574,
+        "available": true
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "elias-collet-1089",
+      "name": "Élias Collet",
+      "country": "IT",
+      "flag": "🇮🇹",
+      "role": "TIREUR",
+      "ranking": 1089,
+      "tier": "LOCAL",
+      "stats": {
+        "appoint": 33,
+        "precision": 38,
+        "tir": 47,
+        "regularite": 34,
+        "experience": 41
+      },
+      "overall": 39,
+      "personality": "EQUILIBRE",
+      "recruitment": {
+        "minRank": 1589,
+        "available": true
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "romain-navarro-1104",
+      "name": "Romain Navarro",
+      "country": "IT",
+      "flag": "🇮🇹",
+      "role": "POINTEUR",
+      "ranking": 1104,
+      "tier": "LOCAL",
+      "stats": {
+        "appoint": 53,
+        "precision": 46,
+        "tir": 39,
+        "regularite": 45,
+        "experience": 51
+      },
+      "overall": 47,
+      "personality": "OFFENSIF",
+      "recruitment": {
+        "minRank": 1604,
+        "available": true
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "theo-tessier-1118",
+      "name": "Théo Tessier",
+      "country": "MG",
+      "flag": "🇲🇬",
+      "role": "MILIEU",
+      "ranking": 1118,
+      "tier": "LOCAL",
+      "stats": {
+        "appoint": 36,
+        "precision": 40,
+        "tir": 45,
+        "regularite": 37,
+        "experience": 35
+      },
+      "overall": 39,
+      "personality": "OFFENSIF",
+      "recruitment": {
+        "minRank": 1618,
+        "available": true
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "ilan-fournier-1133",
+      "name": "Ilan Fournier",
+      "country": "FR",
+      "flag": "🇫🇷",
+      "role": "MILIEU",
+      "ranking": 1133,
+      "tier": "LOCAL",
+      "stats": {
+        "appoint": 27,
+        "precision": 28,
+        "tir": 28,
+        "regularite": 36,
+        "experience": 33
+      },
+      "overall": 30,
+      "personality": "EQUILIBRE",
+      "recruitment": {
+        "minRank": 1633,
+        "available": true
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "emile-olivier-1148",
+      "name": "Émile Olivier",
+      "country": "FR",
+      "flag": "🇫🇷",
+      "role": "MILIEU",
+      "ranking": 1148,
+      "tier": "LOCAL",
+      "stats": {
+        "appoint": 29,
+        "precision": 29,
+        "tir": 34,
+        "regularite": 47,
+        "experience": 41
+      },
+      "overall": 36,
+      "personality": "EQUILIBRE",
+      "recruitment": {
+        "minRank": 1648,
+        "available": true
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "antoine-bertin-1162",
+      "name": "Antoine Bertin",
+      "country": "FR",
+      "flag": "🇫🇷",
+      "role": "MILIEU",
+      "ranking": 1162,
+      "tier": "LOCAL",
+      "stats": {
+        "appoint": 54,
+        "precision": 52,
+        "tir": 53,
+        "regularite": 49,
+        "experience": 44
+      },
+      "overall": 50,
+      "personality": "OFFENSIF",
+      "recruitment": {
+        "minRank": 1662,
+        "available": true
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "yanis-iglesias-1177",
+      "name": "Yanis Iglesias",
+      "country": "FR",
+      "flag": "🇫🇷",
+      "role": "TIREUR",
+      "ranking": 1177,
+      "tier": "LOCAL",
+      "stats": {
+        "appoint": 28,
+        "precision": 17,
+        "tir": 25,
+        "regularite": 19,
+        "experience": 30
+      },
+      "overall": 24,
+      "personality": "EQUILIBRE",
+      "recruitment": {
+        "minRank": 1677,
+        "available": true
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "hector-iglesias-1192",
+      "name": "Hector Iglesias",
+      "country": "BJ",
+      "flag": "🇧🇯",
+      "role": "TIREUR",
+      "ranking": 1192,
+      "tier": "LOCAL",
+      "stats": {
+        "appoint": 26,
+        "precision": 36,
+        "tir": 37,
+        "regularite": 37,
+        "experience": 34
+      },
+      "overall": 34,
+      "personality": "EQUILIBRE",
+      "recruitment": {
+        "minRank": 1692,
+        "available": true
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "ilan-olivier-1206",
+      "name": "Ilan Olivier",
+      "country": "TH",
+      "flag": "🇹🇭",
+      "role": "TIREUR",
+      "ranking": 1206,
+      "tier": "LOCAL",
+      "stats": {
+        "appoint": 30,
+        "precision": 18,
+        "tir": 27,
+        "regularite": 27,
+        "experience": 21
+      },
+      "overall": 25,
+      "personality": "EQUILIBRE",
+      "recruitment": {
+        "minRank": 1706,
+        "available": true
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "adrien-fournier-1221",
+      "name": "Adrien Fournier",
+      "country": "TN",
+      "flag": "🇹🇳",
+      "role": "POINTEUR",
+      "ranking": 1221,
+      "tier": "LOCAL",
+      "stats": {
+        "appoint": 51,
+        "precision": 33,
+        "tir": 48,
+        "regularite": 34,
+        "experience": 34
+      },
+      "overall": 40,
+      "personality": "PRUDENT",
+      "recruitment": {
+        "minRank": 1721,
+        "available": true
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "gabin-aubert-1236",
+      "name": "Gabin Aubert",
+      "country": "FR",
+      "flag": "🇫🇷",
+      "role": "TIREUR",
+      "ranking": 1236,
+      "tier": "LOCAL",
+      "stats": {
+        "appoint": 33,
+        "precision": 30,
+        "tir": 35,
+        "regularite": 38,
+        "experience": 30
+      },
+      "overall": 33,
+      "personality": "PRUDENT",
+      "recruitment": {
+        "minRank": 1736,
+        "available": true
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "bastien-garnier-1250",
+      "name": "Bastien Garnier",
+      "country": "BJ",
+      "flag": "🇧🇯",
+      "role": "POINTEUR",
+      "ranking": 1250,
+      "tier": "LOCAL",
+      "stats": {
+        "appoint": 53,
+        "precision": 48,
+        "tir": 40,
+        "regularite": 47,
+        "experience": 54
+      },
+      "overall": 48,
+      "personality": "PRUDENT",
+      "recruitment": {
+        "minRank": 1750,
+        "available": true
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "gael-barra-1265",
+      "name": "Gaël Barra",
+      "country": "ES",
+      "flag": "🇪🇸",
+      "role": "TIREUR",
+      "ranking": 1265,
+      "tier": "LOCAL",
+      "stats": {
+        "appoint": 56,
+        "precision": 56,
+        "tir": 63,
+        "regularite": 54,
+        "experience": 44
+      },
+      "overall": 55,
+      "personality": "EQUILIBRE",
+      "recruitment": {
+        "minRank": 1765,
+        "available": true
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "antoine-martinelli-1280",
+      "name": "Antoine Martinelli",
+      "country": "FR",
+      "flag": "🇫🇷",
+      "role": "POINTEUR",
+      "ranking": 1280,
+      "tier": "LOCAL",
+      "stats": {
+        "appoint": 47,
+        "precision": 36,
+        "tir": 38,
+        "regularite": 31,
+        "experience": 30
+      },
+      "overall": 36,
+      "personality": "PRUDENT",
+      "recruitment": {
+        "minRank": 1780,
+        "available": true
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "hector-rossi-1294",
+      "name": "Hector Rossi",
+      "country": "IT",
+      "flag": "🇮🇹",
+      "role": "POINTEUR",
+      "ranking": 1294,
+      "tier": "LOCAL",
+      "stats": {
+        "appoint": 28,
+        "precision": 13,
+        "tir": 31,
+        "regularite": 17,
+        "experience": 12
+      },
+      "overall": 20,
+      "personality": "PRUDENT",
+      "recruitment": {
+        "minRank": 1794,
+        "available": true
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "jules-fournier-1309",
+      "name": "Jules Fournier",
+      "country": "TN",
+      "flag": "🇹🇳",
+      "role": "POINTEUR",
+      "ranking": 1309,
+      "tier": "LOCAL",
+      "stats": {
+        "appoint": 46,
+        "precision": 51,
+        "tir": 51,
+        "regularite": 40,
+        "experience": 47
+      },
+      "overall": 47,
+      "personality": "EQUILIBRE",
+      "recruitment": {
+        "minRank": 1809,
+        "available": true
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "fabio-collet-1324",
+      "name": "Fabio Collet",
+      "country": "BJ",
+      "flag": "🇧🇯",
+      "role": "POINTEUR",
+      "ranking": 1324,
+      "tier": "LOCAL",
+      "stats": {
+        "appoint": 20,
+        "precision": 16,
+        "tir": 23,
+        "regularite": 20,
+        "experience": 12
+      },
+      "overall": 18,
+      "personality": "OFFENSIF",
+      "recruitment": {
+        "minRank": 1824,
+        "available": true
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "antoine-carlier-1338",
+      "name": "Antoine Carlier",
+      "country": "FR",
+      "flag": "🇫🇷",
+      "role": "TIREUR",
+      "ranking": 1338,
+      "tier": "LOCAL",
+      "stats": {
+        "appoint": 52,
+        "precision": 38,
+        "tir": 53,
+        "regularite": 51,
+        "experience": 52
+      },
+      "overall": 49,
+      "personality": "OFFENSIF",
+      "recruitment": {
+        "minRank": 1838,
+        "available": true
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "bruno-fournier-1353",
+      "name": "Bruno Fournier",
+      "country": "BJ",
+      "flag": "🇧🇯",
+      "role": "TIREUR",
+      "ranking": 1353,
+      "tier": "LOCAL",
+      "stats": {
+        "appoint": 25,
+        "precision": 36,
+        "tir": 27,
+        "regularite": 32,
+        "experience": 25
+      },
+      "overall": 29,
+      "personality": "PRUDENT",
+      "recruitment": {
+        "minRank": 1853,
+        "available": true
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "pablo-barra-1368",
+      "name": "Pablo Barra",
+      "country": "FR",
+      "flag": "🇫🇷",
+      "role": "MILIEU",
+      "ranking": 1368,
+      "tier": "LOCAL",
+      "stats": {
+        "appoint": 31,
+        "precision": 29,
+        "tir": 17,
+        "regularite": 27,
+        "experience": 32
+      },
+      "overall": 27,
+      "personality": "PRUDENT",
+      "recruitment": {
+        "minRank": 1868,
+        "available": true
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "gabin-vidal-1382",
+      "name": "Gabin Vidal",
+      "country": "BJ",
+      "flag": "🇧🇯",
+      "role": "POINTEUR",
+      "ranking": 1382,
+      "tier": "LOCAL",
+      "stats": {
+        "appoint": 49,
+        "precision": 28,
+        "tir": 38,
+        "regularite": 36,
+        "experience": 37
+      },
+      "overall": 38,
+      "personality": "EQUILIBRE",
+      "recruitment": {
+        "minRank": 1882,
+        "available": true
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "bastien-navarro-1397",
+      "name": "Bastien Navarro",
+      "country": "TN",
+      "flag": "🇹🇳",
+      "role": "POINTEUR",
+      "ranking": 1397,
+      "tier": "LOCAL",
+      "stats": {
+        "appoint": 40,
+        "precision": 43,
+        "tir": 44,
+        "regularite": 38,
+        "experience": 46
+      },
+      "overall": 42,
+      "personality": "PRUDENT",
+      "recruitment": {
+        "minRank": 1897,
+        "available": true
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "gabin-collet-1412",
+      "name": "Gabin Collet",
+      "country": "BE",
+      "flag": "🇧🇪",
+      "role": "TIREUR",
+      "ranking": 1412,
+      "tier": "LOCAL",
+      "stats": {
+        "appoint": 44,
+        "precision": 47,
+        "tir": 61,
+        "regularite": 51,
+        "experience": 40
+      },
+      "overall": 49,
+      "personality": "PRUDENT",
+      "recruitment": {
+        "minRank": 1912,
+        "available": true
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "ilan-dumont-1426",
+      "name": "Ilan Dumont",
+      "country": "MG",
+      "flag": "🇲🇬",
+      "role": "TIREUR",
+      "ranking": 1426,
+      "tier": "LOCAL",
+      "stats": {
+        "appoint": 31,
+        "precision": 28,
+        "tir": 32,
+        "regularite": 34,
+        "experience": 32
+      },
+      "overall": 31,
+      "personality": "EQUILIBRE",
+      "recruitment": {
+        "minRank": 1926,
+        "available": true
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "damien-esteve-1441",
+      "name": "Damien Esteve",
+      "country": "TH",
+      "flag": "🇹🇭",
+      "role": "POINTEUR",
+      "ranking": 1441,
+      "tier": "LOCAL",
+      "stats": {
+        "appoint": 22,
+        "precision": 11,
+        "tir": 25,
+        "regularite": 23,
+        "experience": 14
+      },
+      "overall": 19,
+      "personality": "OFFENSIF",
+      "recruitment": {
+        "minRank": 1941,
+        "available": true
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "bruno-jouve-1456",
+      "name": "Bruno Jouve",
+      "country": "FR",
+      "flag": "🇫🇷",
+      "role": "TIREUR",
+      "ranking": 1456,
+      "tier": "LOCAL",
+      "stats": {
+        "appoint": 18,
+        "precision": 28,
+        "tir": 28,
+        "regularite": 26,
+        "experience": 23
+      },
+      "overall": 25,
+      "personality": "OFFENSIF",
+      "recruitment": {
+        "minRank": 1956,
+        "available": true
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "hector-olivier-1470",
+      "name": "Hector Olivier",
+      "country": "FR",
+      "flag": "🇫🇷",
+      "role": "TIREUR",
+      "ranking": 1470,
+      "tier": "LOCAL",
+      "stats": {
+        "appoint": 33,
+        "precision": 45,
+        "tir": 39,
+        "regularite": 48,
+        "experience": 35
+      },
+      "overall": 40,
+      "personality": "OFFENSIF",
+      "recruitment": {
+        "minRank": 1970,
+        "available": true
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "quentin-tessier-1485",
+      "name": "Quentin Tessier",
+      "country": "TH",
+      "flag": "🇹🇭",
+      "role": "MILIEU",
+      "ranking": 1485,
+      "tier": "LOCAL",
+      "stats": {
+        "appoint": 18,
+        "precision": 13,
+        "tir": 18,
+        "regularite": 17,
+        "experience": 23
+      },
+      "overall": 18,
+      "personality": "OFFENSIF",
+      "recruitment": {
+        "minRank": 1985,
+        "available": true
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "dario-haddad-1500",
+      "name": "Dario Haddad",
+      "country": "IT",
+      "flag": "🇮🇹",
+      "role": "TIREUR",
+      "ranking": 1500,
+      "tier": "LOCAL",
+      "stats": {
+        "appoint": 28,
+        "precision": 24,
+        "tir": 36,
+        "regularite": 29,
+        "experience": 29
+      },
+      "overall": 29,
+      "personality": "OFFENSIF",
+      "recruitment": {
+        "minRank": 2000,
+        "available": true
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "noam-ravel-1514",
+      "name": "Noam Ravel",
+      "country": "IT",
+      "flag": "🇮🇹",
+      "role": "TIREUR",
+      "ranking": 1514,
+      "tier": "LOCAL",
+      "stats": {
+        "appoint": 55,
+        "precision": 44,
+        "tir": 59,
+        "regularite": 47,
+        "experience": 40
+      },
+      "overall": 49,
+      "personality": "OFFENSIF",
+      "recruitment": {
+        "minRank": 2014,
+        "available": true
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "quentin-esteve-1529",
+      "name": "Quentin Esteve",
+      "country": "FR",
+      "flag": "🇫🇷",
+      "role": "TIREUR",
+      "ranking": 1529,
+      "tier": "LOCAL",
+      "stats": {
+        "appoint": 37,
+        "precision": 40,
+        "tir": 43,
+        "regularite": 39,
+        "experience": 50
+      },
+      "overall": 42,
+      "personality": "EQUILIBRE",
+      "recruitment": {
+        "minRank": 2029,
+        "available": true
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "marius-barra-1544",
+      "name": "Marius Barra",
+      "country": "MG",
+      "flag": "🇲🇬",
+      "role": "POINTEUR",
+      "ranking": 1544,
+      "tier": "LOCAL",
+      "stats": {
+        "appoint": 22,
+        "precision": 15,
+        "tir": 15,
+        "regularite": 20,
+        "experience": 22
+      },
+      "overall": 19,
+      "personality": "OFFENSIF",
+      "recruitment": {
+        "minRank": 2044,
+        "available": true
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "samir-martinelli-1558",
+      "name": "Samir Martinelli",
+      "country": "BJ",
+      "flag": "🇧🇯",
+      "role": "MILIEU",
+      "ranking": 1558,
+      "tier": "LOCAL",
+      "stats": {
+        "appoint": 30,
+        "precision": 30,
+        "tir": 25,
+        "regularite": 36,
+        "experience": 31
+      },
+      "overall": 30,
+      "personality": "EQUILIBRE",
+      "recruitment": {
+        "minRank": 2058,
+        "available": true
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "felix-keller-1573",
+      "name": "Félix Keller",
+      "country": "BE",
+      "flag": "🇧🇪",
+      "role": "POINTEUR",
+      "ranking": 1573,
+      "tier": "LOCAL",
+      "stats": {
+        "appoint": 26,
+        "precision": 25,
+        "tir": 15,
+        "regularite": 15,
+        "experience": 14
+      },
+      "overall": 19,
+      "personality": "EQUILIBRE",
+      "recruitment": {
+        "minRank": 2073,
+        "available": true
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "gael-faure-1588",
+      "name": "Gaël Faure",
+      "country": "MG",
+      "flag": "🇲🇬",
+      "role": "POINTEUR",
+      "ranking": 1588,
+      "tier": "LOCAL",
+      "stats": {
+        "appoint": 48,
+        "precision": 43,
+        "tir": 43,
+        "regularite": 53,
+        "experience": 47
+      },
+      "overall": 47,
+      "personality": "PRUDENT",
+      "recruitment": {
+        "minRank": 2088,
+        "available": true
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "hector-weber-1602",
+      "name": "Hector Weber",
+      "country": "BE",
+      "flag": "🇧🇪",
+      "role": "POINTEUR",
+      "ranking": 1602,
+      "tier": "LOCAL",
+      "stats": {
+        "appoint": 52,
+        "precision": 47,
+        "tir": 35,
+        "regularite": 46,
+        "experience": 52
+      },
+      "overall": 46,
+      "personality": "OFFENSIF",
+      "recruitment": {
+        "minRank": 2102,
+        "available": true
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "noam-silva-1617",
+      "name": "Noam Silva",
+      "country": "FR",
+      "flag": "🇫🇷",
+      "role": "POINTEUR",
+      "ranking": 1617,
+      "tier": "LOCAL",
+      "stats": {
+        "appoint": 44,
+        "precision": 36,
+        "tir": 31,
+        "regularite": 37,
+        "experience": 31
+      },
+      "overall": 36,
+      "personality": "PRUDENT",
+      "recruitment": {
+        "minRank": 2117,
+        "available": true
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "gael-giraud-1632",
+      "name": "Gaël Giraud",
+      "country": "FR",
+      "flag": "🇫🇷",
+      "role": "POINTEUR",
+      "ranking": 1632,
+      "tier": "LOCAL",
+      "stats": {
+        "appoint": 38,
+        "precision": 21,
+        "tir": 24,
+        "regularite": 23,
+        "experience": 31
+      },
+      "overall": 27,
+      "personality": "PRUDENT",
+      "recruitment": {
+        "minRank": 2132,
+        "available": true
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "adrien-lombardi-1646",
+      "name": "Adrien Lombardi",
+      "country": "FR",
+      "flag": "🇫🇷",
+      "role": "POINTEUR",
+      "ranking": 1646,
+      "tier": "LOCAL",
+      "stats": {
+        "appoint": 50,
+        "precision": 31,
+        "tir": 44,
+        "regularite": 38,
+        "experience": 34
+      },
+      "overall": 39,
+      "personality": "PRUDENT",
+      "recruitment": {
+        "minRank": 2146,
+        "available": true
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "damien-rossi-1661",
+      "name": "Damien Rossi",
+      "country": "IT",
+      "flag": "🇮🇹",
+      "role": "MILIEU",
+      "ranking": 1661,
+      "tier": "LOCAL",
+      "stats": {
+        "appoint": 34,
+        "precision": 17,
+        "tir": 31,
+        "regularite": 25,
+        "experience": 22
+      },
+      "overall": 26,
+      "personality": "OFFENSIF",
+      "recruitment": {
+        "minRank": 2161,
+        "available": true
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "marius-ravel-1676",
+      "name": "Marius Ravel",
+      "country": "FR",
+      "flag": "🇫🇷",
+      "role": "POINTEUR",
+      "ranking": 1676,
+      "tier": "LOCAL",
+      "stats": {
+        "appoint": 43,
+        "precision": 36,
+        "tir": 35,
+        "regularite": 36,
+        "experience": 37
+      },
+      "overall": 37,
+      "personality": "PRUDENT",
+      "recruitment": {
+        "minRank": 2176,
+        "available": true
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "gabin-ziani-1690",
+      "name": "Gabin Ziani",
+      "country": "TN",
+      "flag": "🇹🇳",
+      "role": "POINTEUR",
+      "ranking": 1690,
+      "tier": "LOCAL",
+      "stats": {
+        "appoint": 64,
+        "precision": 55,
+        "tir": 54,
+        "regularite": 48,
+        "experience": 41
+      },
+      "overall": 52,
+      "personality": "EQUILIBRE",
+      "recruitment": {
+        "minRank": 2190,
+        "available": true
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "antoine-aubert-1705",
+      "name": "Antoine Aubert",
+      "country": "BE",
+      "flag": "🇧🇪",
+      "role": "MILIEU",
+      "ranking": 1705,
+      "tier": "LOCAL",
+      "stats": {
+        "appoint": 28,
+        "precision": 32,
+        "tir": 34,
+        "regularite": 37,
+        "experience": 29
+      },
+      "overall": 32,
+      "personality": "EQUILIBRE",
+      "recruitment": {
+        "minRank": 2205,
+        "available": true
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "yanis-esteve-1720",
+      "name": "Yanis Esteve",
+      "country": "ES",
+      "flag": "🇪🇸",
+      "role": "POINTEUR",
+      "ranking": 1720,
+      "tier": "LOCAL",
+      "stats": {
+        "appoint": 57,
+        "precision": 46,
+        "tir": 38,
+        "regularite": 49,
+        "experience": 42
+      },
+      "overall": 46,
+      "personality": "OFFENSIF",
+      "recruitment": {
+        "minRank": 2220,
+        "available": true
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "damien-faure-1734",
+      "name": "Damien Faure",
+      "country": "MG",
+      "flag": "🇲🇬",
+      "role": "MILIEU",
+      "ranking": 1734,
+      "tier": "LOCAL",
+      "stats": {
+        "appoint": 39,
+        "precision": 38,
+        "tir": 36,
+        "regularite": 32,
+        "experience": 33
+      },
+      "overall": 36,
+      "personality": "OFFENSIF",
+      "recruitment": {
+        "minRank": 2234,
+        "available": true
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "oscar-carlier-1749",
+      "name": "Oscar Carlier",
+      "country": "IT",
+      "flag": "🇮🇹",
+      "role": "TIREUR",
+      "ranking": 1749,
+      "tier": "LOCAL",
+      "stats": {
+        "appoint": 35,
+        "precision": 25,
+        "tir": 40,
+        "regularite": 30,
+        "experience": 23
+      },
+      "overall": 31,
+      "personality": "EQUILIBRE",
+      "recruitment": {
+        "minRank": 2249,
+        "available": true
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "leo-olivier-1764",
+      "name": "Léo Olivier",
+      "country": "FR",
+      "flag": "🇫🇷",
+      "role": "TIREUR",
+      "ranking": 1764,
+      "tier": "LOCAL",
+      "stats": {
+        "appoint": 36,
+        "precision": 46,
+        "tir": 54,
+        "regularite": 41,
+        "experience": 42
+      },
+      "overall": 44,
+      "personality": "PRUDENT",
+      "recruitment": {
+        "minRank": 2264,
+        "available": true
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "gael-rossi-1778",
+      "name": "Gaël Rossi",
+      "country": "MG",
+      "flag": "🇲🇬",
+      "role": "TIREUR",
+      "ranking": 1778,
+      "tier": "LOCAL",
+      "stats": {
+        "appoint": 31,
+        "precision": 35,
+        "tir": 39,
+        "regularite": 22,
+        "experience": 19
+      },
+      "overall": 29,
+      "personality": "OFFENSIF",
+      "recruitment": {
+        "minRank": 2278,
+        "available": true
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "cedric-giraud-1793",
+      "name": "Cédric Giraud",
+      "country": "BJ",
+      "flag": "🇧🇯",
+      "role": "MILIEU",
+      "ranking": 1793,
+      "tier": "LOCAL",
+      "stats": {
+        "appoint": 35,
+        "precision": 37,
+        "tir": 38,
+        "regularite": 47,
+        "experience": 36
+      },
+      "overall": 39,
+      "personality": "PRUDENT",
+      "recruitment": {
+        "minRank": 2293,
+        "available": true
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "gabin-haddad-1808",
+      "name": "Gabin Haddad",
+      "country": "MG",
+      "flag": "🇲🇬",
+      "role": "POINTEUR",
+      "ranking": 1808,
+      "tier": "LOCAL",
+      "stats": {
+        "appoint": 27,
+        "precision": 24,
+        "tir": 26,
+        "regularite": 15,
+        "experience": 14
+      },
+      "overall": 21,
+      "personality": "EQUILIBRE",
+      "recruitment": {
+        "minRank": 2308,
+        "available": true
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "marius-ziani-1823",
+      "name": "Marius Ziani",
+      "country": "FR",
+      "flag": "🇫🇷",
+      "role": "MILIEU",
+      "ranking": 1823,
+      "tier": "LOCAL",
+      "stats": {
+        "appoint": 42,
+        "precision": 47,
+        "tir": 47,
+        "regularite": 43,
+        "experience": 41
+      },
+      "overall": 44,
+      "personality": "PRUDENT",
+      "recruitment": {
+        "minRank": 2323,
+        "available": true
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "jules-silva-1837",
+      "name": "Jules Silva",
+      "country": "FR",
+      "flag": "🇫🇷",
+      "role": "MILIEU",
+      "ranking": 1837,
+      "tier": "LOCAL",
+      "stats": {
+        "appoint": 21,
+        "precision": 28,
+        "tir": 37,
+        "regularite": 33,
+        "experience": 25
+      },
+      "overall": 29,
+      "personality": "PRUDENT",
+      "recruitment": {
+        "minRank": 2337,
+        "available": true
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "bastien-tessier-1852",
+      "name": "Bastien Tessier",
+      "country": "TH",
+      "flag": "🇹🇭",
+      "role": "MILIEU",
+      "ranking": 1852,
+      "tier": "LOCAL",
+      "stats": {
+        "appoint": 53,
+        "precision": 46,
+        "tir": 41,
+        "regularite": 53,
+        "experience": 50
+      },
+      "overall": 49,
+      "personality": "PRUDENT",
+      "recruitment": {
+        "minRank": 2352,
+        "available": true
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "dario-aubert-1867",
+      "name": "Dario Aubert",
+      "country": "FR",
+      "flag": "🇫🇷",
+      "role": "TIREUR",
+      "ranking": 1867,
+      "tier": "LOCAL",
+      "stats": {
+        "appoint": 53,
+        "precision": 41,
+        "tir": 46,
+        "regularite": 44,
+        "experience": 56
+      },
+      "overall": 48,
+      "personality": "PRUDENT",
+      "recruitment": {
+        "minRank": 2367,
+        "available": true
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "pablo-aubert-1881",
+      "name": "Pablo Aubert",
+      "country": "FR",
+      "flag": "🇫🇷",
+      "role": "TIREUR",
+      "ranking": 1881,
+      "tier": "LOCAL",
+      "stats": {
+        "appoint": 40,
+        "precision": 53,
+        "tir": 50,
+        "regularite": 42,
+        "experience": 41
+      },
+      "overall": 45,
+      "personality": "EQUILIBRE",
+      "recruitment": {
+        "minRank": 2381,
+        "available": true
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "bastien-marquet-1896",
+      "name": "Bastien Marquet",
+      "country": "TN",
+      "flag": "🇹🇳",
+      "role": "TIREUR",
+      "ranking": 1896,
+      "tier": "LOCAL",
+      "stats": {
+        "appoint": 26,
+        "precision": 27,
+        "tir": 30,
+        "regularite": 21,
+        "experience": 32
+      },
+      "overall": 27,
+      "personality": "EQUILIBRE",
+      "recruitment": {
+        "minRank": 2396,
+        "available": true
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "ilan-navarro-1911",
+      "name": "Ilan Navarro",
+      "country": "TN",
+      "flag": "🇹🇳",
+      "role": "MILIEU",
+      "ranking": 1911,
+      "tier": "LOCAL",
+      "stats": {
+        "appoint": 27,
+        "precision": 29,
+        "tir": 24,
+        "regularite": 35,
+        "experience": 37
+      },
+      "overall": 30,
+      "personality": "EQUILIBRE",
+      "recruitment": {
+        "minRank": 2411,
+        "available": true
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "oscar-vidal-1925",
+      "name": "Oscar Vidal",
+      "country": "FR",
+      "flag": "🇫🇷",
+      "role": "POINTEUR",
+      "ranking": 1925,
+      "tier": "LOCAL",
+      "stats": {
+        "appoint": 36,
+        "precision": 39,
+        "tir": 32,
+        "regularite": 42,
+        "experience": 36
+      },
+      "overall": 37,
+      "personality": "EQUILIBRE",
+      "recruitment": {
+        "minRank": 2425,
+        "available": true
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "oscar-weber-1940",
+      "name": "Oscar Weber",
+      "country": "BJ",
+      "flag": "🇧🇯",
+      "role": "TIREUR",
+      "ranking": 1940,
+      "tier": "LOCAL",
+      "stats": {
+        "appoint": 48,
+        "precision": 39,
+        "tir": 60,
+        "regularite": 41,
+        "experience": 39
+      },
+      "overall": 45,
+      "personality": "PRUDENT",
+      "recruitment": {
+        "minRank": 2440,
+        "available": true
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "romain-giraud-1955",
+      "name": "Romain Giraud",
+      "country": "BJ",
+      "flag": "🇧🇯",
+      "role": "TIREUR",
+      "ranking": 1955,
+      "tier": "LOCAL",
+      "stats": {
+        "appoint": 17,
+        "precision": 18,
+        "tir": 22,
+        "regularite": 14,
+        "experience": 15
+      },
+      "overall": 17,
+      "personality": "OFFENSIF",
+      "recruitment": {
+        "minRank": 2455,
+        "available": true
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "noam-marquet-1969",
+      "name": "Noam Marquet",
+      "country": "TN",
+      "flag": "🇹🇳",
+      "role": "TIREUR",
+      "ranking": 1969,
+      "tier": "LOCAL",
+      "stats": {
+        "appoint": 53,
+        "precision": 41,
+        "tir": 46,
+        "regularite": 44,
+        "experience": 37
+      },
+      "overall": 44,
+      "personality": "PRUDENT",
+      "recruitment": {
+        "minRank": 2469,
+        "available": true
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "quentin-garnier-1984",
+      "name": "Quentin Garnier",
+      "country": "FR",
+      "flag": "🇫🇷",
+      "role": "POINTEUR",
+      "ranking": 1984,
+      "tier": "LOCAL",
+      "stats": {
+        "appoint": 48,
+        "precision": 29,
+        "tir": 36,
+        "regularite": 38,
+        "experience": 26
+      },
+      "overall": 35,
+      "personality": "OFFENSIF",
+      "recruitment": {
+        "minRank": 2484,
+        "available": true
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "elias-weber-1999",
+      "name": "Élias Weber",
+      "country": "BJ",
+      "flag": "🇧🇯",
+      "role": "MILIEU",
+      "ranking": 1999,
+      "tier": "LOCAL",
+      "stats": {
+        "appoint": 23,
+        "precision": 20,
+        "tir": 32,
+        "regularite": 29,
+        "experience": 23
+      },
+      "overall": 25,
+      "personality": "EQUILIBRE",
+      "recruitment": {
+        "minRank": 2499,
+        "available": true
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "marius-keller-2013",
+      "name": "Marius Keller",
+      "country": "MG",
+      "flag": "🇲🇬",
+      "role": "TIREUR",
+      "ranking": 2013,
+      "tier": "LOCAL",
+      "stats": {
+        "appoint": 47,
+        "precision": 57,
+        "tir": 50,
+        "regularite": 50,
+        "experience": 53
+      },
+      "overall": 51,
+      "personality": "PRUDENT",
+      "recruitment": {
+        "minRank": 2513,
+        "available": true
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "jules-keller-2028",
+      "name": "Jules Keller",
+      "country": "FR",
+      "flag": "🇫🇷",
+      "role": "MILIEU",
+      "ranking": 2028,
+      "tier": "LOCAL",
+      "stats": {
+        "appoint": 24,
+        "precision": 20,
+        "tir": 20,
+        "regularite": 18,
+        "experience": 13
+      },
+      "overall": 19,
+      "personality": "PRUDENT",
+      "recruitment": {
+        "minRank": 2528,
+        "available": true
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "jules-lombardi-2043",
+      "name": "Jules Lombardi",
+      "country": "BJ",
+      "flag": "🇧🇯",
+      "role": "MILIEU",
+      "ranking": 2043,
+      "tier": "LOCAL",
+      "stats": {
+        "appoint": 36,
+        "precision": 49,
+        "tir": 45,
+        "regularite": 55,
+        "experience": 52
+      },
+      "overall": 47,
+      "personality": "EQUILIBRE",
+      "recruitment": {
+        "minRank": 2543,
+        "available": true
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "kevin-ravel-2057",
+      "name": "Kévin Ravel",
+      "country": "FR",
+      "flag": "🇫🇷",
+      "role": "POINTEUR",
+      "ranking": 2057,
+      "tier": "LOCAL",
+      "stats": {
+        "appoint": 53,
+        "precision": 55,
+        "tir": 47,
+        "regularite": 41,
+        "experience": 47
+      },
+      "overall": 49,
+      "personality": "OFFENSIF",
+      "recruitment": {
+        "minRank": 2557,
+        "available": true
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "dario-garnier-2072",
+      "name": "Dario Garnier",
+      "country": "IT",
+      "flag": "🇮🇹",
+      "role": "POINTEUR",
+      "ranking": 2072,
+      "tier": "LOCAL",
+      "stats": {
+        "appoint": 52,
+        "precision": 34,
+        "tir": 39,
+        "regularite": 46,
+        "experience": 32
+      },
+      "overall": 41,
+      "personality": "OFFENSIF",
+      "recruitment": {
+        "minRank": 2572,
+        "available": true
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "antoine-collet-2087",
+      "name": "Antoine Collet",
+      "country": "IT",
+      "flag": "🇮🇹",
+      "role": "MILIEU",
+      "ranking": 2087,
+      "tier": "LOCAL",
+      "stats": {
+        "appoint": 43,
+        "precision": 52,
+        "tir": 60,
+        "regularite": 60,
+        "experience": 54
+      },
+      "overall": 54,
+      "personality": "PRUDENT",
+      "recruitment": {
+        "minRank": 2587,
+        "available": true
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "hamza-aubert-2101",
+      "name": "Hamza Aubert",
+      "country": "FR",
+      "flag": "🇫🇷",
+      "role": "POINTEUR",
+      "ranking": 2101,
+      "tier": "LOCAL",
+      "stats": {
+        "appoint": 41,
+        "precision": 27,
+        "tir": 24,
+        "regularite": 22,
+        "experience": 25
+      },
+      "overall": 28,
+      "personality": "EQUILIBRE",
+      "recruitment": {
+        "minRank": 2601,
+        "available": true
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "clement-lombardi-2116",
+      "name": "Clément Lombardi",
+      "country": "FR",
+      "flag": "🇫🇷",
+      "role": "MILIEU",
+      "ranking": 2116,
+      "tier": "LOCAL",
+      "stats": {
+        "appoint": 51,
+        "precision": 48,
+        "tir": 58,
+        "regularite": 57,
+        "experience": 44
+      },
+      "overall": 52,
+      "personality": "PRUDENT",
+      "recruitment": {
+        "minRank": 2616,
+        "available": true
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "bastien-ziani-2131",
+      "name": "Bastien Ziani",
+      "country": "FR",
+      "flag": "🇫🇷",
+      "role": "MILIEU",
+      "ranking": 2131,
+      "tier": "LOCAL",
+      "stats": {
+        "appoint": 45,
+        "precision": 29,
+        "tir": 46,
+        "regularite": 43,
+        "experience": 32
+      },
+      "overall": 39,
+      "personality": "OFFENSIF",
+      "recruitment": {
+        "minRank": 2631,
+        "available": true
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "emile-carlier-2145",
+      "name": "Émile Carlier",
+      "country": "TH",
+      "flag": "🇹🇭",
+      "role": "TIREUR",
+      "ranking": 2145,
+      "tier": "LOCAL",
+      "stats": {
+        "appoint": 42,
+        "precision": 51,
+        "tir": 65,
+        "regularite": 52,
+        "experience": 51
+      },
+      "overall": 52,
+      "personality": "PRUDENT",
+      "recruitment": {
+        "minRank": 2645,
+        "available": true
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "damien-jouve-2160",
+      "name": "Damien Jouve",
+      "country": "FR",
+      "flag": "🇫🇷",
+      "role": "POINTEUR",
+      "ranking": 2160,
+      "tier": "LOCAL",
+      "stats": {
+        "appoint": 54,
+        "precision": 47,
+        "tir": 59,
+        "regularite": 48,
+        "experience": 58
+      },
+      "overall": 53,
+      "personality": "EQUILIBRE",
+      "recruitment": {
+        "minRank": 2660,
+        "available": true
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "samir-keller-2175",
+      "name": "Samir Keller",
+      "country": "FR",
+      "flag": "🇫🇷",
+      "role": "MILIEU",
+      "ranking": 2175,
+      "tier": "LOCAL",
+      "stats": {
+        "appoint": 38,
+        "precision": 34,
+        "tir": 36,
+        "regularite": 43,
+        "experience": 38
+      },
+      "overall": 38,
+      "personality": "EQUILIBRE",
+      "recruitment": {
+        "minRank": 2675,
+        "available": true
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "quentin-aubert-2189",
+      "name": "Quentin Aubert",
+      "country": "BE",
+      "flag": "🇧🇪",
+      "role": "TIREUR",
+      "ranking": 2189,
+      "tier": "LOCAL",
+      "stats": {
+        "appoint": 42,
+        "precision": 28,
+        "tir": 44,
+        "regularite": 33,
+        "experience": 37
+      },
+      "overall": 37,
+      "personality": "OFFENSIF",
+      "recruitment": {
+        "minRank": 2689,
+        "available": true
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "felix-lombardi-2204",
+      "name": "Félix Lombardi",
+      "country": "TN",
+      "flag": "🇹🇳",
+      "role": "TIREUR",
+      "ranking": 2204,
+      "tier": "LOCAL",
+      "stats": {
+        "appoint": 27,
+        "precision": 23,
+        "tir": 40,
+        "regularite": 23,
+        "experience": 27
+      },
+      "overall": 28,
+      "personality": "EQUILIBRE",
+      "recruitment": {
+        "minRank": 2704,
+        "available": true
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "damien-navarro-2219",
+      "name": "Damien Navarro",
+      "country": "IT",
+      "flag": "🇮🇹",
+      "role": "MILIEU",
+      "ranking": 2219,
+      "tier": "LOCAL",
+      "stats": {
+        "appoint": 21,
+        "precision": 23,
+        "tir": 11,
+        "regularite": 20,
+        "experience": 21
+      },
+      "overall": 19,
+      "personality": "EQUILIBRE",
+      "recruitment": {
+        "minRank": 2719,
+        "available": true
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "damien-lombardi-2233",
+      "name": "Damien Lombardi",
+      "country": "FR",
+      "flag": "🇫🇷",
+      "role": "MILIEU",
+      "ranking": 2233,
+      "tier": "LOCAL",
+      "stats": {
+        "appoint": 32,
+        "precision": 41,
+        "tir": 46,
+        "regularite": 40,
+        "experience": 44
+      },
+      "overall": 41,
+      "personality": "OFFENSIF",
+      "recruitment": {
+        "minRank": 2733,
+        "available": true
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "dario-weber-2248",
+      "name": "Dario Weber",
+      "country": "ES",
+      "flag": "🇪🇸",
+      "role": "TIREUR",
+      "ranking": 2248,
+      "tier": "LOCAL",
+      "stats": {
+        "appoint": 29,
+        "precision": 25,
+        "tir": 42,
+        "regularite": 33,
+        "experience": 24
+      },
+      "overall": 31,
+      "personality": "EQUILIBRE",
+      "recruitment": {
+        "minRank": 2748,
+        "available": true
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "hector-marquet-2263",
+      "name": "Hector Marquet",
+      "country": "FR",
+      "flag": "🇫🇷",
+      "role": "MILIEU",
+      "ranking": 2263,
+      "tier": "LOCAL",
+      "stats": {
+        "appoint": 40,
+        "precision": 41,
+        "tir": 39,
+        "regularite": 39,
+        "experience": 32
+      },
+      "overall": 38,
+      "personality": "OFFENSIF",
+      "recruitment": {
+        "minRank": 2763,
+        "available": true
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "gabin-bertin-2277",
+      "name": "Gabin Bertin",
+      "country": "TH",
+      "flag": "🇹🇭",
+      "role": "TIREUR",
+      "ranking": 2277,
+      "tier": "LOCAL",
+      "stats": {
+        "appoint": 52,
+        "precision": 37,
+        "tir": 57,
+        "regularite": 36,
+        "experience": 43
+      },
+      "overall": 45,
+      "personality": "OFFENSIF",
+      "recruitment": {
+        "minRank": 2777,
+        "available": true
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "damien-delaunay-2292",
+      "name": "Damien Delaunay",
+      "country": "ES",
+      "flag": "🇪🇸",
+      "role": "POINTEUR",
+      "ranking": 2292,
+      "tier": "LOCAL",
+      "stats": {
+        "appoint": 45,
+        "precision": 44,
+        "tir": 55,
+        "regularite": 48,
+        "experience": 44
+      },
+      "overall": 47,
+      "personality": "PRUDENT",
+      "recruitment": {
+        "minRank": 2792,
+        "available": true
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "hamza-collet-2307",
+      "name": "Hamza Collet",
+      "country": "TN",
+      "flag": "🇹🇳",
+      "role": "TIREUR",
+      "ranking": 2307,
+      "tier": "LOCAL",
+      "stats": {
+        "appoint": 42,
+        "precision": 37,
+        "tir": 38,
+        "regularite": 35,
+        "experience": 35
+      },
+      "overall": 37,
+      "personality": "OFFENSIF",
+      "recruitment": {
+        "minRank": 2807,
+        "available": true
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "emile-lombardi-2321",
+      "name": "Émile Lombardi",
+      "country": "ES",
+      "flag": "🇪🇸",
+      "role": "TIREUR",
+      "ranking": 2321,
+      "tier": "LOCAL",
+      "stats": {
+        "appoint": 37,
+        "precision": 51,
+        "tir": 41,
+        "regularite": 47,
+        "experience": 48
+      },
+      "overall": 45,
+      "personality": "EQUILIBRE",
+      "recruitment": {
+        "minRank": 2821,
+        "available": true
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "marius-olivier-2336",
+      "name": "Marius Olivier",
+      "country": "TH",
+      "flag": "🇹🇭",
+      "role": "POINTEUR",
+      "ranking": 2336,
+      "tier": "LOCAL",
+      "stats": {
+        "appoint": 51,
+        "precision": 49,
+        "tir": 51,
+        "regularite": 48,
+        "experience": 49
+      },
+      "overall": 50,
+      "personality": "PRUDENT",
+      "recruitment": {
+        "minRank": 2836,
+        "available": true
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "fabio-rossi-2351",
+      "name": "Fabio Rossi",
+      "country": "ES",
+      "flag": "🇪🇸",
+      "role": "TIREUR",
+      "ranking": 2351,
+      "tier": "LOCAL",
+      "stats": {
+        "appoint": 34,
+        "precision": 41,
+        "tir": 53,
+        "regularite": 32,
+        "experience": 35
+      },
+      "overall": 39,
+      "personality": "OFFENSIF",
+      "recruitment": {
+        "minRank": 2851,
+        "available": true
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "leo-faure-2365",
+      "name": "Léo Faure",
+      "country": "MG",
+      "flag": "🇲🇬",
+      "role": "TIREUR",
+      "ranking": 2365,
+      "tier": "LOCAL",
+      "stats": {
+        "appoint": 54,
+        "precision": 40,
+        "tir": 58,
+        "regularite": 45,
+        "experience": 53
+      },
+      "overall": 50,
+      "personality": "OFFENSIF",
+      "recruitment": {
+        "minRank": 2865,
+        "available": true
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "pablo-rossi-2380",
+      "name": "Pablo Rossi",
+      "country": "ES",
+      "flag": "🇪🇸",
+      "role": "TIREUR",
+      "ranking": 2380,
+      "tier": "LOCAL",
+      "stats": {
+        "appoint": 37,
+        "precision": 50,
+        "tir": 59,
+        "regularite": 43,
+        "experience": 51
+      },
+      "overall": 48,
+      "personality": "OFFENSIF",
+      "recruitment": {
+        "minRank": 2880,
+        "available": true
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "leo-keller-2395",
+      "name": "Léo Keller",
+      "country": "MG",
+      "flag": "🇲🇬",
+      "role": "MILIEU",
+      "ranking": 2395,
+      "tier": "LOCAL",
+      "stats": {
+        "appoint": 48,
+        "precision": 36,
+        "tir": 45,
+        "regularite": 47,
+        "experience": 44
+      },
+      "overall": 44,
+      "personality": "OFFENSIF",
+      "recruitment": {
+        "minRank": 2895,
+        "available": true
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "hamza-delaunay-2409",
+      "name": "Hamza Delaunay",
+      "country": "TN",
+      "flag": "🇹🇳",
+      "role": "MILIEU",
+      "ranking": 2409,
+      "tier": "LOCAL",
+      "stats": {
+        "appoint": 29,
+        "precision": 28,
+        "tir": 27,
+        "regularite": 24,
+        "experience": 18
+      },
+      "overall": 25,
+      "personality": "PRUDENT",
+      "recruitment": {
+        "minRank": 2909,
+        "available": true
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "fabio-iglesias-2424",
+      "name": "Fabio Iglesias",
+      "country": "ES",
+      "flag": "🇪🇸",
+      "role": "TIREUR",
+      "ranking": 2424,
+      "tier": "LOCAL",
+      "stats": {
+        "appoint": 40,
+        "precision": 54,
+        "tir": 58,
+        "regularite": 44,
+        "experience": 54
+      },
+      "overall": 50,
+      "personality": "PRUDENT",
+      "recruitment": {
+        "minRank": 2924,
+        "available": true
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "ilan-barra-2439",
+      "name": "Ilan Barra",
+      "country": "IT",
+      "flag": "🇮🇹",
+      "role": "POINTEUR",
+      "ranking": 2439,
+      "tier": "LOCAL",
+      "stats": {
+        "appoint": 18,
+        "precision": 12,
+        "tir": 22,
+        "regularite": 13,
+        "experience": 13
+      },
+      "overall": 16,
+      "personality": "OFFENSIF",
+      "recruitment": {
+        "minRank": 2939,
+        "available": true
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "cedric-keller-2453",
+      "name": "Cédric Keller",
+      "country": "MG",
+      "flag": "🇲🇬",
+      "role": "MILIEU",
+      "ranking": 2453,
+      "tier": "LOCAL",
+      "stats": {
+        "appoint": 21,
+        "precision": 28,
+        "tir": 11,
+        "regularite": 25,
+        "experience": 26
+      },
+      "overall": 22,
+      "personality": "EQUILIBRE",
+      "recruitment": {
+        "minRank": 2953,
+        "available": true
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "quentin-bertin-2468",
+      "name": "Quentin Bertin",
+      "country": "BE",
+      "flag": "🇧🇪",
+      "role": "TIREUR",
+      "ranking": 2468,
+      "tier": "LOCAL",
+      "stats": {
+        "appoint": 39,
+        "precision": 44,
+        "tir": 52,
+        "regularite": 31,
+        "experience": 28
+      },
+      "overall": 39,
+      "personality": "PRUDENT",
+      "recruitment": {
+        "minRank": 2968,
+        "available": true
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "felix-martinelli-2483",
+      "name": "Félix Martinelli",
+      "country": "BJ",
+      "flag": "🇧🇯",
+      "role": "TIREUR",
+      "ranking": 2483,
+      "tier": "LOCAL",
+      "stats": {
+        "appoint": 26,
+        "precision": 37,
+        "tir": 32,
+        "regularite": 24,
+        "experience": 34
+      },
+      "overall": 31,
+      "personality": "PRUDENT",
+      "recruitment": {
+        "minRank": 2983,
+        "available": true
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "pablo-delaunay-2497",
+      "name": "Pablo Delaunay",
+      "country": "ES",
+      "flag": "🇪🇸",
+      "role": "MILIEU",
+      "ranking": 2497,
+      "tier": "LOCAL",
+      "stats": {
+        "appoint": 24,
+        "precision": 23,
+        "tir": 25,
+        "regularite": 36,
+        "experience": 19
+      },
+      "overall": 25,
+      "personality": "PRUDENT",
+      "recruitment": {
+        "minRank": 2997,
+        "available": true
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "kevin-tessier-2512",
+      "name": "Kévin Tessier",
+      "country": "IT",
+      "flag": "🇮🇹",
+      "role": "MILIEU",
+      "ranking": 2512,
+      "tier": "LOCAL",
+      "stats": {
+        "appoint": 55,
+        "precision": 48,
+        "tir": 52,
+        "regularite": 54,
+        "experience": 56
+      },
+      "overall": 53,
+      "personality": "OFFENSIF",
+      "recruitment": {
+        "minRank": 3000,
+        "available": true
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "jules-perez-2527",
+      "name": "Jules Perez",
+      "country": "FR",
+      "flag": "🇫🇷",
+      "role": "MILIEU",
+      "ranking": 2527,
+      "tier": "LOCAL",
+      "stats": {
+        "appoint": 44,
+        "precision": 43,
+        "tir": 44,
+        "regularite": 46,
+        "experience": 43
+      },
+      "overall": 44,
+      "personality": "EQUILIBRE",
+      "recruitment": {
+        "minRank": 3000,
+        "available": true
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "cedric-faure-2541",
+      "name": "Cédric Faure",
+      "country": "TH",
+      "flag": "🇹🇭",
+      "role": "MILIEU",
+      "ranking": 2541,
+      "tier": "LOCAL",
+      "stats": {
+        "appoint": 42,
+        "precision": 47,
+        "tir": 43,
+        "regularite": 57,
+        "experience": 53
+      },
+      "overall": 48,
+      "personality": "EQUILIBRE",
+      "recruitment": {
+        "minRank": 3000,
+        "available": true
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "ilan-delaunay-2556",
+      "name": "Ilan Delaunay",
+      "country": "FR",
+      "flag": "🇫🇷",
+      "role": "MILIEU",
+      "ranking": 2556,
+      "tier": "LOCAL",
+      "stats": {
+        "appoint": 24,
+        "precision": 37,
+        "tir": 30,
+        "regularite": 32,
+        "experience": 39
+      },
+      "overall": 32,
+      "personality": "PRUDENT",
+      "recruitment": {
+        "minRank": 3000,
+        "available": true
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "gael-collet-2571",
+      "name": "Gaël Collet",
+      "country": "FR",
+      "flag": "🇫🇷",
+      "role": "MILIEU",
+      "ranking": 2571,
+      "tier": "LOCAL",
+      "stats": {
+        "appoint": 28,
+        "precision": 33,
+        "tir": 39,
+        "regularite": 30,
+        "experience": 38
+      },
+      "overall": 34,
+      "personality": "PRUDENT",
+      "recruitment": {
+        "minRank": 3000,
+        "available": true
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "hamza-rossi-2585",
+      "name": "Hamza Rossi",
+      "country": "FR",
+      "flag": "🇫🇷",
+      "role": "TIREUR",
+      "ranking": 2585,
+      "tier": "LOCAL",
+      "stats": {
+        "appoint": 37,
+        "precision": 43,
+        "tir": 42,
+        "regularite": 42,
+        "experience": 36
+      },
+      "overall": 40,
+      "personality": "PRUDENT",
+      "recruitment": {
+        "minRank": 3000,
+        "available": true
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    },
+    {
+      "id": "damien-bertin-2600",
+      "name": "Damien Bertin",
+      "country": "BE",
+      "flag": "🇧🇪",
+      "role": "TIREUR",
+      "ranking": 2600,
+      "tier": "LOCAL",
+      "stats": {
+        "appoint": 45,
+        "precision": 39,
+        "tir": 59,
+        "regularite": 42,
+        "experience": 35
+      },
+      "overall": 44,
+      "personality": "PRUDENT",
+      "recruitment": {
+        "minRank": 3000,
+        "available": true
+      },
+      "dataStatus": "GENERATED_TEST_POPULATION"
+    }
+  ],
+  "careerV1Scope": "30_VALIDATED_ELITE_PLAYERS"
+}

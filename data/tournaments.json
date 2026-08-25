@@ -1,0 +1,1137 @@
+{
+  "version": 2,
+  "seasonMonths": [
+    "MARS",
+    "AVRIL",
+    "MAI",
+    "JUIN",
+    "JUILLET",
+    "AOÛT",
+    "SEPTEMBRE",
+    "OCTOBRE"
+  ],
+  "tournaments": [
+    {
+      "id": "career-event-01",
+      "name": "Coupe des Oliviers",
+      "month": "MARS",
+      "day": 7,
+      "city": "Valmont",
+      "country": "FR",
+      "level": "LOCAL",
+      "format": "DOUBLETTE",
+      "teamCount": 16,
+      "terrainId": "gravel-neutral",
+      "requiredRankMax": 9999,
+      "entryFee": 10,
+      "travelCost": 5,
+      "totalCost": 15,
+      "prizes": {
+        "winner": 70,
+        "finalist": 0,
+        "semifinalist": 0
+      },
+      "rankingPoints": {
+        "winner": 45,
+        "finalist": 25,
+        "semifinalist": 14
+      },
+      "status": "UPCOMING",
+      "isTestData": false
+    },
+    {
+      "id": "career-event-02",
+      "name": "Trophée du Boulodrome",
+      "month": "MARS",
+      "day": 12,
+      "city": "Saint-Romain",
+      "country": "FR",
+      "level": "LOCAL",
+      "format": "HEAD_TO_HEAD",
+      "teamCount": 8,
+      "terrainId": "hard-rolling",
+      "requiredRankMax": 9999,
+      "entryFee": 8,
+      "travelCost": 4,
+      "totalCost": 12,
+      "prizes": {
+        "winner": 50,
+        "finalist": 0,
+        "semifinalist": 0
+      },
+      "rankingPoints": {
+        "winner": 30,
+        "finalist": 16,
+        "semifinalist": 9
+      },
+      "status": "UPCOMING",
+      "isTestData": false
+    },
+    {
+      "id": "career-event-03",
+      "name": "Open des Pins",
+      "month": "MARS",
+      "day": 18,
+      "city": "Belrive",
+      "country": "FR",
+      "level": "LOCAL",
+      "format": "DOUBLETTE",
+      "teamCount": 16,
+      "terrainId": "soft-sandy",
+      "requiredRankMax": 2200,
+      "entryFee": 12,
+      "travelCost": 7,
+      "totalCost": 19,
+      "prizes": {
+        "winner": 85,
+        "finalist": 0,
+        "semifinalist": 0
+      },
+      "rankingPoints": {
+        "winner": 55,
+        "finalist": 30,
+        "semifinalist": 16
+      },
+      "status": "UPCOMING",
+      "isTestData": false
+    },
+    {
+      "id": "career-event-04",
+      "name": "Challenge de la Colline",
+      "month": "MARS",
+      "day": 23,
+      "city": "Montbrun",
+      "country": "FR",
+      "level": "REGIONAL",
+      "format": "DOUBLETTE",
+      "teamCount": 16,
+      "terrainId": "broken-rock",
+      "requiredRankMax": 1000,
+      "entryFee": 22,
+      "travelCost": 14,
+      "totalCost": 36,
+      "prizes": {
+        "winner": 150,
+        "finalist": 0,
+        "semifinalist": 0
+      },
+      "rankingPoints": {
+        "winner": 100,
+        "finalist": 55,
+        "semifinalist": 30
+      },
+      "status": "UPCOMING",
+      "isTestData": false
+    },
+    {
+      "id": "career-event-05",
+      "name": "Prix du Rhône Sud",
+      "month": "MARS",
+      "day": 29,
+      "city": "Rocheval",
+      "country": "FR",
+      "level": "REGIONAL",
+      "format": "TRIPLETTE",
+      "teamCount": 16,
+      "terrainId": "gravel-neutral",
+      "requiredRankMax": 900,
+      "entryFee": 26,
+      "travelCost": 18,
+      "totalCost": 44,
+      "prizes": {
+        "winner": 175,
+        "finalist": 0,
+        "semifinalist": 0
+      },
+      "rankingPoints": {
+        "winner": 120,
+        "finalist": 66,
+        "semifinalist": 36
+      },
+      "status": "UPCOMING",
+      "isTestData": false
+    },
+    {
+      "id": "career-event-06",
+      "name": "Grand Prix de Valcros",
+      "month": "AVRIL",
+      "day": 4,
+      "city": "Valcros",
+      "country": "FR",
+      "level": "LOCAL",
+      "format": "DOUBLETTE",
+      "teamCount": 16,
+      "terrainId": "hard-rolling",
+      "requiredRankMax": 2000,
+      "entryFee": 14,
+      "travelCost": 8,
+      "totalCost": 22,
+      "prizes": {
+        "winner": 95,
+        "finalist": 0,
+        "semifinalist": 0
+      },
+      "rankingPoints": {
+        "winner": 60,
+        "finalist": 33,
+        "semifinalist": 18
+      },
+      "status": "UPCOMING",
+      "isTestData": false
+    },
+    {
+      "id": "career-event-07",
+      "name": "Trophée des Arènes",
+      "month": "AVRIL",
+      "day": 9,
+      "city": "Montélia",
+      "country": "FR",
+      "level": "REGIONAL",
+      "format": "HEAD_TO_HEAD",
+      "teamCount": 16,
+      "terrainId": "gravel-neutral",
+      "requiredRankMax": 1000,
+      "entryFee": 24,
+      "travelCost": 14,
+      "totalCost": 38,
+      "prizes": {
+        "winner": 160,
+        "finalist": 0,
+        "semifinalist": 0
+      },
+      "rankingPoints": {
+        "winner": 110,
+        "finalist": 61,
+        "semifinalist": 33
+      },
+      "status": "UPCOMING",
+      "isTestData": false
+    },
+    {
+      "id": "career-event-08",
+      "name": "Open de Port-Lumière",
+      "month": "AVRIL",
+      "day": 15,
+      "city": "Port-Lumière",
+      "country": "FR",
+      "level": "REGIONAL",
+      "format": "DOUBLETTE",
+      "teamCount": 16,
+      "terrainId": "soft-sandy",
+      "requiredRankMax": 850,
+      "entryFee": 28,
+      "travelCost": 18,
+      "totalCost": 46,
+      "prizes": {
+        "winner": 195,
+        "finalist": 0,
+        "semifinalist": 0
+      },
+      "rankingPoints": {
+        "winner": 130,
+        "finalist": 72,
+        "semifinalist": 39
+      },
+      "status": "UPCOMING",
+      "isTestData": false
+    },
+    {
+      "id": "career-event-09",
+      "name": "Coupe des Remparts",
+      "month": "AVRIL",
+      "day": 21,
+      "city": "Castelvieil",
+      "country": "FR",
+      "level": "REGIONAL",
+      "format": "TRIPLETTE",
+      "teamCount": 16,
+      "terrainId": "broken-rock",
+      "requiredRankMax": 700,
+      "entryFee": 32,
+      "travelCost": 22,
+      "totalCost": 54,
+      "prizes": {
+        "winner": 225,
+        "finalist": 0,
+        "semifinalist": 0
+      },
+      "rankingPoints": {
+        "winner": 150,
+        "finalist": 82,
+        "semifinalist": 45
+      },
+      "status": "UPCOMING",
+      "isTestData": false
+    },
+    {
+      "id": "career-event-10",
+      "name": "Masters Région Sud",
+      "month": "AVRIL",
+      "day": 28,
+      "city": "Aubecastel",
+      "country": "FR",
+      "level": "REGIONAL",
+      "format": "DOUBLETTE",
+      "teamCount": 32,
+      "terrainId": "gravel-neutral",
+      "requiredRankMax": 600,
+      "entryFee": 38,
+      "travelCost": 28,
+      "totalCost": 66,
+      "prizes": {
+        "winner": 270,
+        "finalist": 0,
+        "semifinalist": 0
+      },
+      "rankingPoints": {
+        "winner": 180,
+        "finalist": 99,
+        "semifinalist": 54
+      },
+      "status": "UPCOMING",
+      "isTestData": false
+    },
+    {
+      "id": "career-event-11",
+      "name": "Trophée Méditerranée",
+      "month": "MAI",
+      "day": 3,
+      "city": "Belle-Dune",
+      "country": "FR",
+      "level": "REGIONAL",
+      "format": "DOUBLETTE",
+      "teamCount": 16,
+      "terrainId": "soft-sandy",
+      "requiredRankMax": 800,
+      "entryFee": 30,
+      "travelCost": 20,
+      "totalCost": 50,
+      "prizes": {
+        "winner": 210,
+        "finalist": 0,
+        "semifinalist": 0
+      },
+      "rankingPoints": {
+        "winner": 145,
+        "finalist": 80,
+        "semifinalist": 44
+      },
+      "status": "UPCOMING",
+      "isTestData": false
+    },
+    {
+      "id": "career-event-12",
+      "name": "Open de Rocheval",
+      "month": "MAI",
+      "day": 8,
+      "city": "Rocheval",
+      "country": "FR",
+      "level": "REGIONAL",
+      "format": "HEAD_TO_HEAD",
+      "teamCount": 16,
+      "terrainId": "hard-rolling",
+      "requiredRankMax": 650,
+      "entryFee": 34,
+      "travelCost": 22,
+      "totalCost": 56,
+      "prizes": {
+        "winner": 235,
+        "finalist": 0,
+        "semifinalist": 0
+      },
+      "rankingPoints": {
+        "winner": 160,
+        "finalist": 88,
+        "semifinalist": 48
+      },
+      "status": "UPCOMING",
+      "isTestData": false
+    },
+    {
+      "id": "career-event-13",
+      "name": "Grand Prix des Terrasses",
+      "month": "MAI",
+      "day": 14,
+      "city": "Aubecastel",
+      "country": "FR",
+      "level": "NATIONAL",
+      "format": "DOUBLETTE",
+      "teamCount": 32,
+      "terrainId": "broken-rock",
+      "requiredRankMax": 300,
+      "entryFee": 55,
+      "travelCost": 38,
+      "totalCost": 93,
+      "prizes": {
+        "winner": 390,
+        "finalist": 136,
+        "semifinalist": 0
+      },
+      "rankingPoints": {
+        "winner": 280,
+        "finalist": 154,
+        "semifinalist": 84
+      },
+      "status": "UPCOMING",
+      "isTestData": false
+    },
+    {
+      "id": "career-event-14",
+      "name": "Coupe de la Riviera",
+      "month": "MAI",
+      "day": 20,
+      "city": "Port-Azur",
+      "country": "FR",
+      "level": "NATIONAL",
+      "format": "TRIPLETTE",
+      "teamCount": 32,
+      "terrainId": "gravel-neutral",
+      "requiredRankMax": 250,
+      "entryFee": 62,
+      "travelCost": 44,
+      "totalCost": 106,
+      "prizes": {
+        "winner": 460,
+        "finalist": 161,
+        "semifinalist": 0
+      },
+      "rankingPoints": {
+        "winner": 330,
+        "finalist": 182,
+        "semifinalist": 99
+      },
+      "status": "UPCOMING",
+      "isTestData": false
+    },
+    {
+      "id": "career-event-15",
+      "name": "National du Lac",
+      "month": "MAI",
+      "day": 27,
+      "city": "Rivargent",
+      "country": "FR",
+      "level": "NATIONAL",
+      "format": "DOUBLETTE",
+      "teamCount": 32,
+      "terrainId": "wet-heavy",
+      "requiredRankMax": 220,
+      "entryFee": 70,
+      "travelCost": 48,
+      "totalCost": 118,
+      "prizes": {
+        "winner": 520,
+        "finalist": 182,
+        "semifinalist": 0
+      },
+      "rankingPoints": {
+        "winner": 365,
+        "finalist": 201,
+        "semifinalist": 110
+      },
+      "status": "UPCOMING",
+      "isTestData": false
+    },
+    {
+      "id": "career-event-16",
+      "name": "Open des Sables",
+      "month": "JUIN",
+      "day": 2,
+      "city": "Belle-Dune",
+      "country": "FR",
+      "level": "REGIONAL",
+      "format": "TRIPLETTE",
+      "teamCount": 16,
+      "terrainId": "soft-sandy",
+      "requiredRankMax": 550,
+      "entryFee": 38,
+      "travelCost": 24,
+      "totalCost": 62,
+      "prizes": {
+        "winner": 265,
+        "finalist": 0,
+        "semifinalist": 0
+      },
+      "rankingPoints": {
+        "winner": 185,
+        "finalist": 102,
+        "semifinalist": 56
+      },
+      "status": "UPCOMING",
+      "isTestData": false
+    },
+    {
+      "id": "career-event-17",
+      "name": "Trophée du Parc",
+      "month": "JUIN",
+      "day": 8,
+      "city": "Montbrun",
+      "country": "FR",
+      "level": "REGIONAL",
+      "format": "DOUBLETTE",
+      "teamCount": 16,
+      "terrainId": "gravel-neutral",
+      "requiredRankMax": 500,
+      "entryFee": 40,
+      "travelCost": 26,
+      "totalCost": 66,
+      "prizes": {
+        "winner": 280,
+        "finalist": 0,
+        "semifinalist": 0
+      },
+      "rankingPoints": {
+        "winner": 200,
+        "finalist": 110,
+        "semifinalist": 60
+      },
+      "status": "UPCOMING",
+      "isTestData": false
+    },
+    {
+      "id": "career-event-18",
+      "name": "National des Remparts",
+      "month": "JUIN",
+      "day": 14,
+      "city": "Castelvieil",
+      "country": "FR",
+      "level": "NATIONAL",
+      "format": "DOUBLETTE",
+      "teamCount": 32,
+      "terrainId": "broken-rock",
+      "requiredRankMax": 300,
+      "entryFee": 65,
+      "travelCost": 45,
+      "totalCost": 110,
+      "prizes": {
+        "winner": 470,
+        "finalist": 164,
+        "semifinalist": 0
+      },
+      "rankingPoints": {
+        "winner": 340,
+        "finalist": 187,
+        "semifinalist": 102
+      },
+      "status": "UPCOMING",
+      "isTestData": false
+    },
+    {
+      "id": "career-event-19",
+      "name": "Grand National Riviera",
+      "month": "JUIN",
+      "day": 21,
+      "city": "Port-Azur",
+      "country": "FR",
+      "level": "NATIONAL",
+      "format": "TRIPLETTE",
+      "teamCount": 32,
+      "terrainId": "hard-rolling",
+      "requiredRankMax": 200,
+      "entryFee": 78,
+      "travelCost": 55,
+      "totalCost": 133,
+      "prizes": {
+        "winner": 580,
+        "finalist": 203,
+        "semifinalist": 0
+      },
+      "rankingPoints": {
+        "winner": 420,
+        "finalist": 231,
+        "semifinalist": 126
+      },
+      "status": "UPCOMING",
+      "isTestData": false
+    },
+    {
+      "id": "career-event-20",
+      "name": "Elite Cup du Sud",
+      "month": "JUIN",
+      "day": 28,
+      "city": "Nova Arena",
+      "country": "FR",
+      "level": "NATIONAL",
+      "format": "HEAD_TO_HEAD",
+      "teamCount": 16,
+      "terrainId": "gravel-neutral",
+      "requiredRankMax": 150,
+      "entryFee": 90,
+      "travelCost": 64,
+      "totalCost": 154,
+      "prizes": {
+        "winner": 680,
+        "finalist": 238,
+        "semifinalist": 0
+      },
+      "rankingPoints": {
+        "winner": 500,
+        "finalist": 275,
+        "semifinalist": 150
+      },
+      "status": "UPCOMING",
+      "isTestData": false
+    },
+    {
+      "id": "career-event-21",
+      "name": "Open Estival des Pins",
+      "month": "JUILLET",
+      "day": 4,
+      "city": "Valcros",
+      "country": "FR",
+      "level": "REGIONAL",
+      "format": "DOUBLETTE",
+      "teamCount": 16,
+      "terrainId": "hard-rolling",
+      "requiredRankMax": 450,
+      "entryFee": 45,
+      "travelCost": 30,
+      "totalCost": 75,
+      "prizes": {
+        "winner": 320,
+        "finalist": 0,
+        "semifinalist": 0
+      },
+      "rankingPoints": {
+        "winner": 220,
+        "finalist": 121,
+        "semifinalist": 66
+      },
+      "status": "UPCOMING",
+      "isTestData": false
+    },
+    {
+      "id": "career-event-22",
+      "name": "National Méditerranée",
+      "month": "JUILLET",
+      "day": 10,
+      "city": "Port-Lumière",
+      "country": "FR",
+      "level": "NATIONAL",
+      "format": "TRIPLETTE",
+      "teamCount": 32,
+      "terrainId": "soft-sandy",
+      "requiredRankMax": 250,
+      "entryFee": 75,
+      "travelCost": 55,
+      "totalCost": 130,
+      "prizes": {
+        "winner": 560,
+        "finalist": 196,
+        "semifinalist": 0
+      },
+      "rankingPoints": {
+        "winner": 400,
+        "finalist": 220,
+        "semifinalist": 120
+      },
+      "status": "UPCOMING",
+      "isTestData": false
+    },
+    {
+      "id": "career-event-23",
+      "name": "Grand Prix National 2026",
+      "month": "JUILLET",
+      "day": 16,
+      "city": "Grand Boulodrome",
+      "country": "FR",
+      "level": "NATIONAL",
+      "format": "DOUBLETTE",
+      "teamCount": 32,
+      "terrainId": "gravel-neutral",
+      "requiredRankMax": 150,
+      "entryFee": 95,
+      "travelCost": 70,
+      "totalCost": 165,
+      "prizes": {
+        "winner": 760,
+        "finalist": 266,
+        "semifinalist": 0
+      },
+      "rankingPoints": {
+        "winner": 560,
+        "finalist": 308,
+        "semifinalist": 168
+      },
+      "status": "UPCOMING",
+      "isTestData": false
+    },
+    {
+      "id": "career-event-24",
+      "name": "Coupe des Champions",
+      "month": "JUILLET",
+      "day": 23,
+      "city": "Arena Centrale",
+      "country": "FR",
+      "level": "NATIONAL",
+      "format": "TRIPLETTE",
+      "teamCount": 16,
+      "terrainId": "hard-rolling",
+      "requiredRankMax": 100,
+      "entryFee": 110,
+      "travelCost": 82,
+      "totalCost": 192,
+      "prizes": {
+        "winner": 880,
+        "finalist": 308,
+        "semifinalist": 0
+      },
+      "rankingPoints": {
+        "winner": 650,
+        "finalist": 358,
+        "semifinalist": 195
+      },
+      "status": "UPCOMING",
+      "isTestData": false
+    },
+    {
+      "id": "career-event-25",
+      "name": "International Côte d’Azur",
+      "month": "JUILLET",
+      "day": 30,
+      "city": "Port-Azur",
+      "country": "FR",
+      "level": "INTERNATIONAL",
+      "format": "DOUBLETTE",
+      "teamCount": 32,
+      "terrainId": "gravel-neutral",
+      "requiredRankMax": 50,
+      "entryFee": 135,
+      "travelCost": 100,
+      "totalCost": 235,
+      "prizes": {
+        "winner": 1100,
+        "finalist": 385,
+        "semifinalist": 165
+      },
+      "rankingPoints": {
+        "winner": 800,
+        "finalist": 440,
+        "semifinalist": 240
+      },
+      "status": "UPCOMING",
+      "isTestData": false
+    },
+    {
+      "id": "career-event-26",
+      "name": "Open du Vieux Port",
+      "month": "AOÛT",
+      "day": 3,
+      "city": "Port-Lumière",
+      "country": "FR",
+      "level": "REGIONAL",
+      "format": "DOUBLETTE",
+      "teamCount": 16,
+      "terrainId": "gravel-neutral",
+      "requiredRankMax": 400,
+      "entryFee": 48,
+      "travelCost": 32,
+      "totalCost": 80,
+      "prizes": {
+        "winner": 340,
+        "finalist": 0,
+        "semifinalist": 0
+      },
+      "rankingPoints": {
+        "winner": 240,
+        "finalist": 132,
+        "semifinalist": 72
+      },
+      "status": "UPCOMING",
+      "isTestData": false
+    },
+    {
+      "id": "career-event-27",
+      "name": "National des Arènes",
+      "month": "AOÛT",
+      "day": 9,
+      "city": "Montélia",
+      "country": "FR",
+      "level": "NATIONAL",
+      "format": "TRIPLETTE",
+      "teamCount": 32,
+      "terrainId": "hard-rolling",
+      "requiredRankMax": 250,
+      "entryFee": 80,
+      "travelCost": 60,
+      "totalCost": 140,
+      "prizes": {
+        "winner": 600,
+        "finalist": 210,
+        "semifinalist": 0
+      },
+      "rankingPoints": {
+        "winner": 430,
+        "finalist": 237,
+        "semifinalist": 129
+      },
+      "status": "UPCOMING",
+      "isTestData": false
+    },
+    {
+      "id": "career-event-28",
+      "name": "Trophée National d’Été",
+      "month": "AOÛT",
+      "day": 15,
+      "city": "Rivargent",
+      "country": "FR",
+      "level": "NATIONAL",
+      "format": "DOUBLETTE",
+      "teamCount": 32,
+      "terrainId": "wet-heavy",
+      "requiredRankMax": 150,
+      "entryFee": 98,
+      "travelCost": 72,
+      "totalCost": 170,
+      "prizes": {
+        "winner": 780,
+        "finalist": 273,
+        "semifinalist": 0
+      },
+      "rankingPoints": {
+        "winner": 570,
+        "finalist": 314,
+        "semifinalist": 171
+      },
+      "status": "UPCOMING",
+      "isTestData": false
+    },
+    {
+      "id": "career-event-29",
+      "name": "Continental Steel Cup",
+      "month": "AOÛT",
+      "day": 22,
+      "city": "Nova Arena",
+      "country": "FR",
+      "level": "INTERNATIONAL",
+      "format": "HEAD_TO_HEAD",
+      "teamCount": 16,
+      "terrainId": "hard-rolling",
+      "requiredRankMax": 50,
+      "entryFee": 145,
+      "travelCost": 108,
+      "totalCost": 253,
+      "prizes": {
+        "winner": 1180,
+        "finalist": 413,
+        "semifinalist": 177
+      },
+      "rankingPoints": {
+        "winner": 850,
+        "finalist": 468,
+        "semifinalist": 255
+      },
+      "status": "UPCOMING",
+      "isTestData": false
+    },
+    {
+      "id": "career-event-30",
+      "name": "World Triplette Challenge",
+      "month": "AOÛT",
+      "day": 29,
+      "city": "Arena Centrale",
+      "country": "FR",
+      "level": "INTERNATIONAL",
+      "format": "TRIPLETTE",
+      "teamCount": 32,
+      "terrainId": "gravel-neutral",
+      "requiredRankMax": 30,
+      "entryFee": 165,
+      "travelCost": 125,
+      "totalCost": 290,
+      "prizes": {
+        "winner": 1400,
+        "finalist": 490,
+        "semifinalist": 210
+      },
+      "rankingPoints": {
+        "winner": 1000,
+        "finalist": 550,
+        "semifinalist": 300
+      },
+      "status": "UPCOMING",
+      "isTestData": false
+    },
+    {
+      "id": "career-event-31",
+      "name": "Trophée de la Rentrée",
+      "month": "SEPTEMBRE",
+      "day": 4,
+      "city": "Belrive",
+      "country": "FR",
+      "level": "REGIONAL",
+      "format": "DOUBLETTE",
+      "teamCount": 16,
+      "terrainId": "gravel-neutral",
+      "requiredRankMax": 350,
+      "entryFee": 50,
+      "travelCost": 35,
+      "totalCost": 85,
+      "prizes": {
+        "winner": 360,
+        "finalist": 0,
+        "semifinalist": 0
+      },
+      "rankingPoints": {
+        "winner": 250,
+        "finalist": 138,
+        "semifinalist": 75
+      },
+      "status": "UPCOMING",
+      "isTestData": false
+    },
+    {
+      "id": "career-event-32",
+      "name": "National des Terrasses",
+      "month": "SEPTEMBRE",
+      "day": 10,
+      "city": "Aubecastel",
+      "country": "FR",
+      "level": "NATIONAL",
+      "format": "DOUBLETTE",
+      "teamCount": 32,
+      "terrainId": "broken-rock",
+      "requiredRankMax": 200,
+      "entryFee": 88,
+      "travelCost": 64,
+      "totalCost": 152,
+      "prizes": {
+        "winner": 670,
+        "finalist": 234,
+        "semifinalist": 0
+      },
+      "rankingPoints": {
+        "winner": 480,
+        "finalist": 264,
+        "semifinalist": 144
+      },
+      "status": "UPCOMING",
+      "isTestData": false
+    },
+    {
+      "id": "career-event-33",
+      "name": "Grand Prix de France Sud",
+      "month": "SEPTEMBRE",
+      "day": 16,
+      "city": "Grand Boulodrome",
+      "country": "FR",
+      "level": "NATIONAL",
+      "format": "TRIPLETTE",
+      "teamCount": 32,
+      "terrainId": "hard-rolling",
+      "requiredRankMax": 100,
+      "entryFee": 120,
+      "travelCost": 90,
+      "totalCost": 210,
+      "prizes": {
+        "winner": 960,
+        "finalist": 336,
+        "semifinalist": 0
+      },
+      "rankingPoints": {
+        "winner": 700,
+        "finalist": 385,
+        "semifinalist": 210
+      },
+      "status": "UPCOMING",
+      "isTestData": false
+    },
+    {
+      "id": "career-event-34",
+      "name": "International Riviera Cup",
+      "month": "SEPTEMBRE",
+      "day": 22,
+      "city": "Port-Azur",
+      "country": "FR",
+      "level": "INTERNATIONAL",
+      "format": "DOUBLETTE",
+      "teamCount": 32,
+      "terrainId": "gravel-neutral",
+      "requiredRankMax": 50,
+      "entryFee": 155,
+      "travelCost": 118,
+      "totalCost": 273,
+      "prizes": {
+        "winner": 1280,
+        "finalist": 448,
+        "semifinalist": 192
+      },
+      "rankingPoints": {
+        "winner": 920,
+        "finalist": 506,
+        "semifinalist": 276
+      },
+      "status": "UPCOMING",
+      "isTestData": false
+    },
+    {
+      "id": "career-event-35",
+      "name": "Champions International",
+      "month": "SEPTEMBRE",
+      "day": 28,
+      "city": "Arena Centrale",
+      "country": "FR",
+      "level": "INTERNATIONAL",
+      "format": "TRIPLETTE",
+      "teamCount": 16,
+      "terrainId": "wet-heavy",
+      "requiredRankMax": 30,
+      "entryFee": 180,
+      "travelCost": 135,
+      "totalCost": 315,
+      "prizes": {
+        "winner": 1520,
+        "finalist": 532,
+        "semifinalist": 228
+      },
+      "rankingPoints": {
+        "winner": 1120,
+        "finalist": 616,
+        "semifinalist": 336
+      },
+      "status": "UPCOMING",
+      "isTestData": false
+    },
+    {
+      "id": "career-event-36",
+      "name": "Finale Régionale des Clubs",
+      "month": "OCTOBRE",
+      "day": 3,
+      "city": "Montbrun",
+      "country": "FR",
+      "level": "REGIONAL",
+      "format": "TRIPLETTE",
+      "teamCount": 16,
+      "terrainId": "gravel-neutral",
+      "requiredRankMax": 300,
+      "entryFee": 52,
+      "travelCost": 36,
+      "totalCost": 88,
+      "prizes": {
+        "winner": 380,
+        "finalist": 0,
+        "semifinalist": 0
+      },
+      "rankingPoints": {
+        "winner": 265,
+        "finalist": 146,
+        "semifinalist": 80
+      },
+      "status": "UPCOMING",
+      "isTestData": false
+    },
+    {
+      "id": "career-event-37",
+      "name": "National d’Automne",
+      "month": "OCTOBRE",
+      "day": 8,
+      "city": "Rocheval",
+      "country": "FR",
+      "level": "NATIONAL",
+      "format": "DOUBLETTE",
+      "teamCount": 32,
+      "terrainId": "broken-rock",
+      "requiredRankMax": 180,
+      "entryFee": 92,
+      "travelCost": 68,
+      "totalCost": 160,
+      "prizes": {
+        "winner": 700,
+        "finalist": 245,
+        "semifinalist": 0
+      },
+      "rankingPoints": {
+        "winner": 510,
+        "finalist": 280,
+        "semifinalist": 153
+      },
+      "status": "UPCOMING",
+      "isTestData": false
+    },
+    {
+      "id": "career-event-38",
+      "name": "Tour Finals National",
+      "month": "OCTOBRE",
+      "day": 14,
+      "city": "Grand Boulodrome",
+      "country": "FR",
+      "level": "NATIONAL",
+      "format": "TRIPLETTE",
+      "teamCount": 32,
+      "terrainId": "hard-rolling",
+      "requiredRankMax": 100,
+      "entryFee": 125,
+      "travelCost": 95,
+      "totalCost": 220,
+      "prizes": {
+        "winner": 1000,
+        "finalist": 350,
+        "semifinalist": 0
+      },
+      "rankingPoints": {
+        "winner": 740,
+        "finalist": 407,
+        "semifinalist": 222
+      },
+      "status": "UPCOMING",
+      "isTestData": false
+    },
+    {
+      "id": "career-event-39",
+      "name": "Elite International Finals",
+      "month": "OCTOBRE",
+      "day": 21,
+      "city": "Nova Arena",
+      "country": "FR",
+      "level": "INTERNATIONAL",
+      "format": "DOUBLETTE",
+      "teamCount": 16,
+      "terrainId": "gravel-neutral",
+      "requiredRankMax": 30,
+      "entryFee": 195,
+      "travelCost": 145,
+      "totalCost": 340,
+      "prizes": {
+        "winner": 1650,
+        "finalist": 578,
+        "semifinalist": 248
+      },
+      "rankingPoints": {
+        "winner": 1220,
+        "finalist": 671,
+        "semifinalist": 366
+      },
+      "status": "UPCOMING",
+      "isTestData": false
+    },
+    {
+      "id": "career-event-40",
+      "name": "Masters de Pétanque 2026",
+      "month": "OCTOBRE",
+      "day": 28,
+      "city": "Arena Centrale",
+      "country": "FR",
+      "level": "INTERNATIONAL",
+      "format": "TRIPLETTE",
+      "teamCount": 16,
+      "terrainId": "hard-rolling",
+      "requiredRankMax": 20,
+      "entryFee": 240,
+      "travelCost": 180,
+      "totalCost": 420,
+      "prizes": {
+        "winner": 2200,
+        "finalist": 770,
+        "semifinalist": 330
+      },
+      "rankingPoints": {
+        "winner": 1800,
+        "finalist": 990,
+        "semifinalist": 540
+      },
+      "status": "UPCOMING",
+      "isTestData": false
+    }
+  ],
+  "eventCount": 40,
+  "note": "Career V2.3: 5 events per month; progression is ranking-gated."
+}

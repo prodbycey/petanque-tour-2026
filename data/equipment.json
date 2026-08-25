@@ -1,0 +1,484 @@
+{
+  "version": 2,
+  "brands": [
+    {
+      "id": "AZUR_FORGE",
+      "name": "Azur Forge",
+      "country": "FR",
+      "tagline": "Contrôle méditerranéen"
+    },
+    {
+      "id": "RIVIERA_STEEL",
+      "name": "Riviera Steel",
+      "country": "FR",
+      "tagline": "Équilibre et régularité"
+    },
+    {
+      "id": "VEKTOR",
+      "name": "Vektor Pétanque",
+      "country": "BE",
+      "tagline": "Impact et précision"
+    },
+    {
+      "id": "MISTRAL",
+      "name": "Mistral Forge",
+      "country": "FR",
+      "tagline": "Toucher de jeu"
+    },
+    {
+      "id": "ATLAS13",
+      "name": "Atlas 13",
+      "country": "MA",
+      "tagline": "Stabilité tous terrains"
+    },
+    {
+      "id": "NOVA_BALL",
+      "name": "Nova Ball",
+      "country": "IT",
+      "tagline": "Performance compétition"
+    }
+  ],
+  "equipment": [
+    {
+      "id": "starter-azur-point",
+      "category": "BALL",
+      "brand": "Azur Forge",
+      "model": "Calanque S1",
+      "role": "POINTEUR",
+      "weightG": 720,
+      "diameterMM": 74,
+      "hardness": "DURE",
+      "finish": "SATINÉ",
+      "price": 0,
+      "starter": true,
+      "requiredLevel": 1,
+      "requiredRankMax": 2500,
+      "simulationPower": 0.0,
+      "bonuses": {
+        "appoint": 0,
+        "precision": 0
+      },
+      "description": "Boule stable et rassurante pour apprendre le dosage au point."
+    },
+    {
+      "id": "starter-riviera-middle",
+      "category": "BALL",
+      "brand": "Riviera Steel",
+      "model": "Équilibre S1",
+      "role": "MILIEU",
+      "weightG": 700,
+      "diameterMM": 73,
+      "hardness": "DEMI-TENDRE",
+      "finish": "BROSSÉ",
+      "price": 0,
+      "starter": true,
+      "requiredLevel": 1,
+      "requiredRankMax": 2500,
+      "simulationPower": 0.0,
+      "bonuses": {
+        "regularite": 0,
+        "precision": 0
+      },
+      "description": "Modèle polyvalent et neutre pour débuter la carrière."
+    },
+    {
+      "id": "starter-vektor-shot",
+      "category": "BALL",
+      "brand": "Vektor Pétanque",
+      "model": "Impact S1",
+      "role": "TIREUR",
+      "weightG": 680,
+      "diameterMM": 72,
+      "hardness": "TENDRE",
+      "finish": "MAT",
+      "price": 0,
+      "starter": true,
+      "requiredLevel": 1,
+      "requiredRankMax": 2500,
+      "simulationPower": 0.0,
+      "bonuses": {
+        "tir": 0,
+        "precision": 0
+      },
+      "description": "Boule légère et tendre conçue pour démarrer au tir."
+    },
+    {
+      "id": "mistral-serein-p74",
+      "category": "BALL",
+      "brand": "Mistral Forge",
+      "model": "Serein P74",
+      "role": "POINTEUR",
+      "weightG": 715,
+      "diameterMM": 74,
+      "hardness": "DEMI-TENDRE",
+      "finish": "BROSSÉ",
+      "price": 180,
+      "starter": false,
+      "requiredLevel": 2,
+      "requiredRankMax": 2300,
+      "simulationPower": 0.6,
+      "bonuses": {
+        "appoint": 1,
+        "precision": 0
+      },
+      "description": "Un toucher plus doux et davantage de contrôle sur les portées."
+    },
+    {
+      "id": "atlas13-balance-m73",
+      "category": "BALL",
+      "brand": "Atlas 13",
+      "model": "Balance M73",
+      "role": "MILIEU",
+      "weightG": 700,
+      "diameterMM": 73,
+      "hardness": "DEMI-TENDRE",
+      "finish": "SATINÉ",
+      "price": 195,
+      "starter": false,
+      "requiredLevel": 2,
+      "requiredRankMax": 2250,
+      "simulationPower": 0.6,
+      "bonuses": {
+        "regularite": 1,
+        "precision": 0
+      },
+      "description": "Équilibre homogène pour alterner point et tir."
+    },
+    {
+      "id": "nova-flash-t72",
+      "category": "BALL",
+      "brand": "Nova Ball",
+      "model": "Flash T72",
+      "role": "TIREUR",
+      "weightG": 680,
+      "diameterMM": 72,
+      "hardness": "TENDRE",
+      "finish": "MAT",
+      "price": 215,
+      "starter": false,
+      "requiredLevel": 3,
+      "requiredRankMax": 2150,
+      "simulationPower": 0.8,
+      "bonuses": {
+        "tir": 1,
+        "precision": 0
+      },
+      "description": "Réaction franche au tir et prise en main rapide."
+    },
+    {
+      "id": "azur-precision-p74",
+      "category": "BALL",
+      "brand": "Azur Forge",
+      "model": "Précision P74",
+      "role": "POINTEUR",
+      "weightG": 720,
+      "diameterMM": 74,
+      "hardness": "DURE",
+      "finish": "MICRO-BROSSÉ",
+      "price": 340,
+      "starter": false,
+      "requiredLevel": 5,
+      "requiredRankMax": 1600,
+      "simulationPower": 1.4,
+      "bonuses": {
+        "appoint": 1,
+        "precision": 1
+      },
+      "description": "Pensée pour les terrains roulants et les points serrés."
+    },
+    {
+      "id": "riviera-dual-m73",
+      "category": "BALL",
+      "brand": "Riviera Steel",
+      "model": "Dual M73",
+      "role": "MILIEU",
+      "weightG": 700,
+      "diameterMM": 73,
+      "hardness": "DEMI-TENDRE",
+      "finish": "SATINÉ",
+      "price": 360,
+      "starter": false,
+      "requiredLevel": 5,
+      "requiredRankMax": 1550,
+      "simulationPower": 1.4,
+      "bonuses": {
+        "regularite": 1,
+        "precision": 1
+      },
+      "description": "Une vraie boule de milieu, stable dans toutes les phases."
+    },
+    {
+      "id": "vektor-fer-t72",
+      "category": "BALL",
+      "brand": "Vektor Pétanque",
+      "model": "Fer T72",
+      "role": "TIREUR",
+      "weightG": 675,
+      "diameterMM": 72,
+      "hardness": "TENDRE",
+      "finish": "NOIR MAT",
+      "price": 390,
+      "starter": false,
+      "requiredLevel": 6,
+      "requiredRankMax": 1450,
+      "simulationPower": 1.6,
+      "bonuses": {
+        "tir": 1,
+        "precision": 1
+      },
+      "description": "Développée pour les tirs au fer et les frappes engagées."
+    },
+    {
+      "id": "mistral-olive-pro",
+      "category": "BALL",
+      "brand": "Mistral Forge",
+      "model": "Olive Pro",
+      "role": "POINTEUR",
+      "weightG": 725,
+      "diameterMM": 74,
+      "hardness": "DURE",
+      "finish": "CHROME SATINÉ",
+      "price": 560,
+      "starter": false,
+      "requiredLevel": 8,
+      "requiredRankMax": 750,
+      "simulationPower": 2.2,
+      "bonuses": {
+        "appoint": 2,
+        "precision": 1
+      },
+      "description": "Contrôle haut niveau pour pointeurs réguliers."
+    },
+    {
+      "id": "atlas13-competition-m",
+      "category": "BALL",
+      "brand": "Atlas 13",
+      "model": "Compétition M",
+      "role": "MILIEU",
+      "weightG": 700,
+      "diameterMM": 73,
+      "hardness": "DEMI-TENDRE",
+      "finish": "ACIER BRUNI",
+      "price": 585,
+      "starter": false,
+      "requiredLevel": 8,
+      "requiredRankMax": 700,
+      "simulationPower": 2.2,
+      "bonuses": {
+        "regularite": 2,
+        "precision": 1
+      },
+      "description": "Une polyvalence haut niveau avec très peu de compromis."
+    },
+    {
+      "id": "nova-impact-pro",
+      "category": "BALL",
+      "brand": "Nova Ball",
+      "model": "Impact Pro",
+      "role": "TIREUR",
+      "weightG": 675,
+      "diameterMM": 72,
+      "hardness": "TRÈS TENDRE",
+      "finish": "NOIR TITANE",
+      "price": 620,
+      "starter": false,
+      "requiredLevel": 9,
+      "requiredRankMax": 600,
+      "simulationPower": 2.5,
+      "bonuses": {
+        "tir": 2,
+        "precision": 1
+      },
+      "description": "Boule compétition destinée aux tireurs puissants."
+    },
+    {
+      "id": "azur-elite-point",
+      "category": "BALL",
+      "brand": "Azur Forge",
+      "model": "Élite Point",
+      "role": "POINTEUR",
+      "weightG": 725,
+      "diameterMM": 74,
+      "hardness": "DURE",
+      "finish": "ACIER CLAIR",
+      "price": 880,
+      "starter": false,
+      "requiredLevel": 12,
+      "requiredRankMax": 180,
+      "simulationPower": 3.2,
+      "bonuses": {
+        "appoint": 2,
+        "precision": 2
+      },
+      "description": "Modèle élite destiné aux très grands pointeurs."
+    },
+    {
+      "id": "riviera-master-m",
+      "category": "BALL",
+      "brand": "Riviera Steel",
+      "model": "Master M",
+      "role": "MILIEU",
+      "weightG": 700,
+      "diameterMM": 73,
+      "hardness": "DEMI-TENDRE",
+      "finish": "GRAPHITE SATINÉ",
+      "price": 900,
+      "starter": false,
+      "requiredLevel": 12,
+      "requiredRankMax": 160,
+      "simulationPower": 3.2,
+      "bonuses": {
+        "regularite": 2,
+        "precision": 2
+      },
+      "description": "Précision et constance pour les grands rendez-vous."
+    },
+    {
+      "id": "vektor-world-shot",
+      "category": "BALL",
+      "brand": "Vektor Pétanque",
+      "model": "World Shot",
+      "role": "TIREUR",
+      "weightG": 670,
+      "diameterMM": 72,
+      "hardness": "TRÈS TENDRE",
+      "finish": "CARBONE MAT",
+      "price": 940,
+      "starter": false,
+      "requiredLevel": 13,
+      "requiredRankMax": 140,
+      "simulationPower": 3.5,
+      "bonuses": {
+        "tir": 2,
+        "precision": 2
+      },
+      "description": "Boule de tir élite pour les matchs internationaux."
+    },
+    {
+      "id": "jersey-starter-club",
+      "category": "JERSEY",
+      "brand": "Riviera Steel",
+      "model": "Club Starter",
+      "color": "BLEU NUIT",
+      "price": 0,
+      "starter": true,
+      "requiredLevel": 1,
+      "requiredRankMax": 2500,
+      "simulationPower": 0,
+      "bonuses": {},
+      "description": "Maillot de départ sobre du circuit."
+    },
+    {
+      "id": "jersey-azur-white",
+      "category": "JERSEY",
+      "brand": "Azur Forge",
+      "model": "Azur Blanc",
+      "color": "BLANC / BLEU",
+      "price": 85,
+      "starter": false,
+      "requiredLevel": 2,
+      "requiredRankMax": 2300,
+      "simulationPower": 0,
+      "bonuses": {},
+      "description": "Tenue claire de club, coupe compétition."
+    },
+    {
+      "id": "jersey-mistral-sand",
+      "category": "JERSEY",
+      "brand": "Mistral Forge",
+      "model": "Sable",
+      "color": "SABLE / NOIR",
+      "price": 120,
+      "starter": false,
+      "requiredLevel": 4,
+      "requiredRankMax": 1850,
+      "simulationPower": 0,
+      "bonuses": {},
+      "description": "Maillot méditerranéen sobre et premium."
+    },
+    {
+      "id": "jersey-atlas-blackgold",
+      "category": "JERSEY",
+      "brand": "Atlas 13",
+      "model": "Black Gold",
+      "color": "NOIR / OR",
+      "price": 190,
+      "starter": false,
+      "requiredLevel": 8,
+      "requiredRankMax": 750,
+      "simulationPower": 0,
+      "bonuses": {},
+      "description": "Tenue nationale noire avec détails dorés."
+    },
+    {
+      "id": "jersey-world-elite",
+      "category": "JERSEY",
+      "brand": "Nova Ball",
+      "model": "World Elite",
+      "color": "BLEU / OR",
+      "price": 300,
+      "starter": false,
+      "requiredLevel": 12,
+      "requiredRankMax": 180,
+      "simulationPower": 0,
+      "bonuses": {},
+      "description": "Tenue réservée aux grands événements."
+    },
+    {
+      "id": "shoes-starter-court",
+      "category": "SHOES",
+      "brand": "Vektor Pétanque",
+      "model": "Court S1",
+      "color": "NOIR",
+      "price": 0,
+      "starter": true,
+      "requiredLevel": 1,
+      "requiredRankMax": 2500,
+      "simulationPower": 0,
+      "bonuses": {},
+      "description": "Chaussure stable de départ."
+    },
+    {
+      "id": "shoes-riviera-grip",
+      "category": "SHOES",
+      "brand": "Riviera Steel",
+      "model": "Grip",
+      "color": "BLEU / BLANC",
+      "price": 80,
+      "starter": false,
+      "requiredLevel": 2,
+      "requiredRankMax": 2300,
+      "simulationPower": 0,
+      "bonuses": {},
+      "description": "Semelle polyvalente pour terrains secs."
+    },
+    {
+      "id": "shoes-mistral-dust",
+      "category": "SHOES",
+      "brand": "Mistral Forge",
+      "model": "Dust Control",
+      "color": "SABLE",
+      "price": 135,
+      "starter": false,
+      "requiredLevel": 5,
+      "requiredRankMax": 1500,
+      "simulationPower": 0,
+      "bonuses": {},
+      "description": "Pensée pour les sols poussiéreux et stabilisés."
+    },
+    {
+      "id": "shoes-nova-pro",
+      "category": "SHOES",
+      "brand": "Nova Ball",
+      "model": "Pro Balance",
+      "color": "NOIR / OR",
+      "price": 225,
+      "starter": false,
+      "requiredLevel": 9,
+      "requiredRankMax": 600,
+      "simulationPower": 0,
+      "bonuses": {},
+      "description": "Chaussure compétition premium."
+    }
+  ]
+}

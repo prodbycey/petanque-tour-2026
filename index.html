@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Pétanque Tour 2026 — Carrière V2 Tournois</title>
+<link rel="icon" type="image/png" href="./assets/brand/favicon-64.png">
+<link rel="apple-touch-icon" href="./assets/brand/apple-touch-icon.png">
+<meta name="theme-color" content="#07172b">
+<link rel="stylesheet" href="./styles/app.css">
+</head>
+<body>
+<div id="splash"><img class="officialLogo splashOfficialLogo" src="./assets/brand/petanque-tour-2026-logo.png" alt="Pétanque Tour 2026"></div>
+<div class="app">
+<div id="loadingError" class="loadingError"></div>
+
+<section id="view-home" class="view active">
+  <div class="homeHero">
+    <div class="homeBrand"><img class="officialLogo homeOfficialLogo" src="./assets/brand/petanque-tour-2026-logo.png" alt="Pétanque Tour 2026"></div>
+    <div class="homeSpacer"></div>
+    <div class="kicker">MODE PRINCIPAL</div><div class="heroTitle">Construis ta carrière.</div>
+    <p class="heroText">Tournois, ranking, recrutement et circuit IA autour du Match Core validé.</p>
+    <button id="continueBtn" class="btn primary">CONTINUER</button>
+    <button id="newCareerBtn" class="btn">NOUVELLE CARRIÈRE</button>
+    <button id="resetCareerBtn" class="btn ghost">RÉINITIALISER LA SAUVEGARDE</button>
+  </div>
+</section>
+
+<section id="view-newCareer" class="view">
+  <header class="topbar"><img class="officialLogo topOfficialLogo" src="./assets/brand/petanque-tour-2026-logo.png" alt="Pétanque Tour 2026"><button class="miniBtn" data-go="home">RETOUR</button></header>
+  <main class="content"><div class="screenHead"><div><div class="kicker">NOUVELLE CARRIÈRE</div><h1>Crée ton joueur</h1><p>Départ #2500 · 120 € · Club des Oliviers.</p></div></div>
+  <form id="careerForm" class="formCard">
+    <div class="field"><label>PRÉNOM</label><input name="firstName" required value="Alex"></div>
+    <div class="field"><label>NOM</label><input name="lastName" required value="Martin"></div>
+    <div class="field"><label>SEXE</label><select name="sex"><option>HOMME</option><option>FEMME</option></select></div>
+    <div class="field"><label>ÂGE VISUEL</label><input name="ageVisual" type="number" min="18" max="70" value="28"></div>
+    <div class="field"><label>CORPULENCE</label><select name="bodyType"><option>FIN</option><option selected>MOYEN</option><option>ATHLÉTIQUE</option><option>FORT</option></select></div>
+    <div class="field"><label>MAIN</label><select name="handedness"><option>DROITIER</option><option>GAUCHER</option></select></div>
+    <div class="field"><label>RÔLE DE DÉPART</label><select name="role"><option>POINTEUR</option><option selected>MILIEU</option><option>TIREUR</option></select></div>
+    <button class="btn primary" type="submit">COMMENCER</button>
+  </form></main>
+</section>
+
+<section id="view-dashboard" class="view">
+  <header class="topbar"><img class="officialLogo topOfficialLogo" src="./assets/brand/petanque-tour-2026-logo.png" alt="Pétanque Tour 2026"><div class="topStats"><div class="topChip js-rank">#2500</div><div class="topChip js-money">120 €</div></div></header>
+  <main class="content">
+    <div class="screenHead"><div><div class="kicker">CARRIÈRE · <span class="js-month">MARS</span></div><h1>Tableau de bord</h1><p id="dashClub"></p></div></div>
+    <section id="dashboardPlayerCard" class="playerHero profileClickable" title="Ouvrir mon profil"><div id="dashInitials" class="avatar">AM</div><div><h2 id="dashName"></h2><div id="dashRole" class="muted"></div><div class="role">MON JOUEUR</div></div></section>
+    <div class="metricGrid"><div class="metric"><span>CLASSEMENT</span><strong id="dashRank"></strong><small id="dashPoints"></small></div><div class="metric gold"><span>ARGENT</span><strong id="dashMoney"></strong></div><div class="metric"><span>NIVEAU</span><strong id="dashLevel"></strong></div><div class="metric"><span>FORME</span><strong id="dashForm"></strong></div></div>
+    <section class="dashboardProgress">
+      <div class="dashProgressTop"><b>PROGRESSION DU JOUEUR</b><span id="dashXpText"></span></div>
+      <div class="xpTrack"><i id="dashXpBar"></i></div>
+      <div class="dashProgressMeta"><span id="dashDevPoints"></span><span>ÉNERGIE <b id="dashEnergy"></b></span></div><div class="dashEquippedLine"><span>BOULE ÉQUIPÉE</span><b id="dashEquipment"></b></div>
+    </section>
+    <section id="activeTournamentCard" class="activeTournament"><div class="kicker">TOURNOI EN COURS</div><h3 id="activeTournamentName"></h3><button id="resumeTournament" class="btn gold">REPRENDRE</button></section>
+    <div class="sectionTitle">PROCHAINE COMPÉTITION</div><section class="nextCard"><div class="kicker">CALENDRIER</div><h3 id="nextTournamentName"></h3><div id="nextTournamentMeta" class="meta"></div><button id="nextTournamentBtn" class="btn gold">VOIR LA FICHE</button></section>
+    <div class="sectionTitle">ACCÈS RAPIDE</div><div class="quickGrid"><button class="quickTile" data-go="calendar">📅 CALENDRIER<small>Mars → Octobre</small></button><button class="quickTile" data-go="team">👥 MON ÉQUIPE<small>Roster & équipes</small></button><button class="quickTile" data-go="ranking">🏆 RANKING<small>Classement dynamique</small></button><button class="quickTile" data-go="recruitment">🤝 RECRUTEMENT<small>Joueurs accessibles</small></button><button class="quickTile trainingShortcut" data-go="training">🎯 ENTRAÎNEMENT<small>Faire progresser mon joueur</small></button><button class="quickTile profileShortcut" data-go="profile">👤 MON PROFIL<small>Nom, photo, club & carrière</small></button><button class="quickTile equipmentShortcut" data-go="equipment">⚙️ ÉQUIPEMENT<small>Boules, maillots & chaussures</small></button></div>
+    <div class="sectionTitle">OBJECTIF</div><div id="objectiveText" class="objective"></div>
+  </main>
+</section>
+
+<section id="view-calendar" class="view">
+  <header class="topbar"><img class="officialLogo topOfficialLogo" src="./assets/brand/petanque-tour-2026-logo.png" alt="Pétanque Tour 2026"><div class="topStats"><div class="topChip js-rank"></div><div class="topChip js-money"></div></div></header>
+  <main class="content"><div class="screenHead"><div><div class="kicker">SAISON 2026</div><h1>Calendrier</h1><p>40 tournois de carrière · 5 compétitions par mois.</p></div></div><div id="monthTabs" class="monthTabs"></div><div id="calendarList"></div></main>
+</section>
+
+<section id="view-team" class="view">
+  <header class="topbar"><img class="officialLogo topOfficialLogo" src="./assets/brand/petanque-tour-2026-logo.png" alt="Pétanque Tour 2026"><button class="miniBtn" data-go="recruitment">RECRUTER</button></header>
+  <main class="content"><div class="screenHead"><div><div class="kicker">GROUPE ACTUEL</div><h1>Mon équipe</h1><p>Le Match Core reste inchangé ; les rôles sont des spécialités.</p></div></div><div id="currentTeamCards"></div><div class="sectionTitle">MON ROSTER</div><div id="rosterList"></div><div class="sectionTitle">ÉQUIPES IA VALIDÉES</div><div id="circuitTeams"></div></main>
+</section>
+
+<section id="view-ranking" class="view">
+  <header class="topbar"><img class="officialLogo topOfficialLogo" src="./assets/brand/petanque-tour-2026-logo.png" alt="Pétanque Tour 2026"><div class="topStats"><div class="topChip js-rank"></div></div></header>
+  <main class="content"><div class="screenHead"><div><div class="kicker">CIRCUIT 2026</div><h1>Classement</h1><p>Les résultats IA font évoluer les points, la forme et le Top 30.</p></div></div><div id="rankingTabs" class="rankingTabs"></div><div id="rankingTable"></div></main>
+</section>
+
+<section id="view-recruitment" class="view">
+  <header class="topbar"><img class="officialLogo topOfficialLogo" src="./assets/brand/petanque-tour-2026-logo.png" alt="Pétanque Tour 2026"><div class="topStats"><div class="topChip js-rank"></div></div></header>
+  <main class="content"><div class="screenHead"><div><div class="kicker">JOUEURS DISPONIBLES</div><h1>Recrutement</h1><p id="recruitmentSummary"></p></div></div><div class="objective">Top 1000 → régionaux · Top 500 → nationaux · Top 150 → très bons joueurs · Top 50 → élite. Un joueur débloqué peut toujours refuser.</div><div id="recruitmentList"></div></main>
+</section>
+
+
+
+
+<section id="view-equipment" class="view">
+  <header class="topbar">
+    <img class="officialLogo topOfficialLogo" src="./assets/brand/petanque-tour-2026-logo.png" alt="Pétanque Tour 2026">
+    <div class="topStats"><div id="equipmentLevel" class="topChip"></div><div id="equipmentMoney" class="topChip"></div></div>
+  </header>
+  <main class="content">
+    <div class="screenHead"><div><div class="kicker">MATÉRIEL & STYLE</div><h1>Équipement</h1><p>Achète et équipe ton matériel au fil de ta carrière.</p></div></div>
+
+    <section class="equipmentStatus">
+      <div><span>CLASSEMENT</span><b id="equipmentRank">#2500</b></div>
+      <small>Le niveau joueur et le ranking débloquent progressivement le meilleur matériel.</small>
+    </section>
+
+    <div class="sectionTitle">ACTUELLEMENT ÉQUIPÉ</div>
+    <section id="equipmentCurrent" class="equipmentCurrent"></section>
+
+    <div id="equipmentTabs" class="equipmentTabs">
+      <button class="selected" data-equipment-category="BALL">BOULES</button>
+      <button data-equipment-category="JERSEY">MAILLOTS</button>
+      <button data-equipment-category="SHOES">CHAUSSURES</button>
+    </div>
+
+    <div class="equipmentNote">Les boules donnent un bonus très léger uniquement à la simulation carrière. Le lancer et la physique du Match Core restent inchangés.</div>
+    <div id="equipmentFeedback" class="profileFeedback"></div>
+    <div id="equipmentList"></div>
+  </main>
+</section>
+
+<section id="view-training" class="view">
+  <header class="topbar"><img class="officialLogo topOfficialLogo" src="./assets/brand/petanque-tour-2026-logo.png" alt="Pétanque Tour 2026"><div class="topStats"><div class="topChip js-rank"></div></div></header>
+  <main class="content">
+    <div class="screenHead"><div><div class="kicker">DÉVELOPPEMENT</div><h1>Entraînement</h1><p>Travaille ton joueur entre deux tournois.</p></div></div>
+
+    <section class="trainingStatus">
+      <div><span>ÉNERGIE</span><b id="trainingEnergy">100%</b></div>
+      <div class="energyTrack"><i id="trainingEnergyBar"></i></div>
+      <div class="trainingLevelLine"><span id="trainingLevel">LVL 1</span><span id="trainingXp">0/90 XP</span></div>
+    </section>
+
+    <div id="trainingNotice" class="objective"></div>
+    <div id="trainingFeedback" class="profileFeedback"></div>
+    <div id="trainingCards"></div>
+
+    <div class="sectionTitle">DERNIÈRES SÉANCES</div>
+    <div id="trainingHistory"></div>
+  </main>
+</section>
+
+<section id="view-profile" class="view">
+  <header class="topbar"><img class="officialLogo topOfficialLogo" src="./assets/brand/petanque-tour-2026-logo.png" alt="Pétanque Tour 2026"><div class="topStats"><div class="topChip js-rank"></div></div></header>
+  <main class="content">
+    <div class="screenHead"><div><div class="kicker">MON COMPTE JOUEUR</div><h1>Profil</h1><p>Personnalise ton nom, ta photo et choisis ton club dans le circuit mondial.</p></div></div>
+    <section class="profileHero">
+      <div id="profilePhotoPreview" class="profilePhotoPreview">AM</div>
+      <div class="profileMeta"><b id="profileRole"></b><span id="profileHand"></span><small><span id="profileRank"></span> · <span id="profileLevel"></span></small></div>
+    </section>
+
+    <section class="profileProgressCard">
+      <div class="profileProgressHead"><div><span>PROGRESSION</span><b id="profilePlayerLevel">NIVEAU 1</b></div><strong><span id="profileDevPoints">0</span><small>PTS À RÉPARTIR</small></strong></div>
+      <div class="xpTrack"><i id="profileXpBar"></i></div>
+      <div class="profileProgressMeta"><span id="profileXpText">0 / 90 XP</span><span>ÉNERGIE <b id="profileEnergy">100%</b></span></div>
+    </section>
+
+    <div class="sectionTitle">STATISTIQUES & PROGRESSION</div>
+    <div id="profileStats" class="developmentList"></div>
+
+    <div class="sectionTitle">CARRIÈRE</div>
+    <div id="profileCareerStats" class="profileCareerStats"></div>
+
+    <div class="sectionTitle">PALMARÈS</div>
+    <div id="profilePalmares"></div>
+
+    <div class="profileActions">
+      <label class="btn profileUpload">CHOISIR UNE PHOTO<input id="profileImageInput" type="file" accept="image/*"></label>
+      <button id="profileRemovePhoto" class="btn ghost">SUPPRIMER LA PHOTO</button>
+    </div>
+    <div class="formCard profileForm">
+      <div class="field"><label>PRÉNOM</label><input id="profileFirstName" maxlength="24"></div>
+      <div class="field"><label>NOM</label><input id="profileLastName" maxlength="28"></div>
+      <div class="sectionTitle compactTitle">MON CLUB</div>
+      <div id="profileClubPreview" class="clubPreview"></div>
+      <div class="clubSelectGrid">
+        <div class="field"><label>PAYS</label><select id="profileClubCountry"></select></div>
+        <div class="field"><label>RÉGION</label><select id="profileClubRegion"></select></div>
+      </div>
+      <div class="field"><label>CLUB</label><select id="profileClub"></select></div>
+      <div class="clubDisclaimer">Clubs fictifs du circuit Pétanque Tour 2026, répartis par grandes régions de pétanque.</div>
+      <div id="profileFeedback" class="profileFeedback"></div>
+      <button id="profileSave" class="btn primary" type="button">ENREGISTRER LE PROFIL</button>
+    </div>
+  </main>
+</section>
+
+<section id="view-tournament" class="view">
+  <header class="topbar"><img class="officialLogo topOfficialLogo" src="./assets/brand/petanque-tour-2026-logo.png" alt="Pétanque Tour 2026"><button id="tournamentBack" class="miniBtn">← CALENDRIER</button></header>
+  <main class="content">
+    <section class="tournamentHero"><div id="tournamentLevel" class="kicker"></div><h2 id="tournamentTitle"></h2><p id="tournamentPlace"></p><div class="infoGrid"><div class="infoCell"><span>FORMAT</span><b id="tournamentFormat"></b></div><div class="infoCell"><span>TABLEAU</span><b id="tournamentTeams"></b></div><div class="infoCell"><span>RANKING REQUIS</span><b id="tournamentRequirement"></b></div><div class="infoCell"><span>POINTS VAINQUEUR</span><b id="tournamentRankingPts"></b></div></div></section>
+    <div class="sectionTitle">TERRAIN</div><div class="terrainCard"><b id="tournamentTerrain"></b><p id="tournamentTerrainDesc"></p></div>
+    <div class="sectionTitle">COÛT</div><div class="costRow"><div class="costCell"><span>INSCRIPTION</span><b id="tournamentEntry"></b></div><div class="costCell"><span>VOYAGE</span><b id="tournamentTravel"></b></div><div class="costCell total"><span>TOTAL</span><b id="tournamentTotal"></b></div></div>
+    <div class="sectionTitle">GAIN VAINQUEUR</div><div class="costCell total"><span>PRIME</span><b id="tournamentPrize"></b></div>
+    <div id="paymentFeedback" class="paymentFeedback" aria-live="polite"></div><button id="tournamentRegister" class="btn primary">PAYER ET S’INSCRIRE</button>
+  </main>
+</section>
+
+<section id="view-teamSelect" class="view">
+  <header class="topbar"><img class="officialLogo topOfficialLogo" src="./assets/brand/petanque-tour-2026-logo.png" alt="Pétanque Tour 2026"><button id="teamSelectBack" class="miniBtn">←</button></header>
+  <main class="content">
+    <div class="screenHead"><div><div class="kicker">COMPOSITION</div><h1 id="teamSelectTitle"></h1><p id="teamSelectNeed"></p></div></div>
+    <div id="teamSelectRoster"></div>
+    <div class="sectionTitle">MODE DU TOURNOI</div>
+    <div id="tournamentModeChoices" class="tournamentModeChoices">
+      <button class="modeChoice selected" data-tournament-mode="PLAY"><b>🎮 JOUER LES MATCHS</b><span>Tu joues normalement chaque rencontre.</span></button>
+      <button class="modeChoice" data-tournament-mode="SIMULATE"><b>🎲 SIMULATION ALÉATOIRE</b><span>Résultat aléatoire influencé par ton niveau actuel, ton équipe et l’adversaire.</span></button>
+    </div>
+    <div id="simulationModeHint" class="objective"></div>
+    <button id="confirmTournamentTeam" class="btn primary">CONFIRMER L’ÉQUIPE & CRÉER LE TABLEAU</button>
+  </main>
+</section>
+
+<section id="view-bracket" class="view">
+  <header class="topbar"><img class="officialLogo topOfficialLogo" src="./assets/brand/petanque-tour-2026-logo.png" alt="Pétanque Tour 2026"><div class="topChip" id="bracketProgress"></div></header>
+  <main class="content"><div class="screenHead"><div><div class="kicker" id="bracketTournament"></div><h1 id="bracketRound"></h1><p>Les autres rencontres sont simulées par le circuit IA.</p></div></div><div id="bracketMatches"></div><button id="goOpponent" class="btn gold">VOIR L’ADVERSAIRE</button></main>
+</section>
+
+<section id="view-opponent" class="view">
+  <header class="topbar"><img class="officialLogo topOfficialLogo" src="./assets/brand/petanque-tour-2026-logo.png" alt="Pétanque Tour 2026"><button id="opponentBack" class="miniBtn">← TABLEAU</button></header>
+  <main class="content"><div class="screenHead"><div><div class="kicker" id="opponentTournament"></div><h1 id="opponentRound"></h1><p>Présentation de l’adversaire.</p></div></div>
+    <div class="versusTitle"><span>TOI</span><b>VS</b><span id="opponentName"></span></div>
+    <div class="sectionTitle">ADVERSAIRE · <span id="opponentPower"></span></div><div id="opponentCards"></div>
+    <div class="sectionTitle">NOTRE COMPOSITION</div><div id="ourMatchTeam" class="tournamentTeam"></div>
+    <div id="formatCoreNote" class="objective"></div><button id="playExistingMatch" class="btn primary">JOUER AVEC LE MATCH CORE VALIDÉ</button>
+  </main>
+</section>
+
+
+<section id="view-controlMode" class="view">
+  <header class="topbar"><img class="officialLogo topOfficialLogo" src="./assets/brand/petanque-tour-2026-logo.png" alt="Pétanque Tour 2026"><button id="controlModeBack" class="miniBtn">← ADVERSAIRE</button></header>
+  <main class="content">
+    <div class="screenHead"><div><div class="kicker" id="controlModeTournament"></div><h1>Qui veux-tu contrôler ?</h1><p>Choisis avant chaque partie.</p></div></div>
+    <button id="controlTeamBtn" class="controlChoiceCard">
+      <strong>CONTRÔLER L’ÉQUIPE</strong>
+      <span id="controlTeamText">Tu joues toutes les boules de ton équipe.</span>
+      <em>TOUTES LES BOULES</em>
+    </button>
+    <button id="controlPlayerBtn" class="controlChoiceCard playerOnly">
+      <strong>CONTRÔLER MON JOUEUR</strong>
+      <span id="controlPlayerText">Tu joues uniquement les boules de ton joueur.</span>
+      <em>COÉQUIPIERS GÉRÉS PAR L’IA</em>
+    </button>
+  </main>
+</section>
+
+<section id="view-matchCore" class="view matchCore">
+  <div class="matchTop"><img class="officialLogo topOfficialLogo" src="./assets/brand/petanque-tour-2026-logo.png" alt="Pétanque Tour 2026"><span id="matchCoreLabel"></span><button id="closeMatchCore">QUITTER</button></div>
+  <iframe id="matchCoreFrame" title="MATCH CORE V1 verrouillé"></iframe>
+</section>
+
+<section id="view-roundResult" class="view">
+  <header class="topbar"><img class="officialLogo topOfficialLogo" src="./assets/brand/petanque-tour-2026-logo.png" alt="Pétanque Tour 2026"></header>
+  <main class="content resultPage"><div id="roundResultTitle" class="resultTitle">VICTOIRE</div><div id="roundResultScore" class="bigScore"></div><p id="roundResultText"></p><button id="roundResultNext" class="btn primary">TOUR SUIVANT</button></main>
+</section>
+
+<section id="view-tournamentResult" class="view">
+  <header class="topbar"><img class="officialLogo topOfficialLogo" src="./assets/brand/petanque-tour-2026-logo.png" alt="Pétanque Tour 2026"></header>
+  <main class="content resultPage"><div class="kicker" id="finalTournamentName"></div><div id="finalPlacement" class="resultTitle"></div>
+    <div class="summaryGrid"><div><span>ARGENT GAGNÉ</span><b id="summaryMoney"></b></div><div><span>POINTS RANKING</span><b id="summaryRankingPts"></b></div><div><span>XP JOUEUR</span><b id="summaryXP"></b></div><div><span>NIVEAU JOUEUR</span><b id="summaryPlayerLevel"></b></div><div><span>CLASSEMENT</span><b id="summaryRank"></b></div><div><span>NOUVEAU SOLDE</span><b id="summaryBalance"></b></div></div>
+    <div class="sectionTitle">DÉBLOCAGES</div><ul id="summaryUnlocks" class="unlockList"></ul><div id="aiWorldInfo" class="objective"></div>
+    <button id="finalBackCalendar" class="btn primary">RETOUR AU CALENDRIER</button><button id="finalRecruitment" class="btn">VOIR LES JOUEURS RECRUTABLES</button>
+  </main>
+</section>
+
+<nav id="bottomNav" class="bottomNav">
+  <button data-view="dashboard" data-go="dashboard"><b>⌂</b>ACCUEIL</button>
+  <button data-view="calendar" data-go="calendar"><b>▦</b>CALENDRIER</button>
+  <button data-view="team" data-go="team"><b>♟</b>ÉQUIPE</button>
+  <button data-view="ranking" data-go="ranking"><b>♛</b>RANKING</button>
+  <button data-view="profile" data-go="profile"><b>👤</b>PROFIL</button>
+</nav>
+</div>
+
+<script src="./src/models.js"></script>
+<script src="./src/data-service.js"></script>
+<script src="./src/save-manager.js"></script>
+<script src="./src/career-engine.js"></script>
+<script src="./src/app.js"></script>
+</body>
+</html>

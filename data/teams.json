@@ -1,0 +1,115 @@
+{
+  "version": 1,
+  "teams": [
+    {
+      "id": "france-team-bonetti",
+      "name": "FRANCE — TEAM BONETTI",
+      "players": [
+        "ludovic-monterro",
+        "christophe-sarrin",
+        "mickael-bonetti"
+      ],
+      "affinity": 95,
+      "dataStatus": "VALIDATED_TEAM"
+    },
+    {
+      "id": "france-team-roche",
+      "name": "FRANCE — TEAM ROCHÉ",
+      "players": [
+        "jean-feltan",
+        "david-doer",
+        "dylan-roche"
+      ],
+      "affinity": 95,
+      "dataStatus": "VALIDATED_TEAM"
+    },
+    {
+      "id": "italia-elite",
+      "name": "ITALIA ELITE",
+      "players": [
+        "andrea-chiapelli",
+        "alessio-coccioli",
+        "diego-rizano"
+      ],
+      "affinity": 95,
+      "dataStatus": "VALIDATED_TEAM"
+    },
+    {
+      "id": "france-dream-team",
+      "name": "FRANCE DREAM TEAM",
+      "players": [
+        "henri-lacroze",
+        "philippe-quintau",
+        "philippe-suchot"
+      ],
+      "affinity": 95,
+      "dataStatus": "VALIDATED_TEAM"
+    },
+    {
+      "id": "thailand-elite",
+      "name": "THAILAND ELITE",
+      "players": [
+        "ratchan-khamdee",
+        "sarawut-sriboon",
+        "supan-thongpu"
+      ],
+      "affinity": 82,
+      "dataStatus": "VALIDATED_TEAM"
+    },
+    {
+      "id": "madagascar-a",
+      "name": "MADAGASCAR A",
+      "players": [
+        "christian-andriano",
+        "joseph-ramantra",
+        "baldwin-magnyo"
+      ],
+      "affinity": 82,
+      "dataStatus": "VALIDATED_TEAM"
+    },
+    {
+      "id": "espana-elite",
+      "name": "ESPAÑA ELITE",
+      "players": [
+        "jose-guasco",
+        "jesus-escaro",
+        "sergio-rodriguez-boixar"
+      ],
+      "affinity": 82,
+      "dataStatus": "VALIDATED_TEAM"
+    },
+    {
+      "id": "madagascar-next",
+      "name": "MADAGASCAR NEXT",
+      "players": [
+        "lora-rakoto",
+        "nomen-ravomana",
+        "marcel-gbeta"
+      ],
+      "affinity": 64,
+      "dataStatus": "VALIDATED_TEAM"
+    },
+    {
+      "id": "international-wildcard",
+      "name": "INTERNATIONAL WILDCARD",
+      "players": [
+        "charles-weibelin",
+        "stephane-robinot",
+        "florian-cometti"
+      ],
+      "affinity": 64,
+      "dataStatus": "VALIDATED_TEAM"
+    },
+    {
+      "id": "rising-stars",
+      "name": "RISING STARS",
+      "players": [
+        "thanawan-toosewa",
+        "moise-helfrik",
+        "mohamed-bougriba"
+      ],
+      "affinity": 45,
+      "dataStatus": "VALIDATED_TEAM"
+    }
+  ]
+}
