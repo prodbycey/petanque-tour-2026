@@ -165,12 +165,12 @@
   if(!window.THREE){document.body.innerHTML='<div style="color:white;padding:30px;font-family:sans-serif">Connexion Internet requise au premier lancement pour charger Three.js.</div>';return;}
   const shell=document.getElementById('shell'),canvas=document.getElementById('game');
   const renderer=new THREE.WebGLRenderer({canvas,antialias:!PT_MOBILE,alpha:false,powerPreference:'high-performance'});
-  renderer.setPixelRatio(PT_MOBILE?Math.min(1.15,devicePixelRatio):Math.min(devicePixelRatio,2));
+  renderer.setPixelRatio(PT_MOBILE?Math.min(1.0,devicePixelRatio):Math.min(devicePixelRatio,2));
   renderer.shadowMap.enabled=!PT_MOBILE;
   renderer.shadowMap.type=THREE.PCFSoftShadowMap;
   renderer.outputEncoding=THREE.sRGBEncoding;
   renderer.toneMapping=THREE.ACESFilmicToneMapping;
-  renderer.toneMappingExposure=PT_MOBILE?.84:1.08;
+  renderer.toneMappingExposure=PT_MOBILE?.78:1.08;
   const scene=new THREE.Scene();scene.background=new THREE.Color(0x132024);
   const camera=new THREE.PerspectiveCamera(60,2/3,.025,30);camera.position.set(0,.430,-2);camera.lookAt(0,0,-1.042);
 
@@ -371,7 +371,7 @@
         return `rgb(${100+r()*55|0},${86+r()*45|0},${68+r()*40|0})`
       });
 
-      const fineCount=VISUAL_SURFACE==='hard-sand'?43000:VISUAL_SURFACE==='rocky'?31000:38000;
+      const fineCount=PT_MOBILE?(VISUAL_SURFACE==='rocky'?6500:8000):(VISUAL_SURFACE==='hard-sand'?43000:VISUAL_SURFACE==='rocky'?31000:38000);
       spots(fineCount,.18,VISUAL_SURFACE==='hard-sand'?1.2:2.2,.25,()=>{
         if(VISUAL_SURFACE==='red-earth')return `rgb(${105+r()*85|0},${49+r()*48|0},${35+r()*36|0})`;
         if(VISUAL_SURFACE==='wet-earth')return `rgb(${53+r()*75|0},${52+r()*62|0},${47+r()*55|0})`;
@@ -379,7 +379,7 @@
         return `rgb(${92+r()*110|0},${81+r()*92|0},${63+r()*80|0})`
       });
 
-      const agg=VISUAL_SURFACE==='rocky'?3000:VISUAL_SURFACE==='hard-sand'?420:VISUAL_SURFACE==='compact-earth'?620:1500;
+      const agg=PT_MOBILE?(VISUAL_SURFACE==='rocky'?520:220):(VISUAL_SURFACE==='rocky'?3000:VISUAL_SURFACE==='hard-sand'?420:VISUAL_SURFACE==='compact-earth'?620:1500);
       spots(agg,.65,VISUAL_SURFACE==='rocky'?5.8:3.1,.44,()=>{
         const v=58+r()*112|0;return `rgb(${v},${Math.max(45,v-10)},${Math.max(38,v-22)})`
       });
@@ -407,7 +407,7 @@
 
     if(kind==='bump'){
       x.fillStyle='#787878';x.fillRect(0,0,size,size);
-      const count=VISUAL_SURFACE==='rocky'?47000:VISUAL_SURFACE==='hard-sand'?22500:38000;
+      const count=PT_MOBILE?7000:(VISUAL_SURFACE==='rocky'?47000:VISUAL_SURFACE==='hard-sand'?22500:38000);
       for(let i=0;i<count;i++){
         const v=78+r()*100|0,s=.3+r()*(VISUAL_SURFACE==='rocky'?3.4:1.9);
         x.fillStyle=`rgb(${v},${v},${v})`;x.fillRect(r()*size,r()*size,s,s)
@@ -418,7 +418,7 @@
     if(kind==='rough'){
       const base=VISUAL_SURFACE==='wet-earth'?170:VISUAL_SURFACE==='compact-earth'?205:228;
       x.fillStyle=`rgb(${base},${base},${base})`;x.fillRect(0,0,size,size);
-      for(let i=0;i<19000;i++){
+      for(let i=0;i<(PT_MOBILE?4200:19000);i++){
         const v=Math.max(105,Math.min(250,base+(r()-.5)*62))|0;
         x.fillStyle=`rgb(${v},${v},${v})`;const s=.5+r()*2.4;x.fillRect(r()*size,r()*size,s,s)
       }
@@ -437,7 +437,7 @@
     return c
   }
   function ct(kind,size,seed){
-    const mobileSize=PT_MOBILE?Math.min(size,512):size;
+    const mobileSize=PT_MOBILE?Math.min(size,320):size;
     const t=new THREE.CanvasTexture(textureCanvas(mobileSize,seed,kind));
     t.wrapS=t.wrapT=THREE.RepeatWrapping;
     t.anisotropy=PT_MOBILE?1:renderer.capabilities.getMaxAnisotropy();
@@ -447,22 +447,26 @@
   const bumpMap=ct('bump',1024,99+VENUE_SEED%991);
   const roughMap=ct('rough',1024,177+VENUE_SEED%983);
   groundMap.repeat.set(2.1,7.4);bumpMap.repeat.copy(groundMap.repeat);roughMap.repeat.copy(groundMap.repeat);
+  const groundMaterial=PT_MOBILE
+    ? new THREE.MeshLambertMaterial({map:groundMap,color:GROUND_TINT})
+    : new THREE.MeshPhysicalMaterial({
+        map:groundMap,bumpMap:bumpMap,bumpScale:GROUND_STYLE.bumpScale,
+        roughnessMap:roughMap,roughness:GROUND_STYLE.roughness,
+        metalness:0,clearcoat:0,color:GROUND_TINT
+      });
   const ground=new THREE.Mesh(
-    new THREE.PlaneGeometry(3,8.6,PT_MOBILE?56:120,PT_MOBILE?130:300),
-    new THREE.MeshPhysicalMaterial({
-      map:groundMap,bumpMap:bumpMap,bumpScale:GROUND_STYLE.bumpScale,
-      roughnessMap:roughMap,roughness:GROUND_STYLE.roughness,
-      metalness:0,clearcoat:0,color:GROUND_TINT
-    })
+    new THREE.PlaneGeometry(3,8.6,PT_MOBILE?10:120,PT_MOBILE?28:300),
+    groundMaterial
   );
   ground.rotation.x=-Math.PI/2;ground.position.z=1.75;ground.receiveShadow=true;scene.add(ground);
 
   // Surface particles are visual-only; collision/ball physics are untouched.
   const pebGeom=new THREE.IcosahedronGeometry(.006,0);
   const pebMat=new THREE.MeshStandardMaterial({color:GROUND_STYLE.pebbleColor,roughness:.90});
-  const pebbles=new THREE.InstancedMesh(pebGeom,pebMat,GROUND_STYLE.stones);
+  const MOBILE_STONES=Math.min(GROUND_STYLE.stones,PT_MOBILE?140:GROUND_STYLE.stones);
+  const pebbles=new THREE.InstancedMesh(pebGeom,pebMat,MOBILE_STONES);
   const M=new THREE.Matrix4(),r=rng(771+VENUE_SEED%997);
-  for(let i=0;i<GROUND_STYLE.stones;i++){
+  for(let i=0;i<MOBILE_STONES;i++){
     let z=-1.15+r()*6.55,x=(r()-.5)*2.9;
     let s=(.42+r()*1.12)*GROUND_STYLE.stoneScale;
     M.compose(
@@ -477,19 +481,25 @@
   const outsideMap=ct('ground',1024,707+VENUE_SEED%971);outsideMap.repeat.set(6.2,10.5);
   const outsideGround=new THREE.Mesh(
     new THREE.PlaneGeometry(10.5,15),
-    new THREE.MeshPhysicalMaterial({
-      map:outsideMap,roughness:.97,metalness:0,
-      color:VENUE_PROFILE==='urban-park'?0x525e4d:
-        VENUE_PROFILE==='countryside'?0x526044:
-        VENUE_PROFILE==='mountain-alps'||VENUE_PROFILE==='mountain-lake'?0x50584e:0x746250
-    })
+    (PT_MOBILE
+      ? new THREE.MeshLambertMaterial({
+          color:VENUE_PROFILE==='urban-park'?0x455344:
+            VENUE_PROFILE==='countryside'?0x4a5a3f:
+            VENUE_PROFILE==='mountain-alps'||VENUE_PROFILE==='mountain-lake'?0x444c44:0x655342
+        })
+      : new THREE.MeshPhysicalMaterial({
+          map:outsideMap,roughness:.97,metalness:0,
+          color:VENUE_PROFILE==='urban-park'?0x525e4d:
+            VENUE_PROFILE==='countryside'?0x526044:
+            VENUE_PROFILE==='mountain-alps'||VENUE_PROFILE==='mountain-lake'?0x50584e:0x746250
+        }))
   );
   outsideGround.rotation.x=-Math.PI/2;outsideGround.position.set(0,-.012,3.6);
   outsideGround.receiveShadow=true;scene.add(outsideGround);outsideGround.renderOrder=-2;
 
   function makeCourtDetailTexture(seed){
-    const c=document.createElement('canvas');c.width=c.height=1024;
-    const x=c.getContext('2d'),r=rng(seed);x.clearRect(0,0,1024,1024);
+    const c=document.createElement('canvas');const d=PT_MOBILE?320:1024;c.width=c.height=d;
+    const x=c.getContext('2d'),r=rng(seed);x.clearRect(0,0,d,d);if(PT_MOBILE)x.scale(d/1024,d/1024);
 
     // Worn/compacted patches.
     for(let i=0;i<24;i++){
@@ -525,7 +535,7 @@
   }
 
   const detailMap=makeCourtDetailTexture(VENUE_SEED+1551);
-  detailMap.wrapS=detailMap.wrapT=THREE.RepeatWrapping;detailMap.repeat.set(1.4,4.4);
+  detailMap.wrapS=detailMap.wrapT=THREE.RepeatWrapping;detailMap.repeat.set(1.4,4.4);detailMap.anisotropy=PT_MOBILE?1:renderer.capabilities.getMaxAnisotropy();
   const detailPlane=new THREE.Mesh(
     new THREE.PlaneGeometry(2.92,8.45),
     new THREE.MeshBasicMaterial({map:detailMap,transparent:true,depthWrite:false,toneMapped:true})
@@ -535,7 +545,7 @@
 
   // Realistic-looking wooden court borders (procedural, no external image).
   function makeWoodTexture(seed=731){
-    const c=document.createElement('canvas');c.width=1024;c.height=192;
+    const c=document.createElement('canvas');c.width=PT_MOBILE?384:1024;c.height=PT_MOBILE?96:192;
     const x=c.getContext('2d'),r=rng(seed);
     const g=x.createLinearGradient(0,0,0,c.height);
     g.addColorStop(0,'#9b6b3e');g.addColorStop(.42,'#76502f');g.addColorStop(1,'#4e3320');
@@ -556,7 +566,7 @@
       x.beginPath();x.ellipse(px,py,rx,ry,0,0,Math.PI*2);x.stroke();
     }
     const t=new THREE.CanvasTexture(c);t.wrapS=t.wrapT=THREE.RepeatWrapping;
-    t.repeat.set(3.3,1);t.anisotropy=renderer.capabilities.getMaxAnisotropy();return t;
+    t.repeat.set(3.3,1);t.anisotropy=PT_MOBILE?1:renderer.capabilities.getMaxAnisotropy();return t;
   }
   const woodMap=makeWoodTexture(),woodBump=makeWoodTexture(991);
   const woodMat=new THREE.MeshStandardMaterial({
@@ -575,8 +585,8 @@
   // No image generation: all maps are procedural runtime textures.
 
   function makeTex(w,h,seed,draw){
-    if(PT_MOBILE&&Math.max(w,h)>512){
-      const scale=512/Math.max(w,h);
+    if(PT_MOBILE&&Math.max(w,h)>320){
+      const scale=320/Math.max(w,h);
       w=Math.max(96,Math.round(w*scale));h=Math.max(96,Math.round(h*scale));
     }
     const c=document.createElement('canvas');c.width=w;c.height=h;
@@ -804,9 +814,35 @@
     new THREE.PlaneGeometry(7.4,3.0),
     new THREE.MeshBasicMaterial({map:venueBackdropTex,transparent:true,depthWrite:false,toneMapped:true,fog:true})
   );
-  venueBackdrop.position.set(0,1.36,7.55);scene.add(venueBackdrop);
+  venueBackdrop.position.set(0,PT_MOBILE?1.48:1.36,PT_MOBILE?7.15:7.55);venueBackdrop.material.opacity=PT_MOBILE?1:venueBackdrop.material.opacity;scene.add(venueBackdrop);
 
   const decorGroup=new THREE.Group();scene.add(decorGroup);
+
+  if(PT_MOBILE){
+    // Cheap but clearly visible venue framing: a few low-poly trees and walls.
+    // These use flat colors, no textures, shadows or transparency.
+    const trunkMatLite=new THREE.MeshLambertMaterial({color:0x5b3c25});
+    const leafMatLite=new THREE.MeshLambertMaterial({color:
+      VENUE_TYPE==='coast'?0x355d3c:
+      VENUE_TYPE==='mountain'?0x315344:
+      VENUE_TYPE==='country'?0x41633b:0x3a6244});
+    const stoneLite=new THREE.MeshLambertMaterial({color:
+      VENUE_TYPE==='square'||VENUE_TYPE==='stone'?0x8b735c:0x6f6558});
+    function liteTree(x,z,h=.8){
+      const tr=new THREE.Mesh(new THREE.CylinderGeometry(.025,.04,h*.45,6),trunkMatLite);
+      tr.position.set(x,h*.225,z);decorGroup.add(tr);
+      const crown=new THREE.Mesh(new THREE.ConeGeometry(h*.23,h*.62,7),leafMatLite);
+      crown.position.set(x,h*.62,z);decorGroup.add(crown);
+    }
+    function liteWall(x,z,w,h=.34){
+      const m=new THREE.Mesh(new THREE.BoxGeometry(w,h,.16),stoneLite);
+      m.position.set(x,h/2,z);decorGroup.add(m);
+    }
+    liteWall(0,6.18,3.55,.28);
+    liteTree(-1.78,2.15,.88);liteTree(1.82,2.75,.80);
+    liteTree(-1.88,4.70,.92);liteTree(1.87,5.15,.86);
+  }
+
 
   // Real landscape/photo backplates. They are deliberately distant and subtly
   // softened by scene fog so they read as a real place, not as a game prop.
@@ -913,22 +949,22 @@
 
   // Local scenery is intentionally sparse. The photo plate carries the place;
   // the few foreground elements only stitch the court into that landscape.
-  if(VENUE_PROFILE==='provence-village'){
+  if(!PT_MOBILE && VENUE_PROFILE==='provence-village'){
     addStoneWall((rr()-.5)*.20,6.14,3.7+rr()*.55,.27+rr()*.08);
     for(let i=0;i<3;i++)addRealTree((i%2?-1:1)*(1.82+rr()*.28),1.6+rr()*4.2,.74+rr()*.30,i===2?'cypress':'round')
-  }else if(VENUE_PROFILE==='mediterranean-garden'){
+  }else if(!PT_MOBILE && VENUE_PROFILE==='mediterranean-garden'){
     addStoneWall(-.28,6.17,3.15,.24);
     for(let i=0;i<4;i++)addRealTree((i%2?-1:1)*(1.78+rr()*.30),1.0+rr()*4.8,.70+rr()*.28,i%2?'round':'cypress')
-  }else if(VENUE_PROFILE==='urban-park'){
+  }else if(!PT_MOBILE && VENUE_PROFILE==='urban-park'){
     for(let i=0;i<4;i++)addRealTree((i%2?-1:1)*(1.84+rr()*.35),.7+rr()*5.0,.77+rr()*.34,'round')
-  }else if(VENUE_PROFILE==='mountain-alps'||VENUE_PROFILE==='mountain-lake'){
+  }else if(!PT_MOBILE && (VENUE_PROFILE==='mountain-alps'||VENUE_PROFILE==='mountain-lake')){
     for(let i=0;i<5;i++)addRealTree((i%2?-1:1)*(1.82+rr()*.40),.8+rr()*4.9,.72+rr()*.36,'pine');
     for(let i=0;i<5;i++)addRealRock((i%2?-1:1)*(1.70+rr()*.50),1.1+rr()*4.4,.08+rr()*.10)
-  }else if(VENUE_PROFILE==='seaside-cotedazur'){
+  }else if(!PT_MOBILE && VENUE_PROFILE==='seaside-cotedazur'){
     for(let i=0;i<4;i++)addRealTree((i%2?-1:1)*(1.84+rr()*.33),1.5+rr()*4.2,.70+rr()*.30,i%2?'pine':'cypress')
-  }else if(VENUE_PROFILE==='city-square'||VENUE_PROFILE==='italian-square'||VENUE_PROFILE==='spanish-square'){
+  }else if(!PT_MOBILE && (VENUE_PROFILE==='city-square'||VENUE_PROFILE==='italian-square'||VENUE_PROFILE==='spanish-square')){
     for(let i=0;i<3;i++)addRealTree((i%2?-1:1)*(1.85+rr()*.27),1.8+rr()*3.9,.68+rr()*.25,'round')
-  }else if(VENUE_PROFILE==='countryside'){
+  }else if(!PT_MOBILE && VENUE_PROFILE==='countryside'){
     for(let i=0;i<5;i++)addRealTree((i%2?-1:1)*(1.85+rr()*.43),.5+rr()*5.2,.70+rr()*.36,'round')
   }
 
@@ -956,7 +992,7 @@
     });
   }
 
-  if(prestige>=2){
+  if(!PT_MOBILE && prestige>=2){
     for(const side of [-1,1])for(let i=0;i<6;i++){
       const post=new THREE.Mesh(new THREE.CylinderGeometry(.009,.009,.25,10),metalBarrier);
       post.position.set(side*1.56,.125,1.2+i*.82);decorGroup.add(post);
@@ -971,7 +1007,7 @@
   });
   const concreteMat=new THREE.MeshStandardMaterial({map:concreteTex,roughness:.95,metalness:0});
 
-  if(prestige>=3){
+  if(!PT_MOBILE && prestige>=3){
     for(const side of [-1,1])for(let step=0;step<(prestige>=4?4:2);step++){
       const tier=new THREE.Mesh(new THREE.BoxGeometry(prestige>=4?.48:.36,.105,4.25-step*.24),concreteMat);
       tier.position.set(side*(1.78+step*.14),.06+step*.115,3.60);tier.receiveShadow=true;decorGroup.add(tier)
@@ -986,7 +1022,7 @@
     board.position.set(0,.35,6.18);scene.add(board)
   }
 
-  if(prestige>=4){
+  if(!PT_MOBILE && prestige>=4){
     const flagColors=[0x1f5aa6,0xf0c42f,0xd74444,0xf0f0f0,0x2f8c55];
     for(let i=0;i<8;i++){
       const xPos=-2.12+i*.61;
@@ -998,21 +1034,31 @@
 
   // Sponsor boards removed in V3.5: the wooden back rail now defines the court end.
 
-  const metalTex=ct('metal',768,55);metalTex.repeat.set(1,1);function ballMaterial(dark){return new THREE.MeshPhysicalMaterial({color:dark?0x1f242a:0xd8dde4,map:metalTex,bumpMap:metalTex,bumpScale:.0015,metalness:1,roughness:dark?.34:.20,clearcoat:dark?.10:.26,clearcoatRoughness:.32,envMapIntensity:1.45})}
+  const metalTex=ct('metal',768,55);metalTex.repeat.set(1,1);
+  function ballMaterial(dark){
+    if(PT_MOBILE)return new THREE.MeshStandardMaterial({
+      color:dark?0x24292f:0xd4d8dd,metalness:.82,roughness:dark?.38:.27
+    });
+    return new THREE.MeshPhysicalMaterial({
+      color:dark?0x1f242a:0xd8dde4,map:metalTex,bumpMap:metalTex,bumpScale:.0015,
+      metalness:1,roughness:dark?.34:.20,clearcoat:dark?.10:.26,
+      clearcoatRoughness:.32,envMapIntensity:1.45
+    })
+  }
   // simple bright environment for metal reflections
-  const faces=[];for(let i=0;i<6;i++){const c=document.createElement('canvas');c.width=c.height=256;const x=c.getContext('2d'),g=x.createLinearGradient(0,0,0,256);g.addColorStop(0,i===2?'#f9e6b8':'#cfd9df');g.addColorStop(.5,'#8f9b92');g.addColorStop(1,'#3a322c');x.fillStyle=g;x.fillRect(0,0,256,256);faces.push(c)}const cube=new THREE.CubeTexture(faces);cube.needsUpdate=true;cube.encoding=THREE.sRGBEncoding;scene.environment=cube;
+  const faces=[];for(let i=0;i<6;i++){const c=document.createElement('canvas');c.width=c.height=PT_MOBILE?64:256;const x=c.getContext('2d'),sz=c.width,g=x.createLinearGradient(0,0,0,sz);g.addColorStop(0,i===2?'#f9e6b8':'#cfd9df');g.addColorStop(.5,'#8f9b92');g.addColorStop(1,'#3a322c');x.fillStyle=g;x.fillRect(0,0,sz,sz);faces.push(c)}const cube=new THREE.CubeTexture(faces);cube.needsUpdate=true;cube.encoding=THREE.sRGBEncoding;scene.environment=cube;
   const positions=[
     {p:[.044,.037,-.978],dark:false,r:[.2,-.38,.44]},
     {p:[.107,.037,2.990],dark:false,r:[-.1,.52,-.34]},
     {p:[-.199,.037,2.730],dark:true,r:[.36,-.25,.72]},
     {p:[-.483,.037,3.730],dark:false,r:[-.22,-.36,.18]}
   ];
-  const ballGeom=new THREE.SphereGeometry(.037,PT_MOBILE?44:96,PT_MOBILE?28:64);
+  const ballGeom=new THREE.SphereGeometry(.037,PT_MOBILE?28:96,PT_MOBILE?18:64);
   const ballMeshes=[];
   positions.forEach(o=>{const b=new THREE.Mesh(ballGeom,ballMaterial(o.dark));b.position.set(...o.p);b.rotation.set(...o.r);b.castShadow=b.receiveShadow=true;scene.add(b);ballMeshes.push(b)});
   const playerBall=ballMeshes[0];
   // V3.4: distant setup pushed deeper into the court; camera/FOV unchanged.
-  const jack=new THREE.Mesh(new THREE.SphereGeometry(.015,PT_MOBILE?28:48,PT_MOBILE?18:32),new THREE.MeshStandardMaterial({color:0xcb2c1d,roughness:.65,metalness:0,bumpMap:bumpMap,bumpScale:.001}));jack.scale.setScalar(1.32);jack.position.set(-.063,.015,2.700);jack.castShadow=true;scene.add(jack);
+  const jack=new THREE.Mesh(new THREE.SphereGeometry(.015,PT_MOBILE?18:48,PT_MOBILE?12:32),new THREE.MeshStandardMaterial({color:0xcb2c1d,roughness:.65,metalness:0,bumpMap:PT_MOBILE?null:bumpMap,bumpScale:PT_MOBILE?0:.001}));jack.scale.setScalar(1.32);jack.position.set(-.063,.015,2.700);jack.castShadow=true;scene.add(jack);
   const ring=new THREE.Mesh(new THREE.TorusGeometry(.070,.0032,24,128),new THREE.MeshBasicMaterial({color:0x1595ff,transparent:true,opacity:.92}));ring.rotation.x=Math.PI/2;ring.position.set(.044,.004,-.978);scene.add(ring);
   // Engagement limits for the initial cochonnet throw: 6m / 10m.
   const jackLineMat=new THREE.LineBasicMaterial({color:0xff2d2d,transparent:true,opacity:.95,depthTest:true});
@@ -1615,7 +1661,7 @@
       for(let j=i+1;j<bodies.length;j++)resolvePair(bodies[i],bodies[j]);
     }
 
-    audio.updateRoll(rollSpeed);
+    if(!PT_MOBILE)audio.updateRoll(rollSpeed);
 
     if(gameState.deadJackResolving)return;
 
@@ -1624,7 +1670,7 @@
       setTimeout(()=>{
         gameState.settleScheduled=false;
         if(jackThrowInProgress)validateJackAfterSettle();else if(!gameState.deadJackResolving)resolveTurnAfterThrow()
-      },760)
+      },PT_MOBILE?360:760)
     }
   }
 
@@ -2033,7 +2079,7 @@
     'international-arena':{sky:0xc5cdd3,ground:0x2c3237,hemi:.84,sun:0xffffff,sunI:1.95,fill:0xb8d2e8,fillI:.60,pos:[-2.8,5.7,-3.0],exposure:1.02}
   };
   const LP=LIGHT_PRESETS[VENUE_PROFILE]||LIGHT_PRESETS['urban-park'];
-  renderer.toneMappingExposure=PT_MOBILE?Math.min(.86,LP.exposure*.82):LP.exposure;
+  renderer.toneMappingExposure=PT_MOBILE?Math.min(.80,LP.exposure*.76):LP.exposure;
 
   const hemi=new THREE.HemisphereLight(LP.sky,LP.ground,PT_MOBILE?LP.hemi*.82:LP.hemi);scene.add(hemi);
   const sun=new THREE.DirectionalLight(LP.sun,PT_MOBILE?LP.sunI*.78:LP.sunI);
@@ -2053,7 +2099,19 @@
   bounce.position.set(0,.12,3.2);scene.add(bounce);
 
   function resize(){const w=shell.clientWidth,h=shell.clientHeight;renderer.setSize(w,h,false);camera.aspect=w/h;camera.updateProjectionMatrix()}window.addEventListener('resize',resize);resize();
-  let t=0,lastFrame=performance.now();function render(now){const dt=Math.min(.025,Math.max(0,(now-lastFrame)/1000));lastFrame=now;t=now*.001;if(ring.visible)ring.material.opacity=.82+Math.sin(t*2)*.1;physicsStep(dt);renderer.render(scene,camera);requestAnimationFrame(render)}requestAnimationFrame(render);
+  let t=0,lastFrame=performance.now(),lastPaint=0;
+  function render(now){
+    const moving=bodies.some(b=>b.moving&&!b.dead)||dragging||jackThrowInProgress||gameState.resolving;
+    const minPaint=PT_MOBILE&&!moving?30:0;
+    if(minPaint&&now-lastPaint<minPaint){requestAnimationFrame(render);return}
+    const dt=Math.min(PT_MOBILE?.020:.025,Math.max(0,(now-lastFrame)/1000));
+    lastFrame=now;lastPaint=now;t=now*.001;
+    if(ring.visible)ring.material.opacity=.82+Math.sin(t*2)*.1;
+    physicsStep(dt);
+    renderer.render(scene,camera);
+    requestAnimationFrame(render)
+  }
+  requestAnimationFrame(render);
 
   document.getElementById('quickPlayMenu').addEventListener('click',()=>showOnlyScreen(quickMenuEl));
   document.getElementById('backMain').addEventListener('click',()=>showOnlyScreen(mainMenuEl));
@@ -2321,7 +2379,7 @@ gameCanvas.addEventListener('pointerdown',e=>{
     };
   }catch(e){console.warn('tactical AI',e)}
 
-  document.documentElement.dataset.ptGameplay='v221-direct';
+  document.documentElement.dataset.ptGameplay='v222-performance-first';
 })();
 </script>
 
