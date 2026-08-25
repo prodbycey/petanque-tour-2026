@@ -878,6 +878,7 @@ function launchLockedMatch(mode=selectedControlMode){
   frame.dataset.aiPower=String(Math.round(engine.entrantPower(career,opp)));
   frame.dataset.aiName=opp?.name||'Adversaire';
   frame.dataset.controlMode=selectedControlMode;
+  frame.dataset.careerEmbedded='1';
 
   // Visual venue context — does not change match mode or rules.
   frame.dataset.terrainId=t.terrainId;
@@ -902,14 +903,13 @@ function launchLockedMatch(mode=selectedControlMode){
   }else{
     delete frame.dataset.resumeState;
   }
-  frame.src='./match-core-career-v2-4/index.html';
+  frame.src='./match-core-career-v2-4/index.html?v=220';
   showView('matchCore');
   frame.onload=()=>{
     try{
       const doc=frame.contentDocument;
-      // Drive the existing Match Core to quick-match coin toss without altering its files.
-      setTimeout(()=>doc.getElementById('quickPlayMenu')?.click(),180);
-      setTimeout(()=>doc.getElementById('startQuickMatch')?.click(),360);
+      // V2.20: career matches boot directly into the coin toss.
+      setTimeout(()=>doc.getElementById('startQuickMatch')?.click(),45);
     }catch(e){}
     matchPoll=setInterval(()=>pollMatchResult(frame),650);
   };

@@ -308,3 +308,29 @@ img.miniPortrait{width:40px;height:40px;border-radius:12px;flex:0 0 40px}
   .equipmentBallVisual{width:60px;height:60px}
   .jerseyVisual,.shoeVisual{width:60px;height:60px}
 }
+
+
+/* V2.20 — clean consumer-facing opening */
+.homeBrand{
+  position:absolute!important;
+  top:18px!important;
+  left:50%!important;
+  right:auto!important;
+  transform:translateX(-50%)!important;
+  margin:0!important;
+  padding:0!important;
+  width:max-content!important;
+  z-index:4!important;
+}
+.homeOfficialLogo{
+  width:min(44vw,182px)!important;
+  margin:0 auto!important;
+}
+.homeHero{
+  padding-top:190px!important;
+}
+@media(max-width:390px){
+  .homeBrand{top:14px!important}
+  .homeOfficialLogo{width:min(43vw,166px)!important}
+  .homeHero{padding-top:174px!important}
+}
