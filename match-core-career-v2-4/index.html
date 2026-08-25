@@ -41,7 +41,7 @@
   #direction::-webkit-slider-thumb{-webkit-appearance:none;width:16px;height:16px;margin-top:-6px;border-radius:50%;background:#ffd12a;border:2px solid #201b0a;box-shadow:0 1px 6px #000}
   .dirCenter{position:relative;height:0}.dirCenter:after{content:'|';position:absolute;left:50%;top:-18px;transform:translateX(-50%);color:#fff8;font-size:15px;pointer-events:none}
 
-  #aim{margin-top:3.2%;height:35%;position:relative;border-radius:16px;background:linear-gradient(rgba(74,55,39,.68),rgba(40,32,27,.72)),repeating-linear-gradient(15deg,#6f5b49 0 2px,#5f4c3e 2px 4px);overflow:hidden;box-shadow:inset 0 0 0 1px #ffffff18}.ellipse{position:absolute;left:30%;right:30%;top:28%;bottom:22%;border:3px solid #218fff;border-radius:50%;box-shadow:0 0 16px #138df055,inset 0 0 14px #138df033}.aimball{position:absolute;width:30px;height:30px;border-radius:50%;left:50%;top:50%;transform:translate(-50%,-50%);background:radial-gradient(circle at 32% 28%,#fff,#b4c9f5 30%,#1f5bc5 58%,#0d2e75);box-shadow:0 4px 8px #000}.arrow{position:absolute;top:50%;transform:translateY(-50%);font-size:34px;font-weight:300;cursor:pointer;user-select:none;text-shadow:0 3px 6px #000}.arrow.l{left:3%}.arrow.r{right:3%}
+  
   #toast{position:absolute;z-index:20;left:50%;top:45%;transform:translate(-50%,-50%) scale(.9);opacity:0;pointer-events:none;background:#0d1118dd;border:1px solid #ffffff3a;border-radius:14px;padding:12px 18px;font-weight:900;box-shadow:var(--shadow);transition:.22s}.show{opacity:1!important;transform:translate(-50%,-50%) scale(1)!important}
 
   #pointState{position:absolute;z-index:9;top:9.4%;left:50%;transform:translateX(-50%);padding:6px 13px;border-radius:999px;background:rgba(8,10,14,.72);border:1px solid rgba(255,255,255,.18);font-size:clamp(9px,1.2vh,12px);font-weight:900;letter-spacing:.4px;text-shadow:0 2px 5px #000;pointer-events:none;transition:.2s}
@@ -113,6 +113,12 @@
     #round{top:7.65%;left:19%;right:19%}
     #pointState{top:11.05%;max-width:76%;font-size:clamp(8px,1.05vh,10px)}
     #toast{max-width:78%;text-align:center}
+
+    #control{left:5.8%;right:5.8%;bottom:2.2%;height:14.8%;padding:2.2% 3.3%;border-radius:24px}
+    #types{height:31%;gap:2%}
+    #directionBox{margin-top:4.5%;padding:6px 9px 7px}
+    #actions{top:68.0%;height:8.6%}
+    #playercard{top:57.2%}
   }
 
 </style>
@@ -154,7 +160,6 @@
       <div class="dirHead"><span>DIRECTION</span><span id="dirValue">CENTRE</span></div>
       <div class="dirRow"><span class="dirArrow">←</span><div class="dirCenter"><input id="direction" type="range" min="-100" max="100" value="0" step="1"></div><span class="dirArrow">→</span></div>
     </div>
-    <div id="aim"><span class="arrow l">‹</span><div class="ellipse"></div><div class="aimball"></div><span class="arrow r">›</span></div>
   </section>
   <div id="toast">PRÊT</div>
   <div id="matchEnd"><div class="endCard"><div class="endKicker">PARTIE TERMINÉE</div><div class="endTitle">VICTOIRE</div><div class="endScore">13 — 0</div><button id="replay">REJOUER</button><button id="returnMenu" style="margin-top:8px">RETOUR MENU</button></div></div>
@@ -176,9 +181,9 @@
   renderer.toneMapping=THREE.ACESFilmicToneMapping;
   renderer.toneMappingExposure=PT_MOBILE?1.04:1.08;
   const scene=new THREE.Scene();scene.background=new THREE.Color(0x132024);
-  const camera=new THREE.PerspectiveCamera(PT_MOBILE?50:60,2/3,.025,30);
-  camera.position.set(0,PT_MOBILE?.92:.430,PT_MOBILE?-1.62:-2);
-  camera.lookAt(0,0,PT_MOBILE?1.30:-1.042);
+  const camera=new THREE.PerspectiveCamera(PT_MOBILE?54:60,2/3,.025,30);
+  camera.position.set(0,PT_MOBILE?.74:.430,PT_MOBILE?-2.14:-2);
+  camera.lookAt(0,0,PT_MOBILE?1.22:-1.042);
 
   // CAREER VENUE VISUALS — visual only. Match rules, controls and ball physics stay unchanged.
   const VENUE_TERRAIN_ID=String(
@@ -440,6 +445,26 @@
       x.strokeStyle='#35373a';x.lineWidth=3;
       for(let y of [size*.27,size*.31,size*.67,size*.71]){x.beginPath();x.moveTo(0,y);x.lineTo(size,y+size*.15);x.stroke()}
     }
+
+    if(kind==='grass'){
+      const g=x.createLinearGradient(0,0,size,size);
+      g.addColorStop(0,'#315728');g.addColorStop(.48,'#456f31');g.addColorStop(1,'#284b24');
+      x.fillStyle=g;x.fillRect(0,0,size,size);
+
+      for(let i=0;i<12000;i++){
+        const px=r()*size,py=r()*size;
+        const light=r()>.55;
+        x.strokeStyle=light?`rgba(119,151,74,${.055+r()*.12})`:`rgba(22,54,25,${.06+r()*.14})`;
+        x.lineWidth=.35+r()*.85;
+        x.beginPath();x.moveTo(px,py);x.lineTo(px+(r()-.5)*2,py-(1+r()*5));x.stroke()
+      }
+      for(let i=0;i<160;i++){
+        const px=r()*size,py=r()*size,rad=4+r()*17;
+        const gg=x.createRadialGradient(px,py,0,px,py,rad);
+        gg.addColorStop(0,'rgba(12,34,16,.12)');gg.addColorStop(1,'rgba(12,34,16,0)');
+        x.fillStyle=gg;x.fillRect(px-rad,py-rad,rad*2,rad*2)
+      }
+    }
     return c
   }
   function ct(kind,size,seed){
@@ -488,13 +513,14 @@
   pebbles.receiveShadow=true;scene.add(pebbles);
   // Surrounding terrain removes the artificial "game board" effect.
   const outsideMap=ct('ground',1024,707+VENUE_SEED%971);outsideMap.repeat.set(6.2,10.5);
+  const grassMap=ct('grass',512,808+VENUE_SEED%953);grassMap.repeat.set(8.0,12.0);
   const outsideGround=new THREE.Mesh(
     new THREE.PlaneGeometry(10.5,15),
     (PT_MOBILE
-      ? new THREE.MeshLambertMaterial({color:
-          VENUE_PROFILE==='urban-park'?0x465340:
-          VENUE_PROFILE==='countryside'?0x4b5b3e:
-          VENUE_PROFILE==='mountain-alps'||VENUE_PROFILE==='mountain-lake'?0x475047:0x665443})
+      ? new THREE.MeshStandardMaterial({
+          map:grassMap,bumpMap:grassMap,bumpScale:.0032,
+          color:0xdce5c8,roughness:.98,metalness:0
+        })
       : new THREE.MeshPhysicalMaterial({
           map:outsideMap,roughness:.97,metalness:0,
           color:VENUE_PROFILE==='urban-park'?0x525e4d:
@@ -594,20 +620,26 @@
   });
   // Two long side rails.
   for(const s of [-1,1]){
-    const e=new THREE.Mesh(new THREE.BoxGeometry(.085,.105,8.65),woodMat);
-    e.position.set(s*1.455,.052,1.75);e.castShadow=e.receiveShadow=true;scene.add(e)
+    const e=new THREE.Mesh(new THREE.BoxGeometry(.098,.118,8.65),woodMat);
+    e.position.set(s*1.455,.059,1.75);e.castShadow=e.receiveShadow=true;scene.add(e)
   }
   // Back rail makes the end of the court obvious without advertising panels.
-  const backRail=new THREE.Mesh(new THREE.BoxGeometry(2.99,.13,.11),woodMat);
-  backRail.position.set(0,.065,6.04);backRail.castShadow=backRail.receiveShadow=true;scene.add(backRail);
+  const backRail=new THREE.Mesh(new THREE.BoxGeometry(2.99,.145,.125),woodMat);
+  backRail.position.set(0,.0725,6.04);backRail.castShadow=backRail.receiveShadow=true;scene.add(backRail);
   if(PT_MOBILE){
     const woodTopMat=new THREE.MeshStandardMaterial({map:woodMap,color:0xb98251,roughness:.58,metalness:0});
     for(const side of [-1,1]){
-      const cap=new THREE.Mesh(new THREE.BoxGeometry(.088,.012,8.58),woodTopMat);
-      cap.position.set(side*1.455,.111,1.75);scene.add(cap);
+      const cap=new THREE.Mesh(new THREE.BoxGeometry(.100,.013,8.58),woodTopMat);
+      cap.position.set(side*1.455,.124,1.75);scene.add(cap);
     }
-    const capBack=new THREE.Mesh(new THREE.BoxGeometry(2.96,.014,.114),woodTopMat);
-    capBack.position.set(0,.137,6.04);scene.add(capBack);
+    const capBack=new THREE.Mesh(new THREE.BoxGeometry(2.96,.014,.128),woodTopMat);
+    capBack.position.set(0,.151,6.04);scene.add(capBack);
+
+    const innerEdgeMat=new THREE.MeshStandardMaterial({color:0x5d351e,roughness:.70,metalness:0});
+    for(const side of [-1,1]){
+      const edge=new THREE.Mesh(new THREE.BoxGeometry(.014,.050,8.54),innerEdgeMat);
+      edge.position.set(side*1.403,.058,1.75);scene.add(edge);
+    }
   }
 
   // Textured architectural-visualization decor.
@@ -907,7 +939,7 @@
     new THREE.PlaneGeometry(7.4,3.0),
     new THREE.MeshBasicMaterial({map:venueBackdropTex,transparent:true,depthWrite:false,toneMapped:true,fog:true})
   );
-  venueBackdrop.position.set(0,PT_MOBILE?1.48:1.36,PT_MOBILE?7.35:7.55);venueBackdrop.material.opacity=PT_MOBILE?.82:venueBackdrop.material.opacity;scene.add(venueBackdrop);
+  venueBackdrop.position.set(0,PT_MOBILE?1.58:1.36,PT_MOBILE?7.55:7.55);venueBackdrop.material.opacity=PT_MOBILE?.72:venueBackdrop.material.opacity;scene.add(venueBackdrop);
 
   const decorGroup=new THREE.Group();scene.add(decorGroup);
 
@@ -1016,18 +1048,18 @@
   }
 
   if(PT_MOBILE){
-    const terracottaMat=new THREE.MeshStandardMaterial({color:0xa95d37,roughness:.86,metalness:0});
-    const terracottaLipMat=new THREE.MeshStandardMaterial({color:0xc8794e,roughness:.82,metalness:0});
-    const branchMat=new THREE.MeshStandardMaterial({map:BARK_MAP,bumpMap:BARK_MAP,bumpScale:.006,color:0x76543a,roughness:.95});
-    const leafMat=foliageMat(LEAF_ROUND);
-    leafMat.color.setHex(0x9eb69b);
-    leafMat.roughness=.96;
-    const shrubMat=new THREE.MeshStandardMaterial({color:0x496c42,roughness:.98,metalness:0});
-    const paleShrubMat=new THREE.MeshStandardMaterial({color:0x6d8460,roughness:.98,metalness:0});
-    const benchWood=new THREE.MeshStandardMaterial({map:woodMap,color:0xc59b68,roughness:.66,metalness:0});
-    const darkMetal=new THREE.MeshStandardMaterial({color:0x35383a,roughness:.38,metalness:.72});
+    const terracottaMat=new THREE.MeshStandardMaterial({color:0xa65a37,roughness:.87,metalness:0});
+    const terracottaLipMat=new THREE.MeshStandardMaterial({color:0xc87b50,roughness:.82,metalness:0});
+    const branchMat=new THREE.MeshStandardMaterial({map:BARK_MAP,bumpMap:BARK_MAP,bumpScale:.006,color:0x745239,roughness:.96});
+    const oliveLeafMat=foliageMat(LEAF_ROUND);
+    oliveLeafMat.color.setHex(0xa8b79b);
+    oliveLeafMat.roughness=.97;
+    const shrubMat=foliageMat(LEAF_ROUND);
+    shrubMat.color.setHex(0x4a7046);
+    const benchWood=new THREE.MeshStandardMaterial({map:woodMap,color:0xc29a6d,roughness:.68,metalness:0});
+    const darkMetal=new THREE.MeshStandardMaterial({color:0x343638,roughness:.40,metalness:.72});
 
-    function cylinderBetween(a,b,r1,r2,mat,segments=7){
+    function cylinderBetween(a,b,r1,r2,mat,segments=8){
       const mid=a.clone().add(b).multiplyScalar(.5);
       const len=a.distanceTo(b);
       const mesh=new THREE.Mesh(new THREE.CylinderGeometry(r1,r2,len,segments),mat);
@@ -1037,75 +1069,73 @@
       mesh.quaternion.copy(q);decorGroup.add(mesh);return mesh
     }
 
-    function groundShadow(x,z,rx=.28,rz=.16,alpha=.13){
+    function groundShadow(x,z,rx=.28,rz=.16,alpha=.12){
       const sh=new THREE.Mesh(
-        new THREE.CircleGeometry(1,28),
-        new THREE.MeshBasicMaterial({color:0x15110d,transparent:true,opacity:alpha,depthWrite:false})
+        new THREE.CircleGeometry(1,30),
+        new THREE.MeshBasicMaterial({color:0x14100b,transparent:true,opacity:alpha,depthWrite:false})
       );
-      sh.rotation.x=-Math.PI/2;sh.scale.set(rx,rz,1);sh.position.set(x,.011,z);decorGroup.add(sh)
+      sh.rotation.x=-Math.PI/2;sh.scale.set(rx,rz,1);sh.position.set(x,.010,z);decorGroup.add(sh)
     }
 
     function addOliveTree(x,z,s=1,seed=1){
       const rrO=rng(VENUE_SEED+seed*137);
-      groundShadow(x,z,.27*s,.14*s,.13);
+      groundShadow(x,z,.31*s,.16*s,.12);
 
-      const root=new THREE.Vector3(x,0,z);
-      const fork=new THREE.Vector3(x+(rrO()-.5)*.035*s,.34*s,z+(rrO()-.5)*.025*s);
-      cylinderBetween(root.clone().setY(.02),fork,.038*s,.055*s,branchMat,8);
+      const base=new THREE.Vector3(x,.02,z);
+      const fork=new THREE.Vector3(x+(rrO()-.5)*.04*s,.34*s,z+(rrO()-.5)*.03*s);
+      cylinderBetween(base,fork,.039*s,.058*s,branchMat,9);
 
-      const branchEnds=[
-        new THREE.Vector3(x-.17*s,.57*s,z+.015*s),
-        new THREE.Vector3(x+.18*s,.60*s,z-.025*s),
-        new THREE.Vector3(x-.045*s,.72*s,z+.035*s)
+      const branches=[
+        [-.20,.59,.018],[.18,.62,-.020],[-.055,.75,.030],[.06,.70,-.04]
       ];
-      branchEnds.forEach((end,i)=>{
-        const start=fork.clone().add(new THREE.Vector3((rrO()-.5)*.025*s,i*.018*s,(rrO()-.5)*.018*s));
-        cylinderBetween(start,end,.018*s,.029*s,branchMat,7);
+      branches.forEach((b,i)=>{
+        const end=new THREE.Vector3(x+b[0]*s,b[1]*s,z+b[2]*s);
+        cylinderBetween(fork.clone().add(new THREE.Vector3((rrO()-.5)*.02*s,i*.012*s,0)),
+                        end,.017*s,.030*s,branchMat,7);
       });
 
-      const clusters=[
-        [-.17,.64,.01,.34,.29],
-        [.17,.66,-.02,.36,.30],
-        [-.02,.80,.02,.34,.28],
-        [-.28,.74,-.015,.24,.22],
-        [.28,.76,.018,.25,.23]
+      const crowns=[
+        [-.19,.66,.015,.38,.30],
+        [.18,.67,-.015,.39,.31],
+        [-.04,.82,.020,.37,.29],
+        [-.31,.77,-.012,.27,.23],
+        [.30,.78,.012,.28,.23],
+        [.05,.58,-.020,.32,.24]
       ];
-      clusters.forEach((c,ci)=>{
-        for(let k=0;k<2;k++){
-          const p=new THREE.Mesh(new THREE.PlaneGeometry(c[3]*s,c[4]*s),leafMat);
+      crowns.forEach((c,ci)=>{
+        for(let k=0;k<3;k++){
+          const p=new THREE.Mesh(new THREE.PlaneGeometry(c[3]*s,c[4]*s),oliveLeafMat);
           p.position.set(x+c[0]*s,c[1]*s,z+c[2]*s);
-          p.rotation.y=k*Math.PI/2 + (ci%2)*.30;
-          p.rotation.z=(rrO()-.5)*.10;
-          decorGroup.add(p);
+          p.rotation.y=k*Math.PI/3+(ci%2)*.21;
+          p.rotation.z=(rrO()-.5)*.08;
+          decorGroup.add(p)
         }
       })
     }
 
-    function addPot(x,z,s=1,withShrub=true){
-      groundShadow(x,z,.12*s,.07*s,.10);
-      const pot=new THREE.Mesh(new THREE.CylinderGeometry(.095*s,.072*s,.16*s,16),terracottaMat);
-      pot.position.set(x,.08*s,z);decorGroup.add(pot);
-      const lip=new THREE.Mesh(new THREE.TorusGeometry(.095*s,.012*s,8,20),terracottaLipMat);
-      lip.rotation.x=Math.PI/2;lip.position.set(x,.158*s,z);decorGroup.add(lip);
-      if(withShrub){
-        const geo=new THREE.IcosahedronGeometry(.105*s,1);
-        for(const [dx,dy,dz,sc] of [[0,.245,0,1],[-.07,.22,.01,.72],[.07,.23,-.01,.75]]){
-          const b=new THREE.Mesh(geo,sc>.8?shrubMat:paleShrubMat);
-          b.position.set(x+dx*s,dy*s,z+dz*s);b.scale.setScalar(sc);decorGroup.add(b)
-        }
+    function addPot(x,z,s=1){
+      groundShadow(x,z,.12*s,.07*s,.09);
+      const pot=new THREE.Mesh(new THREE.CylinderGeometry(.100*s,.072*s,.17*s,18),terracottaMat);
+      pot.position.set(x,.085*s,z);decorGroup.add(pot);
+      const lip=new THREE.Mesh(new THREE.TorusGeometry(.100*s,.013*s,8,22),terracottaLipMat);
+      lip.rotation.x=Math.PI/2;lip.position.set(x,.164*s,z);decorGroup.add(lip);
+      const geo=new THREE.IcosahedronGeometry(.095*s,1);
+      for(const [dx,dy,dz,sc] of [[0,.25,0,1],[-.07,.22,.01,.75],[.07,.23,-.01,.78]]){
+        const b=new THREE.Mesh(geo,new THREE.MeshStandardMaterial({color:sc>.85?0x496c42:0x72845f,roughness:.98}));
+        b.position.set(x+dx*s,dy*s,z+dz*s);b.scale.setScalar(sc);decorGroup.add(b)
       }
     }
 
-    function addHedge(x,z,w=.7,h=.28,seed=1){
-      const rrH=rng(VENUE_SEED+seed*53);
-      const geo=new THREE.IcosahedronGeometry(.12,1);
-      const count=Math.max(3,Math.round(w/.16));
+    function addTexturedHedge(x,z,w=.8,h=.30,seed=1){
+      const rrH=rng(VENUE_SEED+seed*61);
+      const count=Math.max(3,Math.round(w/.20));
       for(let i=0;i<count;i++){
-        const b=new THREE.Mesh(geo,i%3===0?paleShrubMat:shrubMat);
-        const xx=x-w/2+(i+.5)*(w/count);
-        b.position.set(xx,h*.55+(rrH()-.5)*.025,z+(rrH()-.5)*.045);
-        b.scale.set(.80+rrH()*.35,.75+rrH()*.30,.80+rrH()*.35);
-        decorGroup.add(b)
+        const px=x-w/2+(i+.5)*(w/count);
+        for(let k=0;k<2;k++){
+          const p=new THREE.Mesh(new THREE.PlaneGeometry(.26,h*(.82+rrH()*.30)),shrubMat);
+          p.position.set(px,h*.52+(rrH()-.5)*.025,z+(rrH()-.5)*.035);
+          p.rotation.y=k*Math.PI/2+(rrH()-.5)*.12;decorGroup.add(p)
+        }
       }
     }
 
@@ -1120,21 +1150,33 @@
       }
     }
 
-    // Mediterranean garden composition inspired by the user's references.
-    addStoneWall(0,6.12,3.75,.34);
-    addRealBuilding(1.72,6.62,1.42,.88,'stucco');
-    addOliveTree(-1.83,3.00,.95,1);
-    addOliveTree( 1.86,4.10,.88,2);
-    addOliveTree(-1.90,5.20,.82,3);
-    addPot(-1.66,1.95,.86,true);
-    addPot( 1.67,2.52,.78,true);
-    addPot( 1.75,5.20,.72,true);
-    addHedge(-1.82,4.15,.58,.28,11);
-    addHedge( 1.83,3.05,.52,.26,12);
-    addHedge(-.95,6.20,.70,.24,13);
-    addGardenBench(-1.82,5.55,.72);
-    addRealRock(-1.61,3.82,.10);
-    addRealRock( 1.63,4.78,.08);
+    // Low garden wall and architectural depth.
+    addStoneWall(0,6.18,3.88,.38);
+    addRealBuilding(1.62,6.78,1.44,.92,'stucco');
+
+    // Dense Mediterranean sides, kept outside the playable piste.
+    addRealTree(-1.93,2.00,1.10,'cypress');
+    addRealTree( 1.94,2.26,1.02,'cypress');
+    addRealTree(-1.96,3.68,1.16,'cypress');
+    addRealTree( 1.96,3.98,1.10,'cypress');
+    addRealTree(-1.94,5.34,1.08,'cypress');
+    addRealTree( 1.94,5.56,1.12,'cypress');
+
+    addOliveTree(-1.86,2.78,.96,1);
+    addOliveTree( 1.88,4.75,.90,2);
+    addOliveTree(-1.82,5.70,.80,3);
+
+    addTexturedHedge(-1.84,4.58,.62,.30,11);
+    addTexturedHedge( 1.84,3.25,.62,.28,12);
+    addTexturedHedge(-.85,6.23,.82,.26,13);
+
+    addPot(-1.66,1.76,.88);
+    addPot( 1.67,2.70,.82);
+    addPot( 1.70,5.35,.78);
+    addGardenBench(-1.80,5.60,.72);
+
+    addRealRock(-1.62,3.93,.095);
+    addRealRock( 1.63,4.90,.082);
   }
 
   const rr=rng(VENUE_SEED+701);
@@ -1247,7 +1289,7 @@
   positions.forEach(o=>{const b=new THREE.Mesh(ballGeom,ballMaterial(o.dark));b.position.set(...o.p);b.rotation.set(...o.r);b.castShadow=b.receiveShadow=true;scene.add(b);ballMeshes.push(b)});
   const playerBall=ballMeshes[0];
   // V3.4: distant setup pushed deeper into the court; camera/FOV unchanged.
-  const jack=new THREE.Mesh(new THREE.SphereGeometry(.015,PT_MOBILE?28:48,PT_MOBILE?18:32),new THREE.MeshStandardMaterial({color:0xcb2c1d,roughness:.65,metalness:0,bumpMap:bumpMap,bumpScale:.001}));jack.scale.setScalar(1.32);jack.position.set(-.063,.015,2.700);jack.castShadow=true;scene.add(jack);
+  const jack=new THREE.Mesh(new THREE.SphereGeometry(.015,PT_MOBILE?32:48,PT_MOBILE?22:32),new THREE.MeshStandardMaterial({color:0xc83b24,roughness:.58,metalness:0,bumpMap:bumpMap,bumpScale:.0007}));jack.scale.setScalar(1);jack.position.set(-.063,.015,2.700);jack.castShadow=true;scene.add(jack);
   const ring=new THREE.Mesh(new THREE.TorusGeometry(.070,.0032,24,128),new THREE.MeshBasicMaterial({color:0x1595ff,transparent:true,opacity:.92}));ring.rotation.x=Math.PI/2;ring.position.set(.044,.004,-.978);scene.add(ring);
   // Engagement limits for the initial cochonnet throw: 6m / 10m.
   const jackLineMat=new THREE.LineBasicMaterial({color:0xff2d2d,transparent:true,opacity:.95,depthTest:true});
@@ -1280,13 +1322,48 @@
   // Full Rapier replacement remains a later phase; this version focuses on feel, audio and turn logic.
   const bodies=[];
   let nextBodyId=1;
+
+  const contactShadowGeo=new THREE.CircleGeometry(1,24);
   const addBody=(mesh,radius,mass,meta={})=>{
+    let contactShadow=null;
+    if(PT_MOBILE){
+      contactShadow=new THREE.Mesh(
+        contactShadowGeo,
+        new THREE.MeshBasicMaterial({
+          color:0x17120d,transparent:true,opacity:radius<.02?.14:.19,
+          depthWrite:false,side:THREE.DoubleSide
+        })
+      );
+      contactShadow.rotation.x=-Math.PI/2;
+      contactShadow.position.set(mesh.position.x,.006,mesh.position.z);
+      contactShadow.scale.set(radius*1.22,radius*.72,1);
+      contactShadow.renderOrder=3;
+      scene.add(contactShadow);
+    }
+
     const body={id:nextBodyId++,mesh,radius,mass,vel:new THREE.Vector3(),moving:false,onGround:true,sleep:0,
       home:mesh.position.clone(),homeRot:mesh.rotation.clone(),team:meta.team||null,role:meta.role||null,
       played:!!meta.played,countsForPoint:meta.countsForPoint!==false,ready:!!meta.ready,lastImpact:0,
-      spinFactor:1,rollDrag:1.72,dead:false};
+      spinFactor:1,rollDrag:1.72,dead:false,contactShadow};
     bodies.push(body);return body;
   };
+
+  function syncContactShadows(){
+    if(!PT_MOBILE)return;
+    for(const body of bodies){
+      const sh=body.contactShadow;
+      if(!sh)continue;
+      const visible=!body.dead&&body.mesh.visible&&body.mesh.position.y<body.radius+.16;
+      sh.visible=visible;
+      if(!visible)continue;
+      const h=Math.max(0,body.mesh.position.y-body.radius);
+      const fade=Math.max(.30,1-h/.16);
+      sh.material.opacity=(body.radius<.02?.14:.19)*fade;
+      sh.position.set(body.mesh.position.x,.006,body.mesh.position.z);
+      const spread=1+Math.min(.40,h*3.2);
+      sh.scale.set(body.radius*1.22*spread,body.radius*.72*spread,1);
+    }
+  }
 
   // ---------- AUDIO V3.7 — VENUE-AWARE AMBIENCE + PRELOADED IMPACTS ----------
   // The CURRENT visual court is outdoors, in a park.
@@ -1639,26 +1716,10 @@
     const m=new THREE.Mesh(ballGeom,ballMaterial(team==='red'));m.position.copy(THROW_START);m.rotation.set(.2,-.38,.44);m.castShadow=m.receiveShadow=true;scene.add(m);
     const b=addBody(m,.037,.700,{team,role,ready:true,countsForPoint:true});b.dead=false;return b;
   }
-  function removeTeamBalls(){for(let i=bodies.length-1;i>=0;i--){const b=bodies[i];if(b.team){scene.remove(b.mesh);bodies.splice(i,1)}}activeBody=null}
+  function removeTeamBalls(){for(let i=bodies.length-1;i>=0;i--){const b=bodies[i];if(b.team){scene.remove(b.mesh);if(b.contactShadow)scene.remove(b.contactShadow);bodies.splice(i,1)}}activeBody=null}
   const WORLD_PER_METER=.46;
 
-  function ptVisualScaleForZ(z,isJack=false){
-    if(!PT_MOBILE)return isJack?1.32:1;
-    const meters=Math.max(0,(z-THROW_START.z)/WORLD_PER_METER);
-    const t=Math.max(0,Math.min(1,(meters-5.7)/4.3));
-    return (isJack?1.32:1)*(1+t*(isJack?.40:.32));
-  }
 
-  function updateMobileBallVisibility(){
-    if(!PT_MOBILE)return;
-    for(const body of bodies){
-      if(!body?.mesh||body.dead)continue;
-      body.mesh.scale.setScalar(ptVisualScaleForZ(body.mesh.position.z,false));
-    }
-    if(jackBody?.mesh&&!jackBody.dead){
-      jackBody.mesh.scale.setScalar(ptVisualScaleForZ(jackBody.mesh.position.z,true));
-    }
-  }
   // Playable limits. Side/back values correspond to the inside face of the wooden rails.
   const COURT_LIMITS={x:1.405,zMin:-1.28,zMax:5.975};
 
@@ -2456,10 +2517,10 @@
     'international-arena':{sky:0xc5cdd3,ground:0x2c3237,hemi:.84,sun:0xffffff,sunI:1.95,fill:0xb8d2e8,fillI:.60,pos:[-2.8,5.7,-3.0],exposure:1.02}
   };
   const LP=LIGHT_PRESETS[VENUE_PROFILE]||LIGHT_PRESETS['urban-park'];
-  renderer.toneMappingExposure=PT_MOBILE?Math.min(.96,LP.exposure*.91):LP.exposure;
+  renderer.toneMappingExposure=PT_MOBILE?Math.min(.98,LP.exposure*.93):LP.exposure;
 
-  const hemi=new THREE.HemisphereLight(PT_MOBILE?0xd8e5dc:LP.sky,PT_MOBILE?0x69513a:LP.ground,PT_MOBILE?LP.hemi*.70:LP.hemi);scene.add(hemi);
-  const sun=new THREE.DirectionalLight(PT_MOBILE?0xffc27d:LP.sun,PT_MOBILE?LP.sunI*.98:LP.sunI);
+  const hemi=new THREE.HemisphereLight(PT_MOBILE?0xe0e9df:LP.sky,PT_MOBILE?0x5f4936:LP.ground,PT_MOBILE?LP.hemi*.62:LP.hemi);scene.add(hemi);
+  const sun=new THREE.DirectionalLight(PT_MOBILE?0xffc98f:LP.sun,PT_MOBILE?LP.sunI*1.08:LP.sunI);
   sun.position.set(...LP.pos);sun.target.position.set(0,0,.35);sun.castShadow=true;
   sun.shadow.mapSize.set(PT_MOBILE?512:2048,PT_MOBILE?512:2048);sun.shadow.camera.left=-3;sun.shadow.camera.right=3;
   sun.shadow.camera.top=5.5;sun.shadow.camera.bottom=-1.5;sun.shadow.camera.near=.2;sun.shadow.camera.far=14;sun.shadow.bias=-.00018;
@@ -2486,7 +2547,7 @@
       const step=elapsed/steps;
       for(let i=0;i<steps;i++)physicsStep(step);
     }else physicsStep(Math.min(.025,elapsed));
-    updateMobileBallVisibility();
+    syncContactShadows();
     renderer.render(scene,camera);
     requestAnimationFrame(render)
   }
@@ -2645,13 +2706,11 @@ gameCanvas.addEventListener('pointerdown',e=>{
     // Slider left = aim left; slider right = aim right.
     setAimOffset(-(Number(directionEl.value)/100)*.22);
   });
-  document.querySelector('.arrow.l').addEventListener('click',()=>{audio.ensure();setAimOffset(aimOffset+.028)});
-  document.querySelector('.arrow.r').addEventListener('click',()=>{audio.ensure();setAimOffset(aimOffset-.028)});
   document.getElementById('replay').addEventListener('click',()=>{audio.ensure();newMatch()});
 
   setMeneDistance(8.0);resetStaticBodies();removeTeamBalls();gameState.activeRole='pointer';setThrowTypeUI('POINTER');syncDirectionUI();updateHUD();updatePlayerCard();ring.visible=false;aimLine.visible=false;
   if(PT_CAREER){newMatch();if(RESUME_MATCH_STATE){gameState.blueScore=Math.max(0,Number(RESUME_MATCH_STATE.blueScore||0));gameState.redScore=Math.max(0,Number(RESUME_MATCH_STATE.redScore||0));gameState.mene=Math.max(1,Number(RESUME_MATCH_STATE.mene||1));const starter=RESUME_MATCH_STATE.meneStarter==='red'?'red':'blue';coinWinner=RESUME_MATCH_STATE.coinWinner==='red'?'red':'blue';gameState.meneStarter=starter;updateHUD();showOnlyScreen(null);setMatchState(PetanqueStates.END_SETUP);setTimeout(()=>startJackThrow(starter),220)}else{showOnlyScreen(coinScreenEl);coinResultEl.textContent='';setMatchState(PetanqueStates.COIN_TOSS)}}else{showOnlyScreen(mainMenuEl);setMatchState(PetanqueStates.MATCH_INTRO)};
-  document.documentElement.dataset.ptGameplay='v225-mediterranean-pro';
+  document.documentElement.dataset.ptGameplay='v226-playable-premium';
 })();
 </script>
 
