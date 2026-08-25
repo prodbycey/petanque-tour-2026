@@ -13,7 +13,7 @@
   body{display:grid;place-items:center}
   #shell{position:relative;height:min(100vh,1536px);aspect-ratio:2/3;background:#111;border-radius:42px;overflow:hidden;box-shadow:0 0 0 3px #0a0a0b,0 0 0 5px #34353a,0 24px 80px #000}
   canvas{position:absolute;inset:0;width:100%;height:100%;display:block;touch-action:none;cursor:grab}
-  #vignette{position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at 50% 46%,transparent 60%,rgba(0,0,0,.07) 84%,rgba(0,0,0,.20) 100%);z-index:2}
+  #vignette{position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at 50% 43%,transparent 50%,rgba(0,0,0,.10) 78%,rgba(0,0,0,.34) 100%);z-index:2}
   .glass{background:linear-gradient(180deg,rgba(29,31,37,.94),rgba(11,12,15,.92));border:1px solid rgba(255,255,255,.22);box-shadow:var(--shadow);backdrop-filter:blur(8px)}
   #menu{position:absolute;z-index:10;left:3.4%;top:1.8%;width:8.8%;aspect-ratio:1;border-radius:16px;display:grid;place-items:center}
   #menu i,#menu i:before,#menu i:after{content:"";display:block;width:42%;height:3px;background:white;border-radius:9px;position:absolute}#menu i:before{transform:translateY(-10px)}#menu i:after{transform:translateY(10px)}
@@ -165,12 +165,12 @@
   if(!window.THREE){document.body.innerHTML='<div style="color:white;padding:30px;font-family:sans-serif">Connexion Internet requise au premier lancement pour charger Three.js.</div>';return;}
   const shell=document.getElementById('shell'),canvas=document.getElementById('game');
   const renderer=new THREE.WebGLRenderer({canvas,antialias:!PT_MOBILE,alpha:false,powerPreference:'high-performance'});
-  renderer.setPixelRatio(PT_MOBILE?1:Math.min(devicePixelRatio,2));
+  renderer.setPixelRatio(PT_MOBILE?Math.min(1.15,devicePixelRatio):Math.min(devicePixelRatio,2));
   renderer.shadowMap.enabled=!PT_MOBILE;
   renderer.shadowMap.type=THREE.PCFSoftShadowMap;
   renderer.outputEncoding=THREE.sRGBEncoding;
   renderer.toneMapping=THREE.ACESFilmicToneMapping;
-  renderer.toneMappingExposure=PT_MOBILE?.88:1.08;
+  renderer.toneMappingExposure=PT_MOBILE?.84:1.08;
   const scene=new THREE.Scene();scene.background=new THREE.Color(0x132024);
   const camera=new THREE.PerspectiveCamera(60,2/3,.025,30);camera.position.set(0,.430,-2);camera.lookAt(0,0,-1.042);
 
@@ -245,27 +245,27 @@
 
   const GROUND_STYLES={
     'compact-earth':{
-      a:'#74624f',b:'#b2946f',fine:20500,stones:520,stoneScale:.72,
+      a:'#5f4934',b:'#98744d',fine:20500,stones:520,stoneScale:.72,
       pebbleColor:0x756655,roughness:.88,bumpScale:.010,label:'terre compacte'
     },
     'fine-gravel':{
-      a:'#796553',b:'#b99b79',fine:28500,stones:1450,stoneScale:.92,
+      a:'#66503d',b:'#9e7957',fine:28500,stones:1450,stoneScale:.92,
       pebbleColor:0x6f6257,roughness:.94,bumpScale:.017,label:'gravier fin'
     },
     'hard-sand':{
-      a:'#a98c63',b:'#d7be8d',fine:34000,stones:310,stoneScale:.50,
+      a:'#8b6942',b:'#b98d55',fine:34000,stones:310,stoneScale:.50,
       pebbleColor:0x927b5f,roughness:.99,bumpScale:.007,label:'sable dur'
     },
     'rocky':{
-      a:'#625c54',b:'#9b8874',fine:19500,stones:2280,stoneScale:1.55,
+      a:'#50483f',b:'#806b58',fine:19500,stones:2280,stoneScale:1.55,
       pebbleColor:0x5c5a57,roughness:.97,bumpScale:.027,label:'terrain rocheux'
     },
     'red-earth':{
-      a:'#7b4030',b:'#bd7050',fine:26000,stones:720,stoneScale:.78,
+      a:'#643022',b:'#a95337',fine:26000,stones:720,stoneScale:.78,
       pebbleColor:0x744536,roughness:.95,bumpScale:.015,label:'terre rouge'
     },
     'wet-earth':{
-      a:'#4d4942',b:'#7d7163',fine:25000,stones:870,stoneScale:.82,
+      a:'#393631',b:'#665a4e',fine:25000,stones:870,stoneScale:.82,
       pebbleColor:0x55504a,roughness:1.00,bumpScale:.021,label:'terre humide'
     }
   };
@@ -280,13 +280,13 @@
   const VISUAL_SURFACE=GROUND_STYLES[VENUE_SURFACE_VISUAL]?VENUE_SURFACE_VISUAL:fallbackVisualSurface();
   const GROUND_STYLE=GROUND_STYLES[VISUAL_SURFACE];
   const GROUND_TINT={
-    'compact-earth':0xc19d73,
-    'fine-gravel':0xc2a078,
-    'hard-sand':0xc7a06a,
-    'rocky':0xa89279,
-    'red-earth':0xb96848,
-    'wet-earth':0x807365
-  }[VISUAL_SURFACE]||0xc19d73;
+    'compact-earth':0xad875d,
+    'fine-gravel':0xae8964,
+    'hard-sand':0xb4834e,
+    'rocky':0x907760,
+    'red-earth':0xa75237,
+    'wet-earth':0x6f6255
+  }[VISUAL_SURFACE]||0xaa845d;
 
   function fallbackVenueProfile(){
     const city=VENUE_CITY.toLowerCase();
@@ -494,7 +494,7 @@
     // Worn/compacted patches.
     for(let i=0;i<24;i++){
       const px=r()*1024,py=r()*1024,rx=28+r()*95,ry=8+r()*28;
-      x.fillStyle=`rgba(65,50,37,${.025+r()*.035})`;
+      x.fillStyle=`rgba(45,32,22,${.055+r()*.060})`;
       x.beginPath();x.ellipse(px,py,rx,ry,r()*Math.PI,0,Math.PI*2);x.fill()
     }
 
@@ -502,13 +502,13 @@
     for(let i=0;i<24;i++){
       const px=r()*1024,py=r()*1024,a=r()*Math.PI*2;
       x.save();x.translate(px,py);x.rotate(a);
-      x.fillStyle=`rgba(55,43,34,${.055+r()*.045})`;
+      x.fillStyle=`rgba(42,31,23,${.080+r()*.065})`;
       x.beginPath();x.ellipse(0,0,5+r()*3,13+r()*4,0,0,Math.PI*2);x.fill();
       x.restore()
     }
 
     // Ball drag/impact marks.
-    x.strokeStyle='rgba(52,42,33,.075)';
+    x.strokeStyle='rgba(42,31,22,.14)';
     for(let i=0;i<20;i++){
       x.lineWidth=.7+r()*1.8;
       const px=r()*1024,py=r()*1024,len=12+r()*45;
@@ -1079,90 +1079,19 @@
   };
 
   const audio={
-    started:false,ambienceA:null,ambienceB:null,
-    impactPool:[],groundPool:[],impactIndex:0,groundIndex:0,
-
-    makeLoop(url,volume){
-      const a=new Audio(url);a.loop=true;a.preload='auto';a.volume=volume;return a;
-    },
-    buildPool(url,count,volume){
-      return Array.from({length:count},()=>{
-        const a=new Audio(url);a.preload='auto';a.volume=volume;a.load();return a;
-      });
-    },
-    stopAmbience(){
-      for(const a of [this.ambienceA,this.ambienceB]){
-        if(!a)continue;
-        try{a.pause();a.currentTime=0}catch(e){}
-      }
-      this.ambienceA=this.ambienceB=null;
-    },
-    startVenueAmbience(){
-      this.stopAmbience();
-
-      // Indoor court: intentionally no park/birds/crickets.
-      if(VENUE_AUDIO.type==='indoor')return;
-
-      const p=AMBIENCE_PROFILES[VENUE_AUDIO.environment];
-      if(!p)return;
-
-      this.ambienceA=this.makeLoop(p.primary,p.primaryVolume);
-      this.ambienceA.play().catch(()=>{});
-
-      if(p.secondary){
-        this.ambienceB=this.makeLoop(p.secondary,p.secondaryVolume);
-        const startB=()=>{
-          try{this.ambienceB.currentTime=p.secondaryStart||0}catch(e){}
-          this.ambienceB.play().catch(()=>{})
-        };
-        if(this.ambienceB.readyState>=1)startB();
-        else this.ambienceB.addEventListener('loadedmetadata',startB,{once:true});
-      }
-    },
-    ensure(){
-      if(this.started){
-        if(VENUE_AUDIO.type==='outdoor'){
-          this.ambienceA?.play().catch(()=>{});
-          this.ambienceB?.play().catch(()=>{});
-        }
-        return;
-      }
-      this.started=true;
-
-      // Pools are created before collisions so the sound can start on the impact frame.
-      this.impactPool=this.buildPool(AUDIO_FILES.steel,7,.11);
-      this.groundPool=this.buildPool(AUDIO_FILES.ground,4,.025);
-
-      this.startVenueAmbience();
-    },
-    swipe(){this.ensure();},
-    groundImpact(strength){
-      this.ensure();
-      if(!this.groundPool.length)return;
-      const a=this.groundPool[this.groundIndex++%this.groundPool.length];
-      const k=Math.min(1,Math.max(.05,strength/3));
-      try{a.pause();a.currentTime=0}catch(e){}
-      a.volume=.010+.020*k;
-      a.playbackRate=.98+Math.random()*.025;
-      a.play().catch(()=>{});
-    },
-    clack(impactSpeed){
-      this.ensure();
-      if(!this.impactPool.length)return;
-      const a=this.impactPool[this.impactIndex++%this.impactPool.length];
-      const k=Math.min(1,Math.max(.02,impactSpeed/4.8));
-
-      // Preloaded recording: restart on the exact collision frame.
-      try{a.pause();a.currentTime=.52}catch(e){}
-      a.volume=.025+.115*k;
-      a.playbackRate=1.12-.25*k;
-      a.play().catch(()=>{});
-
-      // Very short resonance only.
-      const stopAfter=145+Math.round(260*k);
-      setTimeout(()=>{try{a.pause()}catch(e){}},stopAfter);
-    },
-    updateRoll(){ }
+    started:false,ambienceA:null,ambienceB:null,impactPool:[],groundPool:[],impactIndex:0,groundIndex:0,
+    ctx:null,master:null,ambienceTimer:null,
+    context(){if(!PT_MOBILE)return null;const AC=window.AudioContext||window.webkitAudioContext;if(!AC)return null;if(!this.ctx){this.ctx=new AC();this.master=this.ctx.createGain();this.master.gain.value=.72;this.master.connect(this.ctx.destination)}if(this.ctx.state==='suspended')this.ctx.resume().catch(()=>{});return this.ctx},
+    makeLoop(url,volume){const x=new Audio();x.loop=true;x.preload=PT_MOBILE?'none':'auto';x.volume=volume;x.src=url;return x},
+    buildPool(url,count,volume){if(PT_MOBILE)return[];return Array.from({length:count},()=>{const x=new Audio(url);x.preload='auto';x.volume=volume;x.load();return x})},
+    stopAmbience(){clearTimeout(this.ambienceTimer);this.ambienceTimer=null;for(const x of [this.ambienceA,this.ambienceB]){if(!x)continue;try{x.pause();x.removeAttribute('src');x.load()}catch(e){}}this.ambienceA=this.ambienceB=null},
+    startVenueAmbience(){this.stopAmbience();if(VENUE_AUDIO.type==='indoor')return;const p=AMBIENCE_PROFILES[VENUE_AUDIO.environment];if(!p)return;if(PT_MOBILE){this.ambienceTimer=setTimeout(()=>{if(document.hidden)return;this.ambienceA=this.makeLoop(p.primary,.012);this.ambienceA.play().catch(()=>{})},2800);return}this.ambienceA=this.makeLoop(p.primary,p.primaryVolume*.48);this.ambienceA.play().catch(()=>{});if(p.secondary){this.ambienceB=this.makeLoop(p.secondary,p.secondaryVolume*.48);this.ambienceB.play().catch(()=>{})}},
+    ensure(){if(PT_MOBILE){this.context();if(this.started)return;this.started=true;this.startVenueAmbience();return}if(this.started)return;this.started=true;this.impactPool=this.buildPool(AUDIO_FILES.steel,4,.11);this.groundPool=this.buildPool(AUDIO_FILES.ground,2,.025);this.startVenueAmbience()},
+    swipe(){this.ensure()},
+    mobileTransient(kind,strength){const c=this.context();if(!c||!this.master)return;const k=Math.min(1,Math.max(.03,strength)),t=c.currentTime;if(kind==='steel'){const o=c.createOscillator(),g=c.createGain(),b=c.createBiquadFilter();o.type='triangle';o.frequency.setValueAtTime(920+340*k,t);o.frequency.exponentialRampToValueAtTime(410,t+.055);b.type='bandpass';b.frequency.value=1350+700*k;b.Q.value=1.1;g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(.10+.18*k,t+.0015);g.gain.exponentialRampToValueAtTime(.0001,t+.10);o.connect(b).connect(g).connect(this.master);o.start(t);o.stop(t+.11);const low=c.createOscillator(),lg=c.createGain();low.type='sine';low.frequency.setValueAtTime(260+80*k,t);low.frequency.exponentialRampToValueAtTime(170,t+.07);lg.gain.setValueAtTime(.0001,t);lg.gain.exponentialRampToValueAtTime(.045+.06*k,t+.002);lg.gain.exponentialRampToValueAtTime(.0001,t+.085);low.connect(lg).connect(this.master);low.start(t);low.stop(t+.09)}else{const o=c.createOscillator(),g=c.createGain();o.type='sine';o.frequency.setValueAtTime(120+45*k,t);o.frequency.exponentialRampToValueAtTime(70,t+.06);g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(.02+.022*k,t+.002);g.gain.exponentialRampToValueAtTime(.0001,t+.065);o.connect(g).connect(this.master);o.start(t);o.stop(t+.07)}},
+    groundImpact(strength){this.ensure();const k=Math.min(1,Math.max(.05,strength/3));if(PT_MOBILE){this.mobileTransient('ground',k);return}if(!this.groundPool.length)return;const x=this.groundPool[this.groundIndex++%this.groundPool.length];try{x.pause();x.currentTime=0}catch(e){}x.volume=.010+.020*k;x.playbackRate=.98+Math.random()*.025;x.play().catch(()=>{})},
+    clack(speed){this.ensure();const k=Math.min(1,Math.max(.02,speed/4.8));if(PT_MOBILE){this.mobileTransient('steel',k);return}if(!this.impactPool.length)return;const x=this.impactPool[this.impactIndex++%this.impactPool.length];try{x.pause();x.currentTime=.52}catch(e){}x.volume=.045+.16*k;x.playbackRate=1.08-.18*k;x.play().catch(()=>{});setTimeout(()=>{try{x.pause()}catch(e){}},145+Math.round(250*k))},
+    updateRoll(){}
   };
 
   // Existing distant balls remain as visual/physical obstacles only; new throws drive turn scoring.
@@ -1546,14 +1475,14 @@
       jackBody.mesh.position.set(THROW_START.x,.045,THROW_START.z+.055);
       jackBody.dead=false;jackBody.mesh.visible=true;jackBody.played=false;
       setMatchState(PetanqueStates.AI_THINKING);
-      showToast('RIZANO PREND LE COCHONNET',700);
+      showToast(`${CURRENT_AI_NAME.toUpperCase()} PREND LE COCHONNET`,520);
       setTimeout(()=>{
         setMatchState(PetanqueStates.AI_THROWING);
         const success=Math.random()<.82;
         const d=success?(6.3+Math.random()*3.2):(Math.random()<.5?5.4+Math.random()*.5:10.2+Math.random()*.7);
         const target=new THREE.Vector3((Math.random()-.5)*.25,0,THROW_START.z+d*WORLD_PER_METER);
         launchJackTo(target,65+Math.random()*18);
-      },1050);
+      },560);
     }
   }
 
@@ -2104,7 +2033,7 @@
     'international-arena':{sky:0xc5cdd3,ground:0x2c3237,hemi:.84,sun:0xffffff,sunI:1.95,fill:0xb8d2e8,fillI:.60,pos:[-2.8,5.7,-3.0],exposure:1.02}
   };
   const LP=LIGHT_PRESETS[VENUE_PROFILE]||LIGHT_PRESETS['urban-park'];
-  renderer.toneMappingExposure=PT_MOBILE?Math.min(.90,LP.exposure*.88):LP.exposure;
+  renderer.toneMappingExposure=PT_MOBILE?Math.min(.86,LP.exposure*.82):LP.exposure;
 
   const hemi=new THREE.HemisphereLight(LP.sky,LP.ground,PT_MOBILE?LP.hemi*.82:LP.hemi);scene.add(hemi);
   const sun=new THREE.DirectionalLight(LP.sun,PT_MOBILE?LP.sunI*.78:LP.sunI);
@@ -2159,7 +2088,6 @@
     btn.disabled=true;
     coinResultEl.textContent='TIRAGE…';
     setTimeout(()=>{
-      audio.clack(.34);
       coinWinner=Math.random()<.5?'blue':'red';
       gameState.meneStarter=coinWinner;
       coinResultEl.textContent=coinWinner==='blue'?'TU COMMENCES':`${CURRENT_AI_NAME.toUpperCase()} COMMENCE`;
@@ -2284,40 +2212,16 @@ gameCanvas.addEventListener('pointerdown',e=>{
   document.querySelector('.arrow.r').addEventListener('click',()=>{audio.ensure();setAimOffset(aimOffset-.028)});
   document.getElementById('replay').addEventListener('click',()=>{audio.ensure();newMatch()});
 
-  setMeneDistance(8.0);resetStaticBodies();removeTeamBalls();gameState.activeRole='pointer';setThrowTypeUI('POINTER');syncDirectionUI();updateHUD();updatePlayerCard();ring.visible=false;aimLine.visible=false;showOnlyScreen(mainMenuEl);setMatchState(PetanqueStates.MATCH_INTRO);
+  setMeneDistance(8.0);resetStaticBodies();removeTeamBalls();gameState.activeRole='pointer';setThrowTypeUI('POINTER');syncDirectionUI();updateHUD();updatePlayerCard();ring.visible=false;aimLine.visible=false;
+  if(PT_CAREER){newMatch();if(RESUME_MATCH_STATE){gameState.blueScore=Math.max(0,Number(RESUME_MATCH_STATE.blueScore||0));gameState.redScore=Math.max(0,Number(RESUME_MATCH_STATE.redScore||0));gameState.mene=Math.max(1,Number(RESUME_MATCH_STATE.mene||1));const starter=RESUME_MATCH_STATE.meneStarter==='red'?'red':'blue';coinWinner=RESUME_MATCH_STATE.coinWinner==='red'?'red':'blue';gameState.meneStarter=starter;updateHUD();showOnlyScreen(null);setMatchState(PetanqueStates.END_SETUP);setTimeout(()=>startJackThrow(starter),220)}else{showOnlyScreen(coinScreenEl);coinResultEl.textContent='';setMatchState(PetanqueStates.COIN_TOSS)}}else{showOnlyScreen(mainMenuEl);setMatchState(PetanqueStates.MATCH_INTRO)};
 })();
 </script>
 
-<script id="pt-v220-direct">
+<script id="pt-v221-direct">
 (function(){
   'use strict';
 
-  // Audio hierarchy: ambience behind play, steel contacts clearly foreground.
-  try{
-    const loopBase=audio.makeLoop.bind(audio);
-    audio.makeLoop=function(url,volume){return loopBase(url,Math.max(0,volume*.48))};
-
-    const clackBase=audio.clack.bind(audio);
-    audio.clack=function(speed){
-      clackBase(speed);
-      const pool=this.impactPool||[];
-      if(!pool.length)return;
-      const a=pool[(this.impactIndex-1+pool.length)%pool.length];
-      if(!a)return;
-      const k=Math.min(1,Math.max(.05,Number(speed||0)/4.6));
-      a.volume=Math.min(.34,.08+.26*k);
-      a.playbackRate=1.05-.12*k;
-    };
-
-    const groundBase=audio.groundImpact.bind(audio);
-    audio.groundImpact=function(strength){
-      groundBase(strength);
-      const pool=this.groundPool||[];
-      if(!pool.length)return;
-      const a=pool[(this.groundIndex-1+pool.length)%pool.length];
-      if(a)a.volume=Math.min(.035,a.volume*.68);
-    };
-  }catch(e){console.warn('audio mix',e)}
+  // Audio V2.21 intégré directement dans le moteur.
 
   // Tactical decisions use only the current visible pétanque situation.
   try{
@@ -2417,7 +2321,7 @@ gameCanvas.addEventListener('pointerdown',e=>{
     };
   }catch(e){console.warn('tactical AI',e)}
 
-  document.documentElement.dataset.ptGameplay='v220-direct';
+  document.documentElement.dataset.ptGameplay='v221-direct';
 })();
 </script>
 

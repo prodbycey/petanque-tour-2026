@@ -903,14 +903,10 @@ function launchLockedMatch(mode=selectedControlMode){
   }else{
     delete frame.dataset.resumeState;
   }
-  frame.src='./match-core-career-v2-4/index.html?v=220';
+  frame.src='./match-core-career-v2-4/index.html?v=221';
   showView('matchCore');
   frame.onload=()=>{
-    try{
-      const doc=frame.contentDocument;
-      // V2.20: career matches boot directly into the coin toss.
-      setTimeout(()=>doc.getElementById('startQuickMatch')?.click(),45);
-    }catch(e){}
+    // V2.21: le Match Core carrière démarre lui-même, sans clic simulé.
     matchPoll=setInterval(()=>pollMatchResult(frame),650);
   };
 }

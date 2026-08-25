@@ -334,3 +334,6 @@ img.miniPortrait{width:40px;height:40px;border-radius:12px;flex:0 0 40px}
   .homeOfficialLogo{width:min(43vw,166px)!important}
   .homeHero{padding-top:174px!important}
 }
+
+/* V2.21 launch polish */
+#splash{display:flex!important;align-items:flex-start!important;justify-content:center!important;padding-top:28px!important;background:radial-gradient(circle at 50% 18%,#102845 0,#07172b 45%,#03080f 100%)!important}.splashOfficialLogo{position:static!important;margin:0 auto!important;width:min(48vw,190px)!important;height:auto!important}.homeBrand{left:50%!important;transform:translateX(-50%)!important;text-align:center!important}
