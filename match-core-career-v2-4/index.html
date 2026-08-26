@@ -1809,12 +1809,15 @@
     let iterations=0;
 
     while(physicsAccumulator>=PHYSICS_DT&&iterations<8){
-      // Direct repositioning is still used by the validated match flow for held/placed objects.
-      // Mirror those stationary transforms into Rapier before the next solver step.
+      // Direct repositioning is still used for objects not yet in play (held/queued).
+      // BUGFIX V2.35: a boule already played (thrown earlier, now resting) must stay a normal
+      // Rapier body so it can be struck and pushed by another boule. Previously this re-pinned
+      // it to its old spot and put it back to sleep on every single substep — regardless of
+      // whether Rapier had just moved it via a collision — so hits barely displaced anything.
       for(const body of bodies){
         if(!body.rb)continue;
         if(body.dead||!body.mesh.visible){parkPhysicsBody(body);continue}
-        if(!body.moving)syncStoppedBodyToPhysics(body);
+        if(!body.moving&&!body.played)syncStoppedBodyToPhysics(body);
       }
 
       physicsWorld.step();
@@ -1825,6 +1828,13 @@
         body.mesh.position.set(p.x/PHYSICS_SCALE,p.y/PHYSICS_SCALE,p.z/PHYSICS_SCALE);
         body.mesh.quaternion.set(q.x,q.y,q.z,q.w);
         body.vel.set(lv.x/PHYSICS_SCALE,lv.y/PHYSICS_SCALE,lv.z/PHYSICS_SCALE);
+
+        // A resting, already-played boule that just got struck must be recognised as moving again,
+        // otherwise the loop above would silently re-freeze it on the very next substep.
+        if(!body.moving&&body.played){
+          const speed=Math.hypot(body.vel.x,body.vel.y,body.vel.z);
+          if(speed>.012||!body.rb.isSleeping()){body.moving=true;body.sleep=0}
+        }
 
         if(bodyTouchesBoundary(body)){
           if(body===jackBody){killJack();physicsAccumulator=0;return}
@@ -2533,7 +2543,7 @@ gameCanvas.addEventListener('pointerdown',e=>{
 
   setMeneDistance(8.0);resetStaticBodies();removeTeamBalls();gameState.activeRole='pointer';setThrowTypeUI('POINTER');syncDirectionUI();updateHUD();updatePlayerCard();ring.visible=false;aimLine.visible=false;
   if(PT_CAREER){newMatch();if(RESUME_MATCH_STATE){gameState.blueScore=Math.max(0,Number(RESUME_MATCH_STATE.blueScore||0));gameState.redScore=Math.max(0,Number(RESUME_MATCH_STATE.redScore||0));gameState.mene=Math.max(1,Number(RESUME_MATCH_STATE.mene||1));const starter=RESUME_MATCH_STATE.meneStarter==='red'?'red':'blue';coinWinner=RESUME_MATCH_STATE.coinWinner==='red'?'red':'blue';gameState.meneStarter=starter;updateHUD();showOnlyScreen(null);setMatchState(PetanqueStates.END_SETUP);setTimeout(()=>startJackThrow(starter),220)}else{showOnlyScreen(coinScreenEl);coinResultEl.textContent='';setMatchState(PetanqueStates.COIN_TOSS)}}else{showOnlyScreen(mainMenuEl);setMatchState(PetanqueStates.MATCH_INTRO)};
-  document.documentElement.dataset.ptGameplay='v234-rapier-terrain';
+  document.documentElement.dataset.ptGameplay='v235-collision-fix';
 })();
 </script>
 
