@@ -180,16 +180,16 @@
   if(!window.THREE){document.body.innerHTML='<div style="color:white;padding:30px;font-family:sans-serif">Connexion Internet requise au premier lancement pour charger Three.js.</div>';return;}
   const shell=document.getElementById('shell'),canvas=document.getElementById('game');
   const renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:false,powerPreference:'high-performance'});
-  renderer.setPixelRatio(PT_MOBILE?Math.min(devicePixelRatio,1.5):Math.min(devicePixelRatio,2));
-  renderer.shadowMap.enabled=!PT_MOBILE;
+  renderer.setPixelRatio(PT_MOBILE?Math.min(devicePixelRatio,1.65):Math.min(devicePixelRatio,2));
+  renderer.shadowMap.enabled=true;
   renderer.shadowMap.type=THREE.PCFSoftShadowMap;
   renderer.outputEncoding=THREE.sRGBEncoding;
   renderer.toneMapping=THREE.ACESFilmicToneMapping;
-  renderer.toneMappingExposure=PT_MOBILE?1.04:1.08;
+  renderer.toneMappingExposure=PT_MOBILE?1.06:1.08;
   const scene=new THREE.Scene();scene.background=new THREE.Color(0x132024);
   const camera=new THREE.PerspectiveCamera(PT_MOBILE?55:60,2/3,.025,30);
-  camera.position.set(0,PT_MOBILE?.68:.430,PT_MOBILE?-2.16:-2);
-  camera.lookAt(0,0,PT_MOBILE?.92:-1.042);
+  camera.position.set(0,PT_MOBILE?.64:.430,PT_MOBILE?-2.24:-2);
+  camera.lookAt(0,0,PT_MOBILE?1.06:-1.042);
 
   // CAREER VENUE VISUALS — visual only. Match rules, controls and ball physics stay unchanged.
   const VENUE_TERRAIN_ID=String(
@@ -465,7 +465,7 @@
   const roughMap=ct('rough',1024,177+VENUE_SEED%983);
   groundMap.repeat.set(2.1,7.4);bumpMap.repeat.copy(groundMap.repeat);roughMap.repeat.copy(groundMap.repeat);
   const groundMaterial=PT_MOBILE
-    ? new THREE.MeshStandardMaterial({map:groundMap,bumpMap:bumpMap,bumpScale:.0042,color:GROUND_TINT,roughness:.91,metalness:0})
+    ? new THREE.MeshPhysicalMaterial({map:groundMap,bumpMap:bumpMap,bumpScale:.0050,color:GROUND_TINT,roughness:.88,metalness:0,clearcoat:.02})
     : new THREE.MeshPhysicalMaterial({
         map:groundMap,bumpMap:bumpMap,bumpScale:GROUND_STYLE.bumpScale,
         roughnessMap:roughMap,roughness:GROUND_STYLE.roughness,
@@ -499,10 +499,10 @@
   const outsideGround=new THREE.Mesh(
     new THREE.PlaneGeometry(10.5,15),
     (PT_MOBILE
-      ? new THREE.MeshLambertMaterial({color:
+      ? new THREE.MeshStandardMaterial({color:
           VENUE_PROFILE==='urban-park'?0x465340:
           VENUE_PROFILE==='countryside'?0x4b5b3e:
-          VENUE_PROFILE==='mountain-alps'||VENUE_PROFILE==='mountain-lake'?0x475047:0x665443})
+          VENUE_PROFILE==='mountain-alps'||VENUE_PROFILE==='mountain-lake'?0x475047:0x665443, roughness:.98, metalness:0})
       : new THREE.MeshPhysicalMaterial({
           map:outsideMap,roughness:.97,metalness:0,
           color:VENUE_PROFILE==='urban-park'?0x525e4d:
@@ -554,9 +554,9 @@
   detailMap.wrapS=detailMap.wrapT=THREE.RepeatWrapping;detailMap.repeat.set(1.4,4.4);
   const detailPlane=new THREE.Mesh(
     new THREE.PlaneGeometry(2.92,8.45),
-    new THREE.MeshBasicMaterial({map:detailMap,transparent:true,opacity:PT_MOBILE?.90:1,depthWrite:false,toneMapped:true})
+    new THREE.MeshBasicMaterial({map:detailMap,transparent:true,opacity:PT_MOBILE?.96:1,depthWrite:false,toneMapped:true})
   );
-  detailPlane.rotation.x=-Math.PI/2;detailPlane.position.set(0,.009,1.75);scene.add(detailPlane);
+  detailPlane.rotation.x=-Math.PI/2;detailPlane.position.set(0,.006,1.75);scene.add(detailPlane);
 
 
   // Realistic-looking wooden court borders (procedural, no external image).
@@ -579,8 +579,8 @@
     const t=new THREE.CanvasTexture(c);t.wrapS=t.wrapT=THREE.RepeatWrapping;t.repeat.set(PT_MOBILE?4.3:3.3,1);t.anisotropy=PT_MOBILE?2:renderer.capabilities.getMaxAnisotropy();return t;
   }
   const woodMap=makeWoodTexture(),woodBump=makeWoodTexture(991);
-  const woodMat=new THREE.MeshStandardMaterial({
-    map:woodMap,bumpMap:woodBump,bumpScale:PT_MOBILE?.010:.006,roughness:PT_MOBILE?.60:.72,metalness:0,color:PT_MOBILE?0xe2bd8d:0xffffff
+  const woodMat=new THREE.MeshPhysicalMaterial({
+    map:woodMap,bumpMap:woodBump,bumpScale:PT_MOBILE?.013:.008,roughness:PT_MOBILE?.56:.68,metalness:0,color:PT_MOBILE?0xf0c38f:0xf7e0c4,clearcoat:.03
   });
   // Two long side rails.
   for(const s of [-1,1]){
@@ -1052,7 +1052,7 @@
 
   const metalTex=ct('metal',768,55);metalTex.repeat.set(1,1);
   function ballMaterial(dark){
-    if(PT_MOBILE)return new THREE.MeshStandardMaterial({color:dark?0x24292e:0xe3e5e5,map:metalTex,bumpMap:metalTex,bumpScale:.0007,metalness:.96,roughness:dark?.31:.19,envMapIntensity:1.32});
+    if(PT_MOBILE)return new THREE.MeshPhysicalMaterial({color:dark?0x2b3138:0xe5e8eb,map:metalTex,bumpMap:metalTex,bumpScale:.0010,metalness:1,roughness:dark?.26:.15,clearcoat:dark?.08:.22,clearcoatRoughness:.28,envMapIntensity:1.55});
     return new THREE.MeshPhysicalMaterial({color:dark?0x1f242a:0xd8dde4,map:metalTex,bumpMap:metalTex,bumpScale:.0015,metalness:1,roughness:dark?.34:.20,clearcoat:dark?.10:.26,clearcoatRoughness:.32,envMapIntensity:1.45})
   }
   // simple bright environment for metal reflections
@@ -1063,12 +1063,12 @@
     {p:[-.199,.037,2.730],dark:true,r:[.36,-.25,.72]},
     {p:[-.483,.037,3.730],dark:false,r:[-.22,-.36,.18]}
   ];
-  const ballGeom=new THREE.SphereGeometry(.037,PT_MOBILE?48:96,PT_MOBILE?32:64);
+  const ballGeom=new THREE.SphereGeometry(.037,PT_MOBILE?64:96,PT_MOBILE?42:64);
   const ballMeshes=[];
   positions.forEach(o=>{const b=new THREE.Mesh(ballGeom,ballMaterial(o.dark));b.position.set(...o.p);b.rotation.set(...o.r);b.castShadow=b.receiveShadow=true;scene.add(b);ballMeshes.push(b)});
   const playerBall=ballMeshes[0];
   // V3.4: distant setup pushed deeper into the court; camera/FOV unchanged.
-  const jack=new THREE.Mesh(new THREE.SphereGeometry(.015,PT_MOBILE?28:48,PT_MOBILE?18:32),new THREE.MeshStandardMaterial({color:0xcb2c1d,roughness:.65,metalness:0,bumpMap:bumpMap,bumpScale:.001}));jack.scale.setScalar(1.32);jack.position.set(-.063,.015,2.700);jack.castShadow=true;scene.add(jack);
+  const jack=new THREE.Mesh(new THREE.SphereGeometry(.015,PT_MOBILE?36:48,PT_MOBILE?24:32),new THREE.MeshStandardMaterial({color:0xcb2c1d,roughness:.62,metalness:0,bumpMap:bumpMap,bumpScale:.0012}));jack.scale.setScalar(1.32);jack.position.set(-.063,.0205,2.700);jack.castShadow=true;scene.add(jack);
   const ring=new THREE.Mesh(new THREE.TorusGeometry(.070,.0032,24,128),new THREE.MeshBasicMaterial({color:0x1595ff,transparent:true,opacity:.92}));ring.rotation.x=Math.PI/2;ring.position.set(.044,.004,-.978);scene.add(ring);
   // Engagement limits for the initial cochonnet throw: 6m / 10m.
   const jackLineMat=new THREE.LineBasicMaterial({color:0xff2d2d,transparent:true,opacity:.95,depthTest:true});
@@ -1155,7 +1155,7 @@
   const silverNearBody=addBody(ballMeshes[1],.037,.700,{countsForPoint:false});
   const blackBody=addBody(ballMeshes[2],.037,.700,{countsForPoint:false});
   const silverFarBody=addBody(ballMeshes[3],.037,.700,{countsForPoint:false});
-  const jackBody=addBody(jack,.015,.030,{countsForPoint:false});
+  const jackBody=addBody(jack,.0198,.030,{countsForPoint:false});jackBody.groundOffset=.0016;
 
   const THROW_START=new THREE.Vector3(.044,.037,-.978);
   const CURRENT_MATCH_FORMAT=String(
@@ -1454,7 +1454,7 @@
   function wake(body){body.moving=true;body.sleep=0}
   function makeBall(team,role=null){
     const m=new THREE.Mesh(ballGeom,ballMaterial(team==='red'));m.position.copy(THROW_START);m.rotation.set(.2,-.38,.44);m.castShadow=m.receiveShadow=true;scene.add(m);
-    const b=addBody(m,.037,.700,{team,role,ready:true,countsForPoint:true});b.dead=false;return b;
+    const b=addBody(m,.037,.700,{team,role,ready:true,countsForPoint:true});b.dead=false;b.groundOffset=.0018;return b;
   }
   function removeTeamBalls(){for(let i=bodies.length-1;i>=0;i--){const b=bodies[i];if(b.team){scene.remove(b.mesh);bodies.splice(i,1)}}activeBody=null}
   const WORLD_PER_METER=.46;
@@ -1488,7 +1488,7 @@
   function jackDistanceM(){return horizontalDist(jackBody.mesh.position,THROW_START)/WORLD_PER_METER}
   function jackObstacleDistanceM(){const p=jackBody.mesh.position;return Math.min(COURT_LIMITS.x-Math.abs(p.x),COURT_LIMITS.zMax-p.z)/WORLD_PER_METER}
   function isCurrentJackThrowValid(){return rulesEngine.isJackThrowValid({distanceM:jackDistanceM(),insidePlay:!rulesEngine.isBallDead(jackBody.mesh.position,jackBody.radius,LOSS_LINES),visible:true,obstacleDistanceM:jackObstacleDistanceM()})}
-  function placeJackLegallyBy(team){const d=7.5,z=THROW_START.z+d*WORLD_PER_METER;jackBody.dead=false;jackBody.mesh.visible=true;jackBody.mesh.position.set(0,.015,z);jackBody.vel.set(0,0,0);jackBody.moving=false;jackBody.onGround=true;gameState.jackDistanceM=d;if(distanceValueEl)distanceValueEl.textContent='7,5 m';showToast(`${team==='blue'?'TOI':'RIZANO'} PLACE LE COCHONNET · 7,5 M`,1100);beginFirstBall()}
+  function placeJackLegallyBy(team){const d=7.5,z=THROW_START.z+d*WORLD_PER_METER;jackBody.dead=false;jackBody.mesh.visible=true;jackBody.mesh.position.set(0,.0214,z);jackBody.vel.set(0,0,0);jackBody.moving=false;jackBody.onGround=true;gameState.jackDistanceM=d;if(distanceValueEl)distanceValueEl.textContent='7,5 m';showToast(`${team==='blue'?'TOI':'RIZANO'} PLACE LE COCHONNET · 7,5 M`,1100);beginFirstBall()}
   function validateJackAfterSettle(){if(!jackThrowInProgress)return;jackThrowInProgress=false;const d=jackDistanceM();if(distanceValueEl)distanceValueEl.textContent=d.toFixed(1).replace('.',',')+' m';if(isCurrentJackThrowValid()){showToast(`BUT VALIDE · ${d.toFixed(1).replace('.',',')} M`,950);beginFirstBall()}else{showToast(`BUT NON VALIDE · ${d<6?'TROP COURT':d>10?'TROP LONG':'NON RÉGLEMENTAIRE'}`,1050);setMatchState(PetanqueStates.JACK_PLACEMENT);setTimeout(()=>placeJackLegallyBy(jackThrowOwner==='blue'?'red':'blue'),1100)}}
   function launchJackTo(target,powerPct=70){jackHeld=false;if(takeJackEl)takeJackEl.classList.remove('show');const p=Math.max(.05,Math.min(1,powerPct/100)),start=jackBody.mesh.position.clone(),range=Math.max(.05,Math.hypot(target.x-start.x,target.z-start.z)),angle=THREE.MathUtils.degToRad(24+8*(1-p)),speed=Math.sqrt(range*Math.abs(gravity)/Math.max(.12,Math.sin(2*angle))),dir=new THREE.Vector3(target.x-start.x,0,target.z-start.z).normalize();jackBody.dead=false;jackBody.mesh.visible=true;jackBody.played=true;jackBody.vel.set(dir.x*speed*Math.cos(angle),speed*Math.sin(angle),dir.z*speed*Math.cos(angle));jackBody.rollDrag=2.4;jackBody.spinFactor=.9;wake(jackBody);jackThrowInProgress=true;gameState.resolving=true;setMatchState(PetanqueStates.BALL_MOVING)}
   function takeJack(){
@@ -1624,13 +1624,58 @@
 
   function resolvePair(a,b){
     if(a.dead||b.dead)return;
-    const d=new THREE.Vector3().subVectors(b.mesh.position,a.mesh.position),min=a.radius+b.radius,d2=d.lengthSq();if(d2<=1e-10||d2>=min*min)return;
-    const dist=Math.sqrt(d2),n=d.multiplyScalar(1/dist),overlap=min-dist,invA=1/a.mass,invB=1/b.mass,invSum=invA+invB;
-    a.mesh.position.addScaledVector(n,-overlap*(invA/invSum));b.mesh.position.addScaledVector(n,overlap*(invB/invSum));
-    const rv=new THREE.Vector3().subVectors(b.vel,a.vel),vn=rv.dot(n);if(vn>0)return;
-    const impact=Math.abs(vn),e=(a.radius<.02||b.radius<.02)?.34:.54,j=-(1+e)*vn/invSum;
-    a.vel.addScaledVector(n,-j*invA);b.vel.addScaledVector(n,j*invB);wake(a);wake(b);
-    const now=performance.now();if(impact>.16&&now-Math.max(a.lastImpact,b.lastImpact)>38){audio.clack(impact);a.lastImpact=b.lastImpact=now}
+
+    const dx=b.mesh.position.x-a.mesh.position.x;
+    const dz=b.mesh.position.z-a.mesh.position.z;
+    const min=a.radius+b.radius;
+    const d2=dx*dx+dz*dz;
+    if(d2<=1e-10||d2>=min*min)return;
+
+    const dist=Math.sqrt(d2);
+    const nx=dx/dist,nz=dz/dist;
+    const overlap=min-dist;
+    const invA=1/a.mass,invB=1/b.mass,invSum=invA+invB;
+
+    a.mesh.position.x-=nx*overlap*(invA/invSum);
+    a.mesh.position.z-=nz*overlap*(invA/invSum);
+    b.mesh.position.x+=nx*overlap*(invB/invSum);
+    b.mesh.position.z+=nz*overlap*(invB/invSum);
+
+    const rvx=b.vel.x-a.vel.x, rvz=b.vel.z-a.vel.z;
+    const vn=rvx*nx+rvz*nz;
+    if(vn>0)return;
+
+    const impact=Math.abs(vn);
+    const ballsCollision=(a.team||b.team);
+    const e=(a===jackBody||b===jackBody)?.66:(ballsCollision?.84:.74);
+    let j=-(1+e)*vn/invSum;
+
+    if(ballsCollision&&impact>.20){
+      j*=1.16;
+    }
+
+    const impulseX=nx*j, impulseZ=nz*j;
+    a.vel.x-=impulseX*invA; a.vel.z-=impulseZ*invA;
+    b.vel.x+=impulseX*invB; b.vel.z+=impulseZ*invB;
+
+    const speedA=Math.hypot(a.vel.x,a.vel.z), speedB=Math.hypot(b.vel.x,b.vel.z);
+    if(ballsCollision&&impact>.55){
+      let striker=a, receiver=b;
+      if(speedB>speedA){striker=b;receiver=a;}
+      const strikerSpeed=Math.hypot(striker.vel.x,striker.vel.z);
+      const receiverSpeed=Math.hypot(receiver.vel.x,receiver.vel.z);
+      const minTransfer=Math.max(.22,Math.min(1.55,strikerSpeed*.58));
+      if(receiverSpeed<minTransfer){
+        receiver.vel.x = nx*minTransfer*(receiver===b?1:-1);
+        receiver.vel.z = nz*minTransfer*(receiver===b?1:-1);
+        striker.vel.x *= .72;
+        striker.vel.z *= .72;
+      }
+    }
+
+    wake(a);wake(b);
+    const now=performance.now();
+    if(impact>.16&&now-Math.max(a.lastImpact,b.lastImpact)>34){audio.clack(Math.min(1.25,impact*1.08));a.lastImpact=b.lastImpact=now}
   }
   function physicsStep(dt){
     let rollSpeed=0;
@@ -1648,8 +1693,9 @@
         killBoule(body);continue;
       }
 
-      if(body.mesh.position.y<=body.radius){
-        const impact=Math.abs(body.vel.y);body.mesh.position.y=body.radius;body.onGround=true;
+      const restY=body.radius+(body.groundOffset||0);
+      if(body.mesh.position.y<=restY){
+        const impact=Math.abs(body.vel.y);body.mesh.position.y=restY;body.onGround=true;
         if(body.vel.y<-.23){audio.groundImpact(impact);body.vel.y=-body.vel.y*.15}else body.vel.y=0;
         const drag=Math.exp(-(body.rollDrag||1.72)*dt);body.vel.x*=drag;body.vel.z*=drag;
       }else body.onGround=false;
@@ -2162,12 +2208,12 @@
     'international-arena':{sky:0xc5cdd3,ground:0x2c3237,hemi:.84,sun:0xffffff,sunI:1.95,fill:0xb8d2e8,fillI:.60,pos:[-2.8,5.7,-3.0],exposure:1.02}
   };
   const LP=LIGHT_PRESETS[VENUE_PROFILE]||LIGHT_PRESETS['urban-park'];
-  renderer.toneMappingExposure=PT_MOBILE?Math.min(.94,LP.exposure*.90):LP.exposure;
+  renderer.toneMappingExposure=PT_MOBILE?Math.min(1.08,LP.exposure*.98):LP.exposure;
 
   const hemi=new THREE.HemisphereLight(LP.sky,LP.ground,PT_MOBILE?LP.hemi*.88:LP.hemi);scene.add(hemi);
   const sun=new THREE.DirectionalLight(LP.sun,PT_MOBILE?LP.sunI*.82:LP.sunI);
   sun.position.set(...LP.pos);sun.target.position.set(0,0,.35);sun.castShadow=true;
-  sun.shadow.mapSize.set(PT_MOBILE?512:2048,PT_MOBILE?512:2048);sun.shadow.camera.left=-3;sun.shadow.camera.right=3;
+  sun.shadow.mapSize.set(PT_MOBILE?1024:2048,PT_MOBILE?1024:2048);sun.shadow.camera.left=-3;sun.shadow.camera.right=3;
   sun.shadow.camera.top=5.5;sun.shadow.camera.bottom=-1.5;sun.shadow.camera.near=.2;sun.shadow.camera.far=14;sun.shadow.bias=-.00018;
   scene.add(sun,sun.target);
 
@@ -2188,10 +2234,10 @@
     lastFrame=now;t=now*.001;
     if(ring.visible)ring.material.opacity=.82+Math.sin(t*2)*.1;
     if(PT_MOBILE){
-      const steps=Math.max(1,Math.min(4,Math.ceil(elapsed/.018)));
+      const steps=Math.max(2,Math.min(8,Math.ceil(elapsed/.010)));
       const step=elapsed/steps;
       for(let i=0;i<steps;i++)physicsStep(step);
-    }else physicsStep(Math.min(.025,elapsed));
+    }else physicsStep(Math.min(.020,elapsed));
     renderer.render(scene,camera);
     requestAnimationFrame(render)
   }
