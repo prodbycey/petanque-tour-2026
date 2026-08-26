@@ -29,7 +29,7 @@
   .avatar{height:100%;aspect-ratio:1;border-radius:50%;display:grid;place-items:center;background:radial-gradient(circle at 50% 32%,#b98466 0 18%,#72412b 19% 28%,#171313 29% 54%,#0e1116 55%);border:3px solid #f4c42a;box-shadow:0 2px 8px #000;font-size:0;position:relative}.avatar:after{content:attr(data-initials);font-size:18px;font-weight:900;color:#fff;position:absolute;bottom:8px;text-shadow:0 2px 4px #000}
   .pcopy{padding-left:10px;min-width:0}.pname{font-weight:900;font-size:clamp(12px,1.8vh,19px);white-space:nowrap}.role{display:inline-block;margin-top:2px;background:#0876d2;border-radius:6px;padding:3px 7px;font-size:clamp(8px,1.05vh,11px);font-weight:900;color:#8fd4ff}.stars{font-size:clamp(10px,1.4vh,15px);letter-spacing:2px;color:#ffd21c;margin-top:3px}.miniflag{position:absolute;left:1px;bottom:1px;width:23px;height:23px}
   #actions{position:absolute;z-index:8;left:18.5%;right:18.5%;top:59.5%;height:9%;display:grid;grid-template-columns:1fr 1fr;gap:4%}.action{border:none;color:#fff;font-weight:950;font-style:italic;font-size:clamp(17px,3.1vh,31px);border-radius:20px;clip-path:polygon(10% 0,92% 0,100% 50%,92% 100%,10% 100%,0 50%);box-shadow:inset 0 0 0 2px #fff2,0 12px 20px #0008;cursor:pointer;transition:.16s transform,.16s filter}.action:active{transform:scale(.97)}.action.point{background:linear-gradient(180deg,#1667d8,#0b3f9e)}.action.shoot{background:linear-gradient(180deg,#e11929,#9e0914)}.action:not(.selected){filter:saturate(.72) brightness(.82)}.action.selected{outline:2px solid #ffffff88;filter:saturate(1.1) brightness(1.08)}.ballIcon{display:inline-block;width:34px;height:34px;margin-right:10px;vertical-align:middle;border-radius:50%;background:radial-gradient(circle at 35% 25%,#fff,#aeb6c6 35%,#5c6370 70%,#20242b);box-shadow:inset -4px -5px 8px #0007}
-  #control{position:absolute;z-index:8;left:5.8%;right:5.8%;bottom:2.0%;height:21.8%;border-radius:30px;padding:3.2% 3.8%;background:linear-gradient(180deg,rgba(25,27,32,.90),rgba(11,12,15,.94));border:1px solid rgba(255,255,255,.35);box-shadow:0 -8px 28px #0005,0 14px 34px #0008;backdrop-filter:blur(12px)}
+  #control{position:absolute;z-index:8;left:5.8%;right:5.8%;bottom:2.4%;height:26%;border-radius:30px;padding:3.2% 3.8%;background:linear-gradient(180deg,rgba(25,27,32,.90),rgba(11,12,15,.94));border:1px solid rgba(255,255,255,.35);box-shadow:0 -8px 28px #0005,0 14px 34px #0008;backdrop-filter:blur(12px)}
   #types{display:grid;grid-template-columns:1fr 1.15fr 1fr;gap:2.3%;height:17%}.type{border:0;border-radius:999px;background:#13161b;color:#fff;font-weight:850;font-size:clamp(10px,1.7vh,17px);box-shadow:inset 0 0 0 1px #ffffff18;cursor:pointer}.type.active{background:linear-gradient(#6f5712,#3e3008);box-shadow:inset 0 0 0 2px #ffd52b;color:#fff}.type.long{font-size:clamp(8px,1.38vh,14px);line-height:1.05;padding:0 3px}
   #directionBox{margin-top:2.6%;padding:7px 10px 8px;border-radius:12px;background:rgba(9,11,14,.60);border:1px solid rgba(255,255,255,.12);box-shadow:inset 0 0 0 1px rgba(0,0,0,.18)}
   .dirHead{display:flex;align-items:center;justify-content:space-between;font-weight:900;font-size:clamp(8px,1.05vh,11px);letter-spacing:.7px;color:#dfe6ee;margin-bottom:4px}
@@ -41,7 +41,9 @@
   #direction::-webkit-slider-thumb{-webkit-appearance:none;width:16px;height:16px;margin-top:-6px;border-radius:50%;background:#ffd12a;border:2px solid #201b0a;box-shadow:0 1px 6px #000}
   .dirCenter{position:relative;height:0}.dirCenter:after{content:'|';position:absolute;left:50%;top:-18px;transform:translateX(-50%);color:#fff8;font-size:15px;pointer-events:none}
 
-  
+  #aim{margin-top:3.8%;height:29%;position:relative;border-radius:16px;background:linear-gradient(rgba(74,55,39,.68),rgba(40,32,27,.72)),repeating-linear-gradient(15deg,#6f5b49 0 2px,#5f4c3e 2px 4px);overflow:hidden;box-shadow:inset 0 0 0 1px #ffffff18}.ellipse{position:absolute;left:30%;right:30%;top:28%;bottom:22%;border:3px solid #218fff;border-radius:50%;box-shadow:0 0 16px #138df055,inset 0 0 14px #138df033}.aimball{position:absolute;width:30px;height:30px;border-radius:50%;left:50%;top:50%;transform:translate(-50%,-50%);background:radial-gradient(circle at 32% 28%,#fff,#b4c9f5 30%,#1f5bc5 58%,#0d2e75);box-shadow:0 4px 8px #000}.arrow{position:absolute;top:50%;transform:translateY(-50%);font-size:34px;font-weight:300;cursor:pointer;user-select:none;text-shadow:0 3px 6px #000}.arrow.l{left:3%}.arrow.r{right:3%}
+  #powerLabel{text-align:center;font-weight:850;margin-top:4%;font-size:clamp(10px,1.4vh,14px)}#bottomrow{display:grid;grid-template-columns:12% 1fr;gap:3%;align-items:end;margin-top:2%}.undo{height:54px;border-radius:14px;display:grid;place-items:center;background:#101218;border:1px solid #ffffff1a;font-size:24px}
+  .rangeWrap{align-self:center;position:relative;height:18px;border-radius:999px;background:linear-gradient(90deg,#159248 0%,#7fba1c 25%,#ffe32c 52%,#ff8a18 76%,#d90016 100%);border:3px solid #d7d7d7;box-shadow:inset 0 0 0 2px #111}.rangeWrap input{appearance:none;-webkit-appearance:none;position:absolute;inset:-14px 0;width:100%;background:transparent;pointer-events:none;cursor:default}.rangeWrap input::-webkit-slider-thumb{-webkit-appearance:none;width:24px;height:38px;border-radius:8px;background:linear-gradient(#fff,#d8d9de);border:1px solid #aeb0b6;box-shadow:0 2px 5px #0008}.rangeWrap input::-moz-range-thumb{width:24px;height:38px;border-radius:8px;background:#e8e8ec;border:1px solid #aaa}.powerPct{position:absolute;right:0;top:-24px;font-size:11px;font-weight:900;text-shadow:0 2px 4px #000}
   #toast{position:absolute;z-index:20;left:50%;top:45%;transform:translate(-50%,-50%) scale(.9);opacity:0;pointer-events:none;background:#0d1118dd;border:1px solid #ffffff3a;border-radius:14px;padding:12px 18px;font-weight:900;box-shadow:var(--shadow);transition:.22s}.show{opacity:1!important;transform:translate(-50%,-50%) scale(1)!important}
 
   #pointState{position:absolute;z-index:9;top:9.4%;left:50%;transform:translateX(-50%);padding:6px 13px;border-radius:999px;background:rgba(8,10,14,.72);border:1px solid rgba(255,255,255,.18);font-size:clamp(9px,1.2vh,12px);font-weight:900;letter-spacing:.4px;text-shadow:0 2px 5px #000;pointer-events:none;transition:.2s}
@@ -103,7 +105,7 @@
 
   @media(max-width:430px){
     #shell{height:100dvh;max-height:none;border-radius:0;box-shadow:none}
-    #scorebar{left:11.5%;right:11.5%;top:1.2%;height:6.3%}
+    #scorebar{left:12.5%;right:12.5%;top:1.2%;height:6.3%}
     #scorebar .team{font-size:clamp(10px,1.55vh,15px);padding:0 7px;gap:5px}
     #scorebar .team.blue{grid-template-columns:21px minmax(0,1fr) 32px}
     #scorebar .team.red{grid-template-columns:32px minmax(0,1fr) 21px}
@@ -113,12 +115,6 @@
     #round{top:7.65%;left:19%;right:19%}
     #pointState{top:11.05%;max-width:76%;font-size:clamp(8px,1.05vh,10px)}
     #toast{max-width:78%;text-align:center}
-
-    #control{left:5.8%;right:5.8%;bottom:2.2%;height:14.8%;padding:2.2% 3.3%;border-radius:24px}
-    #types{height:31%;gap:2%}
-    #directionBox{margin-top:4.5%;padding:6px 9px 7px}
-    #actions{top:68.0%;height:8.6%}
-    #playercard{top:57.2%}
   }
 
 </style>
@@ -130,6 +126,16 @@
   if(PT_CAREER)document.documentElement.classList.add('careerEmbedded');
   if(PT_MOBILE)document.documentElement.classList.add('mobileGame');
 </script>
+<style id="pt-final-ui">
+@media(max-width:430px){
+  #control{left:5.2%!important;right:5.2%!important;bottom:2.0%!important;height:14.6%!important;padding:2.4% 3.2%!important;border-radius:24px!important;background:linear-gradient(180deg,rgba(25,27,31,.86),rgba(8,10,13,.92))!important}
+  #types{height:32%!important;gap:2%!important}
+  #directionBox{margin-top:5%!important;padding:6px 9px 7px!important}
+  #playercard{top:59.5%!important;width:30%!important;height:7.2%!important}
+  #actions{left:20%!important;right:20%!important;top:69.0%!important;height:8.5%!important;gap:4%!important}
+  #pointState{top:10.6%!important;max-width:72%!important;padding:5px 11px!important;background:rgba(7,10,13,.64)!important}
+}
+</style>
 </head>
 <body>
 <div id="shell">
@@ -181,9 +187,9 @@
   renderer.toneMapping=THREE.ACESFilmicToneMapping;
   renderer.toneMappingExposure=PT_MOBILE?1.04:1.08;
   const scene=new THREE.Scene();scene.background=new THREE.Color(0x132024);
-  const camera=new THREE.PerspectiveCamera(PT_MOBILE?54:60,2/3,.025,30);
-  camera.position.set(0,PT_MOBILE?.74:.430,PT_MOBILE?-2.14:-2);
-  camera.lookAt(0,0,PT_MOBILE?1.22:-1.042);
+  const camera=new THREE.PerspectiveCamera(PT_MOBILE?55:60,2/3,.025,30);
+  camera.position.set(0,PT_MOBILE?.68:.430,PT_MOBILE?-2.16:-2);
+  camera.lookAt(0,0,PT_MOBILE?.92:-1.042);
 
   // CAREER VENUE VISUALS — visual only. Match rules, controls and ball physics stay unchanged.
   const VENUE_TERRAIN_ID=String(
@@ -445,26 +451,6 @@
       x.strokeStyle='#35373a';x.lineWidth=3;
       for(let y of [size*.27,size*.31,size*.67,size*.71]){x.beginPath();x.moveTo(0,y);x.lineTo(size,y+size*.15);x.stroke()}
     }
-
-    if(kind==='grass'){
-      const g=x.createLinearGradient(0,0,size,size);
-      g.addColorStop(0,'#315728');g.addColorStop(.48,'#456f31');g.addColorStop(1,'#284b24');
-      x.fillStyle=g;x.fillRect(0,0,size,size);
-
-      for(let i=0;i<12000;i++){
-        const px=r()*size,py=r()*size;
-        const light=r()>.55;
-        x.strokeStyle=light?`rgba(119,151,74,${.055+r()*.12})`:`rgba(22,54,25,${.06+r()*.14})`;
-        x.lineWidth=.35+r()*.85;
-        x.beginPath();x.moveTo(px,py);x.lineTo(px+(r()-.5)*2,py-(1+r()*5));x.stroke()
-      }
-      for(let i=0;i<160;i++){
-        const px=r()*size,py=r()*size,rad=4+r()*17;
-        const gg=x.createRadialGradient(px,py,0,px,py,rad);
-        gg.addColorStop(0,'rgba(12,34,16,.12)');gg.addColorStop(1,'rgba(12,34,16,0)');
-        x.fillStyle=gg;x.fillRect(px-rad,py-rad,rad*2,rad*2)
-      }
-    }
     return c
   }
   function ct(kind,size,seed){
@@ -479,10 +465,7 @@
   const roughMap=ct('rough',1024,177+VENUE_SEED%983);
   groundMap.repeat.set(2.1,7.4);bumpMap.repeat.copy(groundMap.repeat);roughMap.repeat.copy(groundMap.repeat);
   const groundMaterial=PT_MOBILE
-    ? new THREE.MeshStandardMaterial({
-        map:groundMap,bumpMap:groundMap,bumpScale:.0036,
-        color:GROUND_TINT,roughness:.93,metalness:0
-      })
+    ? new THREE.MeshStandardMaterial({map:groundMap,bumpMap:bumpMap,bumpScale:.0042,color:GROUND_TINT,roughness:.91,metalness:0})
     : new THREE.MeshPhysicalMaterial({
         map:groundMap,bumpMap:bumpMap,bumpScale:GROUND_STYLE.bumpScale,
         roughnessMap:roughMap,roughness:GROUND_STYLE.roughness,
@@ -513,14 +496,13 @@
   pebbles.receiveShadow=true;scene.add(pebbles);
   // Surrounding terrain removes the artificial "game board" effect.
   const outsideMap=ct('ground',1024,707+VENUE_SEED%971);outsideMap.repeat.set(6.2,10.5);
-  const grassMap=ct('grass',512,808+VENUE_SEED%953);grassMap.repeat.set(8.0,12.0);
   const outsideGround=new THREE.Mesh(
     new THREE.PlaneGeometry(10.5,15),
     (PT_MOBILE
-      ? new THREE.MeshStandardMaterial({
-          map:grassMap,bumpMap:grassMap,bumpScale:.0032,
-          color:0xdce5c8,roughness:.98,metalness:0
-        })
+      ? new THREE.MeshLambertMaterial({color:
+          VENUE_PROFILE==='urban-park'?0x465340:
+          VENUE_PROFILE==='countryside'?0x4b5b3e:
+          VENUE_PROFILE==='mountain-alps'||VENUE_PROFILE==='mountain-lake'?0x475047:0x665443})
       : new THREE.MeshPhysicalMaterial({
           map:outsideMap,roughness:.97,metalness:0,
           color:VENUE_PROFILE==='urban-park'?0x525e4d:
@@ -579,68 +561,35 @@
 
   // Realistic-looking wooden court borders (procedural, no external image).
   function makeWoodTexture(seed=731){
-    const c=document.createElement('canvas');
-    c.width=PT_MOBILE?768:1024;c.height=PT_MOBILE?192:256;
+    const c=document.createElement('canvas');c.width=PT_MOBILE?768:1024;c.height=PT_MOBILE?160:192;
     const x=c.getContext('2d'),r=rng(seed),w=c.width,h=c.height;
     const g=x.createLinearGradient(0,0,0,h);
-    g.addColorStop(0,'#6d3f20');g.addColorStop(.18,'#986035');
-    g.addColorStop(.52,'#74421f');g.addColorStop(.82,'#573019');g.addColorStop(1,'#382013');
+    g.addColorStop(0,'#8d5d35');g.addColorStop(.24,'#704423');g.addColorStop(.56,'#9a6738');g.addColorStop(.82,'#633a20');g.addColorStop(1,'#432718');
     x.fillStyle=g;x.fillRect(0,0,w,h);
-
-    for(let i=0;i<245;i++){
-      const y=r()*h;
-      x.strokeStyle=r()>.62?`rgba(232,176,111,${.03+r()*.07})`:`rgba(34,17,8,${.05+r()*.17})`;
-      x.lineWidth=.45+r()*2.2;x.beginPath();x.moveTo(0,y);
-      for(let px=0;px<=w;px+=32)
-        x.lineTo(px,y+Math.sin(px*.018+i*.77)*(1+r()*2.9)+Math.sin(px*.052+i)*.8);
-      x.stroke();
+    for(let i=0;i<210;i++){
+      const y=r()*h;x.strokeStyle=r()>.68?`rgba(226,169,106,${.03+r()*.06})`:`rgba(34,18,9,${.05+r()*.14})`;
+      x.lineWidth=.4+r()*1.7;x.beginPath();x.moveTo(0,y);
+      for(let px=0;px<=w;px+=30)x.lineTo(px,y+Math.sin(px*.021+i*.81)*(1+r()*2.0));
+      x.stroke()
     }
-    for(let i=0;i<24;i++){
-      const px=r()*w,py=r()*h,rx=6+r()*23,ry=2+r()*7;
-      for(let k=0;k<3;k++){
-        x.strokeStyle=`rgba(38,19,9,${.12+k*.05})`;x.lineWidth=.8+k*.5;
-        x.beginPath();x.ellipse(px,py,rx+k*4,ry+k*1.4,(r()-.5)*.12,0,Math.PI*2);x.stroke();
-      }
+    for(let i=0;i<18;i++){
+      const px=r()*w,py=r()*h,rx=5+r()*17,ry=2+r()*5;
+      x.strokeStyle='rgba(42,21,10,.20)';x.lineWidth=1.1;x.beginPath();x.ellipse(px,py,rx,ry,(r()-.5)*.1,0,Math.PI*2);x.stroke()
     }
-    for(let i=0;i<1400;i++){
-      x.fillStyle=`rgba(28,14,7,${.02+r()*.05})`;
-      x.fillRect(r()*w,r()*h,.5+r()*1.5,.3+r()*.8);
-    }
-    const t=new THREE.CanvasTexture(c);
-    t.wrapS=t.wrapT=THREE.RepeatWrapping;
-    t.repeat.set(PT_MOBILE?4.6:3.8,1);
-    t.anisotropy=PT_MOBILE?2:renderer.capabilities.getMaxAnisotropy();
-    return t;
+    const t=new THREE.CanvasTexture(c);t.wrapS=t.wrapT=THREE.RepeatWrapping;t.repeat.set(PT_MOBILE?4.3:3.3,1);t.anisotropy=PT_MOBILE?2:renderer.capabilities.getMaxAnisotropy();return t;
   }
   const woodMap=makeWoodTexture(),woodBump=makeWoodTexture(991);
-  woodMap.encoding=THREE.sRGBEncoding;
   const woodMat=new THREE.MeshStandardMaterial({
-    map:woodMap,bumpMap:woodBump,bumpScale:PT_MOBILE?.013:.007,
-    roughness:PT_MOBILE?.62:.66,metalness:0,color:PT_MOBILE?0xd8b080:0xffffff
+    map:woodMap,bumpMap:woodBump,bumpScale:PT_MOBILE?.010:.006,roughness:PT_MOBILE?.60:.72,metalness:0,color:PT_MOBILE?0xe2bd8d:0xffffff
   });
   // Two long side rails.
   for(const s of [-1,1]){
-    const e=new THREE.Mesh(new THREE.BoxGeometry(.098,.118,8.65),woodMat);
-    e.position.set(s*1.455,.059,1.75);e.castShadow=e.receiveShadow=true;scene.add(e)
+    const e=new THREE.Mesh(new THREE.BoxGeometry(.085,.105,8.65),woodMat);
+    e.position.set(s*1.455,.052,1.75);e.castShadow=e.receiveShadow=true;scene.add(e)
   }
   // Back rail makes the end of the court obvious without advertising panels.
-  const backRail=new THREE.Mesh(new THREE.BoxGeometry(2.99,.145,.125),woodMat);
-  backRail.position.set(0,.0725,6.04);backRail.castShadow=backRail.receiveShadow=true;scene.add(backRail);
-  if(PT_MOBILE){
-    const woodTopMat=new THREE.MeshStandardMaterial({map:woodMap,color:0xb98251,roughness:.58,metalness:0});
-    for(const side of [-1,1]){
-      const cap=new THREE.Mesh(new THREE.BoxGeometry(.100,.013,8.58),woodTopMat);
-      cap.position.set(side*1.455,.124,1.75);scene.add(cap);
-    }
-    const capBack=new THREE.Mesh(new THREE.BoxGeometry(2.96,.014,.128),woodTopMat);
-    capBack.position.set(0,.151,6.04);scene.add(capBack);
-
-    const innerEdgeMat=new THREE.MeshStandardMaterial({color:0x5d351e,roughness:.70,metalness:0});
-    for(const side of [-1,1]){
-      const edge=new THREE.Mesh(new THREE.BoxGeometry(.014,.050,8.54),innerEdgeMat);
-      edge.position.set(side*1.403,.058,1.75);scene.add(edge);
-    }
-  }
+  const backRail=new THREE.Mesh(new THREE.BoxGeometry(2.99,.13,.11),woodMat);
+  backRail.position.set(0,.065,6.04);backRail.castShadow=backRail.receiveShadow=true;scene.add(backRail);
 
   // Textured architectural-visualization decor.
   // No image generation: all maps are procedural runtime textures.
@@ -757,14 +706,13 @@
     t.wrapS=t.wrapT=THREE.RepeatWrapping;t.anisotropy=renderer.capabilities.getMaxAnisotropy()
   });
 
-  const MatClass=PT_MOBILE?THREE.MeshStandardMaterial:THREE.MeshPhysicalMaterial;
   const wallMats={
-    stone:new MatClass({map:WALL_STONE,bumpMap:WALL_STONE,bumpScale:.004,roughness:.91,metalness:0}),
-    stucco:new MatClass({map:WALL_STUCCO,bumpMap:WALL_STUCCO,bumpScale:.002,roughness:.94,metalness:0}),
-    warm:new MatClass({map:WALL_WARM,bumpMap:WALL_WARM,bumpScale:.0025,roughness:.92,metalness:0})
+    stone:new THREE.MeshPhysicalMaterial({map:WALL_STONE,bumpMap:WALL_STONE,bumpScale:.004,roughness:.91,metalness:0}),
+    stucco:new THREE.MeshPhysicalMaterial({map:WALL_STUCCO,bumpMap:WALL_STUCCO,bumpScale:.002,roughness:.94,metalness:0}),
+    warm:new THREE.MeshPhysicalMaterial({map:WALL_WARM,bumpMap:WALL_WARM,bumpScale:.0025,roughness:.92,metalness:0})
   };
-  const roofMat=new MatClass({map:ROOF_MAP,bumpMap:ROOF_MAP,bumpScale:.006,roughness:.87,metalness:0});
-  const barkMat=new MatClass({map:BARK_MAP,bumpMap:BARK_MAP,bumpScale:.007,roughness:.98,metalness:0});
+  const roofMat=new THREE.MeshPhysicalMaterial({map:ROOF_MAP,bumpMap:ROOF_MAP,bumpScale:.006,roughness:.87,metalness:0});
+  const barkMat=new THREE.MeshPhysicalMaterial({map:BARK_MAP,bumpMap:BARK_MAP,bumpScale:.007,roughness:.98,metalness:0});
 
   function skyTexture(profile,seed){
     return makeTex(512,1024,seed,(x,r,w,h)=>{
@@ -796,69 +744,6 @@
   function backdropTexture(profile,seed){
     return makeTex(2048,1024,seed,(x,r,w,h)=>{
       x.clearRect(0,0,w,h);
-
-      if(PT_MOBILE){
-        // Distant Mediterranean garden: architecture + hills only.
-        // Foreground vegetation is true 3D below, avoiding flat "tree icons".
-        const hill1=x.createLinearGradient(0,h*.43,0,h);
-        hill1.addColorStop(0,'rgba(101,119,99,.18)');
-        hill1.addColorStop(1,'rgba(82,96,77,.46)');
-        x.fillStyle=hill1;x.beginPath();x.moveTo(0,h);
-        for(let px=0;px<=w;px+=55){
-          const yy=h*(.64 + Math.sin(px*.006)*.025 + Math.sin(px*.017)*.012);
-          x.lineTo(px,yy)
-        }
-        x.lineTo(w,h);x.closePath();x.fill();
-
-        // Cream villa / garden wall inspired by the visual references.
-        const wallY=h*.55,wallH=h*.31;
-        x.fillStyle='#cfbea3';x.fillRect(w*.44,wallY,w*.42,wallH);
-        const shade=x.createLinearGradient(w*.44,0,w*.86,0);
-        shade.addColorStop(0,'rgba(255,245,221,.20)');
-        shade.addColorStop(1,'rgba(92,66,47,.18)');
-        x.fillStyle=shade;x.fillRect(w*.44,wallY,w*.42,wallH);
-
-        // Terracotta roof.
-        x.fillStyle='#8d4d31';
-        x.beginPath();
-        x.moveTo(w*.41,wallY);
-        x.lineTo(w*.64,wallY-h*.11);
-        x.lineTo(w*.89,wallY);
-        x.closePath();x.fill();
-
-        // Dark openings / windows.
-        x.fillStyle='rgba(44,54,48,.72)';
-        for(const xx of [.50,.61,.72,.80]){
-          x.fillRect(w*xx,wallY+h*.075,w*.045,h*.105);
-        }
-
-        // Stone retaining wall at the garden base.
-        const stoneTop=h*.83;
-        x.fillStyle='#897b66';x.fillRect(0,stoneTop,w,h*.17);
-        x.strokeStyle='rgba(58,50,40,.24)';x.lineWidth=1.4;
-        for(let yy=stoneTop;yy<h;yy+=h*.035){
-          x.beginPath();x.moveTo(0,yy);x.lineTo(w,yy);x.stroke();
-          const off=((yy/h*100)|0)%2?w*.025:0;
-          for(let xx=-off;xx<w;xx+=w*.075){
-            x.beginPath();x.moveTo(xx,yy);x.lineTo(xx,yy+h*.035);x.stroke();
-          }
-        }
-
-        // Natural dark hedge band, irregular rather than repeated tree silhouettes.
-        for(let i=0;i<95;i++){
-          const px=r()*w,py=h*(.76+r()*.10);
-          const rw=w*(.010+r()*.022),rh=h*(.018+r()*.044);
-          const green=50+r()*42;
-          x.fillStyle=`rgba(${28+r()*20|0},${green|0},${29+r()*22|0},${.22+r()*.24})`;
-          x.beginPath();x.ellipse(px,py,rw,rh,r()*Math.PI,0,Math.PI*2);x.fill();
-        }
-
-        const haze=x.createLinearGradient(0,h*.58,0,h);
-        haze.addColorStop(0,'rgba(235,223,202,0)');
-        haze.addColorStop(1,'rgba(225,213,193,.20)');
-        x.fillStyle=haze;x.fillRect(0,h*.58,w,h*.42);
-        return;
-      }
 
       const mountains=(warm=false)=>{
         const layers=[
@@ -939,11 +824,21 @@
     new THREE.PlaneGeometry(7.4,3.0),
     new THREE.MeshBasicMaterial({map:venueBackdropTex,transparent:true,depthWrite:false,toneMapped:true,fog:true})
   );
-  venueBackdrop.position.set(0,PT_MOBILE?1.58:1.36,PT_MOBILE?7.55:7.55);venueBackdrop.material.opacity=PT_MOBILE?.72:venueBackdrop.material.opacity;scene.add(venueBackdrop);
+  venueBackdrop.position.set(0,PT_MOBILE?1.42:1.36,PT_MOBILE?7.25:7.55);venueBackdrop.material.opacity=PT_MOBILE?1:venueBackdrop.material.opacity;scene.add(venueBackdrop);
+
+  if(PT_MOBILE){
+    const localBackdropLoader=new THREE.TextureLoader();
+    localBackdropLoader.load('./assets/mediterranean-reference.png',tex=>{
+      tex.encoding=THREE.sRGBEncoding;tex.minFilter=THREE.LinearFilter;tex.magFilter=THREE.LinearFilter;
+      // Use only the upper garden/tree part of the supplied reference; the playable court remains true 3D.
+      tex.wrapS=tex.wrapT=THREE.ClampToEdgeWrapping;
+      tex.repeat.set(1,.58);tex.offset.set(0,.42);
+      venueBackdrop.material.map=tex;venueBackdrop.material.opacity=.92;venueBackdrop.material.needsUpdate=true;
+      venueBackdrop.scale.set(1.18,1.12,1);venueBackdrop.position.set(0,1.50,7.36);
+    });
+  }
 
   const decorGroup=new THREE.Group();scene.add(decorGroup);
-
-
 
 
   // Real landscape/photo backplates. They are deliberately distant and subtly
@@ -1048,135 +943,22 @@
   }
 
   if(PT_MOBILE){
-    const terracottaMat=new THREE.MeshStandardMaterial({color:0xa65a37,roughness:.87,metalness:0});
-    const terracottaLipMat=new THREE.MeshStandardMaterial({color:0xc87b50,roughness:.82,metalness:0});
-    const branchMat=new THREE.MeshStandardMaterial({map:BARK_MAP,bumpMap:BARK_MAP,bumpScale:.006,color:0x745239,roughness:.96});
-    const oliveLeafMat=foliageMat(LEAF_ROUND);
-    oliveLeafMat.color.setHex(0xa8b79b);
-    oliveLeafMat.roughness=.97;
-    const shrubMat=foliageMat(LEAF_ROUND);
-    shrubMat.color.setHex(0x4a7046);
-    const benchWood=new THREE.MeshStandardMaterial({map:woodMap,color:0xc29a6d,roughness:.68,metalness:0});
-    const darkMetal=new THREE.MeshStandardMaterial({color:0x343638,roughness:.40,metalness:.72});
-
-    function cylinderBetween(a,b,r1,r2,mat,segments=8){
-      const mid=a.clone().add(b).multiplyScalar(.5);
-      const len=a.distanceTo(b);
-      const mesh=new THREE.Mesh(new THREE.CylinderGeometry(r1,r2,len,segments),mat);
-      mesh.position.copy(mid);
-      const q=new THREE.Quaternion();
-      q.setFromUnitVectors(new THREE.Vector3(0,1,0),b.clone().sub(a).normalize());
-      mesh.quaternion.copy(q);decorGroup.add(mesh);return mesh
+    const terracotta=new THREE.MeshStandardMaterial({color:0xa8613d,roughness:.88,metalness:0});
+    const hedgeMat=foliageMat(LEAF_ROUND);hedgeMat.color.setHex(0x5d8055);
+    function addPot(x,z,s=.75){
+      const p=new THREE.Mesh(new THREE.CylinderGeometry(.10*s,.072*s,.16*s,16),terracotta);p.position.set(x,.08*s,z);decorGroup.add(p);
+      for(let k=0;k<2;k++){const q=new THREE.Mesh(new THREE.PlaneGeometry(.22*s,.20*s),hedgeMat);q.position.set(x,.23*s,z);q.rotation.y=k*Math.PI/2;decorGroup.add(q)}
     }
-
-    function groundShadow(x,z,rx=.28,rz=.16,alpha=.12){
-      const sh=new THREE.Mesh(
-        new THREE.CircleGeometry(1,30),
-        new THREE.MeshBasicMaterial({color:0x14100b,transparent:true,opacity:alpha,depthWrite:false})
-      );
-      sh.rotation.x=-Math.PI/2;sh.scale.set(rx,rz,1);sh.position.set(x,.010,z);decorGroup.add(sh)
-    }
-
-    function addOliveTree(x,z,s=1,seed=1){
-      const rrO=rng(VENUE_SEED+seed*137);
-      groundShadow(x,z,.31*s,.16*s,.12);
-
-      const base=new THREE.Vector3(x,.02,z);
-      const fork=new THREE.Vector3(x+(rrO()-.5)*.04*s,.34*s,z+(rrO()-.5)*.03*s);
-      cylinderBetween(base,fork,.039*s,.058*s,branchMat,9);
-
-      const branches=[
-        [-.20,.59,.018],[.18,.62,-.020],[-.055,.75,.030],[.06,.70,-.04]
-      ];
-      branches.forEach((b,i)=>{
-        const end=new THREE.Vector3(x+b[0]*s,b[1]*s,z+b[2]*s);
-        cylinderBetween(fork.clone().add(new THREE.Vector3((rrO()-.5)*.02*s,i*.012*s,0)),
-                        end,.017*s,.030*s,branchMat,7);
-      });
-
-      const crowns=[
-        [-.19,.66,.015,.38,.30],
-        [.18,.67,-.015,.39,.31],
-        [-.04,.82,.020,.37,.29],
-        [-.31,.77,-.012,.27,.23],
-        [.30,.78,.012,.28,.23],
-        [.05,.58,-.020,.32,.24]
-      ];
-      crowns.forEach((c,ci)=>{
-        for(let k=0;k<3;k++){
-          const p=new THREE.Mesh(new THREE.PlaneGeometry(c[3]*s,c[4]*s),oliveLeafMat);
-          p.position.set(x+c[0]*s,c[1]*s,z+c[2]*s);
-          p.rotation.y=k*Math.PI/3+(ci%2)*.21;
-          p.rotation.z=(rrO()-.5)*.08;
-          decorGroup.add(p)
-        }
-      })
-    }
-
-    function addPot(x,z,s=1){
-      groundShadow(x,z,.12*s,.07*s,.09);
-      const pot=new THREE.Mesh(new THREE.CylinderGeometry(.100*s,.072*s,.17*s,18),terracottaMat);
-      pot.position.set(x,.085*s,z);decorGroup.add(pot);
-      const lip=new THREE.Mesh(new THREE.TorusGeometry(.100*s,.013*s,8,22),terracottaLipMat);
-      lip.rotation.x=Math.PI/2;lip.position.set(x,.164*s,z);decorGroup.add(lip);
-      const geo=new THREE.IcosahedronGeometry(.095*s,1);
-      for(const [dx,dy,dz,sc] of [[0,.25,0,1],[-.07,.22,.01,.75],[.07,.23,-.01,.78]]){
-        const b=new THREE.Mesh(geo,new THREE.MeshStandardMaterial({color:sc>.85?0x496c42:0x72845f,roughness:.98}));
-        b.position.set(x+dx*s,dy*s,z+dz*s);b.scale.setScalar(sc);decorGroup.add(b)
-      }
-    }
-
-    function addTexturedHedge(x,z,w=.8,h=.30,seed=1){
-      const rrH=rng(VENUE_SEED+seed*61);
-      const count=Math.max(3,Math.round(w/.20));
-      for(let i=0;i<count;i++){
-        const px=x-w/2+(i+.5)*(w/count);
-        for(let k=0;k<2;k++){
-          const p=new THREE.Mesh(new THREE.PlaneGeometry(.26,h*(.82+rrH()*.30)),shrubMat);
-          p.position.set(px,h*.52+(rrH()-.5)*.025,z+(rrH()-.5)*.035);
-          p.rotation.y=k*Math.PI/2+(rrH()-.5)*.12;decorGroup.add(p)
-        }
-      }
-    }
-
-    function addGardenBench(x,z,s=1){
-      const seat=new THREE.Mesh(new THREE.BoxGeometry(.62*s,.035*s,.18*s),benchWood);
-      seat.position.set(x,.18*s,z);decorGroup.add(seat);
-      const back=new THREE.Mesh(new THREE.BoxGeometry(.62*s,.20*s,.026*s),benchWood);
-      back.position.set(x,.31*s,z+.075*s);back.rotation.x=-.07;decorGroup.add(back);
-      for(const sx of [-.23,.23]){
-        const leg=new THREE.Mesh(new THREE.BoxGeometry(.035*s,.18*s,.035*s),darkMetal);
-        leg.position.set(x+sx*s,.09*s,z);decorGroup.add(leg)
-      }
-    }
-
-    // Low garden wall and architectural depth.
-    addStoneWall(0,6.18,3.88,.38);
-    addRealBuilding(1.62,6.78,1.44,.92,'stucco');
-
-    // Dense Mediterranean sides, kept outside the playable piste.
-    addRealTree(-1.93,2.00,1.10,'cypress');
-    addRealTree( 1.94,2.26,1.02,'cypress');
-    addRealTree(-1.96,3.68,1.16,'cypress');
-    addRealTree( 1.96,3.98,1.10,'cypress');
-    addRealTree(-1.94,5.34,1.08,'cypress');
-    addRealTree( 1.94,5.56,1.12,'cypress');
-
-    addOliveTree(-1.86,2.78,.96,1);
-    addOliveTree( 1.88,4.75,.90,2);
-    addOliveTree(-1.82,5.70,.80,3);
-
-    addTexturedHedge(-1.84,4.58,.62,.30,11);
-    addTexturedHedge( 1.84,3.25,.62,.28,12);
-    addTexturedHedge(-.85,6.23,.82,.26,13);
-
-    addPot(-1.66,1.76,.88);
-    addPot( 1.67,2.70,.82);
-    addPot( 1.70,5.35,.78);
-    addGardenBench(-1.80,5.60,.72);
-
-    addRealRock(-1.62,3.93,.095);
-    addRealRock( 1.63,4.90,.082);
+    // Dense but low-cost Mediterranean frame outside the piste.
+    const mobileTrees=[
+      [-1.86,1.50,.88,'cypress'],[1.86,1.78,.84,'cypress'],
+      [-1.90,2.75,.98,'round'],[1.91,3.20,.92,'round'],
+      [-1.91,4.25,1.02,'cypress'],[1.92,4.72,.96,'cypress'],
+      [-1.88,5.42,.92,'round'],[1.89,5.55,.90,'round']
+    ];
+    for(const t of mobileTrees)addRealTree(...t);
+    addStoneWall(0,6.16,3.62,.28);
+    addPot(-1.66,2.10,.78);addPot(1.67,4.25,.74);
   }
 
   const rr=rng(VENUE_SEED+701);
@@ -1270,10 +1052,7 @@
 
   const metalTex=ct('metal',768,55);metalTex.repeat.set(1,1);
   function ballMaterial(dark){
-    if(PT_MOBILE)return new THREE.MeshStandardMaterial({
-      color:dark?0x252a2f:0xe4e6e5,map:metalTex,bumpMap:metalTex,bumpScale:.0008,
-      metalness:.96,roughness:dark?.32:.20,envMapIntensity:1.35
-    });
+    if(PT_MOBILE)return new THREE.MeshStandardMaterial({color:dark?0x24292e:0xe3e5e5,map:metalTex,bumpMap:metalTex,bumpScale:.0007,metalness:.96,roughness:dark?.31:.19,envMapIntensity:1.32});
     return new THREE.MeshPhysicalMaterial({color:dark?0x1f242a:0xd8dde4,map:metalTex,bumpMap:metalTex,bumpScale:.0015,metalness:1,roughness:dark?.34:.20,clearcoat:dark?.10:.26,clearcoatRoughness:.32,envMapIntensity:1.45})
   }
   // simple bright environment for metal reflections
@@ -1289,7 +1068,7 @@
   positions.forEach(o=>{const b=new THREE.Mesh(ballGeom,ballMaterial(o.dark));b.position.set(...o.p);b.rotation.set(...o.r);b.castShadow=b.receiveShadow=true;scene.add(b);ballMeshes.push(b)});
   const playerBall=ballMeshes[0];
   // V3.4: distant setup pushed deeper into the court; camera/FOV unchanged.
-  const jack=new THREE.Mesh(new THREE.SphereGeometry(.015,PT_MOBILE?32:48,PT_MOBILE?22:32),new THREE.MeshStandardMaterial({color:0xc83b24,roughness:.58,metalness:0,bumpMap:bumpMap,bumpScale:.0007}));jack.scale.setScalar(1);jack.position.set(-.063,.015,2.700);jack.castShadow=true;scene.add(jack);
+  const jack=new THREE.Mesh(new THREE.SphereGeometry(.015,PT_MOBILE?28:48,PT_MOBILE?18:32),new THREE.MeshStandardMaterial({color:0xcb2c1d,roughness:.65,metalness:0,bumpMap:bumpMap,bumpScale:.001}));jack.scale.setScalar(1.32);jack.position.set(-.063,.015,2.700);jack.castShadow=true;scene.add(jack);
   const ring=new THREE.Mesh(new THREE.TorusGeometry(.070,.0032,24,128),new THREE.MeshBasicMaterial({color:0x1595ff,transparent:true,opacity:.92}));ring.rotation.x=Math.PI/2;ring.position.set(.044,.004,-.978);scene.add(ring);
   // Engagement limits for the initial cochonnet throw: 6m / 10m.
   const jackLineMat=new THREE.LineBasicMaterial({color:0xff2d2d,transparent:true,opacity:.95,depthTest:true});
@@ -1322,48 +1101,13 @@
   // Full Rapier replacement remains a later phase; this version focuses on feel, audio and turn logic.
   const bodies=[];
   let nextBodyId=1;
-
-  const contactShadowGeo=new THREE.CircleGeometry(1,24);
   const addBody=(mesh,radius,mass,meta={})=>{
-    let contactShadow=null;
-    if(PT_MOBILE){
-      contactShadow=new THREE.Mesh(
-        contactShadowGeo,
-        new THREE.MeshBasicMaterial({
-          color:0x17120d,transparent:true,opacity:radius<.02?.14:.19,
-          depthWrite:false,side:THREE.DoubleSide
-        })
-      );
-      contactShadow.rotation.x=-Math.PI/2;
-      contactShadow.position.set(mesh.position.x,.006,mesh.position.z);
-      contactShadow.scale.set(radius*1.22,radius*.72,1);
-      contactShadow.renderOrder=3;
-      scene.add(contactShadow);
-    }
-
     const body={id:nextBodyId++,mesh,radius,mass,vel:new THREE.Vector3(),moving:false,onGround:true,sleep:0,
       home:mesh.position.clone(),homeRot:mesh.rotation.clone(),team:meta.team||null,role:meta.role||null,
       played:!!meta.played,countsForPoint:meta.countsForPoint!==false,ready:!!meta.ready,lastImpact:0,
-      spinFactor:1,rollDrag:1.72,dead:false,contactShadow};
+      spinFactor:1,rollDrag:1.72,dead:false};
     bodies.push(body);return body;
   };
-
-  function syncContactShadows(){
-    if(!PT_MOBILE)return;
-    for(const body of bodies){
-      const sh=body.contactShadow;
-      if(!sh)continue;
-      const visible=!body.dead&&body.mesh.visible&&body.mesh.position.y<body.radius+.16;
-      sh.visible=visible;
-      if(!visible)continue;
-      const h=Math.max(0,body.mesh.position.y-body.radius);
-      const fade=Math.max(.30,1-h/.16);
-      sh.material.opacity=(body.radius<.02?.14:.19)*fade;
-      sh.position.set(body.mesh.position.x,.006,body.mesh.position.z);
-      const spread=1+Math.min(.40,h*3.2);
-      sh.scale.set(body.radius*1.22*spread,body.radius*.72*spread,1);
-    }
-  }
 
   // ---------- AUDIO V3.7 — VENUE-AWARE AMBIENCE + PRELOADED IMPACTS ----------
   // The CURRENT visual court is outdoors, in a park.
@@ -1610,13 +1354,9 @@
     aiSuccessRate:currentAIProfile().good};
   let aimOffset=0;
   let selectedShootTarget=null;
-
-  // Opponent calibration belongs to the actual engine scope.
-  // It learns completed point-roll error on the current terrain.
-  let aiPointCorrection=new THREE.Vector3(0,0,0);
+  let aiPointBias=new THREE.Vector3(0,0,0);
   let lastAIPointBody=null;
-  let lastAIWasPoint=false;
-
+  let lastAIPointDesired=null;
   const gravity=-6.0;
 
   const scoreBlueEl=document.querySelector('.team.blue .score');
@@ -1716,10 +1456,8 @@
     const m=new THREE.Mesh(ballGeom,ballMaterial(team==='red'));m.position.copy(THROW_START);m.rotation.set(.2,-.38,.44);m.castShadow=m.receiveShadow=true;scene.add(m);
     const b=addBody(m,.037,.700,{team,role,ready:true,countsForPoint:true});b.dead=false;return b;
   }
-  function removeTeamBalls(){for(let i=bodies.length-1;i>=0;i--){const b=bodies[i];if(b.team){scene.remove(b.mesh);if(b.contactShadow)scene.remove(b.contactShadow);bodies.splice(i,1)}}activeBody=null}
+  function removeTeamBalls(){for(let i=bodies.length-1;i>=0;i--){const b=bodies[i];if(b.team){scene.remove(b.mesh);bodies.splice(i,1)}}activeBody=null}
   const WORLD_PER_METER=.46;
-
-
   // Playable limits. Side/back values correspond to the inside face of the wooden rails.
   const COURT_LIMITS={x:1.405,zMin:-1.28,zMax:5.975};
 
@@ -2187,149 +1925,71 @@
   }
 
   function makeAIThrowPlan(team,outcome,profileOverride=null){
-    // Friendly AI keeps the original behaviour.
     if(team!=='red')return makeBaseAIThrowPlan(team,outcome,profileOverride);
 
-    const opponentBest=closestPlayed('blue');
-    const owner=pointOwner();
     const level=String(CURRENT_AI_LEVEL||'LOCAL').toUpperCase();
-    const skill=Math.max(0,Math.min(1,CURRENT_AI_POINT_SKILL/100));
-    const regularity=Math.max(0,Math.min(1,CURRENT_AI_REGULARITE/100));
-    const experience=Math.max(0,Math.min(1,CURRENT_AI_EXPERIENCE/100));
+    const owner=pointOwner();
+    const bestBlue=closestPlayed('blue');
+    const regularity=Math.max(.45,Math.min(1,CURRENT_AI_REGULARITE/100));
+    const precision=Math.max(.45,Math.min(1,CURRENT_AI_PRECISION/100));
 
-    // --------------------------------------------------------
-    // TACTICAL DECISION: shoot only when pétanque logic says so.
-    // --------------------------------------------------------
-    let shouldShoot=false;
-    let targetM=Infinity;
-    if(owner==='blue'&&opponentBest){
-      targetM=horizontalDist(opponentBest.mesh.position,jackBody.mesh.position)/WORLD_PER_METER;
-      const blueThreat=(()=>{
-        const own=bodies.filter(b=>b.team==='blue'&&b.played&&!b.dead&&b.countsForPoint!==false)
-          .map(b=>horizontalDist(b.mesh.position,jackBody.mesh.position)/WORLD_PER_METER)
-          .sort((a,b)=>a-b);
-        const red=bodies.filter(b=>b.team==='red'&&b.played&&!b.dead&&b.countsForPoint!==false)
-          .map(b=>horizontalDist(b.mesh.position,jackBody.mesh.position)/WORLD_PER_METER)
-          .sort((a,b)=>a-b);
-        const limit=red.length?red[0]:Infinity;
-        return own.filter(d=>d<limit).length;
-      })();
-
-      const levelShoot=level==='INTERNATIONAL'?.94:level==='NATIONAL'?.88:
-        (level==='REGIONAL'||level==='RÉGIONAL')?.80:.72;
-
-      let tactical=targetM<.12?1:
-        targetM<.20?.92:
-        targetM<.30?.78:
-        targetM<.42?.50:.18;
-
-      if(blueThreat>=2)tactical+=.10;
-      if((gameState.blueScore||0)+Math.max(1,blueThreat)>=13)tactical+=.12;
-      if(gameState.redRemaining<=1)tactical-=.12;
-
-      shouldShoot=Math.random()<Math.max(.05,Math.min(.98,levelShoot*tactical));
-    }
-
-    if(shouldShoot&&opponentBest){
-      const errRange=
-        level==='INTERNATIONAL'?[.006,.025]:
-        level==='NATIONAL'?[.010,.040]:
-        (level==='REGIONAL'||level==='RÉGIONAL')?[.018,.060]:
-        [.025,.085];
-
-      const errM=errRange[0]+Math.random()*(errRange[1]-errRange[0]);
-      const angle=Math.random()*Math.PI*2;
-      const aim=opponentBest.mesh.position.clone();
-      aim.x+=Math.cos(angle)*errM*WORLD_PER_METER;
-      aim.z+=Math.sin(angle)*errM*WORLD_PER_METER;
-
-      const rr=Math.random();
-      const type=rr<(level==='LOCAL'?.72:.84)?'FER':rr<.94?'DEVANT':'ROULÉ';
-      return{
-        mode:'TIRER',type,
-        power:Math.max(84,Math.min(97,(type==='ROULÉ'?84:93)+(Math.random()*2-1)*(1.4+(1-regularity)*1.8))),
-        target:aim,shouldShoot:true,
-        outcome:errM<.025?'EXCELLENT':errM<.055?'GOOD':'CORRECT',
-        profile:currentAIProfile()
+    // Real pétanque logic: a very close opponent boule becomes a genuine shooting target.
+    if(owner==='blue'&&bestBlue){
+      const d=horizontalDist(bestBlue.mesh.position,jackBody.mesh.position)/WORLD_PER_METER;
+      const baseShoot=level==='INTERNATIONAL'?.92:level==='NATIONAL'?.86:(level==='REGIONAL'||level==='RÉGIONAL')?.78:.70;
+      const pressure=d<.16?1:d<.25?.84:d<.38?.58:.22;
+      if(Math.random()<baseShoot*pressure){
+        const errMax=level==='INTERNATIONAL'?.025:level==='NATIONAL'?.040:(level==='REGIONAL'||level==='RÉGIONAL')?.060:.085;
+        const err=(.004+Math.random()*errMax)*(1.08-precision*.18);
+        const a=Math.random()*Math.PI*2;
+        const target=bestBlue.mesh.position.clone();
+        target.x+=Math.cos(a)*err*WORLD_PER_METER;target.z+=Math.sin(a)*err*WORLD_PER_METER;
+        return{mode:'TIRER',type:Math.random()<.82?'FER':'DEVANT',power:91+(Math.random()*2-1)*2.1,target,shouldShoot:true,outcome:err<.04?'GOOD':'CORRECT',profile:currentAIProfile()}
       }
     }
 
-    // --------------------------------------------------------
-    // COMPETITIVE POINTING.
-    // Desired final ball is genuinely close to the jack.
-    // --------------------------------------------------------
-    const ranges=
-      level==='INTERNATIONAL'?[.008,.050]:
-      level==='NATIONAL'?[.012,.075]:
-      (level==='REGIONAL'||level==='RÉGIONAL')?[.020,.105]:
-      [.030,.145];
+    // Competitive pointing envelope. LOCAL is already a real opponent.
+    let goodChance,excellentMax,goodMax,missMax;
+    if(level==='INTERNATIONAL'){goodChance=.95;excellentMax=.055;goodMax=.11;missMax=.20}
+    else if(level==='NATIONAL'){goodChance=.91;excellentMax=.070;goodMax=.14;missMax=.26}
+    else if(level==='REGIONAL'||level==='RÉGIONAL'){goodChance=.86;excellentMax=.085;goodMax=.18;missMax=.32}
+    else{goodChance=.80;excellentMax=.10;goodMax=.22;missMax=.40}
 
-    // Better real player stats tighten the tournament-level envelope.
-    const statScale=1.10-skill*.30;
-    const desiredRadiusM=(ranges[0]+Math.random()*(ranges[1]-ranges[0]))*statScale;
+    const r=Math.random();
+    let desiredRadiusM;
+    if(r<goodChance*.48)desiredRadiusM=.025+Math.random()*(excellentMax-.025);
+    else if(r<goodChance)desiredRadiusM=excellentMax+Math.random()*(goodMax-excellentMax);
+    else desiredRadiusM=goodMax+Math.random()*(missMax-goodMax);
 
-    // Select a free sector around the cochonnet instead of stacking four balls
-    // in the same corridor.
-    let a=Math.random()*Math.PI*2;
-    const near=bodies.filter(b=>b.played&&!b.dead&&b.countsForPoint!==false&&b.team)
-      .filter(b=>horizontalDist(b.mesh.position,jackBody.mesh.position)/WORLD_PER_METER<.34);
-
-    for(let attempt=0;attempt<7&&near.length;attempt++){
-      const cx=jackBody.mesh.position.x+Math.cos(a)*desiredRadiusM*WORLD_PER_METER;
-      const cz=jackBody.mesh.position.z+Math.sin(a)*desiredRadiusM*WORLD_PER_METER;
-      const crowded=near.some(b=>Math.hypot(b.mesh.position.x-cx,b.mesh.position.z-cz)<.085*WORLD_PER_METER);
-      if(!crowded)break;
-      a+=.58+Math.random()*.72;
+    // Use a free sector around the jack to avoid four identical balls.
+    let ang=Math.random()*Math.PI*2;
+    const occupied=bodies.filter(b=>b.team&&b.played&&!b.dead&&b.countsForPoint!==false);
+    for(let attempt=0;attempt<7;attempt++){
+      const cx=jackBody.mesh.position.x+Math.cos(ang)*desiredRadiusM*WORLD_PER_METER;
+      const cz=jackBody.mesh.position.z+Math.sin(ang)*desiredRadiusM*WORLD_PER_METER;
+      const blocked=occupied.some(b=>Math.hypot(b.mesh.position.x-cx,b.mesh.position.z-cz)<.09*WORLD_PER_METER);
+      if(!blocked)break;ang+=.55+Math.random()*.80
     }
 
     const desired=jackBody.mesh.position.clone();
-    desired.x+=Math.cos(a)*desiredRadiusM*WORLD_PER_METER;
-    desired.z+=Math.sin(a)*desiredRadiusM*WORLD_PER_METER;
-
-    // Actual learnt error from earlier completed red points on THIS match.
-    desired.add(aiPointCorrection);
+    desired.x+=Math.cos(ang)*desiredRadiusM*WORLD_PER_METER;
+    desired.z+=Math.sin(ang)*desiredRadiusM*WORLD_PER_METER;
+    desired.add(aiPointBias);
 
     const start=new THREE.Vector3(THROW_START.x,0,THROW_START.z);
     const dir=desired.clone().sub(start);dir.y=0;dir.normalize();
-    const travelM=Math.max(1,horizontalDist(start,desired)/WORLD_PER_METER);
-
-    // Mostly portée / demi-portée, as a strong real pointeur would choose.
-    let type;
     const rr=Math.random();
-    if(VISUAL_SURFACE==='rocky'||VISUAL_SURFACE==='wet-earth'){
-      type=rr<.76?'PORTÉE':rr<.98?'DEMI-PORTÉE':'ROULÉE';
-    }else if(VISUAL_SURFACE==='compact-earth'||VISUAL_SURFACE==='hard-sand'){
-      type=rr<.50?'PORTÉE':rr<.92?'DEMI-PORTÉE':'ROULÉE';
-    }else{
-      type=rr<.64?'PORTÉE':rr<.96?'DEMI-PORTÉE':'ROULÉE';
-    }
+    const type=rr<.72?'PORTÉE':rr<.98?'DEMI-PORTÉE':'ROULÉE';
 
-    // Previous versions compensated too much, which systematically left AI
-    // balls short. These values are matched to the validated V3.10 drag.
-    const surfaceRoll=
-      VISUAL_SURFACE==='hard-sand'?1.08:
-      VISUAL_SURFACE==='compact-earth'?1.02:
-      VISUAL_SURFACE==='rocky'?.84:
-      VISUAL_SURFACE==='wet-earth'?.80:.94;
-
-    let rollCompM=
-      type==='PORTÉE' ? (.11+travelM*.015) :
-      type==='DEMI-PORTÉE' ? (.29+travelM*.030) :
-      (.70+travelM*.050);
-    rollCompM*=surfaceRoll;
-
-    const landing=desired.clone().addScaledVector(dir,-rollCompM*WORLD_PER_METER);
-
-    const basePower=type==='PORTÉE'?68:type==='DEMI-PORTÉE'?66:63;
-    const powerNoise=.35+(1-regularity)*1.25;
-
-    return{
-      mode:'POINTER',type,
-      power:basePower+(Math.random()*2-1)*powerNoise,
-      target:landing,shouldShoot:false,
-      outcome:desiredRadiusM<.045?'EXCELLENT':desiredRadiusM<.095?'GOOD':'CORRECT',
-      profile:currentAIProfile()
-    }
+    // Deliberately land before the desired final resting point. The AI uses a strong
+    // braking roll after impact, simulating a skilled soft/backspin point.
+    const travelM=Math.max(1,horizontalDist(start,desired)/WORLD_PER_METER);
+    const landingBeforeM=type==='PORTÉE'?(0.11+0.11*travelM+0.01*Math.max(0,travelM-8)**2):type==='DEMI-PORTÉE'?(0.10+0.14*travelM):(0.30+0.22*travelM);
+    const target=desired.clone().addScaledVector(dir,-landingBeforeM*WORLD_PER_METER);
+    const powerBase=type==='PORTÉE'?68:type==='DEMI-PORTÉE'?66:63;
+    const powerNoise=(1.10-regularity)*1.6;
+    return{mode:'POINTER',type,power:powerBase+(Math.random()*2-1)*powerNoise,target,shouldShoot:false,
+      outcome:desiredRadiusM<=excellentMax?'EXCELLENT':desiredRadiusM<=goodMax?'GOOD':'CORRECT',profile:currentAIProfile(),aiDesired:desired}
   }
 
   function aiTakeTurn(){
@@ -2342,19 +2002,14 @@
     gameState.redRemaining--;
     updateHUD();
 
-    body.ptAIPlanMode=plan.mode;
-    lastAIWasPoint=plan.mode==='POINTER';
-    lastAIPointBody=lastAIWasPoint?body:null;
     launchBody(body,plan.power,plan.mode,plan.type,plan.target,0);
+    if(plan.mode==='POINTER'){
+      body.rollDrag=plan.type==='PORTÉE'?20.0:plan.type==='DEMI-PORTÉE'?16.0:8.0;
+      body.spinFactor=plan.type==='PORTÉE'?.38:plan.type==='DEMI-PORTÉE'?.68:1.12;
+      lastAIPointBody=body;lastAIPointDesired=plan.aiDesired?plan.aiDesired.clone():jackBody.mesh.position.clone();
+    }else{lastAIPointBody=null;lastAIPointDesired=null}
     setMatchState(PetanqueStates.BALL_MOVING);
 
-    const label=
-      plan.outcome==='EXCELLENT'?'TRÈS BEAU POINT':
-      plan.outcome==='GOOD'?'BON COUP':
-      plan.outcome==='CORRECT'?'POINT CORRECT':
-      plan.outcome==='RANDOM'?'HASARD':'IMPRÉCIS';
-    const displayName=plan.shouldShoot?CURRENT_AI_NAME:CURRENT_AI_POINTER_NAME;
-    showToast(`${displayName.toUpperCase()} · ${plan.shouldShoot?'TIR':'POINT'} · ${label}`,650);
   }
 
   function aiTakeBlueTeammateTurn(controller){
@@ -2378,8 +2033,6 @@
     launchBody(body,plan.power,plan.mode,plan.type,plan.target,0);
     setMatchState(PetanqueStates.BALL_MOVING);
 
-    const mateLabel=controller==='MATE2'?'COÉQUIPIER 2':'COÉQUIPIER';
-    showToast(`${mateLabel} · ${plan.shouldShoot?'TIR':'POINT'} · ${outcome==='GOOD'?'BON COUP':outcome==='RANDOM'?'HASARD':'IMPRÉCIS'}`,650);
   }
 
   function setTurn(team){
@@ -2397,7 +2050,6 @@
       if(CURRENT_CONTROL_MODE==='PLAYER'&&controller!=='PLAYER'&&CURRENT_MATCH_FORMAT!=='HEAD_TO_HEAD'){
         ring.visible=false;aimLine.visible=false;activeBody=null;
         setMatchState(PetanqueStates.AI_THINKING);
-        showToast(`${controller==='MATE2'?'COÉQUIPIER 2':'COÉQUIPIER'} JOUE · ${gameState.blueRemaining} BOULE${gameState.blueRemaining>1?'S':''}`,800);
         setTimeout(()=>{
           setMatchState(PetanqueStates.AI_THROWING);
           aiTakeBlueTeammateTurn(controller);
@@ -2416,11 +2068,9 @@
       const ownText=CURRENT_CONTROL_MODE==='PLAYER'&&CURRENT_MATCH_FORMAT!=='HEAD_TO_HEAD'
         ? `TON JOUEUR · ${Math.max(0,HUMAN_BALLS_PER_PLAYER-blueControlQueue.slice(0,blueControlIndex-1).filter(x=>x==='PLAYER').length)} APRÈS CELLE-CI`
         : 'À TOI';
-      showToast(`${ownText} · ${gameState.blueRemaining} BOULE${gameState.blueRemaining>1?'S':''} ÉQUIPE`,850);
     }else{
       ring.visible=false;aimLine.visible=false;
       setMatchState(PetanqueStates.AI_THINKING);
-      showToast(`${CURRENT_AI_NAME.toUpperCase()} · ${gameState.redRemaining} BOULE${gameState.redRemaining>1?'S':''}`,800);
       setTimeout(()=>{setMatchState(PetanqueStates.AI_THROWING);aiTakeTurn()},1250);
     }
   }
@@ -2457,20 +2107,15 @@
   function needsMeasure(){const b=closestPlayed('blue'),r=closestPlayed('red');if(!b||!r)return false;return Math.abs(horizontalDist(b.mesh.position,jackBody.mesh.position)-horizontalDist(r.mesh.position,jackBody.mesh.position))<=.025}
   function resolveTurnAfterThrow(){
     if(gameState.deadJackResolving)return;
-
-    if(gameState.lastThrowTeam==='red'&&lastAIWasPoint&&lastAIPointBody&&!lastAIPointBody.dead&&jackBody&&!jackBody.dead){
-      const missX=jackBody.mesh.position.x-lastAIPointBody.mesh.position.x;
-      const missZ=jackBody.mesh.position.z-lastAIPointBody.mesh.position.z;
-      const missM=Math.hypot(missX,missZ)/WORLD_PER_METER;
-      if(missM>.025&&missM<1.60){
-        const learn=CURRENT_AI_LEVEL==='INTERNATIONAL'?.78:
-          CURRENT_AI_LEVEL==='NATIONAL'?.72:
-          (CURRENT_AI_LEVEL==='REGIONAL'||CURRENT_AI_LEVEL==='RÉGIONAL')?.66:.60;
-        aiPointCorrection.x=THREE.MathUtils.clamp(aiPointCorrection.x*.22+missX*learn,-.36,.36);
-        aiPointCorrection.z=THREE.MathUtils.clamp(aiPointCorrection.z*.22+missZ*learn,-.48,.48);
+    if(gameState.lastThrowTeam==='red'&&lastAIPointBody&&lastAIPointDesired&&!lastAIPointBody.dead&&jackBody&&!jackBody.dead){
+      const ex=lastAIPointDesired.x-lastAIPointBody.mesh.position.x;
+      const ez=lastAIPointDesired.z-lastAIPointBody.mesh.position.z;
+      const missM=Math.hypot(ex,ez)/WORLD_PER_METER;
+      if(missM>.03&&missM<1.5){
+        aiPointBias.x=THREE.MathUtils.clamp(aiPointBias.x*.25+ex*.55,-.24,.24);
+        aiPointBias.z=THREE.MathUtils.clamp(aiPointBias.z*.25+ez*.55,-.34,.34);
       }
     }
-
     gameState.resolving=false;if(needsMeasure()){setMatchState(PetanqueStates.MEASURE);showToast('MESURE…',650)}updatePointState();
 
     if(gameState.blueRemaining===0&&gameState.redRemaining===0){
@@ -2501,7 +2146,7 @@
     if(gameState.turn==='blue'){activeBody=makeBall('blue',gameState.activeRole);updateAimGuide()}
     else{ring.visible=false;aimLine.visible=false;setTimeout(aiTakeTurn,1250)}
   }
-  function newMatch(){aiPointCorrection.set(0,0,0);lastAIPointBody=null;lastAIWasPoint=false;matchEndEl.classList.remove('showEnd');jackHeld=false;if(takeJackEl)takeJackEl.classList.remove('show');gameState.blueScore=0;gameState.redScore=0;gameState.mene=1;gameState.lastMeneWinner=null;gameState.lastMenePoints=0;gameState.lastMeneLabel='';gameState.aiSuccessRate=currentAIProfile().good;resetBlueControlQueue();gameState.blueRemaining=BALLS_PER_TEAM;gameState.redRemaining=BALLS_PER_TEAM;gameState.blueRoles.pointer=BLUE_ROLE_BALLS.pointer;gameState.blueRoles.shooter=BLUE_ROLE_BALLS.shooter;gameState.lastThrowTeam=null;gameState.resolving=false;gameState.settleScheduled=false;gameState.deadJackResolving=false;gameState.ended=false;matchStats.blueThrows=0;matchStats.blueShots=0;matchStats.blueShotSuccess=0;matchStats.carreaux=0;matchStats.bestPointM=Infinity;removeTeamBalls();resetStaticBodies();updateHUD();setSwipePower(0)}
+  function newMatch(){aiPointBias.set(0,0,0);lastAIPointBody=null;lastAIPointDesired=null;matchEndEl.classList.remove('showEnd');jackHeld=false;if(takeJackEl)takeJackEl.classList.remove('show');gameState.blueScore=0;gameState.redScore=0;gameState.mene=1;gameState.lastMeneWinner=null;gameState.lastMenePoints=0;gameState.lastMeneLabel='';gameState.aiSuccessRate=currentAIProfile().good;resetBlueControlQueue();gameState.blueRemaining=BALLS_PER_TEAM;gameState.redRemaining=BALLS_PER_TEAM;gameState.blueRoles.pointer=BLUE_ROLE_BALLS.pointer;gameState.blueRoles.shooter=BLUE_ROLE_BALLS.shooter;gameState.lastThrowTeam=null;gameState.resolving=false;gameState.settleScheduled=false;gameState.deadJackResolving=false;gameState.ended=false;matchStats.blueThrows=0;matchStats.blueShots=0;matchStats.blueShotSuccess=0;matchStats.carreaux=0;matchStats.bestPointM=Infinity;removeTeamBalls();resetStaticBodies();updateHUD();setSwipePower(0)}
   const LIGHT_PRESETS={
     'provence-village':{sky:0xd6e5e8,ground:0x71533e,hemi:.94,sun:0xffc98a,sunI:2.55,fill:0xa3c8e8,fillI:.36,pos:[-3.5,5.8,-4.6],exposure:1.08},
     'mediterranean-garden':{sky:0xd7e6ea,ground:0x66503f,hemi:.96,sun:0xffca87,sunI:2.48,fill:0xa5c8e2,fillI:.36,pos:[-3.4,5.6,-4.2],exposure:1.07},
@@ -2517,10 +2162,10 @@
     'international-arena':{sky:0xc5cdd3,ground:0x2c3237,hemi:.84,sun:0xffffff,sunI:1.95,fill:0xb8d2e8,fillI:.60,pos:[-2.8,5.7,-3.0],exposure:1.02}
   };
   const LP=LIGHT_PRESETS[VENUE_PROFILE]||LIGHT_PRESETS['urban-park'];
-  renderer.toneMappingExposure=PT_MOBILE?Math.min(.98,LP.exposure*.93):LP.exposure;
+  renderer.toneMappingExposure=PT_MOBILE?Math.min(.94,LP.exposure*.90):LP.exposure;
 
-  const hemi=new THREE.HemisphereLight(PT_MOBILE?0xe0e9df:LP.sky,PT_MOBILE?0x5f4936:LP.ground,PT_MOBILE?LP.hemi*.62:LP.hemi);scene.add(hemi);
-  const sun=new THREE.DirectionalLight(PT_MOBILE?0xffc98f:LP.sun,PT_MOBILE?LP.sunI*1.08:LP.sunI);
+  const hemi=new THREE.HemisphereLight(LP.sky,LP.ground,PT_MOBILE?LP.hemi*.88:LP.hemi);scene.add(hemi);
+  const sun=new THREE.DirectionalLight(LP.sun,PT_MOBILE?LP.sunI*.82:LP.sunI);
   sun.position.set(...LP.pos);sun.target.position.set(0,0,.35);sun.castShadow=true;
   sun.shadow.mapSize.set(PT_MOBILE?512:2048,PT_MOBILE?512:2048);sun.shadow.camera.left=-3;sun.shadow.camera.right=3;
   sun.shadow.camera.top=5.5;sun.shadow.camera.bottom=-1.5;sun.shadow.camera.near=.2;sun.shadow.camera.far=14;sun.shadow.bias=-.00018;
@@ -2547,7 +2192,6 @@
       const step=elapsed/steps;
       for(let i=0;i<steps;i++)physicsStep(step);
     }else physicsStep(Math.min(.025,elapsed));
-    syncContactShadows();
     renderer.render(scene,camera);
     requestAnimationFrame(render)
   }
@@ -2617,8 +2261,6 @@
     else{aimOffset=0;selectedShootTarget=null}
     syncDirectionUI();updatePlayerCard();updateAimGuide();
 
-    if(role&&role!==preferred)showToast(mode==='TIRER'?'POINTEUR · TIR AUTORISÉ':'TIREUR · POINT AUTORISÉ',800);
-    else showToast(mode==='TIRER'?'TIREUR · FER / DEVANT / ROULÉ':'POINTEUR · CHOISIS TON POINT',800);
   }));
   document.querySelectorAll('.type').forEach(btn=>btn.addEventListener('click',()=>{audio.ensure();document.querySelectorAll('.type').forEach(x=>x.classList.remove('active'));btn.classList.add('active');updateAimGuide()}));
 
@@ -2692,8 +2334,8 @@ gameCanvas.addEventListener('pointerdown',e=>{
     gameCanvas.style.cursor='grab';
 
     if(dy>28&&Math.abs(dx)<swipe.rect.width*.45&&finalPower>=4&&endTarget){
-      if(swipe.jack){launchJackTo(endTarget,finalPower);showToast('COCHONNET · '+finalPower+'%',650)}
-      else{const mode=selectedMode(),type=selectedType();if(launchBlue(finalPower,endTarget)){matchStats.blueThrows++;if(mode==='TIRER')matchStats.blueShots++;setMatchState(PetanqueStates.BALL_MOVING);showToast(mode+' · '+type+' · '+finalPower+'%',700)}}
+      if(swipe.jack){launchJackTo(endTarget,finalPower)}
+      else{const mode=selectedMode();if(launchBlue(finalPower,endTarget)){matchStats.blueThrows++;if(mode==='TIRER')matchStats.blueShots++;setMatchState(PetanqueStates.BALL_MOVING)}}
     }else{
       setSwipePower(0);updateAimGuide()
     }
@@ -2710,7 +2352,7 @@ gameCanvas.addEventListener('pointerdown',e=>{
 
   setMeneDistance(8.0);resetStaticBodies();removeTeamBalls();gameState.activeRole='pointer';setThrowTypeUI('POINTER');syncDirectionUI();updateHUD();updatePlayerCard();ring.visible=false;aimLine.visible=false;
   if(PT_CAREER){newMatch();if(RESUME_MATCH_STATE){gameState.blueScore=Math.max(0,Number(RESUME_MATCH_STATE.blueScore||0));gameState.redScore=Math.max(0,Number(RESUME_MATCH_STATE.redScore||0));gameState.mene=Math.max(1,Number(RESUME_MATCH_STATE.mene||1));const starter=RESUME_MATCH_STATE.meneStarter==='red'?'red':'blue';coinWinner=RESUME_MATCH_STATE.coinWinner==='red'?'red':'blue';gameState.meneStarter=starter;updateHUD();showOnlyScreen(null);setMatchState(PetanqueStates.END_SETUP);setTimeout(()=>startJackThrow(starter),220)}else{showOnlyScreen(coinScreenEl);coinResultEl.textContent='';setMatchState(PetanqueStates.COIN_TOSS)}}else{showOnlyScreen(mainMenuEl);setMatchState(PetanqueStates.MATCH_INTRO)};
-  document.documentElement.dataset.ptGameplay='v226-playable-premium';
+  document.documentElement.dataset.ptGameplay='v230-final-rebase';
 })();
 </script>
 
