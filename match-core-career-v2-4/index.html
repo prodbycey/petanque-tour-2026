@@ -175,8 +175,19 @@
 <script src="./src/turn-manager.js"></script>
 <script src="./src/state-machine.js"></script>
 <script>
-(function(){
-  // MATCH CORE V1: full mène/score flow to 13 while preserving the validated swipe/visual feel.
+(async function(){
+  // MATCH CORE V1: rules/turns/swipe stay intact. Step 2 replaces only the rigid-body solver.
+  let RAPIER;
+  try{
+    const mod=await import('https://cdn.jsdelivr.net/npm/@dimforge/rapier3d-compat@0.19.3/rapier.mjs');
+    RAPIER=mod.default||mod;
+    await RAPIER.init();
+    document.documentElement.dataset.physicsEngine='rapier-0.19.3';
+  }catch(err){
+    console.error('Rapier init failed',err);
+    document.body.innerHTML='<div style="color:white;padding:30px;font-family:sans-serif;background:#081018;min-height:100vh"><h2>PÉTANQUE TOUR 2026</h2><p>Le moteur physique n’a pas pu être chargé. Vérifie la connexion puis recharge la page.</p></div>';
+    return;
+  }
   if(!window.THREE){document.body.innerHTML='<div style="color:white;padding:30px;font-family:sans-serif">Connexion Internet requise au premier lancement pour charger Three.js.</div>';return;}
   const shell=document.getElementById('shell'),canvas=document.getElementById('game');
   const renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:false,powerPreference:'high-performance'});
@@ -1101,13 +1112,72 @@
   // Full Rapier replacement remains a later phase; this version focuses on feel, audio and turn logic.
   const bodies=[];
   let nextBodyId=1;
+
+  // Rapier works best when objects are not extremely tiny.
+  // Scene units are preserved for every rule/camera calculation; only the solver is scaled.
+  const PHYSICS_SCALE=10;
+  const PHYSICS_DT=1/120;
+  const physicsWorld=new RAPIER.World({x:0,y:-6.0*PHYSICS_SCALE,z:0});
+  physicsWorld.timestep=PHYSICS_DT;
+  try{physicsWorld.maxCcdSubsteps=4}catch(_){}
+
+  const groundBody=physicsWorld.createRigidBody(
+    RAPIER.RigidBodyDesc.fixed().setTranslation(0,-.06*PHYSICS_SCALE,2.30*PHYSICS_SCALE)
+  );
+  physicsWorld.createCollider(
+    RAPIER.ColliderDesc.cuboid(2.2*PHYSICS_SCALE,.06*PHYSICS_SCALE,8.0*PHYSICS_SCALE)
+      .setFriction(.72).setRestitution(.055),
+    groundBody
+  );
+
+  const pvec=v=>({x:v.x*PHYSICS_SCALE,y:v.y*PHYSICS_SCALE,z:v.z*PHYSICS_SCALE});
+  const vvec=v=>new THREE.Vector3(v.x/PHYSICS_SCALE,v.y/PHYSICS_SCALE,v.z/PHYSICS_SCALE);
+  function bodyGroundY(body){return body.radius+(body.groundOffset||0)}
+
   const addBody=(mesh,radius,mass,meta={})=>{
+    const desc=RAPIER.RigidBodyDesc.dynamic()
+      .setTranslation(mesh.position.x*PHYSICS_SCALE,mesh.position.y*PHYSICS_SCALE,mesh.position.z*PHYSICS_SCALE)
+      .setCanSleep(true)
+      .setCcdEnabled(true);
+    const rb=physicsWorld.createRigidBody(desc);
+    const pr=radius*PHYSICS_SCALE;
+    const volume=4/3*Math.PI*pr*pr*pr;
+    const density=Math.max(.0001,mass/Math.max(.0001,volume));
+    const collider=physicsWorld.createCollider(
+      RAPIER.ColliderDesc.ball(pr)
+        .setDensity(density)
+        .setFriction(radius<.025?.48:.42)
+        .setRestitution(radius<.025?.26:.48),
+      rb
+    );
     const body={id:nextBodyId++,mesh,radius,mass,vel:new THREE.Vector3(),moving:false,onGround:true,sleep:0,
       home:mesh.position.clone(),homeRot:mesh.rotation.clone(),team:meta.team||null,role:meta.role||null,
       played:!!meta.played,countsForPoint:meta.countsForPoint!==false,ready:!!meta.ready,lastImpact:0,
-      spinFactor:1,rollDrag:1.72,dead:false};
-    bodies.push(body);return body;
+      spinFactor:1,rollDrag:1.72,dead:false,rb,collider,groundOffset:0};
+    bodies.push(body);
+    return body;
   };
+
+  function parkPhysicsBody(body){
+    if(!body?.rb)return;
+    body.rb.setLinvel({x:0,y:0,z:0},false);
+    body.rb.setAngvel({x:0,y:0,z:0},false);
+    body.rb.setTranslation({x:0,y:-30*PHYSICS_SCALE,z:0},false);
+    body.rb.sleep();
+  }
+  function syncStoppedBodyToPhysics(body){
+    if(!body?.rb||body.dead||!body.mesh.visible)return;
+    const p=body.mesh.position;
+    body.rb.setTranslation(pvec(p),false);
+    body.rb.setLinvel({x:0,y:0,z:0},false);
+    body.rb.setAngvel({x:0,y:0,z:0},false);
+    body.rb.sleep();
+  }
+  function removePhysicsBody(body){
+    if(!body?.rb)return;
+    try{physicsWorld.removeRigidBody(body.rb)}catch(_){}
+    body.rb=null;body.collider=null;
+  }
 
   // ---------- AUDIO V3.7 — VENUE-AWARE AMBIENCE + PRELOADED IMPACTS ----------
   // The CURRENT visual court is outdoors, in a park.
@@ -1451,12 +1521,24 @@
       avatarEl.dataset.initials='TR';starsEl.textContent='★★★★★';
     }
   }
-  function wake(body){body.moving=true;body.sleep=0}
+  function wake(body){
+    body.moving=true;body.sleep=0;
+    if(!body.rb)return;
+    body.rb.setTranslation(pvec(body.mesh.position),true);
+    body.rb.setLinvel({x:body.vel.x*PHYSICS_SCALE,y:body.vel.y*PHYSICS_SCALE,z:body.vel.z*PHYSICS_SCALE},true);
+    const h=Math.hypot(body.vel.x,body.vel.z);
+    if(h>.0001){
+      const omega=h/Math.max(.001,body.radius);
+      const ax=body.vel.z/h,az=-body.vel.x/h;
+      body.rb.setAngvel({x:ax*omega*(body.spinFactor||1),y:0,z:az*omega*(body.spinFactor||1)},true);
+    }else body.rb.setAngvel({x:0,y:0,z:0},true);
+    try{body.rb.setLinearDamping(.012);body.rb.setAngularDamping(.018)}catch(_){}
+  }
   function makeBall(team,role=null){
     const m=new THREE.Mesh(ballGeom,ballMaterial(team==='red'));m.position.copy(THROW_START);m.rotation.set(.2,-.38,.44);m.castShadow=m.receiveShadow=true;scene.add(m);
     const b=addBody(m,.037,.700,{team,role,ready:true,countsForPoint:true});b.dead=false;b.groundOffset=.0018;return b;
   }
-  function removeTeamBalls(){for(let i=bodies.length-1;i>=0;i--){const b=bodies[i];if(b.team){scene.remove(b.mesh);bodies.splice(i,1)}}activeBody=null}
+  function removeTeamBalls(){for(let i=bodies.length-1;i>=0;i--){const b=bodies[i];if(b.team){scene.remove(b.mesh);removePhysicsBody(b);bodies.splice(i,1)}}activeBody=null}
   const WORLD_PER_METER=.46;
   // Playable limits. Side/back values correspond to the inside face of the wooden rails.
   const COURT_LIMITS={x:1.405,zMin:-1.28,zMax:5.975};
@@ -1467,13 +1549,13 @@
   function killBoule(body){
     if(!body||body.dead)return;
     body.dead=true;body.countsForPoint=false;body.moving=false;body.vel.set(0,0,0);
-    body.mesh.visible=false;
+    body.mesh.visible=false;parkPhysicsBody(body);
     if(body===selectedShootTarget)selectedShootTarget=null;
     if(body.team)showToast('BOULE MORTE · HORS JEU',650);
   }
 
   function stopAllBodies(){
-    for(const b of bodies){b.vel.set(0,0,0);b.moving=false;b.sleep=0}
+    for(const b of bodies){b.vel.set(0,0,0);b.moving=false;b.sleep=0;if(b.rb){b.rb.setLinvel({x:0,y:0,z:0},false);b.rb.setAngvel({x:0,y:0,z:0},false);b.rb.sleep()}}
   }
 
   function resolveDeadJack(){
@@ -1622,114 +1704,92 @@
   function rulesBallsSnapshot(){return bodies.filter(b=>b.team).map(b=>({team:b.team,played:b.played,dead:b.dead,valid:b.countsForPoint!==false,position:{x:b.mesh.position.x,z:b.mesh.position.z}}))}
   function pointOwner(){if(jackBody.dead)return null;return rulesEngine.getTeamHoldingPoint({balls:rulesBallsSnapshot(),jack:{x:jackBody.mesh.position.x,z:jackBody.mesh.position.z}})}
 
-  function resolvePair(a,b){
-    if(a.dead||b.dead)return;
-
-    const dx=b.mesh.position.x-a.mesh.position.x;
-    const dz=b.mesh.position.z-a.mesh.position.z;
-    const min=a.radius+b.radius;
-    const d2=dx*dx+dz*dz;
-    if(d2<=1e-10||d2>=min*min)return;
-
-    const dist=Math.sqrt(d2);
-    const nx=dx/dist,nz=dz/dist;
-    const overlap=min-dist;
-    const invA=1/a.mass,invB=1/b.mass,invSum=invA+invB;
-
-    a.mesh.position.x-=nx*overlap*(invA/invSum);
-    a.mesh.position.z-=nz*overlap*(invA/invSum);
-    b.mesh.position.x+=nx*overlap*(invB/invSum);
-    b.mesh.position.z+=nz*overlap*(invB/invSum);
-
-    const rvx=b.vel.x-a.vel.x, rvz=b.vel.z-a.vel.z;
-    const vn=rvx*nx+rvz*nz;
-    if(vn>0)return;
-
-    const impact=Math.abs(vn);
-    const ballsCollision=(a.team||b.team);
-    const e=(a===jackBody||b===jackBody)?.66:(ballsCollision?.84:.74);
-    let j=-(1+e)*vn/invSum;
-
-    if(ballsCollision&&impact>.20){
-      j*=1.16;
-    }
-
-    const impulseX=nx*j, impulseZ=nz*j;
-    a.vel.x-=impulseX*invA; a.vel.z-=impulseZ*invA;
-    b.vel.x+=impulseX*invB; b.vel.z+=impulseZ*invB;
-
-    const speedA=Math.hypot(a.vel.x,a.vel.z), speedB=Math.hypot(b.vel.x,b.vel.z);
-    if(ballsCollision&&impact>.55){
-      let striker=a, receiver=b;
-      if(speedB>speedA){striker=b;receiver=a;}
-      const strikerSpeed=Math.hypot(striker.vel.x,striker.vel.z);
-      const receiverSpeed=Math.hypot(receiver.vel.x,receiver.vel.z);
-      const minTransfer=Math.max(.22,Math.min(1.55,strikerSpeed*.58));
-      if(receiverSpeed<minTransfer){
-        receiver.vel.x = nx*minTransfer*(receiver===b?1:-1);
-        receiver.vel.z = nz*minTransfer*(receiver===b?1:-1);
-        striker.vel.x *= .72;
-        striker.vel.z *= .72;
-      }
-    }
-
-    wake(a);wake(b);
+  function detectSteelContactAudio(){
     const now=performance.now();
-    if(impact>.16&&now-Math.max(a.lastImpact,b.lastImpact)>34){audio.clack(Math.min(1.25,impact*1.08));a.lastImpact=b.lastImpact=now}
-  }
-  function physicsStep(dt){
-    let rollSpeed=0;
-    for(const body of bodies){
-      if(body.dead||!body.moving)continue;
-
-      if(!body.onGround||body.vel.y>.001)body.vel.y+=gravity*dt;
-      const before=body.mesh.position.clone();
-      body.mesh.position.addScaledVector(body.vel,dt);
-
-      // Wood contact / leaving the terrain:
-      // jack = end of mène, boule = dead and removed from scoring.
-      if(bodyTouchesBoundary(body)){
-        if(body===jackBody){killJack();return}
-        killBoule(body);continue;
-      }
-
-      const restY=body.radius+(body.groundOffset||0);
-      if(body.mesh.position.y<=restY){
-        const impact=Math.abs(body.vel.y);body.mesh.position.y=restY;body.onGround=true;
-        if(body.vel.y<-.23){audio.groundImpact(impact);body.vel.y=-body.vel.y*.15}else body.vel.y=0;
-        const drag=Math.exp(-(body.rollDrag||1.72)*dt);body.vel.x*=drag;body.vel.z*=drag;
-      }else body.onGround=false;
-
-      const delta=new THREE.Vector3().subVectors(body.mesh.position,before);
-      const horizontal=Math.hypot(delta.x,delta.z);
-      if(horizontal>0){
-        const axis=new THREE.Vector3(delta.z,0,-delta.x).normalize();
-        body.mesh.rotateOnWorldAxis(axis,(horizontal/body.radius)*(body.spinFactor||1))
-      }
-
-      const horizontalSpeed=Math.hypot(body.vel.x,body.vel.z);
-      rollSpeed+=body.onGround?horizontalSpeed:0;
-
-      if(body.onGround&&horizontalSpeed<.018&&Math.abs(body.vel.y)<.02){
-        body.sleep+=dt;
-        if(body.sleep>.26){body.vel.set(0,0,0);body.moving=false}
-      }else body.sleep=0;
-    }
-
     for(let i=0;i<bodies.length;i++){
-      for(let j=i+1;j<bodies.length;j++)resolvePair(bodies[i],bodies[j]);
+      const a=bodies[i];if(a.dead||!a.mesh.visible)continue;
+      for(let j=i+1;j<bodies.length;j++){
+        const b=bodies[j];if(b.dead||!b.mesh.visible)continue;
+        if(!(a.team||b.team))continue;
+        const dx=b.mesh.position.x-a.mesh.position.x,dy=b.mesh.position.y-a.mesh.position.y,dz=b.mesh.position.z-a.mesh.position.z;
+        const touch=(a.radius+b.radius)*1.08;
+        if(dx*dx+dy*dy+dz*dz>touch*touch)continue;
+        const rvx=b.vel.x-a.vel.x,rvy=b.vel.y-a.vel.y,rvz=b.vel.z-a.vel.z;
+        const impact=Math.hypot(rvx,rvy,rvz);
+        if(impact>.14&&now-Math.max(a.lastImpact,b.lastImpact)>42){
+          audio.clack(Math.min(1.35,impact*1.22));a.lastImpact=b.lastImpact=now;
+        }
+      }
     }
+  }
 
-    if(!PT_MOBILE)audio.updateRoll(rollSpeed);
+  let physicsAccumulator=0;
+  function physicsStep(dt){
+    physicsAccumulator+=Math.min(.050,Math.max(0,dt));
+    let iterations=0;
+
+    while(physicsAccumulator>=PHYSICS_DT&&iterations<8){
+      // Direct repositioning is still used by the validated match flow for held/placed objects.
+      // Mirror those stationary transforms into Rapier before the next solver step.
+      for(const body of bodies){
+        if(!body.rb)continue;
+        if(body.dead||!body.mesh.visible){parkPhysicsBody(body);continue}
+        if(!body.moving)syncStoppedBodyToPhysics(body);
+      }
+
+      physicsWorld.step();
+
+      for(const body of bodies){
+        if(!body.rb||body.dead||!body.mesh.visible)continue;
+        const p=body.rb.translation(),q=body.rb.rotation(),lv=body.rb.linvel(),av=body.rb.angvel();
+        body.mesh.position.set(p.x/PHYSICS_SCALE,p.y/PHYSICS_SCALE,p.z/PHYSICS_SCALE);
+        body.mesh.quaternion.set(q.x,q.y,q.z,q.w);
+        body.vel.set(lv.x/PHYSICS_SCALE,lv.y/PHYSICS_SCALE,lv.z/PHYSICS_SCALE);
+
+        if(bodyTouchesBoundary(body)){
+          if(body===jackBody){killJack();physicsAccumulator=0;return}
+          killBoule(body);continue;
+        }
+
+        const restY=bodyGroundY(body);
+        body.onGround=body.mesh.position.y<=restY+.006&&Math.abs(body.vel.y)<.16;
+
+        if(body.moving&&body.onGround){
+          // Rolling resistance: gradual energy loss only after ground contact.
+          // Rapier still resolves all contacts, spin, deflections and secondary impacts.
+          const coeff=Math.max(.18,Math.min(1.25,(body.rollDrag||1.72)*.46));
+          const rollFactor=Math.exp(-coeff*PHYSICS_DT);
+          body.rb.setLinvel({x:lv.x*rollFactor,y:lv.y,z:lv.z*rollFactor},true);
+          body.rb.setAngvel({x:av.x*rollFactor,y:av.y*.995,z:av.z*rollFactor},true);
+
+          const horizontal=Math.hypot(body.vel.x,body.vel.z);
+          const angular=Math.hypot(av.x,av.y,av.z);
+          if(horizontal<.020&&Math.abs(body.vel.y)<.025&&angular<1.25){
+            body.sleep+=PHYSICS_DT;
+            if(body.sleep>.28){
+              body.rb.setLinvel({x:0,y:0,z:0},false);
+              body.rb.setAngvel({x:0,y:0,z:0},false);
+              body.rb.sleep();body.moving=false;body.vel.set(0,0,0);
+            }
+          }else body.sleep=0;
+        }else if(body.moving){
+          body.sleep=0;
+        }
+
+        if(body.rb.isSleeping()){body.moving=false;body.vel.set(0,0,0)}
+      }
+
+      detectSteelContactAudio();
+      physicsAccumulator-=PHYSICS_DT;iterations++;
+    }
 
     if(gameState.deadJackResolving)return;
-
     if(gameState.resolving&&!bodies.some(b=>b.moving&&!b.dead)&&!gameState.settleScheduled){
       gameState.settleScheduled=true;
       setTimeout(()=>{
         gameState.settleScheduled=false;
         if(jackThrowInProgress)validateJackAfterSettle();else if(!gameState.deadJackResolving)resolveTurnAfterThrow()
-      },PT_MOBILE?480:760)
+      },PT_MOBILE?360:500)
     }
   }
 
@@ -2050,8 +2110,6 @@
 
     launchBody(body,plan.power,plan.mode,plan.type,plan.target,0);
     if(plan.mode==='POINTER'){
-      body.rollDrag=plan.type==='PORTÉE'?20.0:plan.type==='DEMI-PORTÉE'?16.0:8.0;
-      body.spinFactor=plan.type==='PORTÉE'?.38:plan.type==='DEMI-PORTÉE'?.68:1.12;
       lastAIPointBody=body;lastAIPointDesired=plan.aiDesired?plan.aiDesired.clone():jackBody.mesh.position.clone();
     }else{lastAIPointBody=null;lastAIPointDesired=null}
     setMatchState(PetanqueStates.BALL_MOVING);
@@ -2233,11 +2291,7 @@
     const elapsed=Math.min(PT_MOBILE?.060:.035,Math.max(0,(now-lastFrame)/1000));
     lastFrame=now;t=now*.001;
     if(ring.visible)ring.material.opacity=.82+Math.sin(t*2)*.1;
-    if(PT_MOBILE){
-      const steps=Math.max(2,Math.min(8,Math.ceil(elapsed/.010)));
-      const step=elapsed/steps;
-      for(let i=0;i<steps;i++)physicsStep(step);
-    }else physicsStep(Math.min(.020,elapsed));
+    physicsStep(elapsed);
     renderer.render(scene,camera);
     requestAnimationFrame(render)
   }
@@ -2398,7 +2452,7 @@ gameCanvas.addEventListener('pointerdown',e=>{
 
   setMeneDistance(8.0);resetStaticBodies();removeTeamBalls();gameState.activeRole='pointer';setThrowTypeUI('POINTER');syncDirectionUI();updateHUD();updatePlayerCard();ring.visible=false;aimLine.visible=false;
   if(PT_CAREER){newMatch();if(RESUME_MATCH_STATE){gameState.blueScore=Math.max(0,Number(RESUME_MATCH_STATE.blueScore||0));gameState.redScore=Math.max(0,Number(RESUME_MATCH_STATE.redScore||0));gameState.mene=Math.max(1,Number(RESUME_MATCH_STATE.mene||1));const starter=RESUME_MATCH_STATE.meneStarter==='red'?'red':'blue';coinWinner=RESUME_MATCH_STATE.coinWinner==='red'?'red':'blue';gameState.meneStarter=starter;updateHUD();showOnlyScreen(null);setMatchState(PetanqueStates.END_SETUP);setTimeout(()=>startJackThrow(starter),220)}else{showOnlyScreen(coinScreenEl);coinResultEl.textContent='';setMatchState(PetanqueStates.COIN_TOSS)}}else{showOnlyScreen(mainMenuEl);setMatchState(PetanqueStates.MATCH_INTRO)};
-  document.documentElement.dataset.ptGameplay='v230-final-rebase';
+  document.documentElement.dataset.ptGameplay='v232-rapier-step2';
 })();
 </script>
 

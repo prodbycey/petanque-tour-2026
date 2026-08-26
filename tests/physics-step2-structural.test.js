@@ -1,0 +1,11 @@
+const fs=require('fs'),assert=require('assert');
+const s=fs.readFileSync(__dirname+'/../match-core-career-v2-4/index.html','utf8');
+assert(s.includes('@dimforge/rapier3d-compat@0.19.3/rapier.mjs'));
+assert(s.includes('RAPIER.RigidBodyDesc.dynamic()'));
+assert(s.includes('.setCcdEnabled(true)'));
+assert(s.includes('const PHYSICS_DT=1/120'));
+assert(s.includes('physicsWorld.step()'));
+assert(!s.includes('function resolvePair(a,b)'));
+assert(!s.includes("body.rollDrag=plan.type==='PORTÉE'?20.0"));
+assert(s.includes('setAngvel'));
+console.log('PHYSICS STEP2 STRUCTURAL TEST PASS');
