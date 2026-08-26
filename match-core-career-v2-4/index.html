@@ -454,13 +454,46 @@
     }
 
     if(kind==='metal'){
-      x.fillStyle='#bfc3c8';x.fillRect(0,0,size,size);
-      for(let i=0;i<950;i++){
-        let a=.05+r()*.18;x.strokeStyle=`rgba(30,30,30,${a})`;x.lineWidth=.3+r()*.8;
-        x.beginPath();let px=r()*size,py=r()*size;x.moveTo(px,py);x.lineTo(px+(r()-.5)*55,py+(r()-.5)*7);x.stroke()
+      // Base tone: subtle warm-cool variation instead of a flat grey (real boules are never a single flat colour).
+      const baseGrad=x.createLinearGradient(0,0,0,size);
+      baseGrad.addColorStop(0,'#c9cdd1');baseGrad.addColorStop(.5,'#b7bbc0');baseGrad.addColorStop(1,'#aeb2b6');
+      x.fillStyle=baseGrad;x.fillRect(0,0,size,size);
+
+      // Concentric turning marks ("stries") like a real boule cut on a lathe — this is THE detail that reads as metal, not paint.
+      const bands=[
+        {y:.14,h:.05},{y:.22,h:.035},{y:.30,h:.05},{y:.50,h:.07},
+        {y:.68,h:.05},{y:.76,h:.035},{y:.86,h:.05}
+      ];
+      for(const bd of bands){
+        const y0=size*bd.y,h=size*bd.h,lines=Math.max(6,Math.round(h/2.1));
+        for(let i=0;i<lines;i++){
+          const t=i/lines,yy=y0+t*h;
+          const shade=(i%2===0)?255:0;
+          x.globalAlpha=.10+.10*Math.sin(t*Math.PI);
+          x.strokeStyle=`rgb(${shade},${shade},${shade})`;x.lineWidth=.9;
+          x.beginPath();x.moveTo(0,yy);x.lineTo(size,yy);x.stroke()
+        }
       }
-      x.strokeStyle='#35373a';x.lineWidth=3;
-      for(let y of [size*.27,size*.31,size*.67,size*.71]){x.beginPath();x.moveTo(0,y);x.lineTo(size,y+size*.15);x.stroke()}
+      x.globalAlpha=1;
+
+      // Fine circumferential micro-grain (brushed-steel look) — tiny, dense, low-contrast.
+      for(let i=0;i<7000;i++){
+        const py=r()*size,px=r()*size,len=8+r()*40;
+        const shade=180+r()*70|0;
+        x.globalAlpha=.05+r()*.06;
+        x.strokeStyle=`rgb(${shade},${shade},${shade})`;x.lineWidth=.35;
+        x.beginPath();x.moveTo(px,py);x.lineTo(px+len,py+(r()-.5)*1.4);x.stroke()
+      }
+      x.globalAlpha=1;
+
+      // A handful of tiny scuffs / wear marks so the ball reads as used sport equipment, not a showroom sphere.
+      for(let i=0;i<26;i++){
+        const px=r()*size,py=r()*size,rad=1.4+r()*3.2;
+        x.globalAlpha=.10+r()*.12;
+        x.fillStyle=r()<.5?'#e9edf0':'#4a4d51';
+        x.beginPath();x.ellipse(px,py,rad,rad*.4,r()*Math.PI,0,Math.PI*2);x.fill()
+      }
+      x.globalAlpha=1;
     }
     return c
   }
@@ -1063,11 +1096,45 @@
 
   const metalTex=ct('metal',768,55);metalTex.repeat.set(1,1);
   function ballMaterial(dark){
-    if(PT_MOBILE)return new THREE.MeshPhysicalMaterial({color:dark?0x2b3138:0xe5e8eb,map:metalTex,bumpMap:metalTex,bumpScale:.0010,metalness:1,roughness:dark?.26:.15,clearcoat:dark?.08:.22,clearcoatRoughness:.28,envMapIntensity:1.55});
-    return new THREE.MeshPhysicalMaterial({color:dark?0x1f242a:0xd8dde4,map:metalTex,bumpMap:metalTex,bumpScale:.0015,metalness:1,roughness:dark?.34:.20,clearcoat:dark?.10:.26,clearcoatRoughness:.32,envMapIntensity:1.45})
+    // Real boules are satin/brushed stainless or carbon steel: never mirror-shiny, never pure black/white.
+    // Warmer light tone, cooler graphite dark tone — matches real Obut/MS two-team colourways instead of "snooker ball" grey/black.
+    if(PT_MOBILE)return new THREE.MeshPhysicalMaterial({color:dark?0x3a3f45:0xd9dbdb,map:metalTex,bumpMap:metalTex,bumpScale:.0016,metalness:.92,roughness:dark?.42:.34,clearcoat:dark?.05:.08,clearcoatRoughness:.45,envMapIntensity:1.15});
+    return new THREE.MeshPhysicalMaterial({color:dark?0x2e3238:0xcfd2d2,map:metalTex,bumpMap:metalTex,bumpScale:.0022,metalness:.94,roughness:dark?.46:.36,clearcoat:dark?.06:.10,clearcoatRoughness:.5,envMapIntensity:1.05})
   }
-  // simple bright environment for metal reflections
-  const faces=[];for(let i=0;i<6;i++){const c=document.createElement('canvas');const es=PT_MOBILE?128:256;c.width=c.height=es;const x=c.getContext('2d'),g=x.createLinearGradient(0,0,0,es);g.addColorStop(0,i===2?'#f9e6b8':'#cfd9df');g.addColorStop(.5,'#8f9b92');g.addColorStop(1,'#3a322c');x.fillStyle=g;x.fillRect(0,0,es,es);faces.push(c)}const cube=new THREE.CubeTexture(faces);cube.needsUpdate=true;cube.encoding=THREE.sRGBEncoding;scene.environment=cube;
+  // Richer synthetic sky/ground environment, pre-filtered through PMREM so metal reflections are soft and
+  // physically plausible instead of the raw, blotchy look of an unfiltered cubemap.
+  const envSize=PT_MOBILE?128:256;
+  const envFaces=[];
+  for(let i=0;i<6;i++){
+    const c=document.createElement('canvas');c.width=c.height=envSize;
+    const x=c.getContext('2d');
+    let g;
+    if(i===2){ // +Y sky face
+      g=x.createLinearGradient(0,0,0,envSize);
+      g.addColorStop(0,'#dce9f2');g.addColorStop(.45,'#c3d3d6');g.addColorStop(1,'#9aa39a');
+    }else if(i===3){ // -Y ground face
+      g=x.createLinearGradient(0,0,0,envSize);
+      g.addColorStop(0,'#8a7a63');g.addColorStop(1,'#5c5346');
+    }else{ // side faces: horizon blend, gives balls a believable outdoor ambience
+      g=x.createLinearGradient(0,0,0,envSize);
+      g.addColorStop(0,'#bfd2da');g.addColorStop(.55,'#93998f');g.addColorStop(1,'#6b6255');
+    }
+    x.fillStyle=g;x.fillRect(0,0,envSize,envSize);
+    // A soft warm sun smear on two side faces, for a directional highlight when the ball rotates.
+    if(i===4||i===1){
+      const rg=x.createRadialGradient(envSize*.7,envSize*.32,2,envSize*.7,envSize*.32,envSize*.55);
+      rg.addColorStop(0,'rgba(255,244,214,.55)');rg.addColorStop(1,'rgba(255,244,214,0)');
+      x.fillStyle=rg;x.fillRect(0,0,envSize,envSize);
+    }
+    envFaces.push(c);
+  }
+  const rawEnvCube=new THREE.CubeTexture(envFaces);
+  rawEnvCube.needsUpdate=true;rawEnvCube.encoding=THREE.sRGBEncoding;
+  const pmrem=new THREE.PMREMGenerator(renderer);
+  pmrem.compileCubemapShader();
+  const filteredEnv=pmrem.fromCubemap(rawEnvCube).texture;
+  rawEnvCube.dispose();pmrem.dispose();
+  scene.environment=filteredEnv;
   const positions=[
     {p:[.044,.037,-.978],dark:false,r:[.2,-.38,.44]},
     {p:[.107,.037,2.990],dark:false,r:[-.1,.52,-.34]},
@@ -1121,12 +1188,25 @@
   physicsWorld.timestep=PHYSICS_DT;
   try{physicsWorld.maxCcdSubsteps=4}catch(_){}
 
+  // Real physical behaviour per terrain type — this is what makes the ground a strategic factor,
+  // not just a visual skin. Values are tuned relative to the historical baseline (friction .72,
+  // restitution .055, rollDrag× 1.0) which stays the 'fine-gravel' reference terrain.
+  const PHYSICS_SURFACE_PROFILES={
+    'compact-earth':{friction:.60,restitution:.045,rollDragMul:.72},   // terre compacte : ça roule loin et droit — terrain de pointeurs
+    'fine-gravel':  {friction:.72,restitution:.055,rollDragMul:1.00},  // référence historique, le plus "neutre"
+    'hard-sand':    {friction:.94,restitution:.020,rollDragMul:1.45},  // sable dur : la boule s'arrête vite, favorise la portée haute
+    'rocky':        {friction:.66,restitution:.095,rollDragMul:1.18}, // terrain rocheux : trajectoire moins fiable, petits rebonds
+    'red-earth':    {friction:.70,restitution:.050,rollDragMul:.95},  // terre rouge provençale : proche du compact, un peu plus vive
+    'wet-earth':    {friction:.92,restitution:.015,rollDragMul:1.35}  // terre humide : la boule colle, presque pas de rebond
+  };
+  const SURFACE_PHYSICS=PHYSICS_SURFACE_PROFILES[VISUAL_SURFACE]||PHYSICS_SURFACE_PROFILES['fine-gravel'];
+
   const groundBody=physicsWorld.createRigidBody(
     RAPIER.RigidBodyDesc.fixed().setTranslation(0,-.06*PHYSICS_SCALE,2.30*PHYSICS_SCALE)
   );
   physicsWorld.createCollider(
     RAPIER.ColliderDesc.cuboid(2.2*PHYSICS_SCALE,.06*PHYSICS_SCALE,8.0*PHYSICS_SCALE)
-      .setFriction(.72).setRestitution(.055),
+      .setFriction(SURFACE_PHYSICS.friction).setRestitution(SURFACE_PHYSICS.restitution),
     groundBody
   );
 
@@ -1757,7 +1837,8 @@
         if(body.moving&&body.onGround){
           // Rolling resistance: gradual energy loss only after ground contact.
           // Rapier still resolves all contacts, spin, deflections and secondary impacts.
-          const coeff=Math.max(.18,Math.min(1.25,(body.rollDrag||1.72)*.46));
+          // The terrain profile modulates the same per-shot-type rollDrag: same swipe, different result on sand vs compact earth.
+          const coeff=Math.max(.14,Math.min(1.85,(body.rollDrag||1.72)*.46*SURFACE_PHYSICS.rollDragMul));
           const rollFactor=Math.exp(-coeff*PHYSICS_DT);
           body.rb.setLinvel({x:lv.x*rollFactor,y:lv.y,z:lv.z*rollFactor},true);
           body.rb.setAngvel({x:av.x*rollFactor,y:av.y*.995,z:av.z*rollFactor},true);
@@ -2452,7 +2533,7 @@ gameCanvas.addEventListener('pointerdown',e=>{
 
   setMeneDistance(8.0);resetStaticBodies();removeTeamBalls();gameState.activeRole='pointer';setThrowTypeUI('POINTER');syncDirectionUI();updateHUD();updatePlayerCard();ring.visible=false;aimLine.visible=false;
   if(PT_CAREER){newMatch();if(RESUME_MATCH_STATE){gameState.blueScore=Math.max(0,Number(RESUME_MATCH_STATE.blueScore||0));gameState.redScore=Math.max(0,Number(RESUME_MATCH_STATE.redScore||0));gameState.mene=Math.max(1,Number(RESUME_MATCH_STATE.mene||1));const starter=RESUME_MATCH_STATE.meneStarter==='red'?'red':'blue';coinWinner=RESUME_MATCH_STATE.coinWinner==='red'?'red':'blue';gameState.meneStarter=starter;updateHUD();showOnlyScreen(null);setMatchState(PetanqueStates.END_SETUP);setTimeout(()=>startJackThrow(starter),220)}else{showOnlyScreen(coinScreenEl);coinResultEl.textContent='';setMatchState(PetanqueStates.COIN_TOSS)}}else{showOnlyScreen(mainMenuEl);setMatchState(PetanqueStates.MATCH_INTRO)};
-  document.documentElement.dataset.ptGameplay='v232-rapier-step2';
+  document.documentElement.dataset.ptGameplay='v234-rapier-terrain';
 })();
 </script>
 
