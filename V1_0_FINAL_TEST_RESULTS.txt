@@ -1,0 +1,45 @@
+=== tests/ai-control-mode.test.js ===
+AI + CONTROL MODE TESTS PASS
+=== tests/app-data.test.js ===
+APP DATA TESTS PASS
+=== tests/career-data-step.test.js ===
+CAREER DATA STEP PASS
+=== tests/career-engine.test.js ===
+CAREER ENGINE TESTS PASS
+=== tests/equipment.test.js ===
+EQUIPMENT TEST PASS
+=== tests/physics-step2-structural.test.js ===
+PHYSICS STEP2 STRUCTURAL TEST PASS
+=== tests/physics-v240-regression.test.js ===
+PHYSICS V2.40 REGRESSION TEST PASS
+=== tests/progression-training.test.js ===
+PROGRESSION TRAINING TEST PASS
+=== tests/registration-flow.test.js ===
+REGISTRATION FLOW TEST PASS
+=== tests/v250-gamefeel-structural.test.js ===
+V2.50 GAME FEEL STRUCTURAL TEST PASS
+=== RULES ===
+PASS 1 coin toss mapping
+PASS 2 5.9 invalid
+PASS 3 6.0 valid
+PASS 4 10.0 valid
+PASS 5 10.1 invalid
+PASS 6 invalid jack placement retains starter
+PASS 7 blue holds -> red
+PASS 8 red fails -> red again
+PASS 9 red takes point -> blue
+PASS 10 exhausted side -> other
+PASS 11 +2 scoring
+PASS 12 overlap line valid
+PASS 13 fully out dead
+PASS 14 dead remains dead
+PASS 15 moved jack used
+PASS 16 jack >10 after impact may live
+PASS 17 dead jack both have balls void
+PASS 18 dead jack one side +2
+PASS 19 exact tie last team replays
+PASS 20 previous winner starts next
+PASS 21 12+2 victory
+PASS 22 13+ accepted
+TOTAL PASS 22/22
+V1.0 FINAL STRUCTURAL TEST PASS

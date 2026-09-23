@@ -212,7 +212,12 @@
     <div class="versusTitle"><span>TOI</span><b>VS</b><span id="opponentName"></span></div>
     <div class="sectionTitle">ADVERSAIRE · <span id="opponentPower"></span></div><div id="opponentCards"></div>
     <div class="sectionTitle">NOTRE COMPOSITION</div><div id="ourMatchTeam" class="tournamentTeam"></div>
-    <div id="formatCoreNote" class="objective"></div><button id="playExistingMatch" class="btn primary">JOUER AVEC LE MATCH CORE VALIDÉ</button>
+    <div id="formatCoreNote" class="objective"></div>
+    <div id="opponentControlChoices" class="inlineControlChoices" aria-label="Mode de contrôle">
+      <button type="button" data-control-inline="TEAM" class="selected"><b>ÉQUIPE</b><span>Toutes les boules</span></button>
+      <button type="button" data-control-inline="PLAYER"><b>MON JOUEUR</b><span>Mes boules uniquement</span></button>
+    </div>
+    <button id="playExistingMatch" class="btn primary">JOUER MAINTENANT</button>
   </main>
 </section>
 
@@ -266,7 +271,7 @@
 <script src="./src/data-service.js"></script>
 <script src="./src/save-manager.js"></script>
 <script src="./src/career-engine.js"></script>
-<script src="./src/app.js?v=235"></script>
+<script src="./src/app.js?v=250"></script>
 <script src="./src/iphone-gameplay-v219-loader.js?v=219"></script>
 </body>
 </html>

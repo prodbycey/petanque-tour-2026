@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pétanque Tour 2026 — V2.40 Physics Bench</title>
+<style>
+body{font-family:system-ui,sans-serif;background:#0d1317;color:#eef4f7;margin:0;padding:24px}h1{margin:0 0 6px;font-size:26px}p{color:#aebbc2}table{width:100%;border-collapse:collapse;margin-top:18px;font-size:13px}th,td{border-bottom:1px solid #26333a;padding:9px;text-align:left;vertical-align:top}th{color:#d8b56b}.pass{color:#63d48a;font-weight:800}.fail{color:#ff6c6c;font-weight:800}code{color:#f4cf84}.summary{padding:12px 14px;border:1px solid #33444d;border-radius:12px;background:#111b20;margin-top:18px}.mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+</style>
+</head>
+<body>
+<h1>V2.40 — Banc de test physique Rapier</h1>
+<p>Scénarios déterministes, même échelle ×10, pas fixe 120 Hz, CCD et paramètres de collision que le match.</p>
+<div id="summary" class="summary">Chargement de Rapier…</div>
+<table><thead><tr><th>Scénario</th><th>Résultat</th><th>v avant</th><th>v lanceuse après</th><th>v cible reçue</th><th>Impulsion max</th><th>Contact</th><th>Arrêt</th><th>Énergie</th></tr></thead><tbody id="rows"></tbody></table>
+<script type="module">
+const RAPIER=await import('https://cdn.jsdelivr.net/npm/@dimforge/rapier3d-compat@0.19.3/rapier.mjs');
+await RAPIER.init();
+const S=10,DT=1/120,R=.037,M=.700,JACK_R=.0198,JACK_M=.030;
+const G=-6*S;
+function speed(v){return Math.hypot(v.x,v.y,v.z)/S}
+function hspeed(v){return Math.hypot(v.x,v.z)/S}
+function fmt(n,d=3){return Number.isFinite(n)?n.toFixed(d):'—'}
+function makeWorld(){
+  const world=new RAPIER.World({x:0,y:G,z:0});world.timestep=DT;try{world.maxCcdSubsteps=8}catch(_){ }
+  const events=new RAPIER.EventQueue(true);
+  const ground=world.createRigidBody(RAPIER.RigidBodyDesc.fixed().setTranslation(0,-.06*S,1.5*S));
+  world.createCollider(RAPIER.ColliderDesc.cuboid(3*S,.06*S,8*S).setFriction(.72).setRestitution(.055),ground);
+  return {world,events};
+}
+function addBall(ctx,{x=0,z=0,r=R,m=M,restitution=r<JACK_R*1.1?.20:.52,friction=r<JACK_R*1.1?.46:.36,sleep=true}={}){
+  const rb=ctx.world.createRigidBody(RAPIER.RigidBodyDesc.dynamic().setTranslation(x*S,r*S,z*S).setCanSleep(true).setCcdEnabled(true));
+  const pr=r*S,volume=4/3*Math.PI*pr**3,density=m/volume;
+  const col=ctx.world.createCollider(RAPIER.ColliderDesc.ball(pr).setDensity(density).setFriction(friction).setRestitution(restitution).setActiveEvents(RAPIER.ActiveEvents.COLLISION_EVENTS|RAPIER.ActiveEvents.CONTACT_FORCE_EVENTS).setContactForceEventThreshold(0),rb);
+  if(sleep)rb.sleep();
+  const o={rb,col,r,m,rollDrag:1.12,moving:!sleep,sleepTimer:0,maxSpeed:0};ctx.bodies.push(o);ctx.byHandle.set(col.handle,o);return o;
+}
+function kinetic(body){const v=body.rb.linvel();const w=hspeed(v);return .5*body.m*w*w}
+function stepCtx(ctx,seconds,{frameDt=1/60,maxSubsteps=8,roll=true}={}){
+  const frames=Math.ceil(seconds/frameDt);let firstContact=null,maxImpulse=0,targetPeak=0,sourceAfter=null,stopTime=null,time=0;
+  for(let f=0;f<frames;f++){
+    let acc=Math.min(.050,frameDt),iterations=0;
+    while(acc>=DT&&iterations<maxSubsteps){
+      ctx.world.step(ctx.events);time+=DT;
+      for(const b of ctx.bodies){
+        const lv=b.rb.linvel(),av=b.rb.angvel();const lin=speed(lv),ang=Math.hypot(av.x,av.y,av.z);
+        if(!b.rb.isSleeping()&&(lin>.004||ang>.10)){b.moving=true;b.sleepTimer=0}
+        const y=b.rb.translation().y/S,onGround=y<=b.r+.006&&Math.abs(lv.y/S)<.16;
+        if(b.moving&&onGround&&roll){
+          const coeff=Math.max(.18,Math.min(1.25,(b.rollDrag||1.12)*.46));const q=Math.exp(-coeff*DT);
+          b.rb.setLinvel({x:lv.x*q,y:lv.y,z:lv.z*q},true);b.rb.setAngvel({x:av.x*q,y:av.y*.995,z:av.z*q},true);
+          const h=hspeed(lv),aa=Math.hypot(av.x,av.y,av.z);
+          if(h<.020&&Math.abs(lv.y/S)<.025&&aa<1.25){b.sleepTimer+=DT;if(b.sleepTimer>.28){b.rb.setLinvel({x:0,y:0,z:0},false);b.rb.setAngvel({x:0,y:0,z:0},false);b.rb.sleep();b.moving=false}}
+          else b.sleepTimer=0;
+        }
+        b.maxSpeed=Math.max(b.maxSpeed,lin);
+      }
+      ctx.events.drainContactForceEvents(e=>{
+        const a=ctx.byHandle.get(e.collider1()),b=ctx.byHandle.get(e.collider2());if(!a||!b)return;
+        const impulse=e.totalForceMagnitude()*DT;maxImpulse=Math.max(maxImpulse,impulse);
+        if(!firstContact){firstContact={t:time,a:{...a.rb.translation()},b:{...b.rb.translation()},impulse}}
+      });
+      ctx.events.drainCollisionEvents(()=>{});
+      if(ctx.target)targetPeak=Math.max(targetPeak,speed(ctx.target.rb.linvel()));
+      if(ctx.source&&firstContact&&!sourceAfter)sourceAfter=speed(ctx.source.rb.linvel());
+      if(firstContact&&!stopTime&&ctx.bodies.every(b=>b.rb.isSleeping()||speed(b.rb.linvel())<.021))stopTime=time;
+      acc-=DT;iterations++;
+    }
+  }
+  return {firstContact,maxImpulse,targetPeak,sourceAfter:sourceAfter??0,stopTime};
+}
+function scenario(name,{speed0=5.5,offset=0,targetR=R,targetM=M,three=false,frameDt=1/60,duration=4.5,roll=true}={}){
+  const ctx=makeWorld();ctx.bodies=[];ctx.byHandle=new Map();
+  const source=addBall(ctx,{x:0,z:-.62,sleep:false});source.rollDrag=1.05;ctx.source=source;
+  const target=addBall(ctx,{x:offset,z:.08,r:targetR,m:targetM,sleep:true});ctx.target=target;
+  let third=null;if(three)third=addBall(ctx,{x:offset,z:.08+2*R+.003,sleep:true});
+  source.rb.setLinvel({x:0,y:0,z:speed0*S},true);source.rb.wakeUp();source.moving=true;
+  const initialE=.5*M*speed0*speed0;
+  const out=stepCtx(ctx,duration,{frameDt,roll});
+  const afterE=ctx.bodies.reduce((a,b)=>a+kinetic(b),0);
+  const earlyRatio=out.firstContact?Math.min(1.5,(.5*M*(out.sourceAfter**2)+.5*targetM*(out.targetPeak**2))/initialE):0;
+  const noTunnel=!!out.firstContact&&out.targetPeak>.12;
+  const pass=noTunnel && out.maxImpulse>0 && (name.includes('lent')?out.targetPeak>.35:out.targetPeak>.8) && earlyRatio>.18 && earlyRatio<1.30;
+  return {name,pass,before:speed0,sourceAfter:out.sourceAfter,targetPeak:out.targetPeak,impulse:out.maxImpulse,contact:out.firstContact,stop:out.stopTime,energy:earlyRatio,thirdPeak:third?.maxSpeed||0};
+}
+const tests=[];
+tests.push(scenario('1. Tir parfaitement centré',{speed0:5.7}));
+tests.push(scenario('2. Tir légèrement décentré',{speed0:5.7,offset:.042}));
+tests.push(scenario('3. Tir rapide',{speed0:9.0,duration:4.2}));
+tests.push(scenario('4. Tir lent',{speed0:2.7,duration:5.2}));
+tests.push(scenario('5. Collision entre trois boules',{speed0:6.0,three:true,duration:5.0}));
+tests.push(scenario('6. Boule contre cochonnet',{speed0:4.8,targetR:JACK_R,targetM:JACK_M,duration:4.0}));
+tests.push(scenario('7. Réveil d’une boule immobile',{speed0:5.2,duration:4.3}));
+tests.push(scenario('8. Faible framerate graphique (15 FPS)',{speed0:7.0,frameDt:1/15,duration:4.4}));
+tests.push(scenario('9. Arrêt naturel après choc',{speed0:4.6,duration:8.0}));
+tests.push(scenario('10. Haute vitesse : absence de traversée',{speed0:12.0,duration:4.0}));
+// Specific multi-ball success condition.
+const t5=tests[4];t5.pass=t5.pass&&t5.thirdPeak>.25;
+const t6=tests[5];t6.pass=!!t6.contact&&t6.targetPeak>1.0&&t6.impulse>0;
+const t9=tests[8];t9.pass=t9.pass&&t9.stop!==null&&t9.stop<8;
+const t10=tests[9];t10.pass=!!t10.contact&&t10.targetPeak>1.0&&t10.impulse>0;
+const rows=document.getElementById('rows');
+for(const t of tests){
+  const c=t.contact;const pos=c?`A(${fmt(c.a.x/S)},${fmt(c.a.z/S)}) / B(${fmt(c.b.x/S)},${fmt(c.b.z/S)})`:'aucun';
+  const tr=document.createElement('tr');tr.innerHTML=`<td>${t.name}</td><td class="${t.pass?'pass':'fail'}">${t.pass?'PASS':'FAIL'}</td><td>${fmt(t.before)} m/s</td><td>${fmt(t.sourceAfter)} m/s</td><td>${fmt(t.targetPeak)} m/s${t.thirdPeak?`<br><small>3e: ${fmt(t.thirdPeak)} m/s</small>`:''}</td><td>${fmt(t.impulse)}</td><td class="mono">${pos}</td><td>${t.stop?fmt(t.stop,2)+' s':'—'}</td><td>${fmt(t.energy,2)}</td>`;rows.appendChild(tr);
+}
+const passed=tests.filter(t=>t.pass).length;document.getElementById('summary').innerHTML=`<strong class="${passed===tests.length?'pass':'fail'}">${passed}/${tests.length} scénarios validés</strong> · Rapier 0.19.3 · 120 Hz · CCD · échelle ×10`;
+window.__PT_PHYSICS_RESULTS__=tests;window.__PT_BENCH_DONE__=true;document.documentElement.dataset.bench=passed===tests.length?'pass':'fail';
+</script>
+</body></html>

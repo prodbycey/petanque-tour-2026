@@ -1,0 +1,80 @@
+TAP version 13
+# AI + CONTROL MODE TESTS PASS
+# Subtest: tests/ai-control-mode.test.js
+ok 1 - tests/ai-control-mode.test.js
+  ---
+  duration_ms: 28.552494
+  type: 'test'
+  ...
+# APP DATA TESTS PASS
+# Subtest: tests/app-data.test.js
+ok 2 - tests/app-data.test.js
+  ---
+  duration_ms: 42.700091
+  type: 'test'
+  ...
+# CAREER DATA STEP PASS
+# Subtest: tests/career-data-step.test.js
+ok 3 - tests/career-data-step.test.js
+  ---
+  duration_ms: 37.956263
+  type: 'test'
+  ...
+# CAREER ENGINE TESTS PASS
+# Subtest: tests/career-engine.test.js
+ok 4 - tests/career-engine.test.js
+  ---
+  duration_ms: 28.40439
+  type: 'test'
+  ...
+# EQUIPMENT TEST PASS
+# Subtest: tests/equipment.test.js
+ok 5 - tests/equipment.test.js
+  ---
+  duration_ms: 34.961294
+  type: 'test'
+  ...
+# PHYSICS STEP2 STRUCTURAL TEST PASS
+# Subtest: tests/physics-step2-structural.test.js
+ok 6 - tests/physics-step2-structural.test.js
+  ---
+  duration_ms: 33.800386
+  type: 'test'
+  ...
+# PHYSICS V2.40 REGRESSION TEST PASS
+# Subtest: tests/physics-v240-regression.test.js
+ok 7 - tests/physics-v240-regression.test.js
+  ---
+  duration_ms: 27.137283
+  type: 'test'
+  ...
+# PROGRESSION TRAINING TEST PASS
+# Subtest: tests/progression-training.test.js
+ok 8 - tests/progression-training.test.js
+  ---
+  duration_ms: 34.481279
+  type: 'test'
+  ...
+# REGISTRATION FLOW TEST PASS
+# Subtest: tests/registration-flow.test.js
+ok 9 - tests/registration-flow.test.js
+  ---
+  duration_ms: 31.172272
+  type: 'test'
+  ...
+# V2.50 GAME FEEL STRUCTURAL TEST PASS
+# Subtest: tests/v250-gamefeel-structural.test.js
+ok 10 - tests/v250-gamefeel-structural.test.js
+  ---
+  duration_ms: 27.062801
+  type: 'test'
+  ...
+1..10
+# tests 10
+# suites 0
+# pass 10
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 126.599428
