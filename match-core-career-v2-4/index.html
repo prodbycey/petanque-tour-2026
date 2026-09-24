@@ -117,6 +117,10 @@
     #toast{max-width:78%;text-align:center}
   }
 
+  #readyPiece{position:absolute;z-index:28;left:50%;bottom:29.5%;transform:translateX(-50%);display:none;align-items:center;gap:9px;padding:7px 12px;border-radius:999px;background:rgba(7,10,14,.78);border:1px solid rgba(255,255,255,.24);box-shadow:0 8px 24px #0008;pointer-events:none;font-size:10px;font-weight:950;letter-spacing:.65px}
+  #readyPiece.show{display:flex}
+  #readyPiece i{display:block;width:27px;height:27px;border-radius:50%;background:radial-gradient(circle at 32% 27%,#fff 0 8%,#d6d8dc 18%,#8d9298 52%,#30343a 78%,#111 100%);box-shadow:inset -4px -5px 7px #0007,0 3px 8px #0009}
+  #readyPiece.jack i{width:20px;height:20px;background:radial-gradient(circle at 32% 27%,#ff9a72,#d24427 48%,#7d160d 100%)}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js"></script>
 <script>
@@ -149,7 +153,7 @@
     <div class="menuStack" style="margin-top:12px"><button id="startQuickMatch" class="menuBtn primary">JOUER</button><button id="backMain" class="menuBtn">RETOUR</button></div>
   </div>
   <div id="coinScreen" class="shellScreen"><div class="coinChoices simpleCoin"><button class="menuBtn coinChoice" data-coin="PILE">PILE</button><button class="menuBtn coinChoice" data-coin="FACE">FACE</button></div><div id="coinResult"></div></div>
-  <div id="stateBadge">MENU</div><div id="jackHint">PRENDS LE COCHONNET</div><button id="takeJack" type="button">PRENDRE LE COCHONNET</button>
+  <div id="stateBadge">MENU</div><div id="readyPiece"><i></i><b>BOULE PRÊTE</b></div><div id="jackHint">PRENDS LE COCHONNET</div><button id="takeJack" type="button">PRENDRE LE COCHONNET</button>
 
   <canvas id="game"></canvas><div id="vignette"></div>
   <button id="menu" class="glass" aria-label="Menu"><i></i></button>
@@ -199,8 +203,8 @@
   renderer.toneMappingExposure=PT_MOBILE?1.06:1.08;
   const scene=new THREE.Scene();scene.background=new THREE.Color(0x132024);
   const camera=new THREE.PerspectiveCamera(PT_MOBILE?55:60,2/3,.025,30);
-  camera.position.set(0,PT_MOBILE?.64:.430,PT_MOBILE?-2.24:-2);
-  camera.lookAt(0,0,PT_MOBILE?1.06:-1.042);
+  camera.position.set(0,PT_MOBILE?.52:.430,PT_MOBILE?-1.72:-2);
+  camera.lookAt(0,0,PT_MOBILE?1.55:-1.042);
 
   // CAREER VENUE VISUALS — visual only. Match rules, controls and ball physics stay unchanged.
   const VENUE_TERRAIN_ID=String(
@@ -1145,8 +1149,9 @@
   const ballMeshes=[];
   positions.forEach(o=>{const b=new THREE.Mesh(ballGeom,ballMaterial(o.dark));b.position.set(...o.p);b.rotation.set(...o.r);b.castShadow=b.receiveShadow=true;scene.add(b);ballMeshes.push(b)});
   const playerBall=ballMeshes[0];
+  if(PT_MOBILE)playerBall.scale.setScalar(1.18);
   // V3.4: distant setup pushed deeper into the court; camera/FOV unchanged.
-  const jack=new THREE.Mesh(new THREE.SphereGeometry(.015,PT_MOBILE?36:48,PT_MOBILE?24:32),new THREE.MeshStandardMaterial({color:0xcb2c1d,roughness:.62,metalness:0,bumpMap:bumpMap,bumpScale:.0012}));jack.scale.setScalar(1.32);jack.position.set(-.063,.0205,2.700);jack.castShadow=true;scene.add(jack);
+  const jack=new THREE.Mesh(new THREE.SphereGeometry(.015,PT_MOBILE?36:48,PT_MOBILE?24:32),new THREE.MeshStandardMaterial({color:0xcb2c1d,roughness:.62,metalness:0,bumpMap:bumpMap,bumpScale:.0012}));jack.scale.setScalar(PT_MOBILE?1.62:1.32);jack.position.set(-.063,.0205,2.700);jack.castShadow=true;scene.add(jack);
   const ring=new THREE.Mesh(new THREE.TorusGeometry(.070,.0032,24,128),new THREE.MeshBasicMaterial({color:0x1595ff,transparent:true,opacity:.92}));ring.rotation.x=Math.PI/2;ring.position.set(.044,.004,-.978);scene.add(ring);
   // Engagement limits for the initial cochonnet throw: 6m / 10m.
   const jackLineMat=new THREE.LineBasicMaterial({color:0xff2d2d,transparent:true,opacity:.95,depthTest:true});
@@ -1662,7 +1667,7 @@
     jackBody.mesh.position.set(THROW_START.x,.045,THROW_START.z+.055);
     jackBody.vel.set(0,0,0);jackBody.moving=false;jackBody.onGround=false;
     if(takeJackEl)takeJackEl.classList.remove('show');
-    if(jackHintEl)jackHintEl.textContent='LANCE ENTRE LES 2 LIGNES ROUGES · 6 À 10 M';
+    if(jackHintEl)jackHintEl.textContent='GLISSE DU BAS VERS LE HAUT · 6 À 10 M';
     ring.visible=true;ring.position.set(THROW_START.x,.004,THROW_START.z);
     showToast('COCHONNET EN MAIN · LANCE-LE COMME UNE BOULE',1050);
   }
@@ -1688,7 +1693,7 @@
       jackBody.vel.set(0,0,0);jackBody.moving=false;jackBody.onGround=false;
       if(takeJackEl)takeJackEl.classList.remove('show');
       setMatchState(PetanqueStates.JACK_THROW);
-      if(jackHintEl)jackHintEl.textContent='LANCE ENTRE LES 2 LIGNES ROUGES · 6 À 10 M';
+      if(jackHintEl)jackHintEl.textContent='GLISSE DU BAS VERS LE HAUT · 6 À 10 M';
       ring.visible=true;ring.position.set(THROW_START.x,.004,THROW_START.z);
       showToast('À TOI D’ENGAGER · LANCE LE COCHONNET',900);
     }else{
@@ -2376,13 +2381,23 @@
   );
   bounce.position.set(0,.12,3.2);scene.add(bounce);
 
-  function resize(){const w=shell.clientWidth,h=shell.clientHeight;renderer.setSize(w,h,false);camera.aspect=w/h;camera.updateProjectionMatrix()}window.addEventListener('resize',resize);resize();
+  function syncReadyPiece(){
+    const el=document.getElementById('readyPiece'); if(!el)return;
+    const jackReady=matchFSM.is(PetanqueStates.JACK_THROW)&&jackThrowOwner==='blue'&&jackHeld&&!gameState.resolving;
+    const ballReady=matchFSM.is(PetanqueStates.PLAYER_AIMING)&&gameState.turn==='blue'&&activeBody&&!gameState.resolving;
+    el.classList.toggle('show',!!(jackReady||ballReady));
+    el.classList.toggle('jack',!!jackReady);
+    const b=el.querySelector('b');
+    if(b)b.textContent=jackReady?'COCHONNET PRÊT · GLISSE VERS LE HAUT':(selectedMode()==='TIRER'?'BOULE PRÊTE · TIRE':'BOULE PRÊTE · POINTE');
+  }
+    function resize(){const w=shell.clientWidth,h=shell.clientHeight;renderer.setSize(w,h,false);camera.aspect=w/h;camera.updateProjectionMatrix()}window.addEventListener('resize',resize);resize();
   let t=0,lastFrame=performance.now();
   function render(now){
     const elapsed=Math.min(PT_MOBILE?.060:.035,Math.max(0,(now-lastFrame)/1000));
     lastFrame=now;t=now*.001;
     if(ring.visible)ring.material.opacity=.82+Math.sin(t*2)*.1;
     physicsStep(elapsed);
+    syncReadyPiece();
     renderer.render(scene,camera);
     requestAnimationFrame(render)
   }
@@ -2521,16 +2536,42 @@ gameCanvas.addEventListener('pointerdown',e=>{
   const finishSwipe=e=>{
     if(!swipe||e.pointerId!==swipe.id)return;
     const dy=swipe.y-e.clientY,dx=e.clientX-swipe.x,finalPower=swipePower;
-    const endTarget=screenPointToCourt(e.clientX,e.clientY,swipe.rect);
-    gameCanvas.style.cursor='grab';
+    const gestureDuration=Math.max(70,performance.now()-swipe.t);
+    const straightness=Math.max(0,1-Math.abs(dx)/(swipe.rect.width*.34));
+    const releaseQuality=.94+straightness*.08;
+    const sideSpin=Math.max(-1,Math.min(1,dx/(swipe.rect.width*.18)));
+    const gesture={releaseQuality,sideSpin,duration:gestureDuration};
+    let endTarget=screenPointToCourt(e.clientX,e.clientY,swipe.rect);
 
-    if(dy>28&&Math.abs(dx)<swipe.rect.width*.45&&finalPower>=4&&endTarget){
-      if(swipe.jack){launchJackTo(endTarget,finalPower)}
-      else{const mode=selectedMode();if(launchBlue(finalPower,endTarget)){matchStats.blueThrows++;if(mode==='TIRER')matchStats.blueShots++;setMatchState(PetanqueStates.BALL_MOVING)}}
-    }else{
-      setSwipePower(0);updateAimGuide()
+    if(!endTarget){
+      const lateral=clamp(dx/(swipe.rect.width*.42),-1,1)*.72;
+      if(swipe.jack){
+        const distanceM=6.15+clamp(finalPower/100,0,1)*3.55;
+        endTarget=new THREE.Vector3(THROW_START.x+lateral*.32,0,THROW_START.z+distanceM*WORLD_PER_METER);
+      }else if(selectedMode()==='TIRER'){
+        const targetBody=currentShootTarget()||jackBody;
+        endTarget=targetBody.mesh.position.clone();endTarget.y=0;endTarget.x+=aimOffset+lateral*.08;
+      }else{
+        endTarget=jackBody.mesh.position.clone();endTarget.y=0;endTarget.x+=aimOffset+lateral*.16;
+      }
     }
-    swipe=null
+
+    gameCanvas.style.cursor='grab';
+    if(dy>18&&Math.abs(dx)<swipe.rect.width*.62&&finalPower>=2&&endTarget){
+      if(swipe.jack){
+        launchJackTo(endTarget,Math.max(44,finalPower));
+      }else{
+        const mode=selectedMode();
+        if(launchBlue(Math.max(8,finalPower),endTarget,gesture)){
+          matchStats.blueThrows++;
+          if(mode==='TIRER')matchStats.blueShots++;
+          setMatchState(PetanqueStates.BALL_MOVING);
+        }
+      }
+    }else{
+      setSwipePower(0);updateAimGuide();
+    }
+    swipe=null;
   };
   gameCanvas.addEventListener('pointerup',finishSwipe);gameCanvas.addEventListener('pointercancel',finishSwipe);
   const directionEl=document.getElementById('direction');
@@ -2543,7 +2584,7 @@ gameCanvas.addEventListener('pointerdown',e=>{
 
   setMeneDistance(8.0);resetStaticBodies();removeTeamBalls();gameState.activeRole='pointer';setThrowTypeUI('POINTER');syncDirectionUI();updateHUD();updatePlayerCard();ring.visible=false;aimLine.visible=false;
   if(PT_CAREER){newMatch();if(RESUME_MATCH_STATE){gameState.blueScore=Math.max(0,Number(RESUME_MATCH_STATE.blueScore||0));gameState.redScore=Math.max(0,Number(RESUME_MATCH_STATE.redScore||0));gameState.mene=Math.max(1,Number(RESUME_MATCH_STATE.mene||1));const starter=RESUME_MATCH_STATE.meneStarter==='red'?'red':'blue';coinWinner=RESUME_MATCH_STATE.coinWinner==='red'?'red':'blue';gameState.meneStarter=starter;updateHUD();showOnlyScreen(null);setMatchState(PetanqueStates.END_SETUP);setTimeout(()=>startJackThrow(starter),220)}else{showOnlyScreen(coinScreenEl);coinResultEl.textContent='';setMatchState(PetanqueStates.COIN_TOSS)}}else{showOnlyScreen(mainMenuEl);setMatchState(PetanqueStates.MATCH_INTRO)};
-  document.documentElement.dataset.ptGameplay='v235-collision-fix';
+  document.documentElement.dataset.ptGameplay='v101-live-mobile-gameplay-fix';
 })();
 </script>
 
